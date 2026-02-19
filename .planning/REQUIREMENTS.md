@@ -66,27 +66,27 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| REPO-01 | — | Pending |
-| REPO-02 | — | Pending |
-| REPO-03 | — | Pending |
-| REPO-04 | — | Pending |
-| REPO-05 | — | Pending |
-| SKIL-01 | — | Pending |
-| SKIL-02 | — | Pending |
-| SKIL-03 | — | Pending |
-| SKIL-04 | — | Pending |
-| SITE-01 | — | Pending |
-| SITE-02 | — | Pending |
-| SITE-03 | — | Pending |
-| SITE-04 | — | Pending |
-| CICD-01 | — | Pending |
-| CICD-02 | — | Pending |
+| REPO-01 | Phase 1 | Pending |
+| REPO-02 | Phase 1 | Pending |
+| REPO-03 | Phase 1 | Pending |
+| REPO-04 | Phase 1 | Pending |
+| REPO-05 | Phase 1 | Pending |
+| SKIL-01 | Phase 2 | Pending |
+| SKIL-02 | Phase 2 | Pending |
+| SKIL-03 | Phase 2 | Pending |
+| SKIL-04 | Phase 2 | Pending |
+| SITE-01 | Phase 3 | Pending |
+| SITE-02 | Phase 3 | Pending |
+| SITE-03 | Phase 3 | Pending |
+| SITE-04 | Phase 3 | Pending |
+| CICD-01 | Phase 3 | Pending |
+| CICD-02 | Phase 3 | Pending |
 
 **Coverage:**
 - v1 requirements: 15 total
-- Mapped to phases: 0
-- Unmapped: 15
+- Mapped to phases: 15
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-02-19*
-*Last updated: 2026-02-19 after initial definition*
+*Last updated: 2026-02-19 after roadmap creation — all 15 v1 requirements mapped*
