@@ -21,27 +21,26 @@
 <meta name="twitter:title" content="DTC Skill Pack for Claude Code">
 <meta name="twitter:description" content="6 modular skills that give Claude Code deep expertise in Klaviyo, Shopify, GA4, Looker Studio, and presentation building for DTC e-commerce marketing.">
 <link rel="canonical" href="https://thatrebeccarae.github.io/claude-code-skills/skill-packs/dtc-skill-pack/demo/">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:wght@400;600&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg-primary: #0D1117;
-  --bg-surface: #161B22;
-  --bg-elevated: #1E2329;
-  --bg-glass: rgba(255,255,255,0.04);
-  --text-primary: #fdfdfe;
-  --text-secondary: #8b949e;
-  --text-muted: #7d8590;
-  --accent-primary: #4eadab;
-  --accent-hover: #6bc0be;
-  --border-subtle: rgba(255,255,255,0.08);
-  --border-hover: rgba(255,255,255,0.15);
-  --viz-teal: #4eadab;
-  --viz-lime: #56d4a5;
-  --viz-purple: #8b7ec8;
-  --viz-orange: #d4845a;
-  --viz-gold: #c9a84c;
-  --viz-pink: #c75b6f;
+  --bg-primary: #fafafa;
+  --bg-surface: #ffffff;
+  --bg-elevated: #f5f5f7;
+  --bg-glass: rgba(0,0,0,0.03);
+  --text-primary: #0f0e0e;
+  --text-secondary: #484149;
+  --text-muted: #68635d;
+  --accent-primary: #5B5F8D;
+  --accent-hover: #7074A0;
+  --border-subtle: rgba(15,14,14,0.10);
+  --border-hover: rgba(15,14,14,0.18);
+  --viz-teal: #9BB29E;
+  --viz-lime: #9BB29E;
+  --viz-purple: #5B5F8D;
+  --viz-orange: #DA6B51;
+  --viz-gold: #FCC560;
+  --viz-pink: #DA6B51;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -56,7 +55,7 @@ body {
 
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--bg-primary); }
-::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 3px; }
+::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 3px; }
 
 .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
 
@@ -71,17 +70,18 @@ body {
   border-radius: 20px;
   font-size: 0.72rem;
   font-weight: 600;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Roboto Mono', monospace;
   color: var(--accent-primary);
-  background: rgba(78,173,171,0.1);
-  border: 1px solid rgba(78,173,171,0.2);
+  background: rgba(91,95,141,0.08);
+  border: 1px solid rgba(91,95,141,0.18);
   margin-bottom: 24px;
   letter-spacing: 0.04em;
 }
 .hero h1 {
+  font-family: 'Lora', serif;
   font-size: 3.2rem;
-  font-weight: 300;
-  letter-spacing: -0.04em;
+  font-weight: 400;
+  letter-spacing: -0.02em;
   color: var(--text-primary);
   margin-bottom: 16px;
 }
@@ -114,12 +114,12 @@ body {
 }
 .btn-primary {
   background: var(--accent-primary);
-  color: var(--bg-primary);
+  color: #ffffff;
 }
 .btn-primary:hover {
   background: var(--accent-hover);
   transform: translateY(-1px);
-  box-shadow: 0 4px 16px rgba(78,173,171,0.3);
+  box-shadow: 0 4px 16px rgba(91,95,141,0.3);
 }
 .btn-secondary {
   background: var(--bg-surface);
@@ -129,26 +129,28 @@ body {
 .btn-secondary:hover {
   border-color: var(--border-hover);
   transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
 }
 
 /* ── Section Shared ── */
 .section-label {
-  font-size: 0.7rem;
+  font-size: 0.78rem;
   font-weight: 600;
   color: var(--accent-primary);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: 8px;
   text-align: center;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Roboto Mono', monospace;
 }
 .section-heading {
+  font-family: 'Lora', serif;
   font-size: 2rem;
-  font-weight: 300;
+  font-weight: 400;
   color: var(--text-primary);
   text-align: center;
   margin-bottom: 40px;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
 }
 
 /* ── Skills Grid ── */
@@ -167,11 +169,11 @@ body {
   padding: 24px;
   transition: transform 0.15s, box-shadow 0.15s;
   position: relative;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
 }
 .skill-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-  border-color: rgba(255,255,255,0.12);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
 }
 .skill-icon {
   width: 40px;
@@ -183,11 +185,11 @@ body {
   margin-bottom: 14px;
   font-size: 1.1rem;
 }
-.skill-icon.klaviyo { background: rgba(78,173,171,0.1); color: var(--viz-teal); }
-.skill-icon.shopify { background: rgba(86,212,165,0.1); color: var(--viz-lime); }
-.skill-icon.ga4 { background: rgba(199,91,111,0.1); color: var(--viz-pink); }
-.skill-icon.looker { background: rgba(139,126,200,0.1); color: var(--viz-purple); }
-.skill-icon.deck { background: rgba(201,168,76,0.1); color: var(--viz-gold); }
+.skill-icon.klaviyo { background: rgba(91,95,141,0.1); color: #5B5F8D; }
+.skill-icon.shopify { background: rgba(155,178,158,0.12); color: #6B8E6E; }
+.skill-icon.ga4 { background: rgba(218,107,81,0.1); color: #DA6B51; }
+.skill-icon.looker { background: rgba(143,177,190,0.12); color: #5E8A99; }
+.skill-icon.deck { background: rgba(252,197,96,0.12); color: #C49A30; }
 .skill-title {
   font-size: 0.95rem;
   font-weight: 600;
@@ -195,7 +197,7 @@ body {
   margin-bottom: 6px;
 }
 .skill-desc {
-  font-size: 0.78rem;
+  font-size: 0.84rem;
   color: var(--text-muted);
   margin-bottom: 12px;
 }
@@ -208,9 +210,9 @@ body {
   display: inline-block;
   padding: 2px 8px;
   border-radius: 4px;
-  font-size: 0.62rem;
+  font-size: 0.68rem;
   font-weight: 600;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Roboto Mono', monospace;
   background: var(--bg-elevated);
   color: var(--text-muted);
 }
@@ -231,22 +233,24 @@ body {
   display: flex;
   gap: 14px;
   align-items: flex-start;
-  transition: border-color 0.15s;
+  transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
 }
-.prompt-card:hover { border-color: rgba(255,255,255,0.12); }
+.prompt-card:hover { border-color: rgba(15,14,14,0.18); box-shadow: 0 4px 12px rgba(0,0,0,0.05); transform: translateY(-1px); }
 .prompt-avatar {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: rgba(78,173,171,0.12);
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background: rgba(91,95,141,0.08);
   color: var(--accent-primary);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.7rem;
+  font-size: 0.82rem;
   font-weight: 700;
+  font-family: 'Roboto Mono', monospace;
   flex-shrink: 0;
-  margin-top: 2px;
+  margin-top: 3px;
 }
 .prompt-text {
   font-size: 0.85rem;
@@ -258,7 +262,7 @@ body {
   display: block;
   font-size: 0.65rem;
   font-weight: 600;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Roboto Mono', monospace;
   color: var(--accent-primary);
   font-style: normal;
   margin-top: 6px;
@@ -282,12 +286,12 @@ body {
   align-items: center;
   justify-content: center;
   margin: 0 auto 16px;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Roboto Mono', monospace;
   font-weight: 700;
   font-size: 1.2rem;
-  background: rgba(78,173,171,0.1);
+  background: rgba(91,95,141,0.08);
   color: var(--accent-primary);
-  border: 1px solid rgba(78,173,171,0.2);
+  border: 1px solid rgba(91,95,141,0.18);
 }
 .step-title {
   font-weight: 600;
@@ -295,12 +299,12 @@ body {
   color: var(--text-primary);
   margin-bottom: 6px;
 }
-.step-desc { font-size: 0.78rem; color: var(--text-muted); }
+.step-desc { font-size: 0.84rem; color: var(--text-muted); }
 .step-desc code {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Roboto Mono', monospace;
   color: var(--accent-primary);
   font-size: 0.75rem;
-  background: rgba(78,173,171,0.08);
+  background: rgba(91,95,141,0.08);
   padding: 1px 5px;
   border-radius: 3px;
 }
@@ -310,12 +314,11 @@ body {
 .arch-diagram {
   max-width: 760px;
   margin: 0 auto;
-  background: rgba(22,27,34,0.6);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 16px;
-  padding: 48px 40px;
+  background: #ffffff;
+  border: 1px solid rgba(15,14,14,0.08);
+  border-radius: 20px;
+  padding: 52px 44px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
 }
 .arch-tier {
   display: flex;
@@ -324,64 +327,62 @@ body {
   flex-wrap: wrap;
 }
 .arch-tier-label {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.6rem;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.7rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   text-align: center;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
-.arch-tier-label.sources { color: var(--viz-teal); }
-.arch-tier-label.processing { color: var(--viz-purple); }
-.arch-tier-label.output { color: var(--viz-gold); }
+.arch-tier-label.sources { color: #5A7A5D; }
+.arch-tier-label.processing { color: #4A4E78; }
+.arch-tier-label.output { color: #9A7520; }
 .arch-node {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 14px 22px;
+  padding: 16px 24px;
   border-radius: 12px;
-  font-size: 0.82rem;
+  font-size: 0.88rem;
   font-weight: 600;
-  min-width: 160px;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  min-width: 170px;
   transition: transform 0.15s, box-shadow 0.15s;
 }
 .arch-node:hover {
-  transform: translateY(-1px);
+  transform: translateY(-2px);
 }
 .arch-node svg {
   flex-shrink: 0;
-  opacity: 0.9;
+  opacity: 0.85;
 }
 .arch-node.platform {
-  background: rgba(78,173,171,0.15);
-  color: var(--viz-teal);
-  border: 1px solid rgba(78,173,171,0.25);
-  box-shadow: 0 2px 12px rgba(78,173,171,0.08);
+  background: rgba(155,178,158,0.1);
+  color: #4A6E4D;
+  border: 1px solid rgba(155,178,158,0.22);
+  box-shadow: 0 2px 8px rgba(155,178,158,0.1);
 }
-.arch-node.platform:hover { box-shadow: 0 4px 20px rgba(78,173,171,0.15); }
+.arch-node.platform:hover { box-shadow: 0 6px 20px rgba(155,178,158,0.18); }
 .arch-node.analysis {
-  background: rgba(139,126,200,0.15);
-  color: var(--viz-purple);
-  border: 1px solid rgba(139,126,200,0.25);
-  box-shadow: 0 2px 12px rgba(139,126,200,0.08);
+  background: rgba(91,95,141,0.08);
+  color: #4A4E78;
+  border: 1px solid rgba(91,95,141,0.18);
+  box-shadow: 0 2px 8px rgba(91,95,141,0.08);
 }
-.arch-node.analysis:hover { box-shadow: 0 4px 20px rgba(139,126,200,0.15); }
+.arch-node.analysis:hover { box-shadow: 0 6px 20px rgba(91,95,141,0.15); }
 .arch-node.output {
-  background: rgba(201,168,76,0.15);
-  color: var(--viz-gold);
-  border: 1px solid rgba(201,168,76,0.25);
-  box-shadow: 0 2px 12px rgba(201,168,76,0.08);
+  background: rgba(252,197,96,0.1);
+  color: #8A6A18;
+  border: 1px solid rgba(252,197,96,0.22);
+  box-shadow: 0 2px 8px rgba(252,197,96,0.1);
 }
-.arch-node.output:hover { box-shadow: 0 4px 20px rgba(201,168,76,0.15); }
+.arch-node.output:hover { box-shadow: 0 6px 20px rgba(252,197,96,0.18); }
 .arch-connector {
   display: flex;
   justify-content: center;
-  padding: 16px 0;
+  padding: 20px 0;
 }
-.arch-connector svg { opacity: 0.35; }
+.arch-connector svg { opacity: 0.35; color: var(--text-muted); }
 
 /* ── Install ── */
 .install-section {
@@ -389,21 +390,21 @@ body {
   text-align: center;
 }
 .code-block {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
+  background: #1A1A1A;
+  border: 1px solid rgba(255,255,255,0.08);
   border-radius: 10px;
   padding: 20px 24px;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Roboto Mono', monospace;
   font-size: 0.85rem;
-  color: var(--accent-primary);
+  color: #9BB29E;
   text-align: left;
   max-width: 700px;
   margin: 0 auto;
   overflow-x: auto;
   line-height: 1.8;
 }
-.code-block .comment { color: var(--text-muted); }
-.code-block .cmd { color: var(--text-primary); }
+.code-block .comment { color: #7d8590; }
+.code-block .cmd { color: #e6e6e6; }
 
 /* ── Features ── */
 .features-section { padding: 60px 24px; }
@@ -414,11 +415,16 @@ body {
 }
 @media (max-width: 600px) { .features-grid { grid-template-columns: 1fr; } }
 .feature-card {
-  backdrop-filter: blur(12px);
-  background: var(--bg-glass);
+  background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
   border-radius: 12px;
   padding: 24px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.feature-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
 }
 .feature-title {
   font-weight: 600;
@@ -426,7 +432,7 @@ body {
   color: var(--text-primary);
   margin-bottom: 6px;
 }
-.feature-desc { font-size: 0.82rem; color: var(--text-muted); }
+.feature-desc { font-size: 0.88rem; color: var(--text-muted); }
 
 /* ── Benchmarks ── */
 .benchmarks-section { padding: 60px 24px; }
@@ -444,9 +450,15 @@ body {
   border-radius: 10px;
   padding: 20px;
   text-align: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.benchmark-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
 }
 .benchmark-value {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Roboto Mono', monospace;
   font-size: 1.6rem;
   font-weight: 700;
   color: var(--accent-primary);
@@ -485,14 +497,14 @@ body {
 }
 .tab-btn:hover { border-color: var(--border-hover); color: var(--text-secondary); }
 .tab-btn.active {
-  background: rgba(78,173,171,0.1);
-  border-color: rgba(78,173,171,0.3);
+  background: rgba(91,95,141,0.08);
+  border-color: rgba(91,95,141,0.25);
   color: var(--accent-primary);
 }
 .terminal-wrapper { max-width: 800px; margin: 0 auto; }
 .terminal {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
+  background: #1A1A1A;
+  border: 1px solid rgba(255,255,255,0.08);
   border-radius: 12px;
   overflow: hidden;
 }
@@ -501,8 +513,8 @@ body {
   align-items: center;
   gap: 8px;
   padding: 12px 16px;
-  background: var(--bg-elevated);
-  border-bottom: 1px solid var(--border-subtle);
+  background: #242424;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 .terminal-dot { width: 12px; height: 12px; border-radius: 50%; }
 .terminal-dot.red { background: #ff5f57; }
@@ -512,28 +524,29 @@ body {
   flex: 1;
   text-align: center;
   font-size: 0.72rem;
-  color: var(--text-muted);
-  font-family: 'JetBrains Mono', monospace;
+  color: #7d8590;
+  font-family: 'Roboto Mono', monospace;
 }
 .terminal-body {
   padding: 20px;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Roboto Mono', monospace;
   font-size: 0.82rem;
   line-height: 1.7;
   min-height: 400px;
   max-height: 520px;
   overflow-y: auto;
+  color: #8b949e;
 }
-.t-user { color: var(--text-primary); }
-.t-user::before { content: "> "; color: var(--viz-purple); }
-.t-response { color: var(--text-secondary); padding-left: 16px; border-left: 2px solid var(--border-subtle); margin-top: 8px; margin-bottom: 8px; }
-.t-heading { color: var(--text-primary); font-weight: 600; margin-top: 12px; }
-.t-finding { color: var(--viz-orange); }
-.t-good { color: var(--viz-lime); }
-.t-warn { color: var(--viz-gold); }
-.t-crit { color: var(--viz-pink); }
-.t-muted { color: var(--text-muted); }
-.t-code { color: var(--accent-primary); }
+.t-user { color: #fdfdfe; }
+.t-user::before { content: "> "; color: #8b7ec8; }
+.t-response { color: #8b949e; padding-left: 16px; border-left: 2px solid rgba(255,255,255,0.08); margin-top: 8px; margin-bottom: 8px; }
+.t-heading { color: #fdfdfe; font-weight: 600; margin-top: 12px; }
+.t-finding { color: #DA6B51; }
+.t-good { color: #9BB29E; }
+.t-warn { color: #FCC560; }
+.t-crit { color: #DA6B51; }
+.t-muted { color: #7d8590; }
+.t-code { color: #7074A0; }
 .t-blank { height: 12px; }
 .skill-info {
   max-width: 800px;
@@ -550,7 +563,7 @@ body {
   text-align: center;
 }
 .info-value {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Roboto Mono', monospace;
   font-size: 1.2rem;
   font-weight: 700;
   color: var(--accent-primary);
@@ -564,6 +577,19 @@ body {
 }
 .tab-content { display: none; }
 .tab-content.active { display: block; }
+
+/* ── Bottom CTA ── */
+.bottom-cta-section {
+  padding: 72px 24px;
+  border-top: 1px solid var(--border-subtle);
+  text-align: center;
+}
+.bottom-cta-section .lead {
+  color: var(--text-secondary);
+  max-width: 520px;
+  margin: 0 auto 32px;
+  font-size: 0.95rem;
+}
 
 /* ── Footer ── */
 .footer {
@@ -643,7 +669,7 @@ body {
   <h1>Your DTC Marketing Stack, <span>Supercharged</span></h1>
   <p class="lead">6 modular skills that give Claude Code deep expertise in Klaviyo, Shopify, Google Analytics, Looker Studio, and presentation building. Audit, optimize, and report on your entire marketing stack through natural language.</p>
   <div class="cta-row">
-    <a href="#demo" class="btn btn-primary">Interactive Demo</a>
+    <a href="#demo" class="btn btn-primary">View Demo</a>
     <a href="#install" class="btn btn-secondary">Install Skills</a>
   </div>
 </header>
@@ -731,11 +757,11 @@ body {
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
         </div>
         <div class="skill-title">Pro Deck Builder</div>
-        <div class="skill-desc">Generate polished, VC-quality PowerPoint presentations from any analysis output. Dark and light themes with premium typography.</div>
+        <div class="skill-desc">Generate polished HTML slide decks and PDF-ready reports from any analysis output. Dark cover pages and warm light content slides.</div>
         <div class="skill-tags">
-          <span class="skill-tag">PPTX</span>
+          <span class="skill-tag">HTML / PDF</span>
           <span class="skill-tag">Charts</span>
-          <span class="skill-tag">Dark Mode</span>
+          <span class="skill-tag">Dark + Light</span>
         </div>
       </div>
 
@@ -752,59 +778,59 @@ body {
     <h2 class="section-heading">Natural language prompts, expert-level output</h2>
     <div class="prompts-grid">
       <div class="prompt-card">
-        <div class="prompt-avatar">You</div>
+        <div class="prompt-avatar">&gt;</div>
         <div class="prompt-text">
           "Audit my Klaviyo flows and identify which essential flows I'm missing"
           <span class="prompt-skill">klaviyo-analyst</span>
         </div>
       </div>
       <div class="prompt-card">
-        <div class="prompt-avatar">You</div>
+        <div class="prompt-avatar">&gt;</div>
         <div class="prompt-text">
           "My abandoned cart click rate is 1.2% &mdash; diagnose the issue and give me implementation specs to fix it"
           <span class="prompt-skill">klaviyo-analyst</span>
         </div>
       </div>
       <div class="prompt-card">
-        <div class="prompt-avatar">You</div>
+        <div class="prompt-avatar">&gt;</div>
         <div class="prompt-text">
           "Set up custom event tracking for my Node.js backend with proper schema naming"
           <span class="prompt-skill">klaviyo-developer</span>
         </div>
       </div>
       <div class="prompt-card">
-        <div class="prompt-avatar">You</div>
+        <div class="prompt-avatar">&gt;</div>
         <div class="prompt-text">
           "Audit my Shopify store &mdash; focus on conversion funnel drop-offs and site speed"
           <span class="prompt-skill">shopify</span>
         </div>
       </div>
       <div class="prompt-card">
-        <div class="prompt-avatar">You</div>
+        <div class="prompt-avatar">&gt;</div>
         <div class="prompt-text">
           "Which traffic sources are driving the most conversions this month?"
           <span class="prompt-skill">google-analytics</span>
         </div>
       </div>
       <div class="prompt-card">
-        <div class="prompt-avatar">You</div>
+        <div class="prompt-avatar">&gt;</div>
         <div class="prompt-text">
-          "Build a CRM performance dashboard reconciling Klaviyo and Shopify data"
+          "Write a calculated field that normalizes GA4 event names so purchase and Purchase map to the same metric"
           <span class="prompt-skill">looker-studio</span>
         </div>
       </div>
       <div class="prompt-card">
-        <div class="prompt-avatar">You</div>
+        <div class="prompt-avatar">&gt;</div>
         <div class="prompt-text">
           "Create a dark-mode deck summarizing this month's email performance with charts"
           <span class="prompt-skill">pro-deck-builder</span>
         </div>
       </div>
       <div class="prompt-card">
-        <div class="prompt-avatar">You</div>
+        <div class="prompt-avatar">&gt;</div>
         <div class="prompt-text">
-          "Build an RFM segmentation strategy for my DTC brand with Klaviyo implementation steps"
-          <span class="prompt-skill">klaviyo-analyst</span>
+          "Debug why my webhook events aren't triggering flows &mdash; check signature verification and payload format"
+          <span class="prompt-skill">klaviyo-developer</span>
         </div>
       </div>
     </div>
@@ -837,7 +863,7 @@ body {
       <div class="step">
         <div class="step-num">4</div>
         <div class="step-title">Act</div>
-        <div class="step-desc">Get three-tier recommendations with implementation specs, audit reports, decks, and dashboards.</div>
+        <div class="step-desc">Get actionable recommendations with implementation specs you can execute immediately.</div>
       </div>
     </div>
   </div>
@@ -874,10 +900,9 @@ body {
 
       <!-- Connector -->
       <div class="arch-connector">
-        <svg width="120" height="32" viewBox="0 0 120 32" fill="none">
-          <path d="M30 4 L30 20 L28 16 M30 20 L32 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M60 4 L60 20 L58 16 M60 20 L62 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M90 4 L90 20 L88 16 M90 20 L92 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <svg width="24" height="40" viewBox="0 0 24 40" fill="none">
+          <path d="M12 0 L12 30" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M7 25 L12 32 L17 25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
         </svg>
       </div>
 
@@ -898,9 +923,9 @@ body {
 
       <!-- Connector -->
       <div class="arch-connector">
-        <svg width="80" height="32" viewBox="0 0 80 32" fill="none">
-          <path d="M26 4 L26 20 L24 16 M26 20 L28 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M54 4 L54 20 L52 16 M54 20 L56 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <svg width="24" height="40" viewBox="0 0 24 40" fill="none">
+          <path d="M12 0 L12 30" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M7 25 L12 32 L17 25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
         </svg>
       </div>
 
@@ -915,7 +940,7 @@ body {
         <div class="arch-node output">
           <!-- Presentation -->
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-          PPTX Presentations
+          HTML Slide Decks
         </div>
       </div>
 
@@ -1003,7 +1028,7 @@ body {
       </div>
       <div class="feature-card">
         <div class="feature-title">Presentation-Ready Output</div>
-        <div class="feature-desc">Turn any audit into a polished PPTX deck. VC-quality dark mode design with Inter typography, teal accents, and real charts.</div>
+        <div class="feature-desc">Turn any audit into a polished HTML slide deck or PDF report. Premium design with Lora/Inter typography and real charts.</div>
       </div>
     </div>
   </div>
@@ -1130,11 +1155,11 @@ body {
               <div class="t-heading">Schema Best Practices</div>
               <div class="t-warn">&ensp; Metric names: PascalCase ("Placed Order", not "placed_order")</div>
               <div class="t-warn">&ensp; Properties: snake_case ("order_id", not "orderId")</div>
-              <div class="t-warn">&ensp; No nested objects deeper than 1 level</div>
-              <div class="t-warn">&ensp; Always include "value" for revenue-tracked events</div>
+              <div class="t-warn">&ensp; Nested objects: usable in templates, NOT in segments/splits</div>
+              <div class="t-warn">&ensp; Always include "$value" for revenue-tracked events</div>
               <div class="t-blank"></div>
               <div class="t-heading">Rate Limits</div>
-              <div class="t-muted">Event create: 350 req/s (burst), 75 req/s (sustained)</div>
+              <div class="t-muted">Event create: 350 req/s. Most endpoints: 75 req/s.</div>
               <div class="t-muted">Use exponential backoff with jitter on 429 responses.</div>
             </div>
           </div>
@@ -1254,7 +1279,7 @@ body {
             <div class="terminal-title">claude-code &mdash; looker-studio</div>
           </div>
           <div class="terminal-body">
-            <div class="t-user">Build a CRM performance dashboard reconciling Klaviyo and Shopify data</div>
+            <div class="t-user">Plan a CRM performance dashboard reconciling Klaviyo and Shopify data</div>
             <div class="t-blank"></div>
             <div class="t-response">
               <div class="t-heading">Dashboard Blueprint: CRM Performance</div>
@@ -1312,39 +1337,53 @@ body {
             <div class="t-blank"></div>
             <div class="t-response">
               <div class="t-heading">Building Presentation</div>
-              <div class="t-muted">Theme: Dark mode (Linear/Vercel aesthetic)</div>
-              <div class="t-muted">Font: Inter 600 (headings), Inter 400 (body)</div>
-              <div class="t-muted">Accent: #4eadab (teal)</div>
+              <div class="t-muted">Theme: Dark cover + warm light content slides</div>
+              <div class="t-muted">Font: Lora 600 (headings), Inter 400 (body), Roboto Mono (data)</div>
+              <div class="t-muted">Accent: Dusk Purple #5B5F8D</div>
               <div class="t-blank"></div>
               <div class="t-code">Generating slides...</div>
               <div class="t-blank"></div>
-              <div class="t-good">&ensp; Slide 1:&ensp; Title &mdash; "Email Performance: February 2026"</div>
+              <div class="t-good">&ensp; Slide 1:&ensp; Cover &mdash; "Email Performance: February 2026"</div>
               <div class="t-good">&ensp; Slide 2:&ensp; Executive Summary (4 KPI scorecards)</div>
-              <div class="t-good">&ensp; Slide 3:&ensp; Flow Revenue Breakdown (stacked bar chart)</div>
+              <div class="t-good">&ensp; Slide 3:&ensp; Flow Revenue Breakdown (horizontal bar)</div>
               <div class="t-good">&ensp; Slide 4:&ensp; Campaign Performance Table (top 10)</div>
-              <div class="t-good">&ensp; Slide 5:&ensp; Deliverability Health (line chart + benchmarks)</div>
+              <div class="t-good">&ensp; Slide 5:&ensp; Deliverability Health (trend + benchmarks)</div>
               <div class="t-good">&ensp; Slide 6:&ensp; Segment Growth (donut + trend)</div>
               <div class="t-good">&ensp; Slide 7:&ensp; Recommendations (3 priority items)</div>
               <div class="t-good">&ensp; Slide 8:&ensp; Next Steps &amp; Timeline</div>
               <div class="t-blank"></div>
               <div class="t-heading">Design Details</div>
-              <div>&ensp; Background: #0D1117 (slides), #161B22 (chart areas)</div>
-              <div>&ensp; Charts: PptxGenJS with teal/lime/purple palette</div>
+              <div>&ensp; Output: HTML slide deck (print-to-PDF ready)</div>
+              <div>&ensp; Design system: dgtl dept* palette (Sage, Dusk, Terracotta)</div>
               <div>&ensp; Layout: 60% whitespace, 10% accent color</div>
-              <div>&ensp; Data labels: JetBrains Mono for numbers</div>
+              <div>&ensp; Data labels: Roboto Mono for numbers</div>
               <div class="t-blank"></div>
-              <div class="t-good">&ensp; Saved: ./output/klaviyo-feb-2026.pptx (8 slides, 1.2MB)</div>
+              <div class="t-good">&ensp; Saved: ./output/klaviyo-feb-2026.html (8 slides, PDF-ready)</div>
             </div>
           </div>
         </div>
         <div class="skill-info">
-          <div class="info-card"><div class="info-value">PPTX</div><div class="info-label">Native Output</div></div>
+          <div class="info-card"><div class="info-value">HTML</div><div class="info-label">PDF-Ready Output</div></div>
           <div class="info-card"><div class="info-value">2</div><div class="info-label">Theme Modes</div></div>
           <div class="info-card"><div class="info-value">6</div><div class="info-label">Chart Types</div></div>
         </div>
       </div>
     </div>
 
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     BOTTOM CTA
+     ════════════════════════════════════════════════════════════ -->
+<section class="bottom-cta-section">
+  <div class="container">
+    <h2 class="section-heading">Ready to supercharge your marketing stack?</h2>
+    <p class="lead">Install the skills you need and start getting expert-level analysis from Claude Code in under a minute.</p>
+    <div class="cta-row">
+      <a href="#install" class="btn btn-primary">Install Skills</a>
+      <a href="https://github.com/thatrebeccarae/claude-code-skills" target="_blank" class="btn btn-secondary">View on GitHub</a>
+    </div>
   </div>
 </section>
 
@@ -1363,6 +1402,9 @@ body {
     </a>
     <a href="https://instagram.com/thatrebeccarae" target="_blank" title="Instagram">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678a6.162 6.162 0 100 12.324 6.162 6.162 0 100-12.324zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405a1.441 1.441 0 11-2.882 0 1.441 1.441 0 012.882 0z"/></svg>
+    </a>
+    <a href="https://dgtldept.substack.com/welcome" target="_blank" title="Substack">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg>
     </a>
   </div>
 </footer>
