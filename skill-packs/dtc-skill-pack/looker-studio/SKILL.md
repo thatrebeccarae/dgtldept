@@ -30,6 +30,12 @@ Expert-level guidance for Looker Studio — building dashboards, connecting data
 - Aggregation (SUM, AVG, COUNT_DISTINCT, MEDIAN)
 - Blended field calculations across sources
 
+#### Formula Syntax Rules
+- **No comments allowed** — Looker Studio formulas do not support `--`, `//`, or `/* */` style comments. Never include comments in formulas. Add context in the field description instead.
+- **No inline flags in simple cases** — prefer `CONTAINS_TEXT()`, `LOWER()`, or exact match over regex when possible
+- **RE2 regex engine** — supports `(?i)` for case-insensitive, but does NOT support lookaheads/lookbehinds
+- **String escaping** — use `\\` for literal backslash in regex patterns within string literals (e.g., `"\\s"` for whitespace, `"\\|"` for literal pipe)
+
 ### Report Automation
 - Scheduled email delivery (PDF snapshots)
 - Embedded reports in websites and portals
@@ -360,7 +366,10 @@ python scripts/data_pipeline.py --action create-sheet --template crm-dashboard
 
 **Data not refreshing**: Google Sheets data in Looker Studio caches for ~15 minutes. Force refresh with the "Refresh data" button in Looker Studio, or set the data source cache to 1 minute in report settings.
 
-**Calculated field errors**: Most errors come from type mismatches. Ensure date fields are typed as Date (not Text) in the data source config. Use CAST() to convert between types.
+**Calculated field errors**: Common causes:
+- **Comments in formulas** — Looker Studio does NOT support `--`, `//`, or `/* */` comments. Never include comments in calculated field formulas. Use the field description for documentation instead.
+- **Type mismatches** — Ensure date fields are typed as Date (not Text) in the data source config. Use CAST() to convert between types.
+- **Regex escaping** — Patterns are inside string literals, so backslashes need double-escaping (e.g., `"\\s"` for whitespace, `"\\|"` for literal pipe).
 
 **Blending shows nulls**: Left outer join means unmatched rows from the right source show null. Ensure join keys match exactly (case-sensitive, same date format).
 

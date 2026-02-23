@@ -48,7 +48,7 @@ claude-code-skills/
     │   └── .git/
     │   └── Skills for Claude/      # (Content folder)
     │
-    └── klaviyo-skill-pack/         # Complete DTC marketing toolkit
+    └── dtc-skill-pack/         # Complete DTC marketing toolkit
         ├── README.md               # Overview, quick start, setup wizard
         ├── GETTING_STARTED.md      # Step-by-step setup for each skill
         ├── scripts/
@@ -156,30 +156,30 @@ claude-code-skills/
 
 **Entry Points:**
 - `skills/linkedin-data-viz/SKILL.md` - LinkedIn Data Viz skill definition (7-step wizard)
-- `skill-packs/klaviyo-skill-pack/README.md` - Skill pack overview (6 skills, integration guide)
-- `skill-packs/klaviyo-skill-pack/scripts/setup.py` - Interactive setup wizard for entire skill pack
+- `skill-packs/dtc-skill-pack/README.md` - Skill pack overview (6 skills, integration guide)
+- `skill-packs/dtc-skill-pack/scripts/setup.py` - Interactive setup wizard for entire skill pack
 
 **Configuration:**
-- `skill-packs/klaviyo-skill-pack/*/`.env.example` - API key templates for each skill (Klaviyo, Shopify, GA4, Google Sheets)
-- `skill-packs/klaviyo-skill-pack/*/requirements.txt` - Python dependencies per skill
+- `skill-packs/dtc-skill-pack/*/`.env.example` - API key templates for each skill (Klaviyo, Shopify, GA4, Google Sheets)
+- `skill-packs/dtc-skill-pack/*/requirements.txt` - Python dependencies per skill
 - `.gitignore` - Excludes `.env`, `node_modules`, `.next`
 
 **Core Logic:**
 - `skills/linkedin-data-viz/scripts/parse_export.py` - CSV parsing + LinkedIn quirk handling (470 lines)
 - `skills/linkedin-data-viz/scripts/analyze.py` - Analysis algorithms (network quality, connection categorization, posting correlation) (816 lines)
 - `skills/linkedin-data-viz/scripts/generate_viz.py` - Template injection + HTML generation (342 lines)
-- `skill-packs/klaviyo-skill-pack/klaviyo-analyst/scripts/analyze.py` - Klaviyo analysis: flow audit, benchmarking (879 lines)
-- `skill-packs/klaviyo-skill-pack/klaviyo-analyst/scripts/klaviyo_client.py` - Klaviyo API client (415 lines)
+- `skill-packs/dtc-skill-pack/klaviyo-analyst/scripts/analyze.py` - Klaviyo analysis: flow audit, benchmarking (879 lines)
+- `skill-packs/dtc-skill-pack/klaviyo-analyst/scripts/klaviyo_client.py` - Klaviyo API client (415 lines)
 
 **Testing & Demo:**
 - `skills/linkedin-data-viz/demo/` - Live demo output (index.html with real visualization data)
-- `skill-packs/klaviyo-skill-pack/demo/index.html` - Demo of Klaviyo analysis output
+- `skill-packs/dtc-skill-pack/demo/index.html` - Demo of Klaviyo analysis output
 
 **Documentation:**
 - `README.md` - Project overview, skills summary table, quick start for each skill
 - `skills/linkedin-data-viz/REFERENCE.md` - CSV schemas, parsing quirks, analysis algorithms, theme customization (detailed)
-- `skill-packs/klaviyo-skill-pack/klaviyo-analyst/REFERENCE.md` - Benchmarks, flow checklist, analysis framework, three-tier recommendations
-- `skill-packs/klaviyo-skill-pack/GETTING_STARTED.md` - Step-by-step manual setup (API keys, MCP server, dependencies)
+- `skill-packs/dtc-skill-pack/klaviyo-analyst/REFERENCE.md` - Benchmarks, flow checklist, analysis framework, three-tier recommendations
+- `skill-packs/dtc-skill-pack/GETTING_STARTED.md` - Step-by-step manual setup (API keys, MCP server, dependencies)
 
 ## Naming Conventions
 
@@ -246,7 +246,7 @@ claude-code-skills/
 - Committed: Yes (to GitHub for live preview)
 - Examples:
   - `skills/linkedin-data-viz/demo/` - Contains sample visualizations (index.html with generated HTML files)
-  - `skill-packs/klaviyo-skill-pack/demo/index.html` - Sample Klaviyo analysis dashboard
+  - `skill-packs/dtc-skill-pack/demo/index.html` - Sample Klaviyo analysis dashboard
 
 **.planning/**
 - Purpose: Project planning and codebase documentation
@@ -269,7 +269,7 @@ cp -r skills/linkedin-data-viz ~/.claude/skills/
 
 **Pattern 2: Skill Pack Setup Wizard**
 ```bash
-cd skill-packs/klaviyo-skill-pack
+cd skill-packs/dtc-skill-pack
 python scripts/setup.py
 # Wizard: Python version check → API key setup → dependency install → connection test
 ```
@@ -277,14 +277,14 @@ python scripts/setup.py
 **Pattern 3: Manual Multi-Skill Installation**
 ```bash
 for skill in klaviyo-analyst klaviyo-developer shopify looker-studio pro-deck-builder; do
-  cp -r skill-packs/klaviyo-skill-pack/$skill ~/.claude/skills/
+  cp -r skill-packs/dtc-skill-pack/$skill ~/.claude/skills/
 done
 ```
 
 **Pattern 4: Skip Setup, Copy Skills Directly**
 ```bash
 # If you already have API keys in ~/.env or system env vars
-cp -r skill-packs/klaviyo-skill-pack/* ~/.claude/skills/
+cp -r skill-packs/dtc-skill-pack/* ~/.claude/skills/
 ```
 
 ---

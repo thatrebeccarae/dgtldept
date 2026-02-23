@@ -1,6 +1,6 @@
-# Getting Started with the Klaviyo Skill Pack
+# Getting Started with the DTC Skill Pack
 
-A step-by-step guide to setting up the Klaviyo Skill Pack for Claude Code. No terminal experience required -- this guide explains everything in plain English.
+A step-by-step guide to setting up the DTC Skill Pack for Claude Code. No terminal experience required -- this guide explains everything in plain English.
 
 ## What This Pack Does
 
@@ -200,7 +200,7 @@ cp .env.example .env
 ## What's in the Pack
 
 ```
-klaviyo-skill-pack/
+dtc-skill-pack/
   GETTING_STARTED.md          <- You are here
   README.md                   <- Overview and MCP setup
   scripts/setup.py            <- Interactive setup wizard

@@ -77,7 +77,7 @@ This codebase implements a **skill pack system** where Claude Code skills are se
 
 **Klaviyo Analyst Skill Flow:**
 
-1. **User initiates skill** - Claude reads `skill-packs/klaviyo-skill-pack/klaviyo-analyst/SKILL.md`
+1. **User initiates skill** - Claude reads `skill-packs/dtc-skill-pack/klaviyo-analyst/SKILL.md`
 2. **User selects analysis type** - Full audit, flow audit, segment health, campaign comparison, deliverability, or revenue attribution
 3. **Data retrieval** - `analyze.py` instantiates `KlaviyoAnalyticsClient`, fetches live data from Klaviyo API or MCP server
 4. **Analysis execution** - Runs selected analysis algorithm (flow gap matching, segment health scoring, benchmarking, etc.)
@@ -108,7 +108,7 @@ This codebase implements a **skill pack system** where Claude Code skills are se
 **SKILL.md Wizard Flow:**
 
 - Purpose: Declarative specification of interactive user experience
-- Examples: `skills/linkedin-data-viz/SKILL.md` (7-step preflight→export→locate→preview→theme→generate→next), `skill-packs/klaviyo-skill-pack/klaviyo-analyst/SKILL.md` (analysis selection framework)
+- Examples: `skills/linkedin-data-viz/SKILL.md` (7-step preflight→export→locate→preview→theme→generate→next), `skill-packs/dtc-skill-pack/klaviyo-analyst/SKILL.md` (analysis selection framework)
 - Pattern: Each step is a Claude action that performs validation, gathers input, or executes scripts. Steps are sequential; errors halt flow and provide remediation guidance.
 
 **Quirk Handler Pattern:**
@@ -158,7 +158,7 @@ This codebase implements a **skill pack system** where Claude Code skills are se
   - `python3 scripts/sanitize.py analysis.json -o sanitized.json`
 
 **Klaviyo Analyst Skill:**
-- Location: `skill-packs/klaviyo-skill-pack/klaviyo-analyst/SKILL.md`
+- Location: `skill-packs/dtc-skill-pack/klaviyo-analyst/SKILL.md`
 - Triggers: "Audit my Klaviyo account", "Analyze my Klaviyo flows", "Three-tier recommendations for Klaviyo"
 - Responsibilities: Present analysis type menu, fetch live Klaviyo data, run selected analysis, format results with benchmarks and recommendations
 - CLI Commands:
@@ -167,19 +167,19 @@ This codebase implements a **skill pack system** where Claude Code skills are se
   - `python3 scripts/analyze.py --analysis-type segment-health`
 
 **Setup Wizard (Skill Pack):**
-- Location: `skill-packs/klaviyo-skill-pack/scripts/setup.py`
+- Location: `skill-packs/dtc-skill-pack/scripts/setup.py`
 - Triggers: User runs `python scripts/setup.py` after cloning skill pack
 - Responsibilities: Check Python version, verify API key setup, install dependencies, test connections, provide .env template
 - Outputs: Configured `.env` files, pip dependencies installed
 
 **Looker Studio Skill:**
-- Location: `skill-packs/klaviyo-skill-pack/looker-studio/SKILL.md`
+- Location: `skill-packs/dtc-skill-pack/looker-studio/SKILL.md`
 - Responsibilities: Push Klaviyo + Shopify + GA4 data to Google Sheets via `data_pipeline.py`, generate Looker Studio dashboard templates
 - CLI Commands:
   - `python3 scripts/data_pipeline.py --source klaviyo --sheet-id <id> --auth-token <token>`
 
 **Pro Deck Builder Skill:**
-- Location: `skill-packs/klaviyo-skill-pack/pro-deck-builder/SKILL.md`
+- Location: `skill-packs/dtc-skill-pack/pro-deck-builder/SKILL.md`
 - Triggers: "Create a deck", "Build a presentation", "Generate PowerPoint"
 - Responsibilities: Ask user for design preferences (dark/light, palette, fonts), generate PPTX via PptxGenJS
 - Requires: Node.js, PptxGenJS npm package

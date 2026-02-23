@@ -50,8 +50,8 @@
 ## Key Dependencies
 
 **Critical:**
-- klaviyo-api - Used by both `klaviyo-analyst` (`skill-packs/klaviyo-skill-pack/klaviyo-analyst/`) and `klaviyo-developer` (`skill-packs/klaviyo-skill-pack/klaviyo-developer/`) skills for direct API access
-- google-auth + google-api-python-client - Required for GA4 (`skill-packs/klaviyo-skill-pack/google-analytics/`) and Looker Studio data pipeline (`skill-packs/klaviyo-skill-pack/looker-studio/`)
+- klaviyo-api - Used by both `klaviyo-analyst` (`skill-packs/dtc-skill-pack/klaviyo-analyst/`) and `klaviyo-developer` (`skill-packs/dtc-skill-pack/klaviyo-developer/`) skills for direct API access
+- google-auth + google-api-python-client - Required for GA4 (`skill-packs/dtc-skill-pack/google-analytics/`) and Looker Studio data pipeline (`skill-packs/dtc-skill-pack/looker-studio/`)
 - D3.js - Powers interactive network graphs in LinkedIn Data Viz (`skills/linkedin-data-viz/templates/01-network-universe.html`)
 
 **Infrastructure:**
@@ -61,13 +61,13 @@
 ## Configuration
 
 **Environment:**
-- Secrets managed via `.env` files (one per skill pack subdirectory, e.g., `skill-packs/klaviyo-skill-pack/google-analytics/.env.example`)
+- Secrets managed via `.env` files (one per skill pack subdirectory, e.g., `skill-packs/dtc-skill-pack/google-analytics/.env.example`)
 - Never committed to git (included in `.gitignore`)
 - Service account JSON files stored outside git repo
 
 **Build:**
 - No build pipeline detected. Scripts are run directly via `python scripts/[name].py`
-- Interactive setup wizard: `python scripts/setup.py` at repo root (`skill-packs/klaviyo-skill-pack/scripts/setup.py`)
+- Interactive setup wizard: `python scripts/setup.py` at repo root (`skill-packs/dtc-skill-pack/scripts/setup.py`)
 
 ## Platform Requirements
 
@@ -90,11 +90,11 @@
 
 All skills interact with external platform APIs using official SDKs or REST clients:
 
-- `skill-packs/klaviyo-skill-pack/klaviyo-analyst/scripts/klaviyo_client.py` - Wraps klaviyo-api SDK
-- `skill-packs/klaviyo-skill-pack/klaviyo-developer/scripts/klaviyo_client.py` - Enhanced client with webhook/schema patterns
-- `skill-packs/klaviyo-skill-pack/google-analytics/scripts/ga_client.py` - Wraps google-analytics-data SDK
-- `skill-packs/klaviyo-skill-pack/shopify/scripts/shopify_client.py` - Wraps ShopifyAPI SDK
-- `skill-packs/klaviyo-skill-pack/looker-studio/scripts/data_pipeline.py` - Uses gspread + google-auth for Sheets access
+- `skill-packs/dtc-skill-pack/klaviyo-analyst/scripts/klaviyo_client.py` - Wraps klaviyo-api SDK
+- `skill-packs/dtc-skill-pack/klaviyo-developer/scripts/klaviyo_client.py` - Enhanced client with webhook/schema patterns
+- `skill-packs/dtc-skill-pack/google-analytics/scripts/ga_client.py` - Wraps google-analytics-data SDK
+- `skill-packs/dtc-skill-pack/shopify/scripts/shopify_client.py` - Wraps ShopifyAPI SDK
+- `skill-packs/dtc-skill-pack/looker-studio/scripts/data_pipeline.py` - Uses gspread + google-auth for Sheets access
 
 ## Notable Patterns
 
@@ -109,7 +109,7 @@ All skills interact with external platform APIs using official SDKs or REST clie
 - Dark and light theme CSS injected at render time
 
 **Setup automation:**
-- Interactive wizard (`skill-packs/klaviyo-skill-pack/scripts/setup.py`) detects OS, validates credentials, installs dependencies, runs health checks
+- Interactive wizard (`skill-packs/dtc-skill-pack/scripts/setup.py`) detects OS, validates credentials, installs dependencies, runs health checks
 - Supports non-interactive mode and selective skill installation
 
 ---

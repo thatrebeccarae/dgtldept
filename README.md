@@ -1,6 +1,6 @@
 # Claude Code Skills
 
-Open-source skill packs that give [Claude Code](https://docs.anthropic.com/en/docs/claude-code) deep platform expertise. Install a skill and interact with Claude using natural language to audit accounts, generate visualizations, build decks, and more.
+Open-source skill packs and custom skills for [Claude Code](https://docs.anthropic.com/en/docs/claude-code) (Anthropic's AI coding assistant). Give Claude deep platform expertise in DTC e-commerce marketing, data visualization, and presentation generation. Install a skill and use natural language to audit Klaviyo, Shopify, and GA4 accounts, generate interactive visualizations, build polished decks, and more.
 
 ## What's Inside
 
@@ -25,21 +25,21 @@ cp -r claude-code-skills/skills/linkedin-data-viz ~/.claude/skills/
 
 Then in Claude Code, say: **"Analyze my LinkedIn data export"**
 
-### Klaviyo Skill Pack
+### DTC Skill Pack
 
 ```bash
-cd claude-code-skills/skill-packs/klaviyo-skill-pack
+cd claude-code-skills/skill-packs/dtc-skill-pack
 python scripts/setup.py
 ```
 
-The interactive wizard handles API keys, dependencies, and connection testing. For manual setup, see [GETTING_STARTED.md](skill-packs/klaviyo-skill-pack/GETTING_STARTED.md).
+The interactive wizard handles API keys, dependencies, and connection testing. For manual setup, see [GETTING_STARTED.md](skill-packs/dtc-skill-pack/GETTING_STARTED.md).
 
 ## Documentation
 
 - [**LinkedIn Data Viz — SKILL.md**](skills/linkedin-data-viz/SKILL.md) — Skill definition, wizard flow, visualization descriptions
 - [**LinkedIn Data Viz — REFERENCE.md**](skills/linkedin-data-viz/REFERENCE.md) — CSV schemas, parsing quirks, analysis algorithms, theme customization
-- [**Klaviyo Skill Pack — README**](skill-packs/klaviyo-skill-pack/README.md) — Skill details, MCP server setup, example prompts, FAQ
-- [**Klaviyo Skill Pack — Getting Started**](skill-packs/klaviyo-skill-pack/GETTING_STARTED.md) — Step-by-step setup for each platform
+- [**DTC Skill Pack — README**](skill-packs/dtc-skill-pack/README.md) — Skill details, MCP server setup, example prompts, FAQ
+- [**DTC Skill Pack — Getting Started**](skill-packs/dtc-skill-pack/GETTING_STARTED.md) — Step-by-step setup for each platform
 
 ## Security
 

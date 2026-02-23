@@ -1,6 +1,6 @@
-# Klaviyo Skill Pack for Claude Code
+# DTC Skill Pack for Claude Code
 
-A complete DTC marketing toolkit for [Claude Code](https://docs.anthropic.com/en/docs/claude-code). Six skills covering Klaviyo email/SMS, Shopify analytics, Google Analytics, Looker Studio dashboards, and presentation generation -- all designed to work together.
+A complete DTC (direct-to-consumer) e-commerce marketing toolkit for [Claude Code](https://docs.anthropic.com/en/docs/claude-code). Six skills covering Klaviyo email/SMS, Shopify analytics, Google Analytics, Looker Studio dashboards, and presentation generation -- all designed to work together.
 
 > **New to this pack?** Start with [GETTING_STARTED.md](GETTING_STARTED.md) for a step-by-step setup guide, or run `python scripts/setup.py` for the interactive wizard.
 
@@ -164,7 +164,7 @@ Restart Claude Code and verify with `/mcp`.
 
 ### Do I need all six skills?
 
-No. Install only the skills for platforms you use. Each skill works independently. The Klaviyo Analyst skill is the most popular starting point.
+No. Install only the skills for platforms you use. Each skill works independently. The Klaviyo Analyst skill is the recommended starting point.
 
 ### Do I need the Klaviyo MCP server?
 
@@ -180,7 +180,7 @@ Yes. Configure multiple MCP server entries in `~/.mcp.json` with different envir
 
 ### How is this different from Klaviyo's built-in AI?
 
-Klaviyo's AI features work within the Klaviyo UI for specific tasks (subject line generation, segment suggestions). This skill pack gives Claude deep, cross-platform expertise: it can audit your entire marketing stack, compare Klaviyo data with Shopify and GA4, produce implementation specs, and generate presentation decks -- all from natural language prompts in your terminal.
+Klaviyo's AI features work within the Klaviyo UI for specific tasks (subject line generation, segment suggestions). This skill pack gives Claude deep, cross-platform expertise: it can audit your entire DTC marketing stack, compare Klaviyo data with Shopify and GA4, produce implementation specs, and generate presentation decks -- all from natural language prompts in your terminal.
 
 ## Resources
 

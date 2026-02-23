@@ -6,18 +6,18 @@
 
 **Bare Exception Handlers:**
 - Issue: 39 instances of `except Exception:` without specific exception types across the codebase
-- Files: `skill-packs/klaviyo-skill-pack/*/scripts/*.py`, `skills/linkedin-data-viz/scripts/*.py`
+- Files: `skill-packs/dtc-skill-pack/*/scripts/*.py`, `skills/linkedin-data-viz/scripts/*.py`
 - Impact: Silent failures, poor error diagnostics, makes debugging difficult when unexpected exceptions occur
-- Fix approach: Replace with specific exception types (RequestException, ValueError, RuntimeError, etc.) and log the actual exception details before raising or returning. Example in `skill-packs/klaviyo-skill-pack/klaviyo-analyst/scripts/analyze.py:259` — change from `except Exception:` to `except KeyError as e:` with logging.
+- Fix approach: Replace with specific exception types (RequestException, ValueError, RuntimeError, etc.) and log the actual exception details before raising or returning. Example in `skill-packs/dtc-skill-pack/klaviyo-analyst/scripts/analyze.py:259` — change from `except Exception:` to `except KeyError as e:` with logging.
 
 **Unspecified Retry/Error Recovery:**
 - Issue: Multiple scripts have generic "failed after retries" messages without context about which specific operation failed
-- Files: `skill-packs/klaviyo-skill-pack/shopify/scripts/shopify_client.py:242`, `skill-packs/klaviyo-skill-pack/*/scripts/klaviyo_client.py`
+- Files: `skill-packs/dtc-skill-pack/shopify/scripts/shopify_client.py:242`, `skill-packs/dtc-skill-pack/*/scripts/klaviyo_client.py`
 - Impact: Users cannot tell whether failure was network, auth, scope, or rate-limit
 - Fix approach: Capture and log response status codes, error bodies, and HTTP headers before raising exceptions. Pass context through the exception message.
 
 **Reference Documentation with Known Broken Pattern:**
-- Issue: `skill-packs/klaviyo-skill-pack/pro-deck-builder/REFERENCE.md:158` documents a BROKEN code pattern for PptxGenJS shadow object reuse
+- Issue: `skill-packs/dtc-skill-pack/pro-deck-builder/REFERENCE.md:158` documents a BROKEN code pattern for PptxGenJS shadow object reuse
 - Comment: `slide.addShape(pres.shapes.RECTANGLE, { shadow, x: 3 }); // BROKEN`
 - Impact: Developers copying this example will encounter corrupted PowerPoint files with incorrect shadow properties
 - Fix approach: Remove the broken example. Keep only the correct pattern (lines 160-162) showing theme.shadow() factory function usage.
@@ -25,21 +25,21 @@
 ## API Client Concerns
 
 **Rate Limiting Asymmetry:**
-- Issue: Shopify client has proper rate-limit handling (429 retry logic in `skill-packs/klaviyo-skill-pack/shopify/scripts/shopify_client.py:223`), but Klaviyo client delegates to SDK (`skill-packs/klaviyo-skill-pack/klaviyo-analyst/scripts/klaviyo_client.py:65`) with only max_retries=3
-- Files: `skill-packs/klaviyo-skill-pack/klaviyo-analyst/scripts/klaviyo_client.py:65`
+- Issue: Shopify client has proper rate-limit handling (429 retry logic in `skill-packs/dtc-skill-pack/shopify/scripts/shopify_client.py:223`), but Klaviyo client delegates to SDK (`skill-packs/dtc-skill-pack/klaviyo-analyst/scripts/klaviyo_client.py:65`) with only max_retries=3
+- Files: `skill-packs/dtc-skill-pack/klaviyo-analyst/scripts/klaviyo_client.py:65`
 - Impact: Klaviyo requests may fail faster than necessary; no visibility into rate limit headers
 - Fix approach: Add exponential backoff wrapper for Klaviyo API calls. Capture and log rate-limit headers from failed requests.
 
 **Missing Data Validation:**
 - Issue: API responses from Klaviyo, Shopify, and Google Analytics assume structure without validation
-- Files: `skill-packs/klaviyo-skill-pack/klaviyo-analyst/scripts/klaviyo_client.py:85`, `skill-packs/klaviyo-skill-pack/shopify/scripts/shopify_client.py:184`
+- Files: `skill-packs/dtc-skill-pack/klaviyo-analyst/scripts/klaviyo_client.py:85`, `skill-packs/dtc-skill-pack/shopify/scripts/shopify_client.py:184`
 - Example: `data.get(resource_key, [])` assumes response contains expected key structure
 - Impact: Schema changes in API responses will silently produce empty results instead of failing loudly
 - Fix approach: Add schema validation layer using jsonschema or pydantic to catch structural changes early.
 
 **Environment Variable Loading Without Defaults:**
 - Issue: Scripts call `load_dotenv()` but don't validate all required keys before use
-- Files: `skill-packs/klaviyo-skill-pack/*/scripts/*.py` — validation only happens in __init__ methods
+- Files: `skill-packs/dtc-skill-pack/*/scripts/*.py` — validation only happens in __init__ methods
 - Impact: If .env file is missing or incomplete, errors surface late in execution
 - Fix approach: Create a startup validation function that checks all required env vars before making API calls. Run during module initialization.
 
@@ -65,7 +65,7 @@
 ## Configuration & Secrets Concerns
 
 **Setup Wizard Stores Plaintext Credentials:**
-- Issue: `skill-packs/klaviyo-skill-pack/scripts/setup.py:283-288` writes API keys to `.env` files in plaintext
+- Issue: `skill-packs/dtc-skill-pack/scripts/setup.py:283-288` writes API keys to `.env` files in plaintext
 - Impact: API keys visible in filesystem backups, docker image layers, and accidental commits (despite .gitignore)
 - Current mitigation: File permissions set to 0600 (owner read/write only)
 - Recommendations:
@@ -75,7 +75,7 @@
 
 **Environment Examples Without Validation:**
 - Issue: `.env.example` files provided but validation is only at runtime
-- Files: `skill-packs/klaviyo-skill-pack/*/.env.example`
+- Files: `skill-packs/dtc-skill-pack/*/.env.example`
 - Impact: Users won't discover missing/invalid credentials until they try to run a skill
 - Fix approach: Add `python scripts/setup.py --validate` command that only checks .env without running operations.
 
@@ -83,7 +83,7 @@
 
 **Generic Error Messages to Users:**
 - Issue: Many CLI endpoints show "Error: [operation] failed. Check your API key and network connection."
-- Files: `skill-packs/klaviyo-skill-pack/klaviyo-analyst/scripts/analyze.py:874`, `skill-packs/*/scripts/*.py`
+- Files: `skill-packs/dtc-skill-pack/klaviyo-analyst/scripts/analyze.py:874`, `skill-packs/*/scripts/*.py`
 - Impact: Users can't distinguish between auth failure, network timeout, malformed request, or API error
 - Fix approach: Before printing generic message, check: HTTP status code, response body, timeout vs connection error, and auth scope requirements. Print specific guidance.
 
@@ -96,13 +96,13 @@
 ## Performance Concerns
 
 **Pagination Without Limits:**
-- Issue: `skill-packs/klaviyo-skill-pack/shopify/scripts/shopify_client.py:182` paginates until max_items is reached, but max_items defaults to 250
+- Issue: `skill-packs/dtc-skill-pack/shopify/scripts/shopify_client.py:182` paginates until max_items is reached, but max_items defaults to 250
 - Impact: Shopify stores with thousands of orders/products will make many sequential API calls, taking minutes
 - Fix approach: Add `--parallel` flag to fetch multiple pages concurrently (with rate limit aware queue). Add `--sample` flag for quick audits.
 
 **Full Dataset Analysis Without Sampling:**
 - Issue: Klaviyo analyst skill audits all flows, campaigns, and segments without optional sampling
-- Files: `skill-packs/klaviyo-skill-pack/klaviyo-analyst/scripts/analyze.py` — no skip/limit flags in audit_flows()
+- Files: `skill-packs/dtc-skill-pack/klaviyo-analyst/scripts/analyze.py` — no skip/limit flags in audit_flows()
 - Impact: Accounts with 1000+ flows will take minutes to audit
 - Fix approach: Add `--sample-size 50` flag to audit only recent items when full audit not needed.
 
@@ -168,7 +168,7 @@
 ## Fragile Areas
 
 **PptxGenJS Reference Documentation:**
-- Files: `skill-packs/klaviyo-skill-pack/pro-deck-builder/REFERENCE.md`
+- Files: `skill-packs/dtc-skill-pack/pro-deck-builder/REFERENCE.md`
 - Why fragile: Examples hardcoded with specific px/pt values and theme colors; PptxGenJS library updates could break examples
 - Safe modification: All examples should reference theme tokens, not hardcoded colors. Examples should include comment: "// From theme: theme.accent" instead of `"0055FF"`
 - Test coverage: No automated verification that examples compile/render correctly
@@ -180,7 +180,7 @@
 - Test coverage: Only example data files tested; real LinkedIn data structure changes untested
 
 **Shopify Pagination Link Header Parsing:**
-- Files: `skill-packs/klaviyo-skill-pack/shopify/scripts/shopify_client.py:193-198`
+- Files: `skill-packs/dtc-skill-pack/shopify/scripts/shopify_client.py:193-198`
 - Why fragile: Manual string parsing of Link header with hardcoded `rel="next"` search
 - Safe modification: Use python-requests built-in `links` attribute or urllib.parse to extract URLs. Validate URL format.
 - Test coverage: Only tested with real Shopify API; malformed headers not tested
@@ -188,7 +188,7 @@
 ## Dependencies at Risk
 
 **Klaviyo SDK Version Pinning:**
-- Risk: `skill-packs/klaviyo-skill-pack/klaviyo-analyst/requirements.txt:4` pins `klaviyo-api>=9.0.0,<23.0.0` — very loose upper bound
+- Risk: `skill-packs/dtc-skill-pack/klaviyo-analyst/requirements.txt:4` pins `klaviyo-api>=9.0.0,<23.0.0` — very loose upper bound
 - Impact: Major version 23 could have breaking changes; no compatibility guarantee
 - Migration plan: Lock to specific major version (e.g., `>=9.0.0,<10.0.0`), test before upgrading. Monitor Klaviyo SDK changelog.
 
@@ -207,11 +207,11 @@
 **No Input Validation on File Paths:**
 - Risk: Path traversal attacks possible if CLI arguments not sanitized
 - Files: `skill-packs/*/scripts/*.py` implement `_safe_output_path()` but only check trailing path
-- Current mitigation: `_safe_output_path()` in `skill-packs/klaviyo-skill-pack/shopify/scripts/shopify_client.py:40-46` validates resolved path is within cwd
+- Current mitigation: `_safe_output_path()` in `skill-packs/dtc-skill-pack/shopify/scripts/shopify_client.py:40-46` validates resolved path is within cwd
 - Recommendations: Extend to all file operations; use `pathlib.Path.resolve()` and validate against `cwd`, not just string prefix.
 
 **SSRF Risk in Google Sheets Integration:**
-- Risk: `skill-packs/klaviyo-skill-pack/looker-studio/scripts/data_pipeline.py` makes HTTP requests to URLs; no URL validation
+- Risk: `skill-packs/dtc-skill-pack/looker-studio/scripts/data_pipeline.py` makes HTTP requests to URLs; no URL validation
 - Current mitigation: None visible
 - Recommendations: Whitelist allowed domains (google.com, googleapis.com); reject URLs with private IP ranges (127.0.0.1, 10.*, 172.16.*, 192.168.*).
 

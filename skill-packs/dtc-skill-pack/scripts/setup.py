@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-Klaviyo Skill Pack Setup Wizard
+DTC Skill Pack Setup Wizard
 
-Interactive setup tool for configuring the Klaviyo Skill Pack.
+Interactive setup tool for configuring the DTC Skill Pack.
 Guides non-technical users through API key setup, environment
 configuration, dependency installation, and health checks.
 
@@ -130,7 +130,7 @@ SKILLS = {
 
 
 class SkillPackSetup:
-    """Interactive setup wizard for the Klaviyo Skill Pack."""
+    """Interactive setup wizard for the DTC Skill Pack."""
 
     def __init__(self, pack_dir: Path, skills_filter: list = None, non_interactive: bool = False):
         self.pack_dir = pack_dir
@@ -387,7 +387,7 @@ class SkillPackSetup:
         """Print welcome banner."""
         print()
         print(f"{Colors.BOLD}{'='*50}")
-        print("  Klaviyo Skill Pack Setup Wizard")
+        print("  DTC Skill Pack Setup Wizard")
         print(f"{'='*50}{Colors.END}")
         print()
         print("This wizard will help you configure the skill pack.")
@@ -435,7 +435,7 @@ class SkillPackSetup:
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Klaviyo Skill Pack Setup Wizard",
+        description="DTC Skill Pack Setup Wizard",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:

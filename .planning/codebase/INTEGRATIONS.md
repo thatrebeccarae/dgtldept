@@ -8,8 +8,8 @@
 - **Klaviyo** - Email/SMS platform for DTC brands
   - SDK/Client: `klaviyo-api>=9.0.0,<23.0.0`
   - Auth: Environment variable `KLAVIYO_API_KEY` (format: `pk_*`)
-  - Used by: `skill-packs/klaviyo-skill-pack/klaviyo-analyst/` and `skill-packs/klaviyo-skill-pack/klaviyo-developer/`
-  - Implementation: `skill-packs/klaviyo-skill-pack/klaviyo-analyst/scripts/klaviyo_client.py` (415 lines) and `skill-packs/klaviyo-skill-pack/klaviyo-developer/scripts/klaviyo_client.py` (642 lines)
+  - Used by: `skill-packs/dtc-skill-pack/klaviyo-analyst/` and `skill-packs/dtc-skill-pack/klaviyo-developer/`
+  - Implementation: `skill-packs/dtc-skill-pack/klaviyo-analyst/scripts/klaviyo_client.py` (415 lines) and `skill-packs/dtc-skill-pack/klaviyo-developer/scripts/klaviyo_client.py` (642 lines)
   - MCP Server: Klaviyo MCP server (via uvx: `klaviyo-mcp-server@latest`) provides live data access to flows, segments, campaigns, metrics
   - Scopes: Read-only recommended for analyst tasks (campaigns:read, flows:read, segments:read, lists:read, metrics:read); write scopes optional for developer integrations
 
@@ -17,8 +17,8 @@
 - **Shopify Admin API** - Store performance and product data
   - SDK/Client: `ShopifyAPI>=12.0.0,<13.0.0`
   - Auth: Environment variables `SHOPIFY_STORE_URL` (format: `https://[store].myshopify.com`) and `SHOPIFY_ACCESS_TOKEN` (format: `shpat_*`)
-  - Used by: `skill-packs/klaviyo-skill-pack/shopify/`
-  - Implementation: `skill-packs/klaviyo-skill-pack/shopify/scripts/shopify_client.py` (400 lines)
+  - Used by: `skill-packs/dtc-skill-pack/shopify/`
+  - Implementation: `skill-packs/dtc-skill-pack/shopify/scripts/shopify_client.py` (400 lines)
   - Required scopes: `read_orders`, `read_products`, `read_customers`, `read_inventory`, optional `read_analytics`
   - API version: Defaults to 2024-10, configurable via `SHOPIFY_API_VERSION`
 
@@ -28,8 +28,8 @@
   - Auth:
     - `GOOGLE_ANALYTICS_PROPERTY_ID` (numeric ID from GA4 Admin > Property Settings)
     - `GOOGLE_APPLICATION_CREDENTIALS` (path to Google service account JSON)
-  - Used by: `skill-packs/klaviyo-skill-pack/google-analytics/`
-  - Implementation: `skill-packs/klaviyo-skill-pack/google-analytics/scripts/ga_client.py` (357 lines)
+  - Used by: `skill-packs/dtc-skill-pack/google-analytics/`
+  - Implementation: `skill-packs/dtc-skill-pack/google-analytics/scripts/ga_client.py` (357 lines)
   - Health check: `python scripts/ga_client.py --days 7 --metrics sessions`
 
 **Data & Reporting:**
@@ -37,14 +37,14 @@
   - SDK/Client: `google-api-python-client>=2.0.0,<3.0.0` + `google-auth>=2.0.0,<3.0.0`
   - Auth: Service account via `GOOGLE_APPLICATION_CREDENTIALS` (Google Cloud service account JSON)
   - Additional: `gspread>=5.0.0,<7.0.0` for high-level Sheets manipulation
-  - Used by: `skill-packs/klaviyo-skill-pack/looker-studio/`
-  - Implementation: `skill-packs/klaviyo-skill-pack/looker-studio/scripts/data_pipeline.py` (585 lines)
+  - Used by: `skill-packs/dtc-skill-pack/looker-studio/`
+  - Implementation: `skill-packs/dtc-skill-pack/looker-studio/scripts/data_pipeline.py` (585 lines)
   - Scopes: `https://www.googleapis.com/auth/spreadsheets`, `https://www.googleapis.com/auth/drive`
   - Optional: Pre-existing spreadsheet ID via `GOOGLE_SHEETS_SPREADSHEET_ID`, or pipeline creates new sheets
 
 - **Looker Studio** - Visualization and dashboard tool (no SDK, reads from Google Sheets)
   - Connection: Via Google Sheets as free data source
-  - Used by: `skill-packs/klaviyo-skill-pack/looker-studio/`
+  - Used by: `skill-packs/dtc-skill-pack/looker-studio/`
   - Templates provided for CRM dashboards, lifecycle marketing, revenue attribution (defined in data_pipeline.py)
 
 ## Data Storage
@@ -69,7 +69,7 @@
 
 **Pattern:**
 - Environment variables loaded via `python-dotenv>=1.0.0,<2.0.0`
-- All credentials validated in setup wizard: `skill-packs/klaviyo-skill-pack/scripts/setup.py`
+- All credentials validated in setup wizard: `skill-packs/dtc-skill-pack/scripts/setup.py`
 - No token refresh/expiration handling — API keys assumed long-lived
 
 **Setup Flow:**
@@ -88,7 +88,7 @@ Interactive wizard (`python scripts/setup.py`) guides users:
 
 **Logs:**
 - Approach: Python `logging` module configured in scripts
-- Example: `skill-packs/klaviyo-skill-pack/klaviyo-analyst/scripts/analyze.py` initializes logger at module level
+- Example: `skill-packs/dtc-skill-pack/klaviyo-analyst/scripts/analyze.py` initializes logger at module level
 - Output: Console logs with standard format
 
 ## CI/CD & Deployment
@@ -125,7 +125,7 @@ Interactive wizard (`python scripts/setup.py`) guides users:
 - Optional: `KLAVIYO_API_KEY`, `SHOPIFY_STORE_URL`, `SHOPIFY_ACCESS_TOKEN`, `GOOGLE_ANALYTICS_PROPERTY_ID` (for sync actions)
 
 **Secrets location:**
-- `.env` files in each skill directory (e.g., `skill-packs/klaviyo-skill-pack/google-analytics/.env`)
+- `.env` files in each skill directory (e.g., `skill-packs/dtc-skill-pack/google-analytics/.env`)
 - Git-ignored via `.gitignore`
 - Service account JSON files stored outside git repo on user's machine
 
@@ -137,9 +137,9 @@ Interactive wizard (`python scripts/setup.py`) guides users:
 
 **Incoming:**
 - Klaviyo developer skill includes webhook handling patterns
-  - Location: `skill-packs/klaviyo-skill-pack/klaviyo-developer/REFERENCE.md` (webhook section)
+  - Location: `skill-packs/dtc-skill-pack/klaviyo-developer/REFERENCE.md` (webhook section)
   - Pattern: POST endpoints for Klaviyo subscription events, checkout abandonment, etc.
-  - Implementation example in `skill-packs/klaviyo-skill-pack/klaviyo-developer/scripts/dev_tools.py` (webhook validation patterns)
+  - Implementation example in `skill-packs/dtc-skill-pack/klaviyo-developer/scripts/dev_tools.py` (webhook validation patterns)
 
 **Outgoing:**
 - Looker Studio integration pushes data via Google Sheets API (not webhooks)
@@ -155,7 +155,7 @@ Shopify (orders, products, customers)
 ```
 
 **Implementation:**
-- `skill-packs/klaviyo-skill-pack/looker-studio/scripts/data_pipeline.py` orchestrates sync
+- `skill-packs/dtc-skill-pack/looker-studio/scripts/data_pipeline.py` orchestrates sync
 - Actions: `sync-klaviyo`, `sync-shopify`, `sync-ga4`, `create-sheet`
 - Templates for pre-built dashboard structures (CRM Performance, Lifecycle Marketing, Revenue Attribution)
 
@@ -163,8 +163,8 @@ Shopify (orders, products, customers)
 
 **Documented patterns:**
 - Klaviyo developer skill includes rate limit handling
-  - Reference: `skill-packs/klaviyo-skill-pack/klaviyo-developer/REFERENCE.md` (rate limit section)
-  - Pattern: Exponential backoff retry logic in `skill-packs/klaviyo-skill-pack/klaviyo-developer/scripts/dev_tools.py`
+  - Reference: `skill-packs/dtc-skill-pack/klaviyo-developer/REFERENCE.md` (rate limit section)
+  - Pattern: Exponential backoff retry logic in `skill-packs/dtc-skill-pack/klaviyo-developer/scripts/dev_tools.py`
 
 **No throttling detected in:**
 - Google Analytics client (relies on SDK defaults)
