@@ -4,6 +4,7 @@
 
 **A full marketing department for Claude Code.** Klaviyo, Shopify, GA4, Looker Studio, paid media, content strategy — install the skills you need and get expert-level analysis from your terminal.
 
+[![Claude Code](https://img.shields.io/badge/Claude_Code-Skills-cc785c?style=for-the-badge&logo=anthropic&logoColor=white)](https://docs.anthropic.com/en/docs/claude-code)
 [![Substack](https://img.shields.io/badge/Substack-dgtl%20dept*-FF6719?style=for-the-badge&logo=substack&logoColor=white)](https://dgtldept.substack.com/welcome)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Rebecca%20Rae%20Barton-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/rebeccaraebarton)
 [![X](https://img.shields.io/badge/X-@rebeccarae-000000?style=for-the-badge&logo=x&logoColor=white)](https://x.com/rebeccarae)
