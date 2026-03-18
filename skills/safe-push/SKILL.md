@@ -10,11 +10,19 @@ metadata:
   category: dev-tools
   domain: git
   updated: 2026-03-13
+  tested: 2026-03-17
+  tested_with: "Claude Code v2.1"
 ---
 
 # Safe Push
 
 Pre-push hygiene checker for GitHub repositories. Prevents accidental exposure of secrets, PII, and sensitive infrastructure details.
+
+## Install
+
+```bash
+git clone https://github.com/thatrebeccarae/claude-marketing.git && cp -r claude-marketing/skills/safe-push ~/.claude/skills/
+```
 
 ## When to Use
 

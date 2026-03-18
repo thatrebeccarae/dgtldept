@@ -10,11 +10,19 @@ metadata:
   category: content
   domain: email
   updated: 2026-03-13
+  tested: 2026-03-17
+  tested_with: "Claude Code v2.1"
 ---
 
 # Email Composer
 
 Draft professional emails for business and marketing contexts.
+
+## Install
+
+```bash
+git clone https://github.com/thatrebeccarae/claude-marketing.git && cp -r claude-marketing/skills/email-composer ~/.claude/skills/
+```
 
 ## Email Categories
 

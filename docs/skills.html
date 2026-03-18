@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skills — claude-marketing</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-00XHYRHCX4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-00XHYRHCX4');
+</script>
+<meta name="description" content="Browse the full catalog of claude-marketing skills — open-source Claude Code skills for paid media, brand intelligence, content creation, analytics, and more.">
+<meta property="og:title" content="Skills — claude-marketing">
+<meta property="og:description" content="Browse the full catalog of claude-marketing skills — open-source Claude Code skills for paid media, brand intelligence, content creation, analytics, and more.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Skills — claude-marketing">
+<meta name="twitter:description" content="Browse the full catalog of claude-marketing skills for paid media, brand intelligence, content creation, and analytics.">
+<link rel="canonical" href="https://thatrebeccarae.github.io/claude-marketing/skills.html">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600,700&display=swap" rel="stylesheet">
+<style>
+/* ─── FONTS ─── */
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('fonts/PPEditorialNew-Ultralight.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('fonts/PPEditorialNew-UltralightItalic.woff2') format('woff2');
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('fonts/PPEditorialNew-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('fonts/PPEditorialNew-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('fonts/PPEditorialNew-Ultrabold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('fonts/PPEditorialNew-UltraboldItalic.woff2') format('woff2');
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cartograph CF';
+  src: url('fonts/CartographCF-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ─── RESET & BASE ─── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --accent: #5B5F8D;
+  --black: #000000;
+  --white: #ffffff;
+  --terminal-bg: #0d0f14;
+  --terminal-green: #4ade80;
+  --terminal-red: #ef4444;
+  --terminal-amber: #f59e0b;
+  --terminal-text: #e4e4e7;
+  --border-width: 2px;
+  --section-pad-y: clamp(80px, 12vw, 200px);
+  --section-pad-x: clamp(40px, 5vw, 80px);
+  --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
+  --grid-cols: 12;
+  --grid-gap: 20px;
+}
+
+html {
+  scroll-behavior: auto;
+  scroll-padding-top: 60px;
+  -webkit-text-size-adjust: 100%;
+}
+
+html[data-theme="dark"] {
+  --theme-bg: #000000;
+  --theme-color: #ffffff;
+  --theme-bg-rgb: 0,0,0;
+}
+
+html {
+  background-color: var(--theme-bg);
+  color: var(--theme-color);
+}
+
+body {
+  font-family: 'Switzer', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(15px, 1.1vw, 17px);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+::selection {
+  background: var(--theme-color);
+  color: var(--theme-bg);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ─── TYPOGRAPHY ─── */
+.display {
+  font-family: 'PP Editorial New', 'Georgia', serif;
+  font-size: clamp(2rem, 4.5vw, 6.5rem);
+  font-weight: 200;
+  line-height: 1.12;
+  letter-spacing: -0.014em;
+}
+
+.subtitle {
+  font-size: clamp(0.875rem, 1.2vw, 1.125rem);
+  font-weight: 300;
+  line-height: 1.55;
+}
+
+.section-label {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  margin-bottom: 2rem;
+}
+
+.muted {
+  opacity: 0.5;
+}
+
+/* ─── HEADER ─── */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1.2rem var(--section-pad-x);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: transform 0.3s var(--ease), background-color 0.3s var(--ease), backdrop-filter 0.3s var(--ease);
+}
+
+.site-header.scrolled {
+  background-color: rgba(var(--theme-bg-rgb), 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.header-logo {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--theme-color);
+}
+
+.header-nav {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.header-nav a {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--theme-color);
+  text-transform: uppercase;
+  transition: opacity 0.2s var(--ease);
+}
+.header-nav a:hover {
+  opacity: 0.7;
+}
+
+.header-github {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--theme-color);
+  text-transform: uppercase;
+  transition: opacity 0.2s var(--ease), color 0.4s var(--ease);
+}
+.header-github:hover {
+  opacity: 0.7;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--theme-color);
+  transition: transform 0.3s var(--ease), opacity 0.3s var(--ease);
+}
+.hamburger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--black);
+  z-index: 999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.mobile-nav.open {
+  display: flex;
+}
+.mobile-nav a {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--white);
+}
+
+/* ─── HERO (COMPACT) ─── */
+.catalog-hero {
+  padding: 140px var(--section-pad-x) 40px;
+}
+
+.catalog-hero .display {
+  margin-bottom: 1rem;
+}
+
+.catalog-hero .subtitle {
+  opacity: 0.6;
+}
+
+/* ─── SEARCH ─── */
+.search-bar {
+  padding: 0 var(--section-pad-x) 1.5rem;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.75rem 1.25rem;
+  background: transparent;
+  border: 1px solid #ffffff;
+  border-radius: 45px;
+  color: #ffffff;
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  outline: none;
+  transition: border-color 0.2s var(--ease);
+}
+.search-input::placeholder {
+  color: rgba(255,255,255,0.35);
+  text-transform: uppercase;
+}
+.search-input:focus {
+  border-width: 2px;
+  padding: calc(0.75rem - 1px) calc(1.25rem - 1px);
+}
+
+.search-results {
+  padding: 0 var(--section-pad-x) 2rem;
+  display: none;
+}
+.search-results.active {
+  display: block;
+}
+.search-results-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--grid-gap);
+}
+.search-result-item {
+  display: block;
+  background: #000000;
+  border: 1px solid #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  text-decoration: none;
+  color: #ffffff;
+  transition: border-width 0.2s var(--ease), transform 0.2s var(--ease);
+}
+.search-result-item:hover {
+  border-width: 2px;
+  padding: calc(1.5rem - 1px) calc(2rem - 1px);
+  transform: translateY(-2px);
+}
+.search-result-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.search-result-excerpt {
+  font-size: 0.85rem;
+  font-weight: 300;
+  line-height: 1.55;
+  opacity: 0.7;
+}
+.search-result-excerpt mark {
+  background: rgba(91, 95, 141, 0.3);
+  color: #ffffff;
+  padding: 0 2px;
+  border-radius: 2px;
+}
+.search-no-results {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  opacity: 0.4;
+  padding: 2rem 0;
+}
+
+@media (max-width: 1280px) {
+  .search-results-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 700px) {
+  .search-results-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ─── FILTER PILLS ─── */
+.filter-bar {
+  padding: 0 var(--section-pad-x) 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.filter-pill {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  padding: 0.75rem 1.25rem;
+  border: 1px solid #ffffff;
+  border-radius: 45px;
+  color: #ffffff;
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+.filter-pill:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+.filter-pill.active {
+  background: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+}
+
+.filter-pill.active:hover {
+  background: rgba(255,255,255,0.85);
+}
+
+/* ─── CARD GRID ─── */
+.catalog-grid {
+  padding: 0 var(--section-pad-x) var(--section-pad-y);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--grid-gap);
+}
+
+.skill-card {
+  display: flex;
+  flex-direction: column;
+  background: #000000;
+  border: 1px solid #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  text-decoration: none;
+  color: var(--theme-color);
+  transition: border-color 0.3s var(--ease), transform 0.2s var(--ease);
+  min-height: 200px;
+}
+
+.skill-card:hover {
+  border-width: 2px;
+  padding: calc(1.5rem - 1px) calc(2rem - 1px);
+  transform: translateY(-2px);
+}
+
+.skill-card-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  line-height: 1.3;
+}
+
+.skill-card-category {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.04em;
+}
+
+.skill-card-desc {
+  font-size: 0.9rem;
+  font-weight: 300;
+  line-height: 1.55;
+  opacity: 0.8;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.skill-card-meta {
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.skill-card-tested {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.7rem;
+  font-weight: 400;
+  opacity: 0.55;
+  text-transform: uppercase;
+}
+
+.skill-card-install {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.65rem;
+  font-weight: 400;
+  opacity: 0.45;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+}
+
+.skill-card-install-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px;
+  opacity: 0.45;
+  transition: opacity 0.2s var(--ease);
+  flex-shrink: 0;
+  color: var(--theme-color);
+}
+.copy-btn:hover {
+  opacity: 0.7;
+}
+.copy-btn.copied {
+  opacity: 1;
+  color: var(--terminal-green);
+}
+
+/* ─── EMPTY STATE ─── */
+.catalog-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 4rem 2rem;
+  opacity: 0.4;
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+/* ─── LOADING STATE ─── */
+.catalog-loading {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 6rem 2rem;
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  letter-spacing: 0.05em;
+}
+
+.catalog-loading::after {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 1.1em;
+  background: var(--accent);
+  vertical-align: text-bottom;
+  margin-left: 4px;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* ─── MODAL ─── */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(20px, 4vw, 60px);
+  overflow-y: auto;
+}
+.modal-overlay.open {
+  display: flex;
+}
+
+.modal-content {
+  background: #000000;
+  border: 1px solid #ffffff;
+  border-radius: 12px;
+  max-width: 720px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  position: relative;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.15) transparent;
+}
+.modal-content::-webkit-scrollbar {
+  width: 4px;
+}
+.modal-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+.modal-content::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.15);
+  border-radius: 2px;
+}
+
+.modal-close {
+  position: sticky;
+  top: 0;
+  float: right;
+  background: none;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 1.5rem;
+  padding: 0.25rem 0.5rem;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  z-index: 1;
+}
+.modal-close:hover {
+  opacity: 1;
+}
+
+.modal-body {
+  color: #ffffff;
+}
+.modal-body .detail-page {
+  padding: 0;
+  max-width: none;
+}
+.modal-body .detail-back {
+  display: none;
+}
+
+/* ─── DETAIL PAGE (inside modal) ─── */
+.modal-body .detail-page {
+  padding: 0;
+  max-width: none;
+}
+.modal-body .detail-back {
+  display: none;
+}
+
+.detail-name {
+  font-family: 'PP Editorial New', 'Georgia', serif;
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  font-weight: 200;
+  line-height: 1.15;
+  letter-spacing: -0.014em;
+  margin-bottom: 0.5rem;
+}
+
+.detail-category {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  letter-spacing: 0.04em;
+  margin-bottom: 1.5rem;
+}
+
+.detail-desc {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.65;
+  margin-bottom: 2rem;
+  opacity: 1;
+}
+
+.detail-install {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.detail-install code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.7rem;
+  opacity: 0.55;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.detail-install .copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  color: #ffffff;
+  flex-shrink: 0;
+}
+.detail-install .copy-btn:hover { opacity: 0.8; }
+.detail-install .copy-btn.copied { opacity: 1; color: var(--terminal-green); }
+
+.detail-tested {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  opacity: 0.4;
+  margin-bottom: 2rem;
+}
+
+.detail-capabilities h2,
+.detail-sources h2,
+.detail-body h2 {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.75rem;
+  margin-top: 2rem;
+  opacity: 0.6;
+}
+
+.detail-capabilities ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.detail-capabilities li {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 4px;
+  opacity: 0.7;
+}
+
+.detail-source-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.detail-source-links a {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  padding: 0.4rem 0.9rem;
+  border: 1px solid #ffffff;
+  border-radius: 45px;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+.detail-source-links a:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+.detail-body {
+  margin-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 1.5rem;
+}
+
+.detail-body h2 {
+  font-family: 'Switzer', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  opacity: 1;
+}
+
+.detail-body h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-top: 1.25rem;
+  margin-bottom: 0.4rem;
+}
+
+.detail-body p {
+  margin-bottom: 0.75rem;
+  opacity: 0.8;
+  line-height: 1.6;
+  font-size: 0.9rem;
+}
+
+.detail-body ul {
+  margin-bottom: 0.75rem;
+  padding-left: 1.25rem;
+}
+
+.detail-body li {
+  margin-bottom: 0.25rem;
+  opacity: 0.8;
+  line-height: 1.5;
+  font-size: 0.9rem;
+}
+
+.detail-body pre {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+  overflow-x: auto;
+}
+
+.detail-body code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+}
+
+.detail-body blockquote {
+  border-left: 2px solid rgba(255,255,255,0.2);
+  padding-left: 1rem;
+  margin-bottom: 0.75rem;
+  opacity: 0.65;
+  font-style: italic;
+}
+
+/* ─── SCROLL REVEAL (disabled on catalog — cards load instantly) ─── */
+
+/* ─── FOOTER ─── */
+.site-footer {
+  padding: clamp(40px, 4vw, 60px) clamp(40px, 5vw, 80px) 2rem;
+  background: #000000;
+  color: #ffffff;
+}
+
+.footer-handle {
+  width: calc(100% + clamp(80px, 10vw, 160px));
+  margin-left: calc(-1 * clamp(40px, 5vw, 80px));
+  margin-bottom: 3rem;
+}
+.footer-handle svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.footer-handle svg path {
+  fill: #ffffff;
+}
+
+.footer-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding-bottom: 3rem;
+}
+
+.footer-socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: center;
+}
+.footer-socials a {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.85rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: #ffffff;
+  transition: opacity 0.2s var(--ease);
+}
+.footer-socials a:hover {
+  opacity: 0.7;
+}
+
+.footer-cta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2rem;
+}
+
+.footer-cta-text {
+  font-family: 'PP Editorial New', 'Georgia', serif;
+  font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+  font-weight: 200;
+  line-height: 1.2;
+  text-align: right;
+}
+
+.footer-cta-btn {
+  display: inline-block;
+  font-family: 'Cartograph CF', monospace;
+  font-size: 1.25rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  padding: 1.25rem 1.75rem;
+  border: 1px solid #ffffff;
+  border-radius: 45px;
+  color: #ffffff;
+  background: transparent;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+  white-space: nowrap;
+}
+.footer-cta-btn:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+.footer-bar {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+
+/* ─── REDUCED MOTION ─── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ─── RESPONSIVE: TABLET (1280px) ─── */
+@media (max-width: 1280px) {
+  :root {
+    --grid-cols: 8;
+    --border-width: 1px;
+  }
+
+  .catalog-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .catalog-hero {
+    padding-top: 100px;
+    padding-bottom: 30px;
+  }
+}
+
+/* ─── RESPONSIVE: MOBILE (700px) ─── */
+@media (max-width: 700px) {
+  :root {
+    --grid-cols: 4;
+    --border-width: 1px;
+    --section-pad-x: 20px;
+    --section-pad-y: clamp(48px, 8vw, 80px);
+  }
+
+  .header-nav { display: none; }
+  .header-github { display: none; }
+  .hamburger { display: flex; }
+
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .catalog-hero {
+    padding-top: 100px;
+    padding-bottom: 24px;
+  }
+
+  .display {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+  }
+
+  .catalog-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-bar {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    flex-wrap: nowrap;
+    padding-bottom: 1.5rem;
+  }
+  .filter-bar::-webkit-scrollbar { display: none; }
+  .filter-pill {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.7rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .skill-card {
+    padding: 1.25rem 1.5rem;
+    min-height: auto;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .footer-links {
+    gap: 1.5rem;
+  }
+
+  .site-footer {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+/* ─── RESPONSIVE: SMALL PHONE (390px) ─── */
+@media (max-width: 390px) {
+  :root {
+    --section-pad-x: 16px;
+  }
+
+  .catalog-hero {
+    padding-top: 72px;
+    padding-bottom: 20px;
+  }
+
+  .skill-card {
+    padding: 1rem 1.25rem;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════ HEADER ═══════════════════ -->
+<header class="site-header" id="site-header">
+  <a href="./" class="header-logo">claude-marketing</a>
+  <nav class="header-nav">
+    <a href="./skills.html">Skills</a>
+    <a href="./#capabilities">Capabilities</a>
+    <a href="./#demo">Demo</a>
+    <a href="./#install">Install</a>
+  </nav>
+  <a href="https://github.com/thatrebeccarae/claude-marketing" target="_blank" rel="noopener" class="header-github">View on GitHub &#8599;</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<nav class="mobile-nav" id="mobile-nav">
+  <a href="./skills.html" onclick="closeMobileNav()">Skills</a>
+  <a href="./#capabilities" onclick="closeMobileNav()">Capabilities</a>
+  <a href="./#demo" onclick="closeMobileNav()">Demo</a>
+  <a href="./#install" onclick="closeMobileNav()">Install</a>
+  <a href="https://github.com/thatrebeccarae/claude-marketing" target="_blank" rel="noopener">GitHub &#8599;</a>
+</nav>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<section class="catalog-hero">
+  <h1 class="display">Skills</h1>
+  <p class="subtitle" id="skill-count"></p>
+</section>
+
+<!-- ═══════════════════ FILTERS ═══════════════════ -->
+<!-- ═══════════════════ SEARCH ═══════════════════ -->
+<div class="search-bar">
+  <input type="search" class="search-input" id="search-input" placeholder="Search skills..." autocomplete="off">
+</div>
+<div class="search-results" id="search-results">
+  <div class="search-results-list" id="search-results-list"></div>
+</div>
+
+<!-- ═══════════════════ FILTERS ═══════════════════ -->
+<div class="filter-bar" id="filter-bar">
+  <button class="filter-pill active" data-category="all">All</button>
+</div>
+
+<!-- ═══════════════════ CARD GRID ═══════════════════ -->
+<div class="catalog-grid" id="catalog-grid">
+  <div class="catalog-loading">Loading skills</div>
+</div>
+
+<!-- ═══════════════════ MODAL ═══════════════════ -->
+<div class="modal-overlay" id="skill-modal">
+  <div class="modal-content">
+    <button class="modal-close" id="modal-close" aria-label="Close">&times;</button>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer class="site-footer">
+  <div class="footer-handle">
+    <svg width="3008" height="304" viewBox="0 0 3008 304" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="@thatrebeccarae">
+      <path d="M234.459 243.23C204.772 243.23 190.266 230.748 184.868 212.868C170.7 234.459 147.422 243.567 124.145 243.567C91.4221 243.567 65.4461 225.35 65.4461 191.615C65.4461 166.651 79.6148 148.097 108.29 137.977C131.904 130.217 154.507 127.856 182.507 127.519V123.133C182.507 102.892 173.398 92.4342 154.507 92.4342C136.29 92.4342 127.181 102.555 124.82 116.723H73.2051C78.6028 75.904 109.976 50.94 156.531 50.94C207.471 50.94 234.122 81.3016 234.122 123.47V191.615C234.122 205.109 239.856 215.23 252.338 215.23C273.929 215.23 288.098 192.627 288.098 145.736C288.098 73.2051 232.097 17.5423 154.844 17.5423C77.2534 17.5423 20.9158 76.2413 20.9158 152.145C20.9158 230.748 76.2413 285.736 154.844 285.736C180.82 285.736 204.097 282.363 225.688 273.254L232.435 290.122C208.82 299.905 183.182 303.616 154.844 303.616C63.422 303.616 0 239.857 0 152.145C0 64.0967 64.7714 0 154.844 0C244.579 0 309.013 61.0605 309.013 144.724C309.013 209.832 280.001 243.23 234.459 243.23ZM116.723 186.892C116.723 199.712 125.832 208.146 141.35 208.146C163.615 208.146 182.507 190.266 182.507 165.977V156.868C130.217 157.88 116.723 170.7 116.723 186.892Z" fill="currentColor"/>
+      <path d="M361.677 189.254V105.928H339.412V66.7955H361.677V24.6266H413.292V66.7955H450.4V105.928H413.292V182.844C413.292 200.386 418.015 210.17 440.28 210.17H450.063V248.965C444.328 251.664 432.858 253.688 419.027 253.688C380.231 253.688 361.677 231.423 361.677 189.254Z" fill="currentColor"/>
+      <path d="M489.343 248.29V5.39763H540.958V90.7474C552.765 70.5064 571.32 61.0605 593.585 61.0605C628.332 61.0605 654.308 82.3136 654.308 127.181V248.29H602.693V137.639C602.693 114.699 593.585 102.892 574.693 102.892C554.115 102.892 540.958 120.772 540.958 144.049V248.29H489.343Z" fill="currentColor"/>
+      <path d="M755.732 126.844H704.117C709.515 86.0245 740.888 61.0605 787.443 61.0605C839.395 61.0605 866.383 91.4221 866.383 133.591V203.085C866.383 226.7 868.407 238.844 871.443 248.29H818.142C816.455 242.218 815.443 234.459 815.106 225.688C800.937 245.254 779.346 253.688 757.756 253.688C723.346 253.688 697.708 236.146 697.708 201.399C697.708 176.772 711.876 157.88 740.551 147.76C764.166 140.001 786.768 137.639 814.768 137.302V133.254C814.768 113.35 804.985 102.892 785.081 102.892C767.539 102.892 758.093 112.675 755.732 126.844ZM749.322 198.025C749.322 210.17 758.431 217.929 773.611 217.929C796.551 217.929 814.768 199.374 814.768 174.41V167.326C762.479 168.338 749.322 181.157 749.322 198.025Z" fill="currentColor"/>
+      <path d="M925.686 189.254V105.928H903.42V66.7955H925.686V24.6266H977.3V66.7955H1014.41V105.928H977.3V182.844C977.3 200.386 982.023 210.17 1004.29 210.17H1014.07V248.965C1008.34 251.664 996.867 253.688 983.035 253.688C944.24 253.688 925.686 231.423 925.686 189.254Z" fill="currentColor"/>
+      <path d="M1053.35 248.29V66.7955H1104.97V92.0968C1116.44 70.5064 1133.98 61.0605 1152.53 61.0605C1159.95 61.0605 1166.7 63.0846 1170.41 66.7955V110.314C1164.34 108.964 1157.93 108.29 1149.83 108.29C1118.8 108.29 1104.97 125.832 1104.97 154.507V248.29H1053.35Z" fill="currentColor"/>
+      <path d="M1374.62 188.579C1365.17 230.411 1331.43 253.688 1286.9 253.688C1230.57 253.688 1195.82 217.254 1195.82 157.543C1195.82 95.8077 1230.9 61.0605 1284.88 61.0605C1339.19 61.0605 1373.27 97.1571 1373.27 156.531V168.001H1248.45C1251.14 197.013 1264.64 212.531 1286.9 212.531C1303.77 212.531 1315.24 205.109 1320.64 188.579H1374.62ZM1284.88 102.217C1265.65 102.217 1253.51 114.699 1249.46 138.314H1319.96C1315.92 114.699 1303.77 102.217 1284.88 102.217Z" fill="currentColor"/>
+      <path d="M1469 248.29H1417.39V5.39763H1469V85.3498C1480.14 69.4943 1495.65 61.0605 1514.54 61.0605C1561.44 61.0605 1590.45 97.8318 1590.45 157.206C1590.45 218.941 1560.76 253.688 1514.54 253.688C1495.32 253.688 1479.8 245.591 1469 230.411V248.29ZM1503.41 102.892C1480.81 102.892 1469 122.121 1469 157.206C1469 192.29 1481.15 211.856 1503.41 211.856C1525.68 211.856 1537.82 192.627 1537.82 157.206C1537.82 122.121 1525.68 102.892 1503.41 102.892Z" fill="currentColor"/>
+      <path d="M1804.54 188.579C1795.09 230.411 1761.36 253.688 1716.83 253.688C1660.49 253.688 1625.74 217.254 1625.74 157.543C1625.74 95.8077 1660.83 61.0605 1714.8 61.0605C1769.12 61.0605 1803.19 97.1571 1803.19 156.531V168.001H1678.37C1681.07 197.013 1694.56 212.531 1716.83 212.531C1733.7 212.531 1745.17 205.109 1750.56 188.579H1804.54ZM1714.8 102.217C1695.58 102.217 1683.43 114.699 1679.38 138.314H1749.89C1745.84 114.699 1733.7 102.217 1714.8 102.217Z" fill="currentColor"/>
+      <path d="M2009.24 132.242H1957.63C1954.25 110.988 1942.11 102.892 1927.26 102.892C1904.32 102.892 1892.52 122.121 1892.52 157.543C1892.52 192.627 1905 211.856 1928.61 211.856C1944.13 211.856 1954.93 203.085 1958.64 186.218H2010.25C2002.49 231.76 1969.77 253.688 1927.6 253.688C1873.29 253.688 1839.55 216.917 1839.55 157.543C1839.55 95.8077 1873.96 61.0605 1927.26 61.0605C1969.43 61.0605 2002.83 84.6751 2009.24 132.242Z" fill="currentColor"/>
+      <path d="M2214.16 132.242H2162.54C2159.17 110.988 2147.02 102.892 2132.18 102.892C2109.24 102.892 2097.43 122.121 2097.43 157.543C2097.43 192.627 2109.91 211.856 2133.53 211.856C2149.05 211.856 2159.84 203.085 2163.55 186.218H2215.17C2207.41 231.76 2174.69 253.688 2132.52 253.688C2078.2 253.688 2044.47 216.917 2044.47 157.543C2044.47 95.8077 2078.88 61.0605 2132.18 61.0605C2174.35 61.0605 2207.75 84.6751 2214.16 132.242Z" fill="currentColor"/>
+      <path d="M2307.74 126.844H2256.13C2261.53 86.0245 2292.9 61.0605 2339.45 61.0605C2391.41 61.0605 2418.39 91.4221 2418.39 133.591V203.085C2418.39 226.7 2420.42 238.844 2423.45 248.29H2370.15C2368.47 242.218 2367.45 234.459 2367.12 225.688C2352.95 245.254 2331.36 253.688 2309.77 253.688C2275.36 253.688 2249.72 236.146 2249.72 201.399C2249.72 176.772 2263.89 157.88 2292.56 147.76C2316.18 140.001 2338.78 137.639 2366.78 137.302V133.254C2366.78 113.35 2357 102.892 2337.09 102.892C2319.55 102.892 2310.11 112.675 2307.74 126.844ZM2301.33 198.025C2301.33 210.17 2310.44 217.929 2325.62 217.929C2348.56 217.929 2366.78 199.374 2366.78 174.41V167.326C2314.49 168.338 2301.33 181.157 2301.33 198.025Z" fill="currentColor"/>
+      <path d="M2470.95 248.29V66.7955H2522.57V92.0968C2534.04 70.5064 2551.58 61.0605 2570.13 61.0605C2577.55 61.0605 2584.3 63.0846 2588.01 66.7955V110.314C2581.94 108.964 2575.53 108.29 2567.43 108.29C2536.4 108.29 2522.57 125.832 2522.57 154.507V248.29H2470.95Z" fill="currentColor"/>
+      <path d="M2673.76 126.844H2622.14C2627.54 86.0245 2658.91 61.0605 2705.47 61.0605C2757.42 61.0605 2784.41 91.4221 2784.41 133.591V203.085C2784.41 226.7 2786.43 238.844 2789.47 248.29H2736.17C2734.48 242.218 2733.47 234.459 2733.13 225.688C2718.96 245.254 2697.37 253.688 2675.78 253.688C2641.37 253.688 2615.73 236.146 2615.73 201.399C2615.73 176.772 2629.9 157.88 2658.58 147.76C2682.19 140.001 2704.79 137.639 2732.79 137.302V133.254C2732.79 113.35 2723.01 102.892 2703.11 102.892C2685.56 102.892 2676.12 112.675 2673.76 126.844ZM2667.35 198.025C2667.35 210.17 2676.45 217.929 2691.64 217.929C2714.58 217.929 2732.79 199.374 2732.79 174.41V167.326C2680.5 168.338 2667.35 181.157 2667.35 198.025Z" fill="currentColor"/>
+      <path d="M3008 188.579C2998.55 230.411 2964.82 253.688 2920.29 253.688C2863.95 253.688 2829.2 217.254 2829.2 157.543C2829.2 95.8077 2864.29 61.0605 2918.26 61.0605C2972.58 61.0605 3006.65 97.1571 3006.65 156.531V168.001H2881.83C2884.53 197.013 2898.02 212.531 2920.29 212.531C2937.16 212.531 2948.63 205.109 2954.02 188.579H3008ZM2918.26 102.217C2899.04 102.217 2886.89 114.699 2882.84 138.314H2953.35C2949.3 114.699 2937.16 102.217 2918.26 102.217Z" fill="currentColor"/>
+    </svg>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-socials">
+      <a href="https://github.com/thatrebeccarae" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://dgtldept.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://linkedin.com/in/rebeccaraebarton" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://rebeccaraebarton.com" target="_blank" rel="noopener">More Links &#8599;</a>
+    </div>
+    <div class="footer-cta">
+      <div class="footer-cta-text">Do you like<br>what you see?</div>
+      <a href="https://www.rebeccaraebarton.com/connect" target="_blank" rel="noopener" class="footer-cta-btn">Connect &#8599;</a>
+    </div>
+  </div>
+
+  <div class="footer-bar">
+    <span>Brooklyn, NY</span>
+    <span>Thanks! I made it myself &#10024;</span>
+    <span>2026 &reg; Rebecca Rae Barton</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  /* ─── HEADER SCROLL ─── */
+  const header = document.getElementById('site-header');
+  let lastY = 0;
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+    lastY = window.scrollY;
+  }, { passive: true });
+
+  /* ─── MOBILE NAV ─── */
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobile-nav');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileNav.classList.toggle('open');
+  });
+  window.closeMobileNav = function () {
+    hamburger.classList.remove('open');
+    mobileNav.classList.remove('open');
+  };
+
+  /* ─── CATALOG ─── */
+  const grid = document.getElementById('catalog-grid');
+  const filterBar = document.getElementById('filter-bar');
+  const countEl = document.getElementById('skill-count');
+  let allSkills = [];
+  let activeCategory = 'all';
+  let catMap = {};
+
+  fetch('./catalog.json')
+    .then(r => {
+      if (!r.ok) throw new Error(r.status);
+      return r.json();
+    })
+    .then(data => {
+      allSkills = Array.isArray(data) ? data : (data.skills || []);
+      init();
+    })
+    .catch(() => {
+      grid.innerHTML = '<div class="catalog-empty">Could not load catalog.json</div>';
+      countEl.textContent = '';
+    });
+
+  function init() {
+    /* Build category pills — use category_label for display, category for filtering */
+    catMap = {};
+    allSkills.forEach(s => { if (s.category) catMap[s.category] = s.category_label || s.category; });
+    const catKeys = Object.keys(catMap).sort((a, b) => {
+      const oa = allSkills.find(s => s.category === a);
+      const ob = allSkills.find(s => s.category === b);
+      return (oa?.category_order || 99) - (ob?.category_order || 99);
+    });
+    catKeys.forEach(cat => {
+      const btn = document.createElement('button');
+      btn.className = 'filter-pill';
+      btn.dataset.category = cat;
+      btn.textContent = catMap[cat];
+      filterBar.appendChild(btn);
+    });
+
+    filterBar.addEventListener('click', e => {
+      const pill = e.target.closest('.filter-pill');
+      if (!pill) return;
+      activeCategory = pill.dataset.category;
+      filterBar.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      render();
+    });
+
+    render();
+  }
+
+  function render() {
+    const filtered = activeCategory === 'all'
+      ? allSkills
+      : allSkills.filter(s => s.category === activeCategory);
+
+    countEl.textContent = activeCategory === 'all'
+      ? filtered.length + ' skills'
+      : filtered.length + ' skill' + (filtered.length !== 1 ? 's' : '') + ' in ' + (catMap[activeCategory] || activeCategory);
+
+    if (!filtered.length) {
+      grid.innerHTML = '<div class="catalog-empty">No skills found</div>';
+      return;
+    }
+
+    grid.innerHTML = filtered.map((skill, i) => {
+      const slug = skill.slug || skill.name;
+      const href = './skill/' + slug + '.html';
+      const tested = skill.tested ? 'Tested ' + skill.tested + (skill.tested_with ? ' · ' + skill.tested_with : '') : '';
+      const install = skill.install_command || skill.install || ('cp -r claude-marketing/skills/' + slug + ' ~/.claude/skills/');
+      return '<a class="skill-card" href="' + href + '">'
+        + '<div class="skill-card-name">' + esc(skill.name) + '</div>'
+        + '<div class="skill-card-category">' + esc(skill.category_label || skill.category || '') + '</div>'
+        + '<div class="skill-card-desc">' + esc(skill.description || '') + '</div>'
+        + '<div class="skill-card-meta">'
+        + (tested ? '<span class="skill-card-tested">' + esc(tested) + '</span>' : '')
+        + '<div class="skill-card-install-row">'
+        + '<span class="skill-card-install">' + esc(install) + '</span>'
+        + '<button class="copy-btn" data-copy="' + esc(install).replace(/"/g, '&quot;') + '" title="Copy install command" onclick="event.preventDefault();event.stopPropagation();copyInstall(this)">'
+        + '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>'
+        + '</button>'
+        + '</div>'
+        + '</div>'
+        + '</a>';
+    }).join('');
+
+  }
+
+  function esc(str) {
+    const d = document.createElement('div');
+    d.textContent = str;
+    return d.innerHTML;
+  }
+})();
+
+function copyInstall(btn) {
+  const text = btn.getAttribute('data-copy');
+  navigator.clipboard.writeText(text).then(() => {
+    btn.classList.add('copied');
+    btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+    }, 2000);
+  });
+}
+
+/* ─── SEARCH (Pagefind) ─── */
+(function() {
+  var searchInput = document.getElementById('search-input');
+  var searchResults = document.getElementById('search-results');
+  var searchList = document.getElementById('search-results-list');
+  var filterBar = document.getElementById('filter-bar');
+  var catalogGrid = document.getElementById('catalog-grid');
+  var pagefind = null;
+  var debounceTimer = null;
+
+  async function loadPagefind() {
+    if (pagefind) return pagefind;
+    try {
+      pagefind = await import('./pagefind/pagefind.js');
+      await pagefind.init();
+      return pagefind;
+    } catch(e) {
+      return null;
+    }
+  }
+
+  searchInput.addEventListener('input', function() {
+    clearTimeout(debounceTimer);
+    var query = searchInput.value.trim();
+
+    if (!query) {
+      searchResults.classList.remove('active');
+      filterBar.style.display = '';
+      catalogGrid.style.display = '';
+      return;
+    }
+
+    debounceTimer = setTimeout(async function() {
+      var pf = await loadPagefind();
+      if (!pf) return;
+
+      var search = await pf.search(query);
+      var results = await Promise.all(search.results.slice(0, 12).map(function(r) { return r.data(); }));
+
+      filterBar.style.display = 'none';
+      catalogGrid.style.display = 'none';
+      searchResults.classList.add('active');
+
+      if (!results.length) {
+        searchList.innerHTML = '<div class="search-no-results">No results for "' + query + '"</div>';
+        return;
+      }
+
+      searchList.innerHTML = results.map(function(r) {
+        var url = r.url || '';
+        return '<a class="search-result-item skill-card" href="' + url + '">'
+          + '<div class="search-result-title">' + (r.meta?.title || url.split('/').pop().replace('.html','')) + '</div>'
+          + '<div class="search-result-excerpt">' + (r.excerpt || '') + '</div>'
+          + '</a>';
+      }).join('');
+    }, 200);
+  });
+
+  // Clear search on Escape
+  searchInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      searchInput.value = '';
+      searchInput.dispatchEvent(new Event('input'));
+      searchInput.blur();
+    }
+  });
+})();
+
+/* ─── MODAL SYSTEM ─── */
+(function() {
+  var modal = document.getElementById('skill-modal');
+  var modalBody = document.getElementById('modal-body');
+  var modalClose = document.getElementById('modal-close');
+  var originalTitle = document.title;
+  var cache = {};
+
+  // Resolve fetch URLs relative to the page's base, not the current pushState URL
+  var baseUrl = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
+
+  function openModal(href) {
+    if (cache[href]) {
+      showContent(cache[href].html, cache[href].title);
+      return;
+    }
+    modalBody.innerHTML = '<div style="text-align:center;padding:3rem;opacity:0.5;font-family:Cartograph CF,monospace;font-size:0.85rem;text-transform:uppercase">Loading...</div>';
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+
+    // Resolve relative to base, not current pushState URL
+    var fetchUrl = href.startsWith('./') ? baseUrl + href.substring(2) : href;
+    fetch(fetchUrl)
+      .then(function(r) { return r.text(); })
+      .then(function(html) {
+        var parser = new DOMParser();
+        var doc = parser.parseFromString(html, 'text/html');
+        var page = doc.querySelector('.detail-page');
+        var title = doc.querySelector('title');
+        var t = title ? title.textContent : '';
+        var h = page ? page.innerHTML : html;
+        cache[href] = { html: h, title: t };
+        showContent(h, t);
+      })
+      .catch(function() {
+        window.location.href = href;
+      });
+  }
+
+  function showContent(html, title) {
+    modalBody.innerHTML = html;
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    if (title) document.title = title;
+    // Re-bind copy buttons inside modal
+    modalBody.querySelectorAll('.copy-btn').forEach(function(btn) {
+      btn.onclick = function() { copyInstall(btn); };
+    });
+  }
+
+  function closeModal() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+    document.title = originalTitle;
+    history.pushState(null, '', baseUrl + 'skills.html');
+  }
+
+  // Intercept card clicks
+  document.addEventListener('click', function(e) {
+    var card = e.target.closest('.skill-card');
+    if (!card) return;
+    // Don't intercept copy button clicks
+    if (e.target.closest('.copy-btn')) return;
+    e.preventDefault();
+    var href = card.getAttribute('href');
+    var pushUrl = href.startsWith('./') ? baseUrl + href.substring(2) : href;
+    history.pushState({ skill: href }, '', pushUrl);
+    openModal(href);
+  });
+
+  // Close modal
+  modalClose.addEventListener('click', closeModal);
+  modal.addEventListener('click', function(e) {
+    if (e.target === modal) closeModal();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+  });
+
+  // Handle browser back/forward
+  window.addEventListener('popstate', function() {
+    if (modal.classList.contains('open')) {
+      closeModal();
+    }
+  });
+
+  // Open modal if URL is a skill page on load
+  if (window.location.pathname.includes('/skill/')) {
+    openModal(window.location.pathname);
+  }
+})();
+</script>
+</body>
+</html>

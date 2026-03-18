@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>frontend-design — claude-marketing</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-00XHYRHCX4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-00XHYRHCX4');
+</script>
+<meta name="description" content="Create distinctive, production-grade frontend interfaces with high design quality. Covers design thinking, typography pairing, color theory, motion design, spat">
+<meta property="og:title" content="frontend-design — claude-marketing">
+<meta property="og:description" content="Create distinctive, production-grade frontend interfaces with high design quality. Covers design thinking, typography pairing, color theory, motion design, spatial composition, and code quality. Gener">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="frontend-design — claude-marketing">
+<meta name="twitter:description" content="Create distinctive, production-grade frontend interfaces with high design quality. Covers design thinking, typography pairing, color theory, motion design, spatial composition, and code quality. Gener">
+<link rel="canonical" href="https://thatrebeccarae.github.io/claude-marketing/skill/frontend-design.html">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600,700&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Ultralight.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cartograph CF';
+  src: url('../fonts/CartographCF-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --accent: #5B5F8D;
+  --black: #000000;
+  --white: #ffffff;
+  --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+html {
+  background: #000000;
+  color: #ffffff;
+}
+
+body {
+  font-family: 'Switzer', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(15px, 1.1vw, 17px);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.detail-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 120px clamp(20px, 5vw, 40px) 80px;
+}
+
+.detail-back {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+.detail-back:hover { opacity: 1; }
+
+.detail-name {
+  font-family: 'PP Editorial New', 'Georgia', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 200;
+  line-height: 1.15;
+  letter-spacing: -0.014em;
+  margin-bottom: 0.5rem;
+}
+
+.detail-category {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  letter-spacing: 0.04em;
+  margin-bottom: 2rem;
+}
+
+.detail-desc {
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.65;
+  margin-bottom: 2.5rem;
+  opacity: 0.85;
+}
+
+.detail-install {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.detail-install code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  opacity: 0.6;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.detail-install .copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  color: #ffffff;
+  flex-shrink: 0;
+}
+.detail-install .copy-btn:hover { opacity: 0.8; }
+.detail-install .copy-btn.copied { opacity: 1; color: #4ade80; }
+
+.detail-tested {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  opacity: 0.4;
+  margin-bottom: 2.5rem;
+}
+
+.detail-capabilities h2,
+.detail-sources h2,
+.detail-body h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  margin-top: 2.5rem;
+}
+
+.detail-capabilities ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.detail-capabilities li {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 4px;
+}
+
+.detail-source-links {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.detail-source-links a {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ffffff;
+  border-radius: 45px;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+.detail-source-links a:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+.detail-body {
+  margin-top: 2.5rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 2rem;
+}
+
+.detail-body h2 {
+  font-family: 'Switzer', sans-serif;
+}
+
+.detail-body h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.detail-body p {
+  margin-bottom: 1rem;
+  opacity: 0.85;
+  line-height: 1.65;
+}
+
+.detail-body ul {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.detail-body li {
+  margin-bottom: 0.35rem;
+  opacity: 0.85;
+  line-height: 1.55;
+}
+
+.detail-body pre {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+}
+
+.detail-body code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.85rem;
+}
+
+.detail-body blockquote {
+  border-left: 2px solid rgba(255,255,255,0.2);
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+@media (max-width: 700px) {
+  .detail-page {
+    padding: 100px 20px 60px;
+  }
+  .detail-source-links {
+    flex-wrap: wrap;
+  }
+}
+</style>
+</head>
+<body>
+<div class="detail-page" data-pagefind-body>
+  <a href="../skills.html" class="detail-back">&larr; Back to skills</a>
+  <h1 class="detail-name">frontend-design</h1>
+  <div class="detail-category">Creative &amp; Design</div>
+  <p class="detail-desc">Create distinctive, production-grade frontend interfaces with high design quality. Covers design thinking, typography pairing, color theory, motion design, spatial composition, and code quality. Generates real working code — HTML/CSS/JS or React — with intentional aesthetic direction, not generic AI output.</p>
+  <div class="detail-install">
+    <code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/frontend-design ~/.claude/skills/</code>
+    <button class="copy-btn" data-copy="git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/frontend-design ~/.claude/skills/" title="Copy install command" onclick="copyInstall(this)">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+    </button>
+  </div>
+  <div class="detail-tested">Tested 2026-03-17 &middot; Claude Code v2.1</div>
+  <div class="detail-capabilities"><h2>Capabilities</h2><ul><li>Understand Context</li><li>Commit to an Aesthetic Direction</li><li>Identify the Memorable Thing</li><li>Execute with Intentionality</li></ul></div>
+  <div class="detail-sources">
+<h2>Source Files</h2>
+<div class="detail-source-links">
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/frontend-design/SKILL.md" target="_blank" rel="noopener">SKILL.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/frontend-design/REFERENCE.md" target="_blank" rel="noopener">REFERENCE.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/frontend-design/EXAMPLES.md" target="_blank" rel="noopener">EXAMPLES.md</a>
+</div>
+</div>
+  <div class="detail-body"><p>Create distinctive, production-grade web interfaces that avoid generic AI aesthetics.</p>
+<h2>Install</h2>
+<pre><code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/frontend-design ~/.claude/skills/</code></pre>
+<h2>Design Thinking Process</h2>
+<h3>1. Understand Context</h3>
+<p>Before writing code, answer:</p>
+<ul>
+<li><strong>Purpose:</strong> What problem does this interface solve? Who uses it?</li>
+<li><strong>Audience:</strong> Technical sophistication, expectations, emotional state when arriving</li>
+<li><strong>Constraints:</strong> Framework requirements, browser support, performance budget, accessibility needs</li>
+</ul>
+<h3>2. Commit to an Aesthetic Direction</h3>
+<p>Choose a specific point of view — not &quot;clean and modern&quot; but a real aesthetic:</p>
+<p>| Direction | Characteristics |</p>
+<p>|-----------|----------------|</p>
+<p>| Brutally minimal | Monochrome, system fonts, stark spacing, no decoration |</p>
+<p>| Maximalist | Dense, layered, multiple type scales, rich texture |</p>
+<p>| Retro-futuristic | Neon accents, dark backgrounds, grid lines, monospace |</p>
+<p>| Organic/natural | Soft shapes, earth tones, hand-drawn elements, warm |</p>
+<p>| Luxury/refined | Thin serifs, generous whitespace, muted palette, restrained |</p>
+<p>| Playful/toy-like | Rounded shapes, bright primaries, bouncy animations |</p>
+<p>| Editorial/magazine | Strong grid, dramatic type hierarchy, pull quotes |</p>
+<p>| Brutalist/raw | Exposed structure, monospace, raw HTML feeling |</p>
+<p>| Art deco/geometric | Symmetry, metallic accents, decorative borders, angular |</p>
+<p>| Soft/pastel | Light palette, gentle gradients, rounded, approachable |</p>
+<p>| Industrial/utilitarian | Exposed grid, status indicators, dense information |</p>
+<h3>3. Identify the Memorable Thing</h3>
+<p>Every interface should have one element someone remembers:</p>
+<ul>
+<li>An unexpected interaction</li>
+<li>A distinctive type treatment</li>
+<li>A bold color choice</li>
+<li>An animation that surprises</li>
+<li>A layout that breaks convention</li>
+</ul>
+<h3>4. Execute with Intentionality</h3>
+<p>The key is commitment, not intensity. Maximalism executed fully works. Minimalism executed with precision works. The mushy middle does not.</p>
+<h2>Typography</h2>
+<h3>Principles</h3>
+<ul>
+<li>Choose distinctive fonts, NOT defaults (avoid Arial, Inter, Roboto for display use)</li>
+<li>Pair a display font (personality) with a body font (readability)</li>
+<li>Size hierarchy: display (48-96px), heading (24-36px), body (16-18px), small (12-14px)</li>
+<li>Tight letter-spacing on large display text (-0.02 to -0.04em)</li>
+<li>Normal or slightly loose spacing on body text</li>
+</ul>
+<h3>Free Font Sources</h3>
+<p>| Source | Best For |</p>
+<p>|--------|----------|</p>
+<p>| Google Fonts | Widest selection, easy CDN |</p>
+<p>| Fontshare | High-quality display fonts |</p>
+<p>| Fontsource | Self-hosted, npm installable |</p>
+<p>| Atipo Foundry | Distinctive display faces |</p>
+<h3>Pairing Strategy</h3>
+<p>| Display | Body | Vibe |</p>
+<p>|---------|------|------|</p>
+<p>| Serif (dramatic) | Sans-serif (clean) | Editorial, luxury |</p>
+<p>| Geometric sans | Humanist sans | Modern, friendly |</p>
+<p>| Monospace | System sans | Technical, brutalist |</p>
+<p>| Slab serif | Neutral sans | Bold, structured |</p>
+<p>| Handwritten/display | Geometric sans | Playful, creative |</p>
+<h2>Color &amp; Theme</h2>
+<h3>Building a Palette</h3>
+<p>1. Start with one dominant color (the mood-setter)</p>
+<p>2. Add 1-2 accent colors (for interaction, emphasis)</p>
+<p>3. Define neutral scale (backgrounds, borders, text)</p>
+<p>4. Add semantic colors (success, warning, error)</p>
+<p>5. Store everything in CSS custom properties</p>
+<pre><code>:root {
+  --color-primary: #...;
+  --color-accent: #...;
+  --color-bg: #...;
+  --color-surface: #...;
+  --color-text: #...;
+  --color-text-secondary: #...;
+  --color-border: #...;
+}</code></pre>
+<h3>Rules</h3>
+<ul>
+<li>Dominant + accent, not evenly distributed</li>
+<li>WCAG AA contrast minimum (4.5:1 for text, 3:1 for large text)</li>
+<li>Dark vs. light: commit fully. Do not hedge.</li>
+<li>Test with real content, not lorem ipsum</li>
+</ul>
+<h2>Motion &amp; Animation</h2>
+<h3>CSS Transitions (Micro-interactions)</h3>
+<pre><code>.button {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}</code></pre>
+<h3>CSS @keyframes (Ambient)</h3>
+<pre><code>@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.floating-element { animation: float 3s ease-in-out infinite; }</code></pre>
+<h3>Scroll-Triggered (IntersectionObserver)</h3>
+<pre><code>const observer = new IntersectionObserver((entries) =&gt; {
+  entries.forEach(entry =&gt; {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.animate-on-scroll').forEach(el =&gt; observer.observe(el));</code></pre>
+<h3>Staggered Reveals</h3>
+<pre><code>.stagger-item { opacity: 0; transform: translateY(20px); transition: all 0.5s ease; }
+.stagger-item.visible { opacity: 1; transform: translateY(0); }
+.stagger-item:nth-child(1) { transition-delay: 0s; }
+.stagger-item:nth-child(2) { transition-delay: 0.1s; }
+.stagger-item:nth-child(3) { transition-delay: 0.2s; }</code></pre>
+<h3>Performance</h3>
+<ul>
+<li>Animate only `transform` and `opacity` (GPU-composited)</li>
+<li>Avoid animating `width`, `height`, `margin`, `padding` (trigger layout)</li>
+<li>Use `will-change` sparingly and only on elements that will animate</li>
+<li>Prefer CSS over JS for simple animations</li>
+<li>Use `prefers-reduced-motion` media query for accessibility</li>
+</ul>
+<h2>Spatial Composition</h2>
+<ul>
+<li>Break out of the centered-content-column default</li>
+<li>Use asymmetry and grid-breaking elements intentionally</li>
+<li>Overlap elements with z-index for depth</li>
+<li>Generous negative space OR controlled density — commit to one</li>
+<li>CSS Grid for complex layouts, Flexbox for component alignment</li>
+</ul>
+<h2>Code Quality</h2>
+<ul>
+<li>Semantic HTML (nav, main, article, section, aside, footer)</li>
+<li>Accessible: ARIA labels, keyboard navigation, focus management</li>
+<li>Responsive: mobile-first or fluid, tested at 320-1440px</li>
+<li>Performance: lazy loading images, efficient selectors, minimal JS</li>
+<li>No external dependencies unless essential (CDN fonts are fine)</li>
+</ul>
+<h2>Anti-Patterns</h2>
+<ul>
+<li>Generic AI aesthetics (purple gradients everywhere, glassmorphism on everything)</li>
+<li>Cookie-cutter component libraries used without customization</li>
+<li>Predictable layouts (hero → 3-column → testimonials → CTA)</li>
+<li>&quot;Clean and modern&quot; as the entire design direction</li>
+<li>Overused fonts (Inter, Poppins for display)</li>
+<li>Decorative elements without purpose</li>
+<li>Rounded everything (a specific choice is fine, but default rounding is lazy)</li>
+<li>Dark mode with neon accents (overdone)</li>
+</ul>
+<p>For typography pairings, color construction, animation library, and accessibility checklist, see [REFERENCE.md](REFERENCE.md).</p>
+<h2>Brand Context (Optional)</h2>
+<p>If `brand-profile.json` exists in the working directory, read it before designing. Use colors (primary, secondary, background, text) for the design system, typography (heading and body fonts) for type selections, aesthetic (mood keywords, texture, negative space) for layout decisions, and imagery (style, composition) for hero sections and visual elements. This profile is produced by the `brand-dna` skill.</p></div>
+</div>
+<script>
+function copyInstall(btn) {
+  var text = btn.getAttribute('data-copy');
+  navigator.clipboard.writeText(text).then(function() {
+    btn.classList.add('copied');
+    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+    setTimeout(function() {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>

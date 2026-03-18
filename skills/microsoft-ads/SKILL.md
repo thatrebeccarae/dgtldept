@@ -10,11 +10,19 @@ metadata:
   category: paid-media
   domain: microsoft-ads
   updated: 2026-03-11
+  tested: 2026-03-17
+  tested_with: "Claude Code v2.1"
 ---
 
 # Microsoft Advertising (Bing Ads)
 
 Expert-level guidance for Microsoft Advertising — auditing, building, and optimizing search, shopping, audience, and Performance Max campaigns.
+
+## Install
+
+```bash
+git clone https://github.com/thatrebeccarae/claude-marketing.git && cp -r claude-marketing/skills/microsoft-ads ~/.claude/skills/
+```
 
 ## Core Capabilities
 

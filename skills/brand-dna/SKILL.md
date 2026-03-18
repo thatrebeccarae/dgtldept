@@ -10,11 +10,19 @@ metadata:
   category: strategy
   domain: brand-identity
   updated: 2026-03-16
+  tested: 2026-03-17
+  tested_with: "Claude Code v2.1"
 ---
 
 # Brand DNA — Brand Identity Extractor
 
 Extracts brand identity from a website and produces a structured `brand-profile.json` that other skills can consume for brand-consistent output.
+
+## Install
+
+```bash
+git clone https://github.com/thatrebeccarae/claude-marketing.git && cp -r claude-marketing/skills/brand-dna ~/.claude/skills/
+```
 
 ## Quick Reference
 

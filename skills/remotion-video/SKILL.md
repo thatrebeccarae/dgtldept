@@ -10,11 +10,19 @@ metadata:
   category: creative
   domain: video
   updated: 2026-03-13
+  tested: 2026-03-17
+  tested_with: "Claude Code v2.1"
 ---
 
 # Remotion Video Production
 
 Best practices for building programmatic videos with Remotion — animations, transitions, charts, and rendering.
+
+## Install
+
+```bash
+git clone https://github.com/thatrebeccarae/claude-marketing.git && cp -r claude-marketing/skills/remotion-video ~/.claude/skills/
+```
 
 ## Core Capabilities
 

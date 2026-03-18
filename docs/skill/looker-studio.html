@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>looker-studio — claude-marketing</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-00XHYRHCX4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-00XHYRHCX4');
+</script>
+<meta name="description" content="Looker Studio (formerly Google Data Studio) expertise. Build dashboards, design data visualizations, connect data sources, and create marketing reports. Use whe">
+<meta property="og:title" content="looker-studio — claude-marketing">
+<meta property="og:description" content="Looker Studio (formerly Google Data Studio) expertise. Build dashboards, design data visualizations, connect data sources, and create marketing reports. Use when the user asks about Looker Studio, Dat">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="looker-studio — claude-marketing">
+<meta name="twitter:description" content="Looker Studio (formerly Google Data Studio) expertise. Build dashboards, design data visualizations, connect data sources, and create marketing reports. Use when the user asks about Looker Studio, Dat">
+<link rel="canonical" href="https://thatrebeccarae.github.io/claude-marketing/skill/looker-studio.html">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600,700&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Ultralight.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cartograph CF';
+  src: url('../fonts/CartographCF-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --accent: #5B5F8D;
+  --black: #000000;
+  --white: #ffffff;
+  --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+html {
+  background: #000000;
+  color: #ffffff;
+}
+
+body {
+  font-family: 'Switzer', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(15px, 1.1vw, 17px);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.detail-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 120px clamp(20px, 5vw, 40px) 80px;
+}
+
+.detail-back {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+.detail-back:hover { opacity: 1; }
+
+.detail-name {
+  font-family: 'PP Editorial New', 'Georgia', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 200;
+  line-height: 1.15;
+  letter-spacing: -0.014em;
+  margin-bottom: 0.5rem;
+}
+
+.detail-category {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  letter-spacing: 0.04em;
+  margin-bottom: 2rem;
+}
+
+.detail-desc {
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.65;
+  margin-bottom: 2.5rem;
+  opacity: 0.85;
+}
+
+.detail-install {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.detail-install code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  opacity: 0.6;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.detail-install .copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  color: #ffffff;
+  flex-shrink: 0;
+}
+.detail-install .copy-btn:hover { opacity: 0.8; }
+.detail-install .copy-btn.copied { opacity: 1; color: #4ade80; }
+
+.detail-tested {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  opacity: 0.4;
+  margin-bottom: 2.5rem;
+}
+
+.detail-capabilities h2,
+.detail-sources h2,
+.detail-body h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  margin-top: 2.5rem;
+}
+
+.detail-capabilities ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.detail-capabilities li {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 4px;
+}
+
+.detail-source-links {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.detail-source-links a {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ffffff;
+  border-radius: 45px;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+.detail-source-links a:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+.detail-body {
+  margin-top: 2.5rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 2rem;
+}
+
+.detail-body h2 {
+  font-family: 'Switzer', sans-serif;
+}
+
+.detail-body h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.detail-body p {
+  margin-bottom: 1rem;
+  opacity: 0.85;
+  line-height: 1.65;
+}
+
+.detail-body ul {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.detail-body li {
+  margin-bottom: 0.35rem;
+  opacity: 0.85;
+  line-height: 1.55;
+}
+
+.detail-body pre {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+}
+
+.detail-body code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.85rem;
+}
+
+.detail-body blockquote {
+  border-left: 2px solid rgba(255,255,255,0.2);
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+@media (max-width: 700px) {
+  .detail-page {
+    padding: 100px 20px 60px;
+  }
+  .detail-source-links {
+    flex-wrap: wrap;
+  }
+}
+</style>
+</head>
+<body>
+<div class="detail-page" data-pagefind-body>
+  <a href="../skills.html" class="detail-back">&larr; Back to skills</a>
+  <h1 class="detail-name">looker-studio</h1>
+  <div class="detail-category">DTC &amp; E-commerce</div>
+  <p class="detail-desc">Looker Studio (formerly Google Data Studio) expertise. Build dashboards, design data visualizations, connect data sources, and create marketing reports. Use when the user asks about Looker Studio, Data Studio, marketing dashboards, data visualization, report building, or connecting analytics data sources.</p>
+  <div class="detail-install">
+    <code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/looker-studio ~/.claude/skills/</code>
+    <button class="copy-btn" data-copy="git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/looker-studio ~/.claude/skills/" title="Copy install command" onclick="copyInstall(this)">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+    </button>
+  </div>
+  <div class="detail-tested">Tested 2026-03-17 &middot; Claude Code v2.1</div>
+  <div class="detail-capabilities"><h2>Capabilities</h2><ul><li>Dashboard Design</li><li>Data Sources &amp; Connectors</li><li>Calculated Fields &amp; Metrics</li><li>Report Automation</li></ul></div>
+  <div class="detail-sources">
+<h2>Source Files</h2>
+<div class="detail-source-links">
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/looker-studio/SKILL.md" target="_blank" rel="noopener">SKILL.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/looker-studio/REFERENCE.md" target="_blank" rel="noopener">REFERENCE.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/looker-studio/EXAMPLES.md" target="_blank" rel="noopener">EXAMPLES.md</a>
+</div>
+</div>
+  <div class="detail-body"><p>Expert-level guidance for Looker Studio — building dashboards, connecting data sources, designing visualizations, and creating automated marketing reports.</p>
+<h2>Install</h2>
+<pre><code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/looker-studio ~/.claude/skills/</code></pre>
+<h2>Core Capabilities</h2>
+<h3>Dashboard Design</h3>
+<ul>
+<li>Layout and visual hierarchy best practices</li>
+<li>Executive summary vs detailed operational dashboards</li>
+<li>Mobile-responsive report design</li>
+<li>Interactive controls: date range selectors, filters, drill-downs</li>
+<li>Consistent styling with themes and color palettes</li>
+</ul>
+<h3>Data Sources &amp; Connectors</h3>
+<ul>
+<li><strong>Native (free)</strong>: Google Analytics 4, Google Ads, Google Sheets, BigQuery, Search Console, YouTube Analytics</li>
+<li><strong>Partner connectors</strong>: Facebook Ads, Microsoft Ads, LinkedIn Ads, HubSpot, Salesforce, Shopify, Klaviyo, Semrush</li>
+<li><strong>Community connectors</strong>: Hundreds of third-party sources</li>
+<li><strong>Data blending</strong>: Join multiple sources on shared dimensions</li>
+<li><strong>Custom queries</strong>: BigQuery SQL, Google Sheets formulas as data sources</li>
+</ul>
+<h3>Calculated Fields &amp; Metrics</h3>
+<ul>
+<li>Regex-based field creation (REGEXP_MATCH, REGEXP_REPLACE, REGEXP_EXTRACT)</li>
+<li>CASE statements for custom groupings and bucketing</li>
+<li>Date functions for period-over-period comparisons</li>
+<li>Aggregation (SUM, AVG, COUNT_DISTINCT, MEDIAN)</li>
+<li>Blended field calculations across sources</li>
+</ul>
+<p>#### Formula Syntax Rules</p>
+<ul>
+<li><strong>No comments allowed</strong> — Looker Studio formulas do not support `--`, `//`, or `/* */` style comments. Never include comments in formulas. Add context in the field description instead.</li>
+<li><strong>No inline flags in simple cases</strong> — prefer `CONTAINS_TEXT()`, `LOWER()`, or exact match over regex when possible</li>
+<li><strong>RE2 regex engine</strong> — supports `(?i)` for case-insensitive, but does NOT support lookaheads/lookbehinds</li>
+<li><strong>String escaping</strong> — use `\\` for literal backslash in regex patterns within string literals (e.g., `&quot;\\s&quot;` for whitespace, `&quot;\\|&quot;` for literal pipe)</li>
+</ul>
+<h3>Report Automation</h3>
+<ul>
+<li>Scheduled email delivery (PDF snapshots)</li>
+<li>Embedded reports in websites and portals</li>
+<li>Template reports for client scaling</li>
+<li>Data freshness monitoring</li>
+</ul>
+<h2>Dashboard Templates by Use Case</h2>
+<h3>Marketing Performance Dashboard</h3>
+<pre><code>Page 1: Executive Summary
+|- KPI scorecards (Revenue, ROAS, CPA, Spend, Conversions)
+|- Period-over-period trend lines
+|- Channel performance table (sortable)
+|- Budget pacing gauge chart
+
+Page 2: Paid Media Deep-Dive
+|- Google Ads performance (campaign breakdown)
+|- Meta Ads performance (campaign breakdown)
+|- Microsoft Ads performance
+|- Cross-channel spend allocation (pie/donut)
+|- CPA trend by channel (combo chart)
+
+Page 3: SEO &amp; Organic
+|- Google Search Console: impressions, clicks, CTR, position
+|- Top queries table
+|- Page-level performance
+|- Organic landing page engagement (from GA4)
+
+Page 4: Email &amp; CRM
+|- Email campaign metrics (opens, clicks, revenue)
+|- List growth trend
+|- Flow/automation revenue
+|- Subscriber engagement tiers
+
+Page 5: Conversion Funnel
+|- Funnel visualization (awareness -&gt; consideration -&gt; conversion)
+|- Landing page performance table
+|- Device breakdown
+|- Geographic heatmap</code></pre>
+<h3>E-commerce Dashboard</h3>
+<pre><code>Page 1: Revenue Overview
+|- Revenue, Orders, AOV, Conversion Rate scorecards
+|- Revenue trend (daily/weekly)
+|- Revenue by channel
+|- Top products table
+
+Page 2: Customer Acquisition
+|- New vs returning customer revenue
+|- CAC by channel
+|- LTV:CAC ratio
+|- First-order source attribution</code></pre>
+<h3>SEO Dashboard</h3>
+<pre><code>Page 1: Organic Performance
+|- Total clicks, impressions, CTR, avg position
+|- Trend lines (90-day)
+|- Top 20 queries (with position change)
+|- Top landing pages
+|- Device + country breakdown</code></pre>
+<h2>Key Visualization Guidelines</h2>
+<p>| Data Type | Best Chart | Avoid |</p>
+<p>|-----------|-----------|-------|</p>
+<p>| KPI with comparison | Scorecard with delta | Pie chart |</p>
+<p>| Trend over time | Line chart or area chart | Bar chart (if &gt;7 periods) |</p>
+<p>| Category comparison | Horizontal bar chart | 3D charts |</p>
+<p>| Part of whole | Stacked bar or donut | Pie with &gt;6 slices |</p>
+<p>| Distribution | Histogram or heatmap | Scatter (if not correlation) |</p>
+<p>| Geographic | Geo map or heatmap | Tables for location data |</p>
+<p>| Funnel | Custom funnel (shapes) | Bar chart |</p>
+<p>| Table data | Table with heatmap bars | Unsorted tables |</p>
+<h2>Workflow: Build a Dashboard</h2>
+<p>When asked to create a Looker Studio dashboard:</p>
+<p>1. <strong>Define Purpose</strong> — Who views it? How often? What decisions does it inform?</p>
+<p>2. <strong>Identify Data Sources</strong> — Which platforms/connectors needed? Any blending?</p>
+<p>3. <strong>Design KPI Framework</strong> — Primary metrics, secondary metrics, diagnostic metrics</p>
+<p>4. <strong>Plan Layout</strong> — Page structure, visual hierarchy, interactivity</p>
+<p>5. <strong>Create Calculated Fields</strong> — Custom metrics, CASE groupings, regex transformations</p>
+<p>6. <strong>Build Visualizations</strong> — Chart types matched to data types, consistent formatting</p>
+<p>7. <strong>Add Controls</strong> — Date range, filters, drill-down parameters</p>
+<p>8. <strong>Style &amp; Polish</strong> — Theme, colors, fonts, logos, white space</p>
+<p>9. <strong>Test &amp; Validate</strong> — Cross-reference numbers with source platforms</p>
+<p>10. <strong>Set Up Delivery</strong> — Scheduled emails, sharing permissions, embedding</p>
+<h2>Calculated Field Recipes</h2>
+<h3>Period-over-Period Comparison</h3>
+<pre><code>CASE
+  WHEN date_field &gt;= DATE_DIFF(TODAY(), INTERVAL 30 DAY) THEN &quot;Current Period&quot;
+  WHEN date_field &gt;= DATE_DIFF(TODAY(), INTERVAL 60 DAY) THEN &quot;Previous Period&quot;
+  ELSE &quot;Older&quot;
+END</code></pre>
+<h3>Channel Grouping (Custom)</h3>
+<pre><code>CASE
+  WHEN REGEXP_MATCH(source_medium, &quot;google.*cpc|google.*paid&quot;) THEN &quot;Google Ads&quot;
+  WHEN REGEXP_MATCH(source_medium, &quot;facebook|fb|meta|instagram&quot;) THEN &quot;Meta Ads&quot;
+  WHEN REGEXP_MATCH(source_medium, &quot;bing.*cpc|microsoft&quot;) THEN &quot;Microsoft Ads&quot;
+  WHEN REGEXP_MATCH(source_medium, &quot;email|klaviyo|braze&quot;) THEN &quot;Email&quot;
+  WHEN source_medium = &quot;organic&quot; THEN &quot;Organic Search&quot;
+  WHEN REGEXP_MATCH(source_medium, &quot;social&quot;) THEN &quot;Organic Social&quot;
+  ELSE &quot;Other&quot;
+END</code></pre>
+<h3>ROAS Calculation</h3>
+<pre><code>SUM(revenue) / SUM(cost)</code></pre>
+<h2>How to Use This Skill</h2>
+<p>Ask me questions like:</p>
+<ul>
+<li>&quot;Build a marketing performance dashboard in Looker Studio&quot;</li>
+<li>&quot;How do I connect Facebook Ads data to Looker Studio?&quot;</li>
+<li>&quot;Create a calculated field for custom channel grouping&quot;</li>
+<li>&quot;Design an executive summary page with KPI scorecards&quot;</li>
+<li>&quot;How do I blend Google Ads and GA4 data?&quot;</li>
+<li>&quot;Build an SEO dashboard with Search Console data&quot;</li>
+<li>&quot;What's the best way to show period-over-period comparisons?&quot;</li>
+<li>&quot;Help me set up automated email reports for my client&quot;</li>
+</ul>
+<p>For detailed Looker Studio function reference, connector setup guides, and advanced techniques, see [REFERENCE.md](REFERENCE.md).</p>
+<p>---</p>
+<h2>DTC Dashboard Recipes</h2>
+<p>Dashboard templates designed for DTC e-commerce teams running Klaviyo + Shopify + GA4.</p>
+<h3>1. CRM Performance Dashboard</h3>
+<p>Track email and SMS marketing effectiveness with Klaviyo data.</p>
+<pre><code>Page 1: Email &amp; SMS Overview
+|- Scorecards: Total Revenue, Flow Revenue %, Campaign Revenue %, List Size
+|- Revenue trend: flows vs campaigns over time (area chart)
+|- Channel split: email vs SMS revenue (stacked bar)
+|- Engagement tiers donut: Active / Warm / At-Risk / Lapsed
+
+Page 2: Flow Performance
+|- Flow revenue table (sortable by revenue, click rate)
+|- Welcome Series funnel (sent -&gt; opened -&gt; clicked -&gt; converted)
+|- Abandoned Cart recovery rate trend
+|- Flow-over-flow comparison (combo chart)
+
+Page 3: Campaign Performance
+|- Campaign table: send date, subject, open rate, click rate, revenue
+|- A/B test results (winner highlighting)
+|- Send time heatmap (day of week x hour)
+|- Unsubscribe rate trend</code></pre>
+<p><strong>Data source</strong>: Google Sheets (fed by `data_pipeline.py --action sync-klaviyo`)</p>
+<h3>2. Lifecycle Marketing Dashboard</h3>
+<p>Map flow performance across the customer journey.</p>
+<pre><code>Page 1: Journey Overview
+|- Stage funnel: Prospect -&gt; New Customer -&gt; Active -&gt; VIP -&gt; At-Risk -&gt; Lapsed
+|- Revenue by stage (horizontal bar)
+|- Stage transition rates
+
+Page 2: Stage Deep-Dive
+|- Filter control: select lifecycle stage
+|- Flow performance for selected stage
+|- Customer count trend per stage
+|- Revenue per customer by stage (combo chart)</code></pre>
+<h3>3. Revenue Attribution Dashboard</h3>
+<p>Reconcile Klaviyo-attributed revenue with Shopify actuals.</p>
+<pre><code>Page 1: Attribution Overview
+|- Scorecards: Shopify Revenue, Klaviyo Attributed, Attribution %, Gap
+|- Daily revenue: Shopify total vs Klaviyo attributed (dual axis)
+|- Channel breakdown: Email, SMS, Flows, Campaigns (stacked bar)
+|- Attribution gap trend line
+
+Page 2: Channel Detail
+|- Channel performance table (Klaviyo revenue per channel)
+|- Shopify source breakdown (UTM-based)
+|- Overlap analysis notes</code></pre>
+<p><strong>Data source</strong>: Blended — Shopify Orders sheet + Klaviyo Revenue sheet</p>
+<h3>4. Campaign ROI Tracker</h3>
+<p>Campaign-level ROI with A/B test insights.</p>
+<pre><code>Page 1: Campaign Scorecard
+|- Filter: date range, campaign type, channel
+|- Campaign table with conditional formatting (green/red on benchmarks)
+|- Revenue per recipient trend
+|- Best-performing subject lines (top 10)
+
+Page 2: Send Optimization
+|- Send time analysis (heatmap: day x hour)
+|- Audience size vs performance scatter
+|- Frequency analysis: sends per subscriber per month</code></pre>
+<h2>DTC Calculated Field Library</h2>
+<p>Copy-paste formulas for common DTC metrics in Looker Studio.</p>
+<h3>Customer Lifetime Value (LTV)</h3>
+<pre><code>SUM(total_revenue) / COUNT_DISTINCT(customer_email)</code></pre>
+<h3>Customer Acquisition Cost (CAC)</h3>
+<pre><code>SUM(ad_spend) / COUNT_DISTINCT(CASE WHEN order_number = 1 THEN customer_email ELSE NULL END)</code></pre>
+<h3>LTV:CAC Ratio</h3>
+<pre><code>(SUM(total_revenue) / COUNT_DISTINCT(customer_email)) / (SUM(ad_spend) / COUNT_DISTINCT(new_customer_email))</code></pre>
+<h3>Repeat Purchase Rate</h3>
+<pre><code>COUNT_DISTINCT(CASE WHEN order_count &gt; 1 THEN customer_email ELSE NULL END) / COUNT_DISTINCT(customer_email) * 100</code></pre>
+<h3>Flow Revenue Percentage</h3>
+<pre><code>SUM(CASE WHEN source_type = &quot;flow&quot; THEN revenue ELSE 0 END) / SUM(revenue) * 100</code></pre>
+<h3>Engagement Tier</h3>
+<pre><code>CASE
+  WHEN days_since_last_open &lt;= 30 THEN &quot;Active (0-30d)&quot;
+  WHEN days_since_last_open &lt;= 90 THEN &quot;Warm (31-90d)&quot;
+  WHEN days_since_last_open &lt;= 180 THEN &quot;At-Risk (91-180d)&quot;
+  ELSE &quot;Lapsed (180d+)&quot;
+END</code></pre>
+<h3>Revenue Per Recipient</h3>
+<pre><code>SUM(revenue) / SUM(recipients)</code></pre>
+<h3>Discount Impact</h3>
+<pre><code>SUM(discount_amount) / SUM(gross_revenue) * 100</code></pre>
+<h2>Data Source Setup</h2>
+<h3>Connecting Klaviyo Data (Free Method)</h3>
+<p>Paid connectors (Supermetrics, $30-100/mo) work but aren't necessary. The free pattern:</p>
+<p>1. <strong>Run the data pipeline script</strong> to push Klaviyo data to Google Sheets:</p>
+<p>   ```bash</p>
+<p>   python scripts/data_pipeline.py --action sync-klaviyo --sheet-id YOUR_SHEET_ID</p>
+<p>   ```</p>
+<p>2. <strong>In Looker Studio</strong>, add data source &gt; Google Sheets &gt; select the spreadsheet</p>
+<p>3. <strong>Set date field type</strong> to Date in the data source config</p>
+<p>4. <strong>Schedule sync</strong> — run the pipeline daily via cron or n8n</p>
+<h3>Connecting Shopify Data (Free Method)</h3>
+<p>1. Push order data to Sheets:</p>
+<p>   ```bash</p>
+<p>   python scripts/data_pipeline.py --action sync-shopify --sheet-id YOUR_SHEET_ID --days 30</p>
+<p>   ```</p>
+<p>2. Connect the Sheet in Looker Studio</p>
+<p>3. Blend with Klaviyo sheet on Date dimension for attribution view</p>
+<h3>Connecting GA4 Data (Native — Free)</h3>
+<p>1. In Looker Studio, add data source &gt; Google Analytics &gt; select your GA4 property</p>
+<p>2. No intermediary needed — native connector is comprehensive and free</p>
+<h3>Creating Pre-Formatted Sheets</h3>
+<pre><code># Create a sheet with correct headers for a CRM dashboard
+python scripts/data_pipeline.py --action create-sheet --template crm-dashboard
+
+# See all available templates
+python scripts/data_pipeline.py --action list-templates</code></pre>
+<h2>Analysis Examples</h2>
+<p>For complete dashboard build walkthroughs and use cases, see [EXAMPLES.md](EXAMPLES.md).</p>
+<h2>Scripts</h2>
+<p>The skill includes a data pipeline script for pushing data to Google Sheets:</p>
+<h3>Sync Klaviyo Data</h3>
+<pre><code>python scripts/data_pipeline.py --action sync-klaviyo --sheet-id SPREADSHEET_ID</code></pre>
+<h3>Sync Shopify Orders</h3>
+<pre><code>python scripts/data_pipeline.py --action sync-shopify --sheet-id SPREADSHEET_ID --days 30</code></pre>
+<h3>Create Dashboard Sheet</h3>
+<pre><code>python scripts/data_pipeline.py --action create-sheet --template crm-dashboard</code></pre>
+<h2>Troubleshooting</h2>
+<p><strong>Data not refreshing</strong>: Google Sheets data in Looker Studio caches for ~15 minutes. Force refresh with the &quot;Refresh data&quot; button in Looker Studio, or set the data source cache to 1 minute in report settings.</p>
+<p><strong>Calculated field errors</strong>: Common causes:</p>
+<ul>
+<li><strong>Comments in formulas</strong> — Looker Studio does NOT support `--`, `//`, or `/* */` comments. Never include comments in calculated field formulas. Use the field description for documentation instead.</li>
+<li><strong>Type mismatches</strong> — Ensure date fields are typed as Date (not Text) in the data source config. Use CAST() to convert between types.</li>
+<li><strong>Regex escaping</strong> — Patterns are inside string literals, so backslashes need double-escaping (e.g., `&quot;\\s&quot;` for whitespace, `&quot;\\|&quot;` for literal pipe).</li>
+</ul>
+<p><strong>Blending shows nulls</strong>: Left outer join means unmatched rows from the right source show null. Ensure join keys match exactly (case-sensitive, same date format).</p>
+<p><strong>Sheets row limit</strong>: Google Sheets has a 10M cell limit. For large datasets, aggregate before writing (daily summaries instead of per-event data), or use BigQuery instead.</p>
+<p><strong>Service account permission errors</strong>: The service account email must be shared on the target Google Sheet with Editor access. Check IAM permissions if Drive API calls fail.</p>
+<h2>Security &amp; Privacy</h2>
+<ul>
+<li><strong>Never hardcode</strong> API credentials in scripts — use `.env` files</li>
+<li>Store service account JSON <strong>outside</strong> version control</li>
+<li>Add `.env` and credential files to `.gitignore`</li>
+<li>The data pipeline writes to Google Sheets you control — data stays in your Google Workspace</li>
+<li>Pipeline scripts are read-only against Klaviyo and Shopify APIs</li>
+<li>Use least-privilege API scopes (read-only keys)</li>
+</ul></div>
+</div>
+<script>
+function copyInstall(btn) {
+  var text = btn.getAttribute('data-copy');
+  navigator.clipboard.writeText(text).then(function() {
+    btn.classList.add('copied');
+    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+    setTimeout(function() {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>

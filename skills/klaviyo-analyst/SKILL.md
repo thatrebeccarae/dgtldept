@@ -7,9 +7,11 @@ author: Rebecca Rae Barton
 author_url: https://github.com/thatrebeccarae
 metadata:
   version: 1.0.0
-  category: dtc-marketing
+  category: email-marketing
   domain: klaviyo
   updated: 2026-02-23
+  tested: 2026-03-17
+  tested_with: "Claude Code v2.1"
 ---
 
 # Klaviyo Marketing Analyst
@@ -17,6 +19,12 @@ metadata:
 Expert-level guidance for Klaviyo email and SMS marketing from the **marketing operations and analyst perspective** — auditing, building, and optimizing flows, segments, campaigns, and integrations.
 
 > For API integration, SDK usage, event tracking implementation, webhooks, and developer patterns, see the **klaviyo-developer** skill.
+
+## Install
+
+```bash
+git clone https://github.com/thatrebeccarae/claude-marketing.git && cp -r claude-marketing/skills/klaviyo-analyst ~/.claude/skills/
+```
 
 ## Core Capabilities
 

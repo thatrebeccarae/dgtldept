@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>wasted-spend-finder — claude-marketing</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-00XHYRHCX4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-00XHYRHCX4');
+</script>
+<meta name="description" content="Systematic analysis of Google Ads and Meta advertising spend to identify wasted budget. Produces actionable exclusion lists with thematic categorization and sta">
+<meta property="og:title" content="wasted-spend-finder — claude-marketing">
+<meta property="og:description" content="Systematic analysis of Google Ads and Meta advertising spend to identify wasted budget. Produces actionable exclusion lists with thematic categorization and statistical validation. Use when onboarding">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="wasted-spend-finder — claude-marketing">
+<meta name="twitter:description" content="Systematic analysis of Google Ads and Meta advertising spend to identify wasted budget. Produces actionable exclusion lists with thematic categorization and statistical validation. Use when onboarding">
+<link rel="canonical" href="https://thatrebeccarae.github.io/claude-marketing/skill/wasted-spend-finder.html">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600,700&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Ultralight.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cartograph CF';
+  src: url('../fonts/CartographCF-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --accent: #5B5F8D;
+  --black: #000000;
+  --white: #ffffff;
+  --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+html {
+  background: #000000;
+  color: #ffffff;
+}
+
+body {
+  font-family: 'Switzer', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(15px, 1.1vw, 17px);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.detail-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 120px clamp(20px, 5vw, 40px) 80px;
+}
+
+.detail-back {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+.detail-back:hover { opacity: 1; }
+
+.detail-name {
+  font-family: 'PP Editorial New', 'Georgia', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 200;
+  line-height: 1.15;
+  letter-spacing: -0.014em;
+  margin-bottom: 0.5rem;
+}
+
+.detail-category {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  letter-spacing: 0.04em;
+  margin-bottom: 2rem;
+}
+
+.detail-desc {
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.65;
+  margin-bottom: 2.5rem;
+  opacity: 0.85;
+}
+
+.detail-install {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.detail-install code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  opacity: 0.6;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.detail-install .copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  color: #ffffff;
+  flex-shrink: 0;
+}
+.detail-install .copy-btn:hover { opacity: 0.8; }
+.detail-install .copy-btn.copied { opacity: 1; color: #4ade80; }
+
+.detail-tested {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  opacity: 0.4;
+  margin-bottom: 2.5rem;
+}
+
+.detail-capabilities h2,
+.detail-sources h2,
+.detail-body h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  margin-top: 2.5rem;
+}
+
+.detail-capabilities ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.detail-capabilities li {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 4px;
+}
+
+.detail-source-links {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.detail-source-links a {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ffffff;
+  border-radius: 45px;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+.detail-source-links a:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+.detail-body {
+  margin-top: 2.5rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 2rem;
+}
+
+.detail-body h2 {
+  font-family: 'Switzer', sans-serif;
+}
+
+.detail-body h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.detail-body p {
+  margin-bottom: 1rem;
+  opacity: 0.85;
+  line-height: 1.65;
+}
+
+.detail-body ul {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.detail-body li {
+  margin-bottom: 0.35rem;
+  opacity: 0.85;
+  line-height: 1.55;
+}
+
+.detail-body pre {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+}
+
+.detail-body code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.85rem;
+}
+
+.detail-body blockquote {
+  border-left: 2px solid rgba(255,255,255,0.2);
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+@media (max-width: 700px) {
+  .detail-page {
+    padding: 100px 20px 60px;
+  }
+  .detail-source-links {
+    flex-wrap: wrap;
+  }
+}
+</style>
+</head>
+<body>
+<div class="detail-page" data-pagefind-body>
+  <a href="../skills.html" class="detail-back">&larr; Back to skills</a>
+  <h1 class="detail-name">wasted-spend-finder</h1>
+  <div class="detail-category">Paid Media</div>
+  <p class="detail-desc">Systematic analysis of Google Ads and Meta advertising spend to identify wasted budget. Produces actionable exclusion lists with thematic categorization and statistical validation. Use when onboarding new accounts, performing monthly hygiene, or preparing for budget optimization.</p>
+  <div class="detail-install">
+    <code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/wasted-spend-finder ~/.claude/skills/</code>
+    <button class="copy-btn" data-copy="git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/wasted-spend-finder ~/.claude/skills/" title="Copy install command" onclick="copyInstall(this)">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+    </button>
+  </div>
+  <div class="detail-tested">Tested 2026-03-17 &middot; Claude Code v2.1</div>
+  <div class="detail-capabilities"><h2>Capabilities</h2><ul><li>Google Ads Waste Detection</li><li>Meta Ads Waste Detection</li></ul></div>
+  <div class="detail-sources">
+<h2>Source Files</h2>
+<div class="detail-source-links">
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/wasted-spend-finder/SKILL.md" target="_blank" rel="noopener">SKILL.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/wasted-spend-finder/REFERENCE.md" target="_blank" rel="noopener">REFERENCE.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/wasted-spend-finder/EXAMPLES.md" target="_blank" rel="noopener">EXAMPLES.md</a>
+</div>
+</div>
+  <div class="detail-body"><p>Identify and categorize wasted ad spend across Google Ads and Meta platforms. Produces uploadable exclusion lists with thematic categorization.</p>
+<h2>Install</h2>
+<pre><code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/wasted-spend-finder ~/.claude/skills/</code></pre>
+<h2>Core Capabilities</h2>
+<h3>Google Ads Waste Detection</h3>
+<p>1. <strong>Search Term Waste</strong> — zero-conversion terms above spend threshold</p>
+<p>2. <strong>Placement Waste</strong> — Display Network sites/apps and YouTube channels with no conversions</p>
+<p>3. <strong>Keyword-Level Waste</strong> — low conversion rate keywords relative to spend</p>
+<h3>Meta Ads Waste Detection</h3>
+<p>1. <strong>Placement Waste</strong> — Audience Network apps, low-quality inventory</p>
+<p>2. <strong>Audience Segment Waste</strong> — lookalike/interest targeting with poor performance</p>
+<p>3. <strong>Creative Waste</strong> — high frequency + zero conversions, creative fatigue</p>
+<h2>Waste Thresholds</h2>
+<h3>Spend Threshold Formula</h3>
+<pre><code>Waste threshold = Average CPA x Multiplier
+
+Multiplier by campaign type:
+- Search (branded): 2x CPA
+- Search (non-brand): 3x CPA
+- Display: 3x CPA
+- Meta (all): 2.5x CPA</code></pre>
+<p>A search term, placement, or audience segment is flagged as waste when:</p>
+<ul>
+<li>Spend exceeds the threshold AND</li>
+<li>Conversions = 0 AND</li>
+<li>Minimum click threshold is met</li>
+</ul>
+<h3>Minimum Click Thresholds</h3>
+<p>| Campaign Type | Min Clicks Before Flagging |</p>
+<p>|---------------|---------------------------|</p>
+<p>| Search (branded) | 50 |</p>
+<p>| Search (non-brand) | 25 |</p>
+<p>| Display / GDN | 15 |</p>
+<p>| YouTube | 20 |</p>
+<p>| Meta Feed | 20 |</p>
+<p>| Meta Stories | 15 |</p>
+<p>| Meta Audience Network | 10 |</p>
+<h3>Conversion Rate Minimums</h3>
+<p>Flag keywords/placements performing below these floors:</p>
+<p>| Campaign Type | Min Conversion Rate |</p>
+<p>|---------------|-------------------|</p>
+<p>| Search (branded) | 8% |</p>
+<p>| Search (non-brand) | 1.5% |</p>
+<p>| Display | 0.3% |</p>
+<p>| YouTube | 0.2% |</p>
+<p>| Meta Feed | 0.5% |</p>
+<p>| Meta Stories | 0.3% |</p>
+<h2>Negative Keyword Categorization</h2>
+<p>Classify wasted search terms into themes for organized exclusion:</p>
+<p>| Theme | Pattern | Match Type |</p>
+<p>|-------|---------|------------|</p>
+<p>| Competitor terms | Brand names, product names | Exact / Phrase |</p>
+<p>| Informational intent | how to, what is, tutorial, guide, definition | Phrase |</p>
+<p>| Wrong product/service | Related but non-target products | Phrase / Exact |</p>
+<p>| Geographic irrelevance | Wrong cities, states, countries | Exact |</p>
+<p>| Job/career searches | jobs, salary, hiring, career, resume | Phrase |</p>
+<p>| Free/cheap intent | free, cheap, discount, coupon, deal | Phrase |</p>
+<p>| Irrelevant modifiers | DIY, homemade, kids, old, used | Phrase |</p>
+<h2>Placement Exclusion Categories</h2>
+<h3>Google Display Network</h3>
+<ul>
+<li>Low-quality apps (game apps, utility apps, kids apps)</li>
+<li>Parked domains and MFA (made-for-advertising) sites</li>
+<li>Irrelevant content categories</li>
+</ul>
+<h3>YouTube</h3>
+<ul>
+<li>Music videos and lyrics channels</li>
+<li>Kids and animation content</li>
+<li>Gaming content (unless relevant)</li>
+<li>Clickbait and low-quality channels</li>
+</ul>
+<h3>Meta Audience Network</h3>
+<ul>
+<li>Game apps</li>
+<li>Utility and calculator apps</li>
+<li>Foreign language apps</li>
+<li>Apps with under 100 reviews</li>
+</ul>
+<h2>Workflow</h2>
+<h3>1. Data Collection</h3>
+<p>Pull data for the analysis period (typically 30-90 days):</p>
+<p><strong>Google Ads:</strong></p>
+<ul>
+<li>Search terms report</li>
+<li>Placement report (Display + YouTube)</li>
+<li>Keyword performance report</li>
+<li>Campaign/ad group settings for CPA benchmarks</li>
+</ul>
+<p><strong>Meta Ads:</strong></p>
+<ul>
+<li>Placement breakdown report</li>
+<li>Audience breakdown report</li>
+<li>Ad-level report with frequency data</li>
+</ul>
+<h3>2. Apply Thresholds</h3>
+<p>Calculate waste threshold per campaign using the formula above. Flag items exceeding thresholds.</p>
+<h3>3. Categorize</h3>
+<p>Assign each flagged item to a theme category. Group for batch exclusion.</p>
+<h3>4. Generate Exclusion Lists</h3>
+<p>Output CSV files ready for upload:</p>
+<ul>
+<li>`negative-keywords.csv` — with match type and campaign/ad group scope</li>
+<li>`placement-exclusions.csv` — with reason and spend wasted</li>
+<li>`audience-exclusions.csv` — with segment details and waste amount</li>
+</ul>
+<h3>5. Validate</h3>
+<ul>
+<li>Cross-check that exclusions do not remove converting terms</li>
+<li>Verify match types will not over-exclude</li>
+<li>Estimate savings from the proposed exclusions</li>
+</ul>
+<h2>Safety Rules</h2>
+<p>1. <strong>Analysis only.</strong> Never make live account changes without human review.</p>
+<p>2. <strong>Projections are estimates.</strong> Label all savings projections clearly.</p>
+<p>3. <strong>Check for false positives.</strong> Some high-spend zero-conversion terms may be in a consideration window.</p>
+<p>4. <strong>Consider attribution.</strong> View-through and assisted conversions may justify some &quot;wasted&quot; spend.</p>
+<p>5. <strong>Preserve data.</strong> Export current state before applying any exclusions.</p>
+<p>For GAQL query patterns and CSV formats, see [REFERENCE.md](REFERENCE.md).</p></div>
+</div>
+<script>
+function copyInstall(btn) {
+  var text = btn.getAttribute('data-copy');
+  navigator.clipboard.writeText(text).then(function() {
+    btn.classList.add('copied');
+    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+    setTimeout(function() {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>

@@ -10,11 +10,19 @@ metadata:
   category: dtc-marketing
   domain: google-analytics
   updated: 2026-02-23
+  tested: 2026-03-17
+  tested_with: "Claude Code v2.1"
 ---
 
 # Google Analytics Analysis
 
 Analyze website performance using Google Analytics data to provide actionable insights and improvement recommendations.
+
+## Install
+
+```bash
+git clone https://github.com/thatrebeccarae/claude-marketing.git && cp -r claude-marketing/skills/google-analytics ~/.claude/skills/
+```
 
 ## Quick Start
 

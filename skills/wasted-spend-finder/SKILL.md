@@ -10,11 +10,19 @@ metadata:
   category: paid-media
   domain: optimization
   updated: 2026-03-13
+  tested: 2026-03-17
+  tested_with: "Claude Code v2.1"
 ---
 
 # Wasted Spend Finder
 
 Identify and categorize wasted ad spend across Google Ads and Meta platforms. Produces uploadable exclusion lists with thematic categorization.
+
+## Install
+
+```bash
+git clone https://github.com/thatrebeccarae/claude-marketing.git && cp -r claude-marketing/skills/wasted-spend-finder ~/.claude/skills/
+```
 
 ## Core Capabilities
 

@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>seo-content-writer — claude-marketing</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-00XHYRHCX4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-00XHYRHCX4');
+</script>
+<meta name="description" content="SEO-optimized content creation with brand voice analysis and platform-specific frameworks. Covers blog posts, social media, email marketing, and landing pages. ">
+<meta property="og:title" content="seo-content-writer — claude-marketing">
+<meta property="og:description" content="SEO-optimized content creation with brand voice analysis and platform-specific frameworks. Covers blog posts, social media, email marketing, and landing pages. Includes keyword integration, readabilit">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="seo-content-writer — claude-marketing">
+<meta name="twitter:description" content="SEO-optimized content creation with brand voice analysis and platform-specific frameworks. Covers blog posts, social media, email marketing, and landing pages. Includes keyword integration, readabilit">
+<link rel="canonical" href="https://thatrebeccarae.github.io/claude-marketing/skill/seo-content-writer.html">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600,700&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Ultralight.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cartograph CF';
+  src: url('../fonts/CartographCF-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --accent: #5B5F8D;
+  --black: #000000;
+  --white: #ffffff;
+  --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+html {
+  background: #000000;
+  color: #ffffff;
+}
+
+body {
+  font-family: 'Switzer', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(15px, 1.1vw, 17px);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.detail-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 120px clamp(20px, 5vw, 40px) 80px;
+}
+
+.detail-back {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+.detail-back:hover { opacity: 1; }
+
+.detail-name {
+  font-family: 'PP Editorial New', 'Georgia', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 200;
+  line-height: 1.15;
+  letter-spacing: -0.014em;
+  margin-bottom: 0.5rem;
+}
+
+.detail-category {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  letter-spacing: 0.04em;
+  margin-bottom: 2rem;
+}
+
+.detail-desc {
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.65;
+  margin-bottom: 2.5rem;
+  opacity: 0.85;
+}
+
+.detail-install {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.detail-install code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  opacity: 0.6;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.detail-install .copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  color: #ffffff;
+  flex-shrink: 0;
+}
+.detail-install .copy-btn:hover { opacity: 0.8; }
+.detail-install .copy-btn.copied { opacity: 1; color: #4ade80; }
+
+.detail-tested {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  opacity: 0.4;
+  margin-bottom: 2.5rem;
+}
+
+.detail-capabilities h2,
+.detail-sources h2,
+.detail-body h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  margin-top: 2.5rem;
+}
+
+.detail-capabilities ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.detail-capabilities li {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 4px;
+}
+
+.detail-source-links {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.detail-source-links a {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ffffff;
+  border-radius: 45px;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+.detail-source-links a:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+.detail-body {
+  margin-top: 2.5rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 2rem;
+}
+
+.detail-body h2 {
+  font-family: 'Switzer', sans-serif;
+}
+
+.detail-body h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.detail-body p {
+  margin-bottom: 1rem;
+  opacity: 0.85;
+  line-height: 1.65;
+}
+
+.detail-body ul {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.detail-body li {
+  margin-bottom: 0.35rem;
+  opacity: 0.85;
+  line-height: 1.55;
+}
+
+.detail-body pre {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+}
+
+.detail-body code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.85rem;
+}
+
+.detail-body blockquote {
+  border-left: 2px solid rgba(255,255,255,0.2);
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+@media (max-width: 700px) {
+  .detail-page {
+    padding: 100px 20px 60px;
+  }
+  .detail-source-links {
+    flex-wrap: wrap;
+  }
+}
+</style>
+</head>
+<body>
+<div class="detail-page" data-pagefind-body>
+  <a href="../skills.html" class="detail-back">&larr; Back to skills</a>
+  <h1 class="detail-name">seo-content-writer</h1>
+  <div class="detail-category">Content</div>
+  <p class="detail-desc">SEO-optimized content creation with brand voice analysis and platform-specific frameworks. Covers blog posts, social media, email marketing, and landing pages. Includes keyword integration, readability optimization, and performance metrics.</p>
+  <div class="detail-install">
+    <code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/seo-content-writer ~/.claude/skills/</code>
+    <button class="copy-btn" data-copy="git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/seo-content-writer ~/.claude/skills/" title="Copy install command" onclick="copyInstall(this)">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+    </button>
+  </div>
+  <div class="detail-tested">Tested 2026-03-17 &middot; Claude Code v2.1</div>
+  <div class="detail-capabilities"><h2>Capabilities</h2><ul><li>Brand Voice Development</li><li>SEO Optimization</li><li>Content Frameworks</li></ul></div>
+  <div class="detail-sources">
+<h2>Source Files</h2>
+<div class="detail-source-links">
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/seo-content-writer/SKILL.md" target="_blank" rel="noopener">SKILL.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/seo-content-writer/REFERENCE.md" target="_blank" rel="noopener">REFERENCE.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/seo-content-writer/EXAMPLES.md" target="_blank" rel="noopener">EXAMPLES.md</a>
+</div>
+</div>
+  <div class="detail-body"><p>Create SEO-optimized content with consistent brand voice across platforms.</p>
+<h2>Install</h2>
+<pre><code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/seo-content-writer ~/.claude/skills/</code></pre>
+<h2>Core Capabilities</h2>
+<h3>Brand Voice Development</h3>
+<ul>
+<li>Analyze existing content for voice characteristics</li>
+<li>Define personality archetypes and tone attributes</li>
+<li>Build voice consistency guidelines</li>
+<li>Create sample voice documents for team alignment</li>
+</ul>
+<h3>SEO Optimization</h3>
+<ul>
+<li>Keyword research and natural integration</li>
+<li>Title tag and meta description optimization</li>
+<li>Header hierarchy (H1-H4) structure</li>
+<li>Internal linking strategy</li>
+<li>Content depth recommendations by type</li>
+<li>Readability scoring (Flesch-Kincaid, Gunning Fog)</li>
+</ul>
+<h3>Content Frameworks</h3>
+<ul>
+<li><strong>Blog posts:</strong> how-to, listicle, thought leadership, case study, comparison</li>
+<li><strong>Social media:</strong> LinkedIn, Twitter/X, Instagram</li>
+<li><strong>Email marketing:</strong> subject lines, preview text, body copy</li>
+<li><strong>Landing pages:</strong> hero, features, social proof, CTA</li>
+<li><strong>Product descriptions:</strong> benefit-driven, SEO-optimized</li>
+</ul>
+<h2>Workflow</h2>
+<h3>1. Define Voice (if not established)</h3>
+<p>Ask the user for 3-5 examples of content they like. Analyze for:</p>
+<ul>
+<li>Tone (formal ↔ casual)</li>
+<li>Perspective (first person, second person, third person)</li>
+<li>Vocabulary level (technical ↔ accessible)</li>
+<li>Sentence structure (short/punchy ↔ flowing/complex)</li>
+<li>Personality traits (authoritative, friendly, provocative, empathetic)</li>
+</ul>
+<h3>2. Research Keywords</h3>
+<p>For SEO content:</p>
+<ul>
+<li>Identify primary keyword (1) and secondary keywords (3-5)</li>
+<li>Check search intent (informational, transactional, navigational)</li>
+<li>Note competing content and gaps</li>
+<li>Plan header structure around keyword clusters</li>
+</ul>
+<h3>3. Draft Content</h3>
+<p>Follow the appropriate framework from REFERENCE.md. Ensure:</p>
+<ul>
+<li>Primary keyword in title, H1, first 100 words, and meta description</li>
+<li>Secondary keywords distributed naturally through H2s and body</li>
+<li>Readability at appropriate level for the audience</li>
+<li>Clear CTA aligned with content goal</li>
+</ul>
+<h3>4. Optimize</h3>
+<ul>
+<li>Check keyword density (1-2% for primary, &lt;1% for secondary)</li>
+<li>Verify header hierarchy (single H1, logical H2/H3 nesting)</li>
+<li>Add internal links to related content</li>
+<li>Write meta title (50-60 chars) and meta description (150-160 chars)</li>
+<li>Verify readability score matches target audience</li>
+</ul>
+<h2>Content Type Guidelines</h2>
+<p>| Type | Target Length | Readability | Keywords |</p>
+<p>|------|-------------|-------------|----------|</p>
+<p>| Blog (how-to) | 1,500-2,500 words | Grade 7-9 | 1 primary + 3-5 secondary |</p>
+<p>| Blog (thought leadership) | 800-1,500 words | Grade 9-12 | 1-2 keywords, lighter touch |</p>
+<p>| LinkedIn post | 150-300 words | Conversational | 0-1 hashtag-keywords |</p>
+<p>| Twitter thread | 5-12 tweets | Punchy, scannable | Topic-relevant, not forced |</p>
+<p>| Email body | 100-200 words | Grade 6-8 | None (engagement-focused) |</p>
+<p>| Landing page | 500-1,000 words | Grade 6-8 | 1 primary + 2-3 secondary |</p>
+<p>| Product description | 150-300 words | Grade 7-9 | 1 primary + 1-2 secondary |</p>
+<h2>Key Principles</h2>
+<p>1. <strong>Write for humans first, search engines second.</strong> Natural language &gt; keyword stuffing.</p>
+<p>2. <strong>Match search intent.</strong> Informational queries need guides, not sales pages.</p>
+<p>3. <strong>Front-load value.</strong> The first paragraph should answer the core question.</p>
+<p>4. <strong>One CTA per piece.</strong> Do not dilute with multiple asks.</p>
+<p>5. <strong>Scannable structure.</strong> Headers, bullets, bold key phrases. Most readers skim.</p>
+<p>For detailed platform specs, SEO checklists, and content frameworks, see [REFERENCE.md](REFERENCE.md).</p>
+<h2>Brand Context (Optional)</h2>
+<p>If `brand-profile.json` exists in the working directory, read it before drafting content. Use the voice axes and descriptors to calibrate tone, the target audience to frame pain points and aspirations, and brand values to weave into messaging naturally. This profile is produced by the `brand-dna` skill.</p></div>
+</div>
+<script>
+function copyInstall(btn) {
+  var text = btn.getAttribute('data-copy');
+  navigator.clipboard.writeText(text).then(function() {
+    btn.classList.add('copied');
+    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+    setTimeout(function() {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>

@@ -7,14 +7,22 @@ author: Rebecca Rae Barton
 author_url: https://github.com/thatrebeccarae
 metadata:
   version: 1.0.0
-  category: dtc-marketing
+  category: reporting
   domain: presentations
   updated: 2026-02-23
+  tested: 2026-03-17
+  tested_with: "Claude Code v2.1"
 ---
 
 # Presentation Designer
 
 VC-backed SaaS design quality for PowerPoint. Think Linear, Attio, Vercel, Raycast — not corporate clip art.
+
+## Install
+
+```bash
+git clone https://github.com/thatrebeccarae/claude-marketing.git && cp -r claude-marketing/skills/pro-deck-builder ~/.claude/skills/
+```
 
 ## Quick Reference
 

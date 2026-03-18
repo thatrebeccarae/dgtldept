@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>klaviyo-developer — claude-marketing</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-00XHYRHCX4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-00XHYRHCX4');
+</script>
+<meta name="description" content="Klaviyo API and developer integration expertise. Event tracking, SDKs, webhooks, rate limits, OAuth, catalog sync, and code patterns. Use when the user asks abo">
+<meta property="og:title" content="klaviyo-developer — claude-marketing">
+<meta property="og:description" content="Klaviyo API and developer integration expertise. Event tracking, SDKs, webhooks, rate limits, OAuth, catalog sync, and code patterns. Use when the user asks about Klaviyo API, integrating with Klaviyo">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="klaviyo-developer — claude-marketing">
+<meta name="twitter:description" content="Klaviyo API and developer integration expertise. Event tracking, SDKs, webhooks, rate limits, OAuth, catalog sync, and code patterns. Use when the user asks about Klaviyo API, integrating with Klaviyo">
+<link rel="canonical" href="https://thatrebeccarae.github.io/claude-marketing/skill/klaviyo-developer.html">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600,700&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Ultralight.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cartograph CF';
+  src: url('../fonts/CartographCF-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --accent: #5B5F8D;
+  --black: #000000;
+  --white: #ffffff;
+  --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+html {
+  background: #000000;
+  color: #ffffff;
+}
+
+body {
+  font-family: 'Switzer', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(15px, 1.1vw, 17px);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.detail-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 120px clamp(20px, 5vw, 40px) 80px;
+}
+
+.detail-back {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+.detail-back:hover { opacity: 1; }
+
+.detail-name {
+  font-family: 'PP Editorial New', 'Georgia', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 200;
+  line-height: 1.15;
+  letter-spacing: -0.014em;
+  margin-bottom: 0.5rem;
+}
+
+.detail-category {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  letter-spacing: 0.04em;
+  margin-bottom: 2rem;
+}
+
+.detail-desc {
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.65;
+  margin-bottom: 2.5rem;
+  opacity: 0.85;
+}
+
+.detail-install {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.detail-install code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  opacity: 0.6;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.detail-install .copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  color: #ffffff;
+  flex-shrink: 0;
+}
+.detail-install .copy-btn:hover { opacity: 0.8; }
+.detail-install .copy-btn.copied { opacity: 1; color: #4ade80; }
+
+.detail-tested {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  opacity: 0.4;
+  margin-bottom: 2.5rem;
+}
+
+.detail-capabilities h2,
+.detail-sources h2,
+.detail-body h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  margin-top: 2.5rem;
+}
+
+.detail-capabilities ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.detail-capabilities li {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 4px;
+}
+
+.detail-source-links {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.detail-source-links a {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ffffff;
+  border-radius: 45px;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+.detail-source-links a:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+.detail-body {
+  margin-top: 2.5rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 2rem;
+}
+
+.detail-body h2 {
+  font-family: 'Switzer', sans-serif;
+}
+
+.detail-body h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.detail-body p {
+  margin-bottom: 1rem;
+  opacity: 0.85;
+  line-height: 1.65;
+}
+
+.detail-body ul {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.detail-body li {
+  margin-bottom: 0.35rem;
+  opacity: 0.85;
+  line-height: 1.55;
+}
+
+.detail-body pre {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+}
+
+.detail-body code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.85rem;
+}
+
+.detail-body blockquote {
+  border-left: 2px solid rgba(255,255,255,0.2);
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+@media (max-width: 700px) {
+  .detail-page {
+    padding: 100px 20px 60px;
+  }
+  .detail-source-links {
+    flex-wrap: wrap;
+  }
+}
+</style>
+</head>
+<body>
+<div class="detail-page" data-pagefind-body>
+  <a href="../skills.html" class="detail-back">&larr; Back to skills</a>
+  <h1 class="detail-name">klaviyo-developer</h1>
+  <div class="detail-category">Email &amp; Lifecycle</div>
+  <p class="detail-desc">Klaviyo API and developer integration expertise. Event tracking, SDKs, webhooks, rate limits, OAuth, catalog sync, and code patterns. Use when the user asks about Klaviyo API, integrating with Klaviyo, tracking events, building custom integrations, webhook handling, or developer implementation. For marketing strategy, flow optimization, and campaign auditing, see the klaviyo-analyst skill.</p>
+  <div class="detail-install">
+    <code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/klaviyo-developer ~/.claude/skills/</code>
+    <button class="copy-btn" data-copy="git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/klaviyo-developer ~/.claude/skills/" title="Copy install command" onclick="copyInstall(this)">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+    </button>
+  </div>
+  <div class="detail-tested">Tested 2026-03-17 &middot; Claude Code v2.1</div>
+  <div class="detail-capabilities"><h2>Capabilities</h2><ul><li>API Authentication &amp; Versioning</li><li>Custom Event Tracking</li><li>Profile Management</li><li>Webhooks</li><li>SDK Usage &amp; Libraries</li><li>Catalog &amp; Product Feed Sync</li><li>Data Export &amp; Warehouse Sync</li></ul></div>
+  <div class="detail-sources">
+<h2>Source Files</h2>
+<div class="detail-source-links">
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/klaviyo-developer/SKILL.md" target="_blank" rel="noopener">SKILL.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/klaviyo-developer/REFERENCE.md" target="_blank" rel="noopener">REFERENCE.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/klaviyo-developer/EXAMPLES.md" target="_blank" rel="noopener">EXAMPLES.md</a>
+</div>
+</div>
+  <div class="detail-body"><p>Expert-level guidance for building with the Klaviyo API — custom event tracking, profile management, SDK integration, webhooks, catalog sync, and data pipeline architecture.</p>
+<blockquote>For marketing strategy, flow auditing, segmentation, deliverability, and campaign optimization, see the <strong>klaviyo-analyst</strong> skill.</blockquote>
+<h2>Install</h2>
+<pre><code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/klaviyo-developer ~/.claude/skills/</code></pre>
+<h2>Core Capabilities</h2>
+<h3>API Authentication &amp; Versioning</h3>
+<ul>
+<li>Private API key setup and key management best practices</li>
+<li>Public API key usage for client-side tracking (klaviyo.js)</li>
+<li>OAuth 2.0 authorization flow for third-party apps</li>
+<li>API revision headers and version lifecycle management</li>
+</ul>
+<h3>Custom Event Tracking</h3>
+<ul>
+<li>Server-side event tracking via Events API</li>
+<li>Client-side tracking with klaviyo.js</li>
+<li>Event schema design and property naming conventions</li>
+<li>Idempotent event submission patterns</li>
+</ul>
+<h3>Profile Management</h3>
+<ul>
+<li>Profile create, upsert, and bulk import patterns</li>
+<li>Custom property management and data types</li>
+<li>Subscription management (email, SMS consent)</li>
+<li>Profile merge and deduplication strategies</li>
+</ul>
+<h3>Webhooks</h3>
+<ul>
+<li>Webhook subscription setup and event types</li>
+<li>Payload verification and signature validation</li>
+<li>Retry handling and idempotent webhook processing</li>
+</ul>
+<h3>SDK Usage &amp; Libraries</h3>
+<ul>
+<li>Python SDK (klaviyo-api)</li>
+<li>Node.js SDK (klaviyo-api-node)</li>
+<li>Ruby, PHP, and other community SDKs</li>
+<li>SDK initialization, error handling, and retry configuration</li>
+</ul>
+<h3>Catalog &amp; Product Feed Sync</h3>
+<ul>
+<li>Catalog item create/update/delete via API</li>
+<li>Category and variant management</li>
+<li>Product feed sync architecture for recommendations</li>
+<li>Handling large catalogs with bulk operations</li>
+</ul>
+<h3>Data Export &amp; Warehouse Sync</h3>
+<ul>
+<li>Metric aggregation API for reporting</li>
+<li>Profile and event export patterns</li>
+<li>Cursor-based pagination for large datasets</li>
+<li>ETL pipeline design for data warehouse integration</li>
+</ul>
+<h2>SDK Quick Reference</h2>
+<p>| Language | Package | Install |</p>
+<p>|----------|---------|---------|</p>
+<p>| Python | `klaviyo-api` | `pip install klaviyo-api` |</p>
+<p>| Node.js | `klaviyo-api` | `npm install klaviyo-api` |</p>
+<p>| Ruby | `klaviyo-api-sdk` | `gem install klaviyo-api-sdk` |</p>
+<p>| PHP | `klaviyo/api` | `composer require klaviyo/api` |</p>
+<h2>Rate Limits</h2>
+<p>| Endpoint Category | Limit | Window |</p>
+<p>|-------------------|-------|--------|</p>
+<p>| Most endpoints | 75 requests | per second |</p>
+<p>| Bulk imports | 10 requests | per second |</p>
+<p>| Profile/Event create | 350 requests | per second |</p>
+<p>| Campaign send | 10 requests | per second |</p>
+<p>Headers returned: `RateLimit-Limit`, `RateLimit-Remaining`, `RateLimit-Reset`</p>
+<h2>API Revision Timeline</h2>
+<p>| Revision | Key Changes |</p>
+<p>|----------|-------------|</p>
+<p>| 2026-01-15 | Latest. Custom Objects Ingestion, Geofencing API (beta). |</p>
+<p>| 2025-10-15 | Forms API, Flow Actions API, SMS ROI reporting. |</p>
+<p>| 2025-07-15 | Mapped Metrics API, Custom Objects API (GA). |</p>
+<p>| 2025-04-15 | Web Feeds API, Custom Metrics, Push Token registration. |</p>
+<p>| 2025-01-15 | Reviews APIs, Flows Create API, Campaign image management. |</p>
+<p>| 2024-10-15 | Universal Content API, Form/Segment Reporting, Reviews API. |</p>
+<p>| 2024-07-15 | Forms API (retrieval), Webhooks API. |</p>
+<p>| 2024-02-15 | Reporting API, Create or Update Profile (upsert). |</p>
+<p>Always include the `revision` header in API requests.</p>
+<h2>Essential Developer Checklist</h2>
+<p>1. <strong>API key management</strong> — Store private keys in environment variables, never commit to source. Rotate keys periodically.</p>
+<p>2. <strong>Revision header</strong> — Always include `revision: YYYY-MM-DD` header. Pin to a specific version.</p>
+<p>3. <strong>Rate limit handling</strong> — Implement exponential backoff with jitter on 429 responses.</p>
+<p>4. <strong>Idempotent events</strong> — Include a unique `unique_id` property to prevent duplicate event tracking.</p>
+<p>5. <strong>Profile upserts</strong> — Use `POST /profiles/` with existing identifier for upsert behavior (creates or updates).</p>
+<p>6. <strong>Webhook verification</strong> — Validate webhook signatures before processing payloads.</p>
+<p>7. <strong>Pagination</strong> — Use cursor-based pagination for list endpoints. Never assume result counts.</p>
+<p>8. <strong>Error handling</strong> — Parse JSON:API error responses. Handle 4xx (client) and 5xx (server) differently.</p>
+<p>9. <strong>SDK initialization</strong> — Configure SDK with API key at app startup, not per-request.</p>
+<p>10. <strong>Testing</strong> — Use Klaviyo test/sandbox accounts. Mock API responses in unit tests.</p>
+<h2>Workflow: Custom Integration Setup</h2>
+<p>When building a custom Klaviyo integration:</p>
+<p>1. <strong>Define requirements</strong> — What events to track, what profile data to sync, what triggers are needed</p>
+<p>2. <strong>API key provisioning</strong> — Create a private API key with minimum required scopes</p>
+<p>3. <strong>Event schema design</strong> — Map business events to Klaviyo metric names and properties</p>
+<p>4. <strong>Profile sync strategy</strong> — Determine identifier (email vs phone vs external_id), upsert frequency</p>
+<p>5. <strong>Implement tracking</strong> — Server-side event tracking with proper error handling and retries</p>
+<p>6. <strong>Catalog sync</strong> (if applicable) — Product feed sync for recommendations and browse abandonment</p>
+<p>7. <strong>Webhook setup</strong> — Subscribe to relevant events, implement handler with signature verification</p>
+<p>8. <strong>Rate limit strategy</strong> — Queue and throttle API calls, implement backoff</p>
+<p>9. <strong>Monitoring</strong> — Log API errors, track event delivery rates, alert on failures</p>
+<p>10. <strong>Testing &amp; validation</strong> — Verify events appear in Klaviyo, test flow triggers, validate profile data</p>
+<h2>Workflow: Integration Health Audit</h2>
+<p>When auditing an existing Klaviyo integration for health and data quality:</p>
+<p>1. <strong>Inventory active integrations</strong> — List all configured integrations (built-in and custom). Identify active vs stale connections.</p>
+<p>2. <strong>Map event sources</strong> — For each metric in the account, identify its source (built-in integration, custom API, Klaviyo-internal, form). Flag metrics with zero recent volume.</p>
+<p>3. <strong>Audit event schemas</strong> — Pull property structures for key events (Placed Order, Started Checkout, Viewed Product, Added to Cart). Check for:</p>
+<p>   - Missing standard properties (e.g., `$value`, `ItemNames`, line items)</p>
+<p>   - Duplicate/redundant metrics (e.g., &quot;Placed Order&quot; and &quot;Order Placed&quot; from different sources)</p>
+<p>   - Inconsistent property naming (camelCase vs snake_case across events)</p>
+<p>4. <strong>Check profile data pipeline</strong> — Verify profile properties are being synced correctly. Look for:</p>
+<p>   - Properties set by API vs properties set by events</p>
+<p>   - Stale properties (set once, never updated)</p>
+<p>   - Properties used in segmentation vs properties sitting unused</p>
+<p>5. <strong>Review catalog sync</strong> — Verify product catalog is synced and fresh. Check:</p>
+<p>   - Total catalog items vs expected product count</p>
+<p>   - Last sync timestamp</p>
+<p>   - Variant coverage (are variants synced or just parent products?)</p>
+<p>   - Category structure completeness</p>
+<p>6. <strong>Assess flow trigger architecture</strong> — Map how flows are triggered:</p>
+<p>   - Direct metric triggers (robust) vs segment-entry triggers via API-synced properties (brittle)</p>
+<p>   - Single points of failure (if API sync breaks, do all flows stop?)</p>
+<p>   - Trigger redundancy and fallback patterns</p>
+<p>7. <strong>Identify data accessibility gaps</strong> — Check for data that exists in event payloads but isn't usable:</p>
+<p>   - Nested objects in event properties (can use in templates, cannot use in segments/splits)</p>
+<p>   - Properties available in events but not synced to profiles (can't segment on them)</p>
+<p>   - Events tracked but not used in any flow or segment</p>
+<p>8. <strong>Produce integration health report</strong> — Document findings with severity ratings:</p>
+<p>   - <strong>Critical</strong>: Integration failures, broken event tracking, data loss</p>
+<p>   - <strong>High</strong>: Missing standard events, duplicate metrics, flow trigger fragility</p>
+<p>   - <strong>Medium</strong>: Unused events, incomplete catalog, stale profile properties</p>
+<p>   - <strong>Low</strong>: Naming inconsistencies, optimization opportunities</p>
+<h2>Event Schema Best Practices</h2>
+<h3>Property Naming Conventions</h3>
+<ul>
+<li>Use <strong>PascalCase</strong> for standard Klaviyo properties: `ProductName`, `ItemPrice`, `OrderId`</li>
+<li>Use <strong>snake_case</strong> for custom properties: `business_type`, `account_id`, `reorder_count`</li>
+<li>Never mix conventions within a single event — pick one and be consistent</li>
+<li>Prefix custom properties to avoid collision with Klaviyo-reserved names</li>
+</ul>
+<h3>Required Properties by Event</h3>
+<p>| Event | Required Properties | Revenue Property |</p>
+<p>|-------|-------------------|------------------|</p>
+<p>| Placed Order | `$value`, `OrderId`, `Items[]` (line items) | `$value` |</p>
+<p>| Started Checkout | `$value`, `CheckoutURL`, `Items[]` | `$value` |</p>
+<p>| Viewed Product | `ProductName`, `ProductID`, `URL`, `ImageURL` | — |</p>
+<p>| Added to Cart | `$value`, `AddedItemProductName`, `AddedItemProductID`, `Items[]` | `$value` |</p>
+<p>| Fulfilled Order | `$value`, `OrderId` | — |</p>
+<h3>Nesting Rules and Limitations</h3>
+<p>Klaviyo handles nested objects differently depending on where you access them:</p>
+<p>| Context | Access Level | Example |</p>
+<p>|---------|-------------|---------|</p>
+<p>| <strong>Email/SMS templates</strong> | Full access via Jinja — can loop over arrays, access nested properties | `{% for item in event.Items %}{{ item.ProductName }}{% endfor %}` |</p>
+<p>| <strong>Flow conditional splits</strong> | Top-level properties ONLY — cannot access nested object fields | Can split on `event.OrderId`, cannot split on `event.Items[0].ProductName` |</p>
+<p>| <strong>Segments</strong> | Top-level properties ONLY — cannot filter by nested object fields | Can segment on &quot;has done Placed Order where $value &gt; 100&quot;, cannot segment on &quot;where Items contains ProductName = X&quot; |</p>
+<p>| <strong>Flow triggers</strong> | Top-level properties for trigger filters | Same as conditional splits |</p>
+<p><strong>Workaround for nested data</strong>: If you need to segment or split on nested data, flatten it to top-level properties:</p>
+<pre><code># Instead of relying on Items[] array for segmentation:
+properties = {
+    &quot;$value&quot;: 149.99,
+    &quot;OrderId&quot;: &quot;ORD-123&quot;,
+    &quot;Items&quot;: [{&quot;ProductName&quot;: &quot;Wireless Headphones&quot;, &quot;Category&quot;: &quot;Electronics&quot;}],
+    # Flatten for segmentation:
+    &quot;ItemCategories&quot;: &quot;Electronics,Accessories&quot;,  # Comma-joined for &quot;contains&quot; filter
+    &quot;HasElectronics&quot;: True,                        # Boolean flag for split
+    &quot;TopItemCategory&quot;: &quot;Electronics&quot;               # Top category for split
+}</code></pre>
+<h3>Custom Event Patterns (DTC / Subscription / Marketplace)</h3>
+<p>Additional events beyond the standard Shopify/e-commerce schema:</p>
+<p>| Event Name | Trigger | Key Properties |</p>
+<p>|------------|---------|----------------|</p>
+<p>| `Account Created` | New account registered | `account_type`, `referral_source`, `signup_channel` |</p>
+<p>| `Subscription Started` | Recurring order activated | `$value`, `frequency`, `product_ids`, `plan_name` |</p>
+<p>| `Subscription Cancelled` | Recurring order stopped | `reason`, `plan_name`, `lifetime_charges` |</p>
+<p>| `Reorder Placed` | Repeat purchase of consumable | `$value`, `OrderId`, `days_since_last_order`, `reorder_items` |</p>
+<p>| `Wishlist Added` | Item saved for later | `ProductName`, `ProductID`, `Categories`, `Price` |</p>
+<p>| `Catalog Browsed` | Category/search activity | `category`, `search_term`, `results_count` |</p>
+<p>Sync key customer properties to profiles for segmentation:</p>
+<pre><code>profile_properties = {
+    &quot;customer_type&quot;: &quot;Subscriber&quot;,
+    &quot;interests&quot;: [&quot;Skincare&quot;, &quot;Wellness&quot;],
+    &quot;subscription_plan&quot;: &quot;Monthly Box&quot;,
+    &quot;account_tier&quot;: &quot;VIP&quot;,
+    &quot;first_order_date&quot;: &quot;2024-03-15&quot;,
+    &quot;lifetime_order_count&quot;: 8,
+    &quot;avg_order_value&quot;: 72.50,
+    &quot;preferred_categories&quot;: [&quot;Skincare&quot;, &quot;Supplements&quot;]
+}</code></pre>
+<h2>Data Accessibility Diagnosis</h2>
+<p>When data exists in Klaviyo but isn't usable where expected:</p>
+<h3>Symptoms</h3>
+<ul>
+<li>&quot;We track [event] but can't segment on [property]&quot;</li>
+<li>&quot;Flow split doesn't see the property we're sending&quot;</li>
+<li>&quot;Profile has the data but segment doesn't pick it up&quot;</li>
+</ul>
+<h3>Root Causes and Solutions</h3>
+<p>| Symptom | Root Cause | Solution |</p>
+<p>|---------|-----------|----------|</p>
+<p>| Can't segment on event property | Property is nested inside an array/object | Flatten to top-level property on the event |</p>
+<p>| Can't split flow on event property | Property is nested | Flatten, or use profile property instead |</p>
+<p>| Segment doesn't match profiles | Property is on events, not profiles | Sync property to profile via API or &quot;Update Profile Property&quot; flow action |</p>
+<p>| Profile property exists but segment empty | Property value format mismatch (string &quot;true&quot; vs boolean `true`) | Standardize data types in API sync |</p>
+<p>| Event tracked but no flow triggers | Metric name mismatch (case-sensitive) | Verify exact metric name in Klaviyo matches API call |</p>
+<p>| Flow triggers but filter excludes everyone | Segment used as flow filter evaluates incorrectly | Check segment conditions — may reference stale or incorrectly-typed properties |</p>
+<h3>Diagnosis Workflow</h3>
+<p>1. <strong>Check metric exists</strong>: Use GET `/metrics/` to verify the event name appears</p>
+<p>2. <strong>Check event properties</strong>: Use GET `/events/?filter=...` to pull recent events and inspect property structure</p>
+<p>3. <strong>Check profile properties</strong>: Use GET `/profiles/{id}/` to verify expected properties are on the profile</p>
+<p>4. <strong>Test segment conditions</strong>: Compare segment definition against actual profile data — look for type mismatches, case sensitivity issues</p>
+<p>5. <strong>Test flow trigger</strong>: Send a test event and trace whether the flow fires, where it stops, and why</p>
+<h2>How to Use This Skill</h2>
+<p>Ask me questions like:</p>
+<ul>
+<li>&quot;How do I track a custom event from my Node.js backend?&quot;</li>
+<li>&quot;Help me set up a bulk profile import script&quot;</li>
+<li>&quot;What are Klaviyo's rate limits and how should I handle them?&quot;</li>
+<li>&quot;How do I verify Klaviyo webhook signatures?&quot;</li>
+<li>&quot;Set up catalog sync for my custom e-commerce platform&quot;</li>
+<li>&quot;How do I implement OAuth for a Klaviyo app?&quot;</li>
+<li>&quot;Design a data pipeline to export Klaviyo data to BigQuery&quot;</li>
+<li>&quot;Help me migrate from Klaviyo v1/v2 API to the current API&quot;</li>
+<li>&quot;Audit my integration — are events structured correctly?&quot;</li>
+<li>&quot;Why can't I segment on a property I'm tracking in events?&quot;</li>
+</ul>
+<h2>Integration Examples</h2>
+<p>For complete integration patterns, worked examples with sample output, and code snippets, see [EXAMPLES.md](EXAMPLES.md).</p>
+<h2>Scripts</h2>
+<p>The skill includes utility scripts for API interaction and integration management:</p>
+<h3>Developer Client</h3>
+<pre><code># Track a custom event
+python scripts/klaviyo_client.py --action track-event \
+    --email user@example.com --event &quot;Placed Order&quot; \
+    --properties '{&quot;value&quot;: 99.99, &quot;OrderId&quot;: &quot;ORD-123&quot;}'
+
+# Upsert a profile
+python scripts/klaviyo_client.py --action upsert-profile \
+    --email user@example.com \
+    --properties '{&quot;first_name&quot;: &quot;Jane&quot;, &quot;loyalty_tier&quot;: &quot;Gold&quot;}'
+
+# List catalog items
+python scripts/klaviyo_client.py --action catalog-items --format table
+
+# Export profiles to CSV
+python scripts/klaviyo_client.py --action export-profiles \
+    --max-pages 10 --format csv --output profiles.csv</code></pre>
+<h3>Developer Tools</h3>
+<pre><code># Integration health check
+python scripts/dev_tools.py --tool health-check
+
+# Validate event tracking
+python scripts/dev_tools.py --tool validate-events \
+    --events &quot;Placed Order,Started Checkout,Viewed Product&quot;
+
+# Test webhook endpoint
+python scripts/dev_tools.py --tool test-webhook \
+    --webhook-url https://example.com/webhooks/klaviyo
+
+# Import profiles from CSV
+python scripts/dev_tools.py --tool import-csv \
+    --file contacts.csv --list-id LIST_ID
+
+# Export data with pagination
+python scripts/dev_tools.py --tool export-data \
+    --resource profiles --max-records 5000 --output profiles.csv</code></pre>
+<p>The scripts handle API authentication, rate limiting, and JSON:API formatting. I'll help interpret results and provide implementation guidance.</p>
+<h2>Troubleshooting</h2>
+<p><strong>Authentication Error</strong>: Verify that:</p>
+<ul>
+<li>`KLAVIYO_API_KEY` is set as an environment variable or in a `.env` file</li>
+<li>The key starts with `pk_` (private API key, not public)</li>
+<li>The key has the required scopes for your operation (e.g., `events:write` for tracking, `profiles:write` for imports)</li>
+</ul>
+<p><strong>Rate Limit Errors (429)</strong>: The SDK handles retries automatically (up to 3 retries with 60s max delay). If you still hit limits:</p>
+<ul>
+<li>Queue and throttle bulk operations (max 10 req/s for imports)</li>
+<li>Check `RateLimit-Remaining` header proactively</li>
+<li>Implement exponential backoff with jitter for raw HTTP</li>
+</ul>
+<p><strong>Bulk Import Errors</strong>: Check that:</p>
+<ul>
+<li>Batch size does not exceed 10,000 profiles per job</li>
+<li>Email or phone is provided for each profile (at least one identifier)</li>
+<li>CSV column names match expected field names</li>
+</ul>
+<p><strong>Import Errors</strong>: Install required packages:</p>
+<pre><code>pip install klaviyo-api python-dotenv pandas</code></pre>
+<h2>Security Notes</h2>
+<ul>
+<li><strong>Never hardcode</strong> API keys in code or commit them to version control</li>
+<li>Store keys in environment variables or `.env` files</li>
+<li>Add `.env` to `.gitignore`</li>
+<li>Use <strong>minimum required scopes</strong> — only enable write access where needed</li>
+<li>Rotate API keys periodically in Klaviyo Settings</li>
+<li>For OAuth integrations, store client secrets securely and refresh tokens before expiry</li>
+</ul>
+<h2>Data Privacy</h2>
+<p>This skill interacts with the Klaviyo API for integration development. When using write operations:</p>
+<ul>
+<li>Validate data before sending to avoid corrupting profile records</li>
+<li>Never log or store API keys, webhook secrets, or PII in plain text</li>
+<li>Use idempotency keys to prevent duplicate events</li>
+<li>Implement webhook signature verification to prevent spoofing</li>
+<li>Follow GDPR/CCPA requirements when handling profile data</li>
+<li>Use the Data Privacy Deletion endpoint for right-to-erasure requests</li>
+</ul>
+<p>All operations are performed via the official Klaviyo API with proper authentication.</p>
+<p>For detailed API endpoint reference, code patterns, authentication, and architecture diagrams, see [REFERENCE.md](REFERENCE.md).</p>
+<p>For marketing strategy, flow optimization, and campaign auditing, use the <strong>klaviyo-analyst</strong> skill.</p></div>
+</div>
+<script>
+function copyInstall(btn) {
+  var text = btn.getAttribute('data-copy');
+  navigator.clipboard.writeText(text).then(function() {
+    btn.classList.add('copied');
+    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+    setTimeout(function() {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>

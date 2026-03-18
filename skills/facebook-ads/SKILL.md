@@ -10,11 +10,19 @@ metadata:
   category: paid-media
   domain: meta-ads
   updated: 2026-03-11
+  tested: 2026-03-17
+  tested_with: "Claude Code v2.1"
 ---
 
 # Meta Ads (Facebook & Instagram)
 
 Expert-level guidance for Meta Ads — auditing, building, and optimizing campaigns across Facebook, Instagram, Messenger, and the Audience Network.
+
+## Install
+
+```bash
+git clone https://github.com/thatrebeccarae/claude-marketing.git && cp -r claude-marketing/skills/facebook-ads ~/.claude/skills/
+```
 
 ## Core Capabilities
 

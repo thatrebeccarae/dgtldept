@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>account-structure-review — claude-marketing</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-00XHYRHCX4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-00XHYRHCX4');
+</script>
+<meta name="description" content="Google and Meta paid media account structure evaluation. Audits campaign/ad set architecture against conversion volume minimums, budget thresholds, and targetin">
+<meta property="og:title" content="account-structure-review — claude-marketing">
+<meta property="og:description" content="Google and Meta paid media account structure evaluation. Audits campaign/ad set architecture against conversion volume minimums, budget thresholds, and targeting overlap. Identifies over-segmentation,">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="account-structure-review — claude-marketing">
+<meta name="twitter:description" content="Google and Meta paid media account structure evaluation. Audits campaign/ad set architecture against conversion volume minimums, budget thresholds, and targeting overlap. Identifies over-segmentation,">
+<link rel="canonical" href="https://thatrebeccarae.github.io/claude-marketing/skill/account-structure-review.html">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600,700&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Ultralight.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cartograph CF';
+  src: url('../fonts/CartographCF-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --accent: #5B5F8D;
+  --black: #000000;
+  --white: #ffffff;
+  --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+html {
+  background: #000000;
+  color: #ffffff;
+}
+
+body {
+  font-family: 'Switzer', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(15px, 1.1vw, 17px);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.detail-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 120px clamp(20px, 5vw, 40px) 80px;
+}
+
+.detail-back {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+.detail-back:hover { opacity: 1; }
+
+.detail-name {
+  font-family: 'PP Editorial New', 'Georgia', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 200;
+  line-height: 1.15;
+  letter-spacing: -0.014em;
+  margin-bottom: 0.5rem;
+}
+
+.detail-category {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  letter-spacing: 0.04em;
+  margin-bottom: 2rem;
+}
+
+.detail-desc {
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.65;
+  margin-bottom: 2.5rem;
+  opacity: 0.85;
+}
+
+.detail-install {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.detail-install code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  opacity: 0.6;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.detail-install .copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  color: #ffffff;
+  flex-shrink: 0;
+}
+.detail-install .copy-btn:hover { opacity: 0.8; }
+.detail-install .copy-btn.copied { opacity: 1; color: #4ade80; }
+
+.detail-tested {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  opacity: 0.4;
+  margin-bottom: 2.5rem;
+}
+
+.detail-capabilities h2,
+.detail-sources h2,
+.detail-body h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  margin-top: 2.5rem;
+}
+
+.detail-capabilities ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.detail-capabilities li {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 4px;
+}
+
+.detail-source-links {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.detail-source-links a {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ffffff;
+  border-radius: 45px;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+.detail-source-links a:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+.detail-body {
+  margin-top: 2.5rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 2rem;
+}
+
+.detail-body h2 {
+  font-family: 'Switzer', sans-serif;
+}
+
+.detail-body h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.detail-body p {
+  margin-bottom: 1rem;
+  opacity: 0.85;
+  line-height: 1.65;
+}
+
+.detail-body ul {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.detail-body li {
+  margin-bottom: 0.35rem;
+  opacity: 0.85;
+  line-height: 1.55;
+}
+
+.detail-body pre {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+}
+
+.detail-body code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.85rem;
+}
+
+.detail-body blockquote {
+  border-left: 2px solid rgba(255,255,255,0.2);
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+@media (max-width: 700px) {
+  .detail-page {
+    padding: 100px 20px 60px;
+  }
+  .detail-source-links {
+    flex-wrap: wrap;
+  }
+}
+</style>
+</head>
+<body>
+<div class="detail-page" data-pagefind-body>
+  <a href="../skills.html" class="detail-back">&larr; Back to skills</a>
+  <h1 class="detail-name">account-structure-review</h1>
+  <div class="detail-category">Paid Media</div>
+  <p class="detail-desc">Google and Meta paid media account structure evaluation. Audits campaign/ad set architecture against conversion volume minimums, budget thresholds, and targeting overlap. Identifies over-segmentation, under-segmentation, budget fragmentation, and structural anti-patterns blocking algorithmic learning. Provides consolidation roadmaps with migration plans. Use when inheriting accounts, quarterly health checks, or before scaling budgets.</p>
+  <div class="detail-install">
+    <code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/account-structure-review ~/.claude/skills/</code>
+    <button class="copy-btn" data-copy="git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/account-structure-review ~/.claude/skills/" title="Copy install command" onclick="copyInstall(this)">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+    </button>
+  </div>
+  <div class="detail-tested">Tested 2026-03-17 &middot; Claude Code v2.1</div>
+  <div class="detail-capabilities"><h2>Capabilities</h2><ul><li>Structural Anti-Pattern Detection</li><li>Google-Specific Structure Auditing</li><li>Meta-Specific Structure Auditing</li><li>Consolidation Decision Framework</li></ul></div>
+  <div class="detail-sources">
+<h2>Source Files</h2>
+<div class="detail-source-links">
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/account-structure-review/SKILL.md" target="_blank" rel="noopener">SKILL.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/account-structure-review/REFERENCE.md" target="_blank" rel="noopener">REFERENCE.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/account-structure-review/EXAMPLES.md" target="_blank" rel="noopener">EXAMPLES.md</a>
+</div>
+</div>
+  <div class="detail-body"><p>Expert-level guidance for evaluating paid media account structure against goals, budget, and conversion volume thresholds. Identifies structural anti-patterns that fragment data, starve budgets, or block algorithms from learning.</p>
+<h2>Install</h2>
+<pre><code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/account-structure-review ~/.claude/skills/</code></pre>
+<h2>Core Capabilities</h2>
+<h3>Structural Anti-Pattern Detection</h3>
+<ul>
+<li><strong>Over-segmentation</strong>: Too many campaigns/ad sets splitting data and budget below learning thresholds</li>
+<li><strong>Under-segmentation</strong>: Everything in one campaign, can't isolate performance by intent or funnel stage</li>
+<li><strong>Budget fragmentation</strong>: Daily budgets too low to exit learning phase or sustain delivery</li>
+<li><strong>Targeting overlap</strong>: Multiple campaigns competing in same auctions, bidding against yourself</li>
+<li><strong>Objective mismatch</strong>: Using Traffic when you need Conversions, mixing lead gen and ecommerce goals in one campaign</li>
+</ul>
+<h3>Google-Specific Structure Auditing</h3>
+<ul>
+<li>Campaign type separation (Search ≠ Display ≠ Shopping ≠ PMax)</li>
+<li>Ad group theme coherence (SKAGs are dead, STAGs with 5-15 keywords)</li>
+<li>Match type strategy alignment per campaign intent</li>
+<li>PMax cannibalizing branded Search</li>
+<li>Shared budgets causing cross-campaign interference</li>
+<li>Search Partners eating budget without conversions</li>
+<li>Automated bid strategies applied to low-volume campaigns</li>
+</ul>
+<h3>Meta-Specific Structure Auditing</h3>
+<ul>
+<li>CBO vs ABO alignment with goals and budget levels</li>
+<li>Advantage+ Shopping adoption readiness</li>
+<li>Prospecting vs retargeting separation</li>
+<li>Funnel exclusions (retargeting excludes purchasers, prospecting excludes retargeting audiences)</li>
+<li>Advantage+ Audience stability (broad targeting with signal-based constraints)</li>
+<li>Campaign duplication testing without isolation</li>
+<li>Multiple ad sets in prospecting CBO campaigns (common waste vector)</li>
+</ul>
+<h3>Consolidation Decision Framework</h3>
+<ul>
+<li>How to merge campaigns without losing historical data</li>
+<li>Campaign experiments for migration testing (Google) or 50/50 A/B tests (Meta)</li>
+<li>Incremental changes vs wholesale restructure</li>
+<li>Sequencing: What to consolidate first, what to defer</li>
+</ul>
+<h2>Structure Health Criteria</h2>
+<h3>Google Ads: Minimum Conversion Volume Thresholds</h3>
+<p>| Bid Strategy | Minimum Monthly Conversions | Ideal Monthly Conversions | Warning Signs |</p>
+<p>|--------------|----------------------------|--------------------------|---------------|</p>
+<p>| Manual CPC | N/A (no learning required) | N/A | Using manual in 2026 means you're leaving performance on the table |</p>
+<p>| Maximize Clicks | 0 (but why?) | N/A | You have conversion tracking — use it |</p>
+<p>| Maximize Conversions | 15/month | 30+/month | &lt;15/month = erratic, algorithm thrashing |</p>
+<p>| Target CPA | 30/month | 50+/month | &lt;30/month = CPA target won't be hit reliably |</p>
+<p>| Target ROAS | 50/month | 100+/month | &lt;50/month = ROAS variance too high, poor signal |</p>
+<p><strong>Learning Phase</strong>: Campaigns need ~50 conversions in 30 days to exit learning. Campaigns with &lt;30 conversions/month perpetually re-enter learning with every creative refresh or bid change.</p>
+<h3>Meta: Ad Set-Level Conversion Volume Thresholds</h3>
+<p>| Optimization Goal | Minimum Weekly Conversions | Ideal Weekly Conversions | Warning Signs |</p>
+<p>|-------------------|----------------------------|--------------------------|---------------|</p>
+<p>| Landing Page Views | N/A (top funnel) | N/A | Using this when you have purchase tracking = waste |</p>
+<p>| Link Clicks | N/A (top funnel) | N/A | Same as above |</p>
+<p>| Leads (Lead Gen) | 10/week per ad set | 20+/week | &lt;10/week = unstable CPL |</p>
+<p>| Add to Cart | 15/week per ad set | 30+/week | &lt;15/week = algorithm can't optimize reliably |</p>
+<p>| Initiate Checkout | 20/week per ad set | 40+/week | &lt;20/week = CPA variance too high |</p>
+<p>| Purchase | 50/week per ad set | 100+/week | &lt;50/week = learning limited, poor delivery |</p>
+<p>| Purchase (Advantage+) | 50/week per campaign | 150+/week | Advantage+ needs high volume, consolidate aggressively |</p>
+<p><strong>Learning Phase</strong>: Ad sets need ~50 conversions/week to exit learning. Ad sets with &lt;50/week perpetually re-enter learning with every edit.</p>
+<h3>Budget Fragmentation Thresholds</h3>
+<p>| Platform | Minimum Daily Budget | Ideal Daily Budget | Why |</p>
+<p>|----------|---------------------|-------------------|-----|</p>
+<p>| Google Search (tCPA) | $150/day | $300+/day | 10x target CPA minimum for stable delivery |</p>
+<p>| Google PMax | $100/day | $300+/day | PMax needs volume to test assets across channels |</p>
+<p>| Google Display | $50/day | $100+/day | Lower conversion rate = need more spend to gather signal |</p>
+<p>| Meta CBO (Conversions) | $100/day | $300+/day | CBO needs budget to test ad sets before allocating |</p>
+<p>| Meta ABO (Conversions) | $20/day per ad set | $50+/day per ad set | Ad sets under $20/day starve before learning completes |</p>
+<p>| Meta Advantage+ | $200/day | $500+/day | Consolidated campaigns need higher budgets to sustain delivery |</p>
+<p><strong>Critical Rule</strong>: If your campaign can't sustain the minimum daily budget for 30 consecutive days without pausing, your account is over-segmented.</p>
+<h3>Targeting Overlap Indicators (Meta)</h3>
+<p>| Overlap % | Status | Action Required |</p>
+<p>|-----------|--------|-----------------|</p>
+<p>| 0-10% | Healthy | No action |</p>
+<p>| 11-25% | Moderate | Monitor, consider consolidation if both ad sets underperform |</p>
+<p>| 26-50% | High | Consolidate or add exclusions immediately |</p>
+<p>| 51%+ | Critical | You're bidding against yourself, merge now |</p>
+<p>Check overlap in Meta Ads Manager &gt; Tools &gt; Audience Overlap. Run this monthly for all active prospecting campaigns.</p>
+<h3>Google: Keyword Overlap Indicators</h3>
+<p>| Scenario | Status | Action Required |</p>
+<p>|----------|--------|-----------------|</p>
+<p>| Same keyword, different match types, same campaign | Healthy | This is fine, broad/phrase/exact in same ad group is valid |</p>
+<p>| Same keyword, same match type, different campaigns | High Risk | Unless separated by geo/device/schedule, you're competing with yourself |</p>
+<p>| Broad keyword in Campaign A matching exact keyword in Campaign B | Critical | Broad will steal traffic from exact unless you add exact as negative in Campaign A |</p>
+<p>| PMax active + Brand Search campaign | Critical | PMax WILL cannibalize branded search. Add brand terms as negatives in PMax or pause PMax. |</p>
+<p>Run Search Terms Report monthly and cross-reference against all campaigns to find cannibalization.</p>
+<h2>Platform-Specific Structure Best Practices</h2>
+<h3>Google Ads: Campaign Hierarchy</h3>
+<p><strong>Search Campaigns</strong> (Hierarchy: Campaign &gt; Ad Group &gt; Keywords &gt; Ads)</p>
+<ul>
+<li><strong>One theme per campaign</strong>: Brand, Competitor, Category, Product Line, Intent Stage</li>
+<li><strong>Ad groups</strong>: 5-15 keywords per ad group, tightly themed (STAGs, not SKAGs)</li>
+<li><strong>Match types</strong>: Use Phrase and Broad in most campaigns. Exact only for ultra-high-intent/high-value terms.</li>
+<li><strong>Negatives</strong>: Aggressive negative keyword lists at campaign level to prevent overlap</li>
+<li><strong>Structure example</strong>:</li>
+</ul>
+<p>  - Campaign: Brand Search</p>
+<p>    - Ad Group: Brand Exact (5 exact match brand terms)</p>
+<p>    - Ad Group: Brand Misspellings (10 phrase match variants)</p>
+<p>  - Campaign: Category - Running Shoes</p>
+<p>    - Ad Group: Trail Running (8 phrase match keywords)</p>
+<p>    - Ad Group: Road Running (10 phrase match keywords)</p>
+<p>    - Ad Group: Racing Flats (5 phrase match keywords)</p>
+<p><strong>Shopping Campaigns</strong></p>
+<ul>
+<li>Standard Shopping: One campaign per product category OR one campaign with ad groups by product type</li>
+<li>PMax: One campaign for entire catalog OR separate campaigns by margin/goal (e.g., high-margin PMax vs volume PMax)</li>
+<li><strong>Do NOT run PMax + Standard Shopping simultaneously</strong> — PMax will dominate, Standard Shopping becomes a reporting shell</li>
+</ul>
+<p><strong>Performance Max (PMax)</strong></p>
+<ul>
+<li><strong>When to use</strong>: E-commerce with feed, lead gen with dynamic assets, omnichannel goals</li>
+<li><strong>Structure</strong>: 1-3 campaigns max. PMax is designed to consolidate. Multiple PMax campaigns only if goals differ (ROAS target, audience strategy, geo)</li>
+<li><strong>Asset groups</strong>: 3-5 per campaign, themed by product category or customer segment</li>
+<li><strong>Critical negative keywords</strong>: Add brand terms if you want branded search to stay in Search campaigns</li>
+</ul>
+<p><strong>Display Campaigns</strong></p>
+<ul>
+<li>Separate campaigns by goal: Prospecting vs Retargeting</li>
+<li>Prospecting: Use Responsive Display Ads (RDA) with demographic/interest targeting or Custom Audiences</li>
+<li>Retargeting: Website visitors, cart abandoners, customer lists. Lower bids, higher ROAS targets.</li>
+</ul>
+<h3>Meta: Campaign Hierarchy</h3>
+<p><strong>Campaign</strong> (Objective + Budget type)</p>
+<ul>
+<li>Choose objective: Awareness, Traffic, Engagement, Leads, App Promotion, Sales</li>
+<li>Choose budget: Campaign Budget Optimization (CBO) or Ad Set Budget Optimization (ABO)</li>
+</ul>
+<p><strong>Ad Set</strong> (Audience + Placement + Optimization)</p>
+<ul>
+<li>Define audience (Advantage+ Audience, Custom Audiences, Lookalikes)</li>
+<li>Choose placement (Advantage+ Placements or manual)</li>
+<li>Set optimization event (Purchase, Add to Cart, Lead, etc.)</li>
+<li>Set bid strategy (Lowest Cost, Cost Cap, Bid Cap)</li>
+</ul>
+<p><strong>Ad</strong> (Creative)</p>
+<ul>
+<li>Image, video, carousel, collection</li>
+<li>Primary text, headline, description, CTA</li>
+</ul>
+<p><strong>CBO vs ABO Decision Tree</strong>:</p>
+<ul>
+<li><strong>Use CBO when</strong>:</li>
+</ul>
+<p>  - Budget &gt;$300/day</p>
+<p>  - Testing multiple audiences against each other</p>
+<p>  - Want Meta to auto-allocate budget to best performers</p>
+<p>  - Have 2-5 ad sets per campaign</p>
+<ul>
+<li><strong>Use ABO when</strong>:</li>
+</ul>
+<p>  - Budget &lt;$300/day</p>
+<p>  - Need strict budget control per ad set (e.g., prospecting gets $100, retargeting gets $50)</p>
+<p>  - Testing one audience or creative set in isolation</p>
+<p>  - Running Advantage+ (CBO is required)</p>
+<p><strong>Advantage+ Shopping Campaigns</strong></p>
+<ul>
+<li>Consolidates prospecting + retargeting into one campaign with one ad set</li>
+<li>Requires Conversions API (CAPI) + pixel</li>
+<li>Needs 50+ purchases/week to perform (ideally 150+/week)</li>
+<li>Best for brands spending $10K+/month on Meta with mature pixel</li>
+<li><strong>When NOT to use</strong>: New pixels (&lt;1000 events), low conversion volume, need granular audience control</li>
+</ul>
+<p><strong>Prospecting vs Retargeting Separation</strong></p>
+<ul>
+<li><strong>Always separate</strong> prospecting and retargeting into different campaigns</li>
+<li><strong>Prospecting</strong>: Broad targeting (Advantage+ Audience with interest/demo signals), lookalikes, cold traffic</li>
+<li><strong>Retargeting</strong>: Website visitors (180d), cart abandoners (30d), video viewers (30d), engaged users</li>
+<li><strong>Critical exclusions</strong>:</li>
+</ul>
+<p>  - Prospecting: Exclude website visitors 180d, customer lists</p>
+<p>  - Retargeting: Exclude purchasers (unless running replenishment/upsell)</p>
+<h2>Consolidation Decision Framework</h2>
+<h3>Step 1: Conversion Volume Audit</h3>
+<p>Pull last 30 days of data. For each campaign/ad set:</p>
+<p>1. Count conversions</p>
+<p>2. Compare to minimum threshold (see tables above)</p>
+<p>3. Flag campaigns/ad sets below threshold as &quot;Under-Volume&quot;</p>
+<h3>Step 2: Budget Fragmentation Audit</h3>
+<p>For each campaign:</p>
+<p>1. Calculate average daily spend</p>
+<p>2. Compare to minimum daily budget threshold</p>
+<p>3. Flag campaigns below threshold as &quot;Under-Budget&quot;</p>
+<p>4. Check: Does campaign run out of budget before end of day? If yes, flag &quot;Budget-Constrained&quot;</p>
+<h3>Step 3: Targeting Overlap Audit</h3>
+<p><strong>Google</strong>:</p>
+<p>1. Run Search Terms Report for all Search campaigns</p>
+<p>2. Cross-reference search terms against all other campaigns' keyword lists</p>
+<p>3. Flag any search term appearing in 2+ campaigns</p>
+<p><strong>Meta</strong>:</p>
+<p>1. Go to Ads Manager &gt; Tools &gt; Audience Overlap</p>
+<p>2. Compare all active prospecting audiences</p>
+<p>3. Flag any overlap &gt;25%</p>
+<h3>Step 4: Objective Mismatch Audit</h3>
+<p>For each campaign:</p>
+<p>1. Check objective (Google: bid strategy; Meta: campaign objective)</p>
+<p>2. Check conversion tracking setup</p>
+<p>3. Flag mismatches:</p>
+<p>   - Google: Manual CPC or Maximize Clicks when conversions are tracked</p>
+<p>   - Meta: Traffic or Engagement objective when Purchase pixel fires</p>
+<p>   - Mixing lead gen (form fills) and ecommerce (purchases) in same campaign</p>
+<h3>Step 5: Consolidation Plan</h3>
+<p>For each flagged campaign, decide:</p>
+<ul>
+<li><strong>Merge</strong>: Combine with similar campaign (same intent, same goal, compatible targeting)</li>
+<li><strong>Pause</strong>: Discontinue if redundant or no clear goal</li>
+<li><strong>Restructure</strong>: Keep separate but change targeting/budget/objective</li>
+<li><strong>Defer</strong>: Flag for later (e.g., seasonal campaigns, test campaigns)</li>
+</ul>
+<p><strong>Merge Rules</strong>:</p>
+<ul>
+<li><strong>Google Search</strong>: Merge campaigns with similar keyword themes and match types into one campaign with multiple ad groups</li>
+<li><strong>Google PMax</strong>: Consolidate multiple PMax campaigns into one unless goals differ by &gt;20% (e.g., tROAS of 300% vs 500%)</li>
+<li><strong>Meta Prospecting</strong>: Merge lookalike audiences into one Advantage+ Audience campaign with signals</li>
+<li><strong>Meta Retargeting</strong>: Merge retargeting ad sets into one campaign with CBO, separate ad sets by funnel stage (website visitors, cart abandoners, etc.)</li>
+</ul>
+<h3>Step 6: Migration Plan</h3>
+<p><strong>Option A: Campaign Experiments (Google)</strong></p>
+<p>1. Create experiment in original campaign</p>
+<p>2. Build new consolidated structure in experiment arm</p>
+<p>3. Split traffic 50/50 for 14-30 days</p>
+<p>4. Compare performance, roll out winner</p>
+<p><strong>Option B: Gradual Migration</strong></p>
+<p>1. Launch new consolidated campaigns at 25% of total budget</p>
+<p>2. Run for 7 days, compare performance</p>
+<p>3. Increase to 50%, decrease old campaigns to 50%</p>
+<p>4. Run for 7 days, compare again</p>
+<p>5. If new campaigns outperform, shift 100% budget and pause old campaigns</p>
+<p><strong>Option C: Immediate Cutover</strong> (risky, only for emergencies)</p>
+<p>1. Launch new campaigns</p>
+<p>2. Pause old campaigns same day</p>
+<p>3. Expect 7-14 day learning phase, performance dip</p>
+<p><strong>Historical Data Preservation</strong>:</p>
+<ul>
+<li>Do NOT delete old campaigns — pause them</li>
+<li>Export historical data to spreadsheet/dashboard before pausing</li>
+<li>Keep old campaigns paused for 90 days for reference, then archive</li>
+</ul>
+<h2>Minimum Viable Structure by Budget Level</h2>
+<h3>$5K/month ($167/day)</h3>
+<p><strong>Google</strong>:</p>
+<ul>
+<li>2-4 campaigns max: Brand Search ($50/day), Category Search ($70/day), Display Retargeting ($30/day), Shopping or PMax ($17/day)</li>
+<li>Do NOT run PMax + Shopping simultaneously at this budget</li>
+</ul>
+<p><strong>Meta</strong>:</p>
+<ul>
+<li>2 campaigns: Prospecting CBO ($100/day, 2 ad sets), Retargeting ABO ($67/day, 2 ad sets)</li>
+<li>If running Advantage+, go all-in: 1 Advantage+ campaign ($167/day)</li>
+</ul>
+<h3>$20K/month ($667/day)</h3>
+<p><strong>Google</strong>:</p>
+<ul>
+<li>5-8 campaigns: Brand Search ($100/day), Competitor Search ($100/day), Category Search ($150/day), PMax ($200/day), Display Retargeting ($50/day), Display Prospecting ($67/day)</li>
+<li>Or: Consolidate into PMax ($400/day) + Brand Search ($100/day) + Display Retargeting ($167/day)</li>
+</ul>
+<p><strong>Meta</strong>:</p>
+<ul>
+<li>3-4 campaigns: Prospecting CBO ($400/day, 3-5 ad sets), Retargeting CBO ($150/day, 3 ad sets), Testing Campaign ($117/day, 2 ad sets)</li>
+<li>Or: Advantage+ Shopping ($500/day) + Retargeting ($167/day)</li>
+</ul>
+<h3>$100K/month ($3,333/day)</h3>
+<p><strong>Google</strong>:</p>
+<ul>
+<li>10-15 campaigns: Brand Search, Competitor Search, 3-5 Category Search campaigns, PMax, Display Prospecting (demographics), Display Prospecting (interests), Display Retargeting, YouTube Prospecting, YouTube Retargeting, Discovery</li>
+<li>Budget allocation: 40% PMax, 20% Search (Brand/Competitor/Category), 20% Display, 20% YouTube/Discovery</li>
+</ul>
+<p><strong>Meta</strong>:</p>
+<ul>
+<li>6-10 campaigns: Advantage+ Shopping, Prospecting Lookalikes, Prospecting Interests, Prospecting Broad, Retargeting (Website), Retargeting (Engaged), Creative Testing, Offer Testing, New Market Testing</li>
+<li>Budget allocation: 50% Advantage+, 20% Prospecting (other), 15% Retargeting, 15% Testing</li>
+</ul>
+<h3>$500K/month ($16,667/day)</h3>
+<p><strong>Google</strong>:</p>
+<ul>
+<li>15-25 campaigns: Separate by geo (US, CA, UK, etc.), product line, margin tier, funnel stage, device (if performance warrants), dayparting (if 24/7 doesn't work)</li>
+<li>Heavy investment in PMax ($8K/day), Brand ($2K/day), Category Search ($4K/day), YouTube ($2K/day)</li>
+</ul>
+<p><strong>Meta</strong>:</p>
+<ul>
+<li>10-20 campaigns: Multiple Advantage+ campaigns by geo or product line, separate prospecting campaigns by demo or interest cluster, retargeting by funnel stage and recency, heavy creative testing budget</li>
+<li>Budget allocation: 60% Advantage+, 15% Prospecting, 10% Retargeting, 15% Testing</li>
+</ul>
+<p><strong>Key principle</strong>: Structure complexity should scale with budget and conversion volume, not with number of products or &quot;just because.&quot;</p>
+<h2>Output Format Template</h2>
+<p>When conducting an account structure review, provide output in this format:</p>
+<pre><code># Account Structure Review — [Client Name] — [Date]
+
+## Executive Summary
+- Total monthly spend: $X
+- Total campaigns: X (Google: X, Meta: X)
+- Campaigns flagged: X (X% of total)
+- Primary issues: [List top 3]
+- Recommended consolidation: X campaigns → X campaigns
+- Expected impact: [Estimated improvement in CPA, ROAS, or learning phase stability]
+
+## Structural Health Score: X/100
+- Conversion volume: X/30 (campaigns meeting minimum thresholds)
+- Budget allocation: X/25 (campaigns with sufficient daily budgets)
+- Targeting efficiency: X/25 (overlap score)
+- Objective alignment: X/20 (campaigns using correct objectives for goals)
+
+## Google Ads Findings
+
+### Campaign Inventory
+[Table: Campaign Name | Type | Daily Budget | Monthly Conversions | Status | Flag]
+
+### Issues Identified
+1. **[Issue Category]** (e.g., Over-Segmentation, Budget Fragmentation)
+   - **Finding**: [Specific data point]
+   - **Impact**: [Why this matters]
+   - **Recommendation**: [What to do]
+
+### Google Consolidation Plan
+- Merge: [Campaign A + Campaign B] → [New Campaign Name]
+- Pause: [Campaign C] (reason: redundant with PMax)
+- Restructure: [Campaign D] (change from Maximize Clicks to tCPA)
+
+## Meta Findings
+
+### Campaign Inventory
+[Table: Campaign Name | Objective | Budget Type | Daily Budget | Weekly Conversions | Status | Flag]
+
+### Issues Identified
+1. **[Issue Category]**
+   - **Finding**: [Specific data point]
+   - **Impact**: [Why this matters]
+   - **Recommendation**: [What to do]
+
+### Meta Consolidation Plan
+- Merge: [Ad Set A + Ad Set B] → [New Campaign Name] (CBO)
+- Migrate to Advantage+: [Campaign E] (conversion volume meets threshold)
+- Pause: [Campaign F] (overlap with retargeting campaign)
+
+## Migration Roadmap
+
+### Phase 1 (Week 1-2): [Immediate Actions]
+- Launch: [New Campaign X] at $X/day
+- Reduce: [Old Campaign Y] to $X/day (from $X/day)
+- Pause: [Campaign Z] (no conversions in 60 days)
+
+### Phase 2 (Week 3-4): [Performance Validation]
+- Monitor: [Campaigns] for learning phase completion
+- Compare: [Old vs New] performance
+- Decision: Roll out 100% or revert
+
+### Phase 3 (Week 5-6): [Full Migration]
+- Shift: 100% budget to new structure
+- Pause: All old campaigns
+- Archive: Export historical data
+
+## Expected Outcomes
+- **Learning phase stability**: [X campaigns] will exit learning phase with consolidated volume
+- **Budget efficiency**: [X campaigns] will sustain delivery throughout day instead of exhausting budget early
+- **Reporting clarity**: [Benefit of cleaner structure]
+- **Algorithmic performance**: Expect CPA to improve [X%] as algorithms get more signal
+
+## Risks &amp; Mitigations
+- **Risk**: Performance dip during learning phase
+  - **Mitigation**: Gradual migration, keep 50% budget in proven campaigns during transition
+- **Risk**: Loss of granular reporting
+  - **Mitigation**: Use labels, UTM parameters, or asset groups (PMax) to maintain visibility
+
+## Next Steps
+1. [Action 1]
+2. [Action 2]
+3. [Action 3]</code></pre>
+<h2>Worked Example</h2>
+<p><strong>Scenario</strong>: Mid-market DTC brand, $30K/month spend, Google + Meta</p>
+<p><strong>Google Ads Audit</strong>:</p>
+<ul>
+<li>28 Search campaigns (Brand, Category, Product, Competitor)</li>
+<li>22 campaigns have &lt;20 conversions/month (below tCPA threshold)</li>
+<li>15 campaigns have daily budgets &lt;$20 (exhaust by 10am)</li>
+<li>PMax campaign active + Standard Shopping campaign active (PMax dominating, Standard Shopping getting &lt;5% of budget)</li>
+<li>Shared budget across 8 campaigns causing unpredictable allocation</li>
+</ul>
+<p><strong>Findings</strong>:</p>
+<p>1. <strong>Over-Segmentation (Search)</strong>: 28 campaigns should be 6-8 campaigns grouped by intent</p>
+<p>2. <strong>Budget Fragmentation</strong>: 15 campaigns can't sustain delivery</p>
+<p>3. <strong>PMax Cannibalization</strong>: Standard Shopping is redundant</p>
+<p>4. <strong>Shared Budget Chaos</strong>: 8 campaigns competing for shared budget instead of predictable allocation</p>
+<p><strong>Consolidation Plan</strong>:</p>
+<ul>
+<li><strong>Merge Search campaigns</strong>: 28 → 6 (Brand, Competitor, Category A, Category B, Category C, Generic)</li>
+<li><strong>Pause Standard Shopping</strong>, increase PMax budget from $200/day to $400/day</li>
+<li><strong>Remove shared budgets</strong>, assign fixed daily budgets to each campaign</li>
+<li><strong>Resulting structure</strong>: 6 Search campaigns + 1 PMax + 1 Display Retargeting = 8 campaigns total</li>
+</ul>
+<p><strong>Meta Audit</strong>:</p>
+<ul>
+<li>12 campaigns (10 prospecting, 2 retargeting)</li>
+<li>10 prospecting campaigns have overlapping audiences (Lookalike 1%, Lookalike 2-3%, Interest: Fitness, Interest: Running, Broad, etc.)</li>
+<li>Audience overlap tool shows 35-60% overlap across all prospecting campaigns</li>
+<li>6 campaigns have &lt;30 purchases/week (below Conversions optimization threshold)</li>
+<li>Using ABO with $50/day per campaign</li>
+</ul>
+<p><strong>Findings</strong>:</p>
+<p>1. <strong>Targeting Overlap</strong>: 10 prospecting campaigns bidding against each other</p>
+<p>2. <strong>Under-Volume</strong>: 6 campaigns don't have enough conversions to optimize</p>
+<p>3. <strong>Budget Fragmentation</strong>: $50/day per campaign is marginal for Conversions objective</p>
+<p><strong>Consolidation Plan</strong>:</p>
+<ul>
+<li><strong>Merge prospecting campaigns</strong>: 10 → 2 (Advantage+ Shopping at $700/day, Lookalike Testing at $100/day)</li>
+<li><strong>Consolidate retargeting</strong>: 2 campaigns → 1 CBO campaign with 3 ad sets (Website 7-30d, Cart Abandoners, Engaged Video Viewers) at $200/day</li>
+<li><strong>Resulting structure</strong>: 3 campaigns total (Advantage+, Lookalike Testing, Retargeting)</li>
+</ul>
+<p><strong>Expected Impact</strong>:</p>
+<ul>
+<li><strong>Google</strong>: Campaigns will have 40-60 conversions/month (vs 8-15 currently), tCPA will stabilize, learning phase will complete</li>
+<li><strong>Meta</strong>: Advantage+ will have 120+ purchases/week (vs 20-30 per campaign currently), audience overlap eliminated, CBO will optimize budget allocation</li>
+<li><strong>Overall</strong>: CPA expected to improve 15-25% within 30 days post-migration</li>
+</ul>
+<h2>Guidelines</h2>
+<ul>
+<li><strong>Never consolidate blindly</strong>: Check conversion data, budget sustainability, and targeting logic before merging</li>
+<li><strong>Preserve historical data</strong>: Pause, don't delete</li>
+<li><strong>Test migrations when possible</strong>: Use experiments (Google) or gradual budget shifts (Meta)</li>
+<li><strong>Monitor learning phases</strong>: Expect 7-14 days of instability after structural changes</li>
+<li><strong>Document everything</strong>: Keep audit findings, consolidation plan, and migration steps in shared doc for team visibility</li>
+<li><strong>Revisit quarterly</strong>: Account structure should evolve as budget, conversion volume, and goals change</li>
+</ul>
+<h2>How to Use This Skill</h2>
+<p>Ask questions like:</p>
+<ul>
+<li>&quot;Audit my Google Ads account structure and identify consolidation opportunities&quot;</li>
+<li>&quot;My Meta campaigns have low conversion volume — should I consolidate?&quot;</li>
+<li>&quot;I'm inheriting a messy account with 40+ campaigns — where do I start?&quot;</li>
+<li>&quot;What's the right campaign structure for a $50K/month budget on Google and Meta?&quot;</li>
+<li>&quot;My campaigns keep re-entering learning phase — is my structure the problem?&quot;</li>
+<li>&quot;Should I migrate to Advantage+ Shopping or keep my current prospecting setup?&quot;</li>
+<li>&quot;Create a consolidation plan for my Search campaigns — they're all under $30/day budget&quot;</li>
+</ul>
+<h2>Safety &amp; Data Handling</h2>
+<ul>
+<li><strong>Analysis only</strong> — this skill produces recommendations, not live changes. Always review before implementing in any ad platform.</li>
+<li><strong>No PII</strong> — do not paste customer emails, phone numbers, names, or order-level data. Use aggregated/anonymized exports only.</li>
+<li><strong>Projections are estimates</strong> — financial forecasts are based on historical data and carry uncertainty. Label them as projections in client deliverables.</li>
+<li><strong>Confirm before acting</strong> — never pause, delete, or modify live campaigns based solely on this analysis without human review.</li>
+</ul></div>
+</div>
+<script>
+function copyInstall(btn) {
+  var text = btn.getAttribute('data-copy');
+  navigator.clipboard.writeText(text).then(function() {
+    btn.classList.add('copied');
+    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+    setTimeout(function() {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>

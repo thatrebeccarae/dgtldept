@@ -62,6 +62,18 @@ jobs:
                   if line and not line.startswith("#") and ":" not in line and not line.startswith("-"):
                       errors.append(f"{path}: line {i} in frontmatter is not valid YAML: {line}")
 
+          # Validate tested fields exist in metadata
+          for path in skill_files:
+              with open(path) as f:
+                  content = f.read()
+              match = re.match(r"^---\n(.*?\n)---", content, re.DOTALL)
+              if match:
+                  fm = match.group(1)
+                  if "tested:" not in fm:
+                      errors.append(f"{path}: missing tested: field in metadata")
+                  if "tested_with:" not in fm:
+                      errors.append(f"{path}: missing tested_with: field in metadata")
+
           if errors:
               for e in errors:
                   print(f"ERROR: {e}")

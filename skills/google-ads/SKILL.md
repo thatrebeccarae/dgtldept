@@ -10,11 +10,19 @@ metadata:
   category: paid-media
   domain: google-ads
   updated: 2026-03-11
+  tested: 2026-03-17
+  tested_with: "Claude Code v2.1"
 ---
 
 # Google Ads
 
 Expert-level guidance for Google Ads — auditing, building, and optimizing search, shopping, display, video, Performance Max, and demand gen campaigns.
+
+## Install
+
+```bash
+git clone https://github.com/thatrebeccarae/claude-marketing.git && cp -r claude-marketing/skills/google-ads ~/.claude/skills/
+```
 
 ## Core Capabilities
 

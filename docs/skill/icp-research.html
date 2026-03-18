@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>icp-research — claude-marketing</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-00XHYRHCX4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-00XHYRHCX4');
+</script>
+<meta name="description" content="Build detailed ideal customer profiles with pain points, objections, buying triggers, and messaging angles. Includes community research to find where ICPs gathe">
+<meta property="og:title" content="icp-research — claude-marketing">
+<meta property="og:description" content="Build detailed ideal customer profiles with pain points, objections, buying triggers, and messaging angles. Includes community research to find where ICPs gather online and extract their exact languag">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="icp-research — claude-marketing">
+<meta name="twitter:description" content="Build detailed ideal customer profiles with pain points, objections, buying triggers, and messaging angles. Includes community research to find where ICPs gather online and extract their exact languag">
+<link rel="canonical" href="https://thatrebeccarae.github.io/claude-marketing/skill/icp-research.html">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600,700&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Ultralight.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cartograph CF';
+  src: url('../fonts/CartographCF-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --accent: #5B5F8D;
+  --black: #000000;
+  --white: #ffffff;
+  --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+html {
+  background: #000000;
+  color: #ffffff;
+}
+
+body {
+  font-family: 'Switzer', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(15px, 1.1vw, 17px);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.detail-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 120px clamp(20px, 5vw, 40px) 80px;
+}
+
+.detail-back {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+.detail-back:hover { opacity: 1; }
+
+.detail-name {
+  font-family: 'PP Editorial New', 'Georgia', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 200;
+  line-height: 1.15;
+  letter-spacing: -0.014em;
+  margin-bottom: 0.5rem;
+}
+
+.detail-category {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  letter-spacing: 0.04em;
+  margin-bottom: 2rem;
+}
+
+.detail-desc {
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.65;
+  margin-bottom: 2.5rem;
+  opacity: 0.85;
+}
+
+.detail-install {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.detail-install code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  opacity: 0.6;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.detail-install .copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  color: #ffffff;
+  flex-shrink: 0;
+}
+.detail-install .copy-btn:hover { opacity: 0.8; }
+.detail-install .copy-btn.copied { opacity: 1; color: #4ade80; }
+
+.detail-tested {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  opacity: 0.4;
+  margin-bottom: 2.5rem;
+}
+
+.detail-capabilities h2,
+.detail-sources h2,
+.detail-body h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  margin-top: 2.5rem;
+}
+
+.detail-capabilities ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.detail-capabilities li {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 4px;
+}
+
+.detail-source-links {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.detail-source-links a {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ffffff;
+  border-radius: 45px;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+.detail-source-links a:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+.detail-body {
+  margin-top: 2.5rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 2rem;
+}
+
+.detail-body h2 {
+  font-family: 'Switzer', sans-serif;
+}
+
+.detail-body h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.detail-body p {
+  margin-bottom: 1rem;
+  opacity: 0.85;
+  line-height: 1.65;
+}
+
+.detail-body ul {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.detail-body li {
+  margin-bottom: 0.35rem;
+  opacity: 0.85;
+  line-height: 1.55;
+}
+
+.detail-body pre {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+}
+
+.detail-body code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.85rem;
+}
+
+.detail-body blockquote {
+  border-left: 2px solid rgba(255,255,255,0.2);
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+@media (max-width: 700px) {
+  .detail-page {
+    padding: 100px 20px 60px;
+  }
+  .detail-source-links {
+    flex-wrap: wrap;
+  }
+}
+</style>
+</head>
+<body>
+<div class="detail-page" data-pagefind-body>
+  <a href="../skills.html" class="detail-back">&larr; Back to skills</a>
+  <h1 class="detail-name">icp-research</h1>
+  <div class="detail-category">Strategy &amp; Research</div>
+  <p class="detail-desc">Build detailed ideal customer profiles with pain points, objections, buying triggers, and messaging angles. Includes community research to find where ICPs gather online and extract their exact language. Use when researching audiences, creating buyer personas, or developing targeted messaging.</p>
+  <div class="detail-install">
+    <code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/icp-research ~/.claude/skills/</code>
+    <button class="copy-btn" data-copy="git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/icp-research ~/.claude/skills/" title="Copy install command" onclick="copyInstall(this)">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+    </button>
+  </div>
+  <div class="detail-tested">Tested 2026-03-17 &middot; Claude Code v2.1</div>
+  
+  <div class="detail-sources">
+<h2>Source Files</h2>
+<div class="detail-source-links">
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/icp-research/SKILL.md" target="_blank" rel="noopener">SKILL.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/icp-research/REFERENCE.md" target="_blank" rel="noopener">REFERENCE.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/icp-research/EXAMPLES.md" target="_blank" rel="noopener">EXAMPLES.md</a>
+</div>
+</div>
+  <div class="detail-body"><p>Build comprehensive ideal customer profiles for targeted marketing, including community discovery and voice-of-customer language extraction.</p>
+<h2>Install</h2>
+<pre><code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/icp-research ~/.claude/skills/</code></pre>
+<h2>Workflow</h2>
+<h3>1. Gather Product Context</h3>
+<ul>
+<li>What do you sell?</li>
+<li>Key features and differentiators</li>
+<li>Pricing model and range</li>
+<li>Current customers (who buys today?)</li>
+</ul>
+<h3>2. Define Market</h3>
+<ul>
+<li>Industry / vertical</li>
+<li>Company size (employees, revenue)</li>
+<li>Geography</li>
+<li>B2B vs. B2C vs. B2B2C</li>
+</ul>
+<h3>3. Build Persona</h3>
+<p><strong>Demographics:</strong></p>
+<ul>
+<li>Job title and seniority level</li>
+<li>Department and reporting structure</li>
+<li>Company size and revenue range</li>
+<li>Industry and sub-vertical</li>
+<li>Geography and timezone</li>
+</ul>
+<p><strong>Psychographics:</strong></p>
+<ul>
+<li>Daily responsibilities (what fills their calendar)</li>
+<li>Goals they are measured on (KPIs, OKRs)</li>
+<li>Frustrations and daily friction</li>
+<li>Career aspirations</li>
+<li>How they stay informed (publications, podcasts, communities)</li>
+</ul>
+<p><strong>Buying Behavior:</strong></p>
+<ul>
+<li>Who influences the decision?</li>
+<li>Who approves the budget?</li>
+<li>What is the buying process? (self-serve, demo, RFP, committee)</li>
+<li>Evaluation criteria (price, features, support, integration)</li>
+<li>Typical buying timeline</li>
+</ul>
+<h3>4. Map Pain Points</h3>
+<p>| Category | Questions to Answer |</p>
+<p>|----------|-------------------|</p>
+<p>| <strong>Time</strong> | What takes too long? What manual work do they hate? |</p>
+<p>| <strong>Money</strong> | Where are they wasting budget? What costs too much? |</p>
+<p>| <strong>Risk</strong> | What keeps them up at night? What could go wrong? |</p>
+<p>| <strong>Quality</strong> | Where is output inconsistent or error-prone? |</p>
+<p>| <strong>Growth</strong> | What blocks them from scaling? |</p>
+<p>Score each pain point: <strong>Frequency</strong> (1-10) x <strong>Intensity</strong> (1-10) = <strong>Priority Score</strong></p>
+<h3>5. Identify Objections</h3>
+<p>| Objection Type | Response Strategy |</p>
+<p>|---------------|-------------------|</p>
+<p>| <strong>Price</strong> | ROI calculation, cost of inaction, payment flexibility |</p>
+<p>| <strong>Time</strong> | Quick setup, done-for-you options, time-to-value metrics |</p>
+<p>| <strong>Trust</strong> | Social proof, case studies, free trial/pilot, guarantees |</p>
+<p>| <strong>Need</strong> | Cost of status quo, competitor pressure, market trends |</p>
+<p>| <strong>Authority</strong> | Executive summary, ROI one-pager, pilot proposal |</p>
+<h3>6. Map Buying Triggers</h3>
+<p><strong>External triggers:</strong></p>
+<ul>
+<li>New funding round or budget cycle</li>
+<li>Leadership change (new CMO, VP)</li>
+<li>Competitor pressure (lost deal, feature gap)</li>
+<li>Regulatory change (compliance deadline)</li>
+<li>Failed vendor or tool (contract end, outage)</li>
+</ul>
+<p><strong>Internal triggers:</strong></p>
+<ul>
+<li>Missed targets (revenue, growth, efficiency)</li>
+<li>Team complaints (process pain, tool frustration)</li>
+<li>Process breaking at scale</li>
+<li>New initiative requiring new capabilities</li>
+<li>Budget cuts forcing consolidation</li>
+</ul>
+<h3>7. Community Research</h3>
+<p>Discover where your ICP gathers online and extract their exact language.</p>
+<p><strong>Platforms to search:</strong></p>
+<ul>
+<li>Reddit (subreddits by industry/role)</li>
+<li>Facebook Groups</li>
+<li>Discord and Slack communities</li>
+<li>LinkedIn Groups</li>
+<li>Quora and Stack Exchange</li>
+<li>Industry forums</li>
+<li>YouTube comments</li>
+<li>App review sites (G2, Capterra, Trustpilot)</li>
+</ul>
+<p><strong>Search templates:</strong></p>
+<pre><code>&quot;[industry/role] frustrating OR annoying&quot;
+&quot;why is [process] so hard&quot;
+&quot;alternatives to [competitor]&quot;
+&quot;[tool] vs [tool]&quot;
+&quot;best [tool type] for [use case]&quot;
+&quot;I switched from [tool] because&quot;</code></pre>
+<p><strong>What to extract:</strong></p>
+<ul>
+<li>Exact phrases and vocabulary they use (voice-of-customer)</li>
+<li>Pain points with emotional language</li>
+<li>Evaluation criteria they mention</li>
+<li>Competitors they compare</li>
+<li>Objections they raise</li>
+</ul>
+<p><strong>Classify community members:</strong></p>
+<ul>
+<li><strong>Actively seeking:</strong> ready to buy, asking for recommendations</li>
+<li><strong>Aware but stuck:</strong> know the problem, not acting on it</li>
+<li><strong>Venting only:</strong> complaining but unlikely to change</li>
+</ul>
+<h3>8. Craft Messaging Angles</h3>
+<p>For each pain point, create:</p>
+<ul>
+<li><strong>Headline:</strong> attention-grabbing statement</li>
+<li><strong>Supporting proof:</strong> data point, case study, or testimonial</li>
+<li><strong>CTA:</strong> specific next step</li>
+</ul>
+<h2>Output Format</h2>
+<p>See REFERENCE.md for the complete ICP profile template.</p>
+<h2>Key Principles</h2>
+<p>1. <strong>Real language over marketing language.</strong> Use the exact words your ICP uses, not polished marketing copy.</p>
+<p>2. <strong>Pain over features.</strong> Lead with what hurts, not what you built.</p>
+<p>3. <strong>Specificity wins.</strong> &quot;VP of Marketing at a 50-person SaaS company&quot; &gt; &quot;Marketing leaders.&quot;</p>
+<p>4. <strong>Validate with data.</strong> Community research &gt; assumptions.</p>
+<p>5. <strong>One ICP per profile.</strong> If you serve different personas, create separate profiles.</p>
+<p>For templates and frameworks, see [REFERENCE.md](REFERENCE.md).</p></div>
+</div>
+<script>
+function copyInstall(btn) {
+  var text = btn.getAttribute('data-copy');
+  navigator.clipboard.writeText(text).then(function() {
+    btn.classList.add('copied');
+    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+    setTimeout(function() {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>

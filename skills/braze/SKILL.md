@@ -7,14 +7,22 @@ author: Rebecca Rae Barton
 author_url: https://github.com/thatrebeccarae
 metadata:
   version: 1.0.0
-  category: paid-media
+  category: email-marketing
   domain: braze
   updated: 2026-03-11
+  tested: 2026-03-17
+  tested_with: "Claude Code v2.1"
 ---
 
 # Braze Customer Engagement Platform
 
 Expert-level guidance for Braze — auditing, building, and optimizing Canvases, campaigns, segments, data architecture, and cross-channel messaging.
+
+## Install
+
+```bash
+git clone https://github.com/thatrebeccarae/claude-marketing.git && cp -r claude-marketing/skills/braze ~/.claude/skills/
+```
 
 ## Core Capabilities
 

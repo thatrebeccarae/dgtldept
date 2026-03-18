@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>pro-deck-builder — claude-marketing</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-00XHYRHCX4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-00XHYRHCX4');
+</script>
+<meta name="description" content="Create polished HTML slide decks and PDF-ready documents for consulting deliverables. Uses the RRBC design system with warm light mode, dark mode cover pages, L">
+<meta property="og:title" content="pro-deck-builder — claude-marketing">
+<meta property="og:description" content="Create polished HTML slide decks and PDF-ready documents for consulting deliverables. Uses the RRBC design system with warm light mode, dark mode cover pages, Lora/Inter/Roboto Mono typography, and da">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="pro-deck-builder — claude-marketing">
+<meta name="twitter:description" content="Create polished HTML slide decks and PDF-ready documents for consulting deliverables. Uses the RRBC design system with warm light mode, dark mode cover pages, Lora/Inter/Roboto Mono typography, and da">
+<link rel="canonical" href="https://thatrebeccarae.github.io/claude-marketing/skill/pro-deck-builder.html">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600,700&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Ultralight.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cartograph CF';
+  src: url('../fonts/CartographCF-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --accent: #5B5F8D;
+  --black: #000000;
+  --white: #ffffff;
+  --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+html {
+  background: #000000;
+  color: #ffffff;
+}
+
+body {
+  font-family: 'Switzer', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(15px, 1.1vw, 17px);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.detail-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 120px clamp(20px, 5vw, 40px) 80px;
+}
+
+.detail-back {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+.detail-back:hover { opacity: 1; }
+
+.detail-name {
+  font-family: 'PP Editorial New', 'Georgia', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 200;
+  line-height: 1.15;
+  letter-spacing: -0.014em;
+  margin-bottom: 0.5rem;
+}
+
+.detail-category {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  letter-spacing: 0.04em;
+  margin-bottom: 2rem;
+}
+
+.detail-desc {
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.65;
+  margin-bottom: 2.5rem;
+  opacity: 0.85;
+}
+
+.detail-install {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.detail-install code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  opacity: 0.6;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.detail-install .copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  color: #ffffff;
+  flex-shrink: 0;
+}
+.detail-install .copy-btn:hover { opacity: 0.8; }
+.detail-install .copy-btn.copied { opacity: 1; color: #4ade80; }
+
+.detail-tested {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  opacity: 0.4;
+  margin-bottom: 2.5rem;
+}
+
+.detail-capabilities h2,
+.detail-sources h2,
+.detail-body h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  margin-top: 2.5rem;
+}
+
+.detail-capabilities ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.detail-capabilities li {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 4px;
+}
+
+.detail-source-links {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.detail-source-links a {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ffffff;
+  border-radius: 45px;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+.detail-source-links a:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+.detail-body {
+  margin-top: 2.5rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 2rem;
+}
+
+.detail-body h2 {
+  font-family: 'Switzer', sans-serif;
+}
+
+.detail-body h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.detail-body p {
+  margin-bottom: 1rem;
+  opacity: 0.85;
+  line-height: 1.65;
+}
+
+.detail-body ul {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.detail-body li {
+  margin-bottom: 0.35rem;
+  opacity: 0.85;
+  line-height: 1.55;
+}
+
+.detail-body pre {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+}
+
+.detail-body code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.85rem;
+}
+
+.detail-body blockquote {
+  border-left: 2px solid rgba(255,255,255,0.2);
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+@media (max-width: 700px) {
+  .detail-page {
+    padding: 100px 20px 60px;
+  }
+  .detail-source-links {
+    flex-wrap: wrap;
+  }
+}
+</style>
+</head>
+<body>
+<div class="detail-page" data-pagefind-body>
+  <a href="../skills.html" class="detail-back">&larr; Back to skills</a>
+  <h1 class="detail-name">pro-deck-builder</h1>
+  <div class="detail-category">Reporting &amp; Deliverables</div>
+  <p class="detail-desc">Create polished HTML slide decks and PDF-ready documents for consulting deliverables. Uses the RRBC design system with warm light mode, dark mode cover pages, Lora/Inter/Roboto Mono typography, and data visualization palette. Trigger on 'deck', 'slides', 'presentation', 'pitch deck', 'keynote', 'report', or 'PDF'.</p>
+  <div class="detail-install">
+    <code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/pro-deck-builder ~/.claude/skills/</code>
+    <button class="copy-btn" data-copy="git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/pro-deck-builder ~/.claude/skills/" title="Copy install command" onclick="copyInstall(this)">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+    </button>
+  </div>
+  <div class="detail-tested">Tested 2026-03-17 &middot; Claude Code v2.1</div>
+  
+  <div class="detail-sources">
+<h2>Source Files</h2>
+<div class="detail-source-links">
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/pro-deck-builder/SKILL.md" target="_blank" rel="noopener">SKILL.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/pro-deck-builder/REFERENCE.md" target="_blank" rel="noopener">REFERENCE.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/pro-deck-builder/EXAMPLES.md" target="_blank" rel="noopener">EXAMPLES.md</a>
+</div>
+</div>
+  <div class="detail-body"><p>VC-backed SaaS design quality for PowerPoint. Think Linear, Attio, Vercel, Raycast — not corporate clip art.</p>
+<h2>Install</h2>
+<pre><code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/pro-deck-builder ~/.claude/skills/</code></pre>
+<h2>Quick Reference</h2>
+<p>| Task | Approach |</p>
+<p>|------|----------|</p>
+<p>| Create from scratch | Read [REFERENCE.md](REFERENCE.md), use PptxGenJS |</p>
+<p>| Edit existing / use template | Read [editing.md](editing.md) |</p>
+<p>| Read/extract content | `python -m markitdown presentation.pptx` |</p>
+<p>| Visual overview | `python scripts/thumbnail.py presentation.pptx` |</p>
+<p>---</p>
+<h2>Before You Start (Required Steps)</h2>
+<h3>Step 1: Ask the User</h3>
+<p>Before writing any code, ask:</p>
+<p>1. <strong>Light or dark mode?</strong> Dark = premium/keynote feel. Light = reports/data-heavy decks.</p>
+<p>2. <strong>Palette preference?</strong> Show the palette table below, or ask if they have brand colors.</p>
+<p>3. <strong>Logo?</strong> Ask if they have a logo file to include (PNG/SVG path).</p>
+<h3>Step 2: Discover Fonts</h3>
+<p>Check what's installed — premium fonts make a massive difference:</p>
+<pre><code># macOS — list all installed font families
+fc-list : family | sort -u
+
+# Search for premium fonts first
+fc-list : family | grep -iE &quot;inter|dm.sans|poppins|avenir|futura|geist|sf.pro|sf.mono|jetbrains|fira.code|montserrat|playfair|source.sans&quot;
+
+# Check macOS Font Book directories directly
+ls ~/Library/Fonts/ /Library/Fonts/ /System/Library/Fonts/Supplemental/ 2&gt;/dev/null</code></pre>
+<p><strong>Priority order for font selection:</strong></p>
+<p>1. <strong>Inter</strong> — the gold standard for SaaS UI (if installed, use it for everything)</p>
+<p>2. <strong>DM Sans</strong> — geometric, startup-friendly</p>
+<p>3. <strong>Poppins</strong> — rounded, approachable</p>
+<p>4. <strong>Avenir / Avenir Next</strong> — ships with macOS, Apple-adjacent elegance</p>
+<p>5. <strong>Calibri</strong> — safe fallback, always available</p>
+<p><strong>For data/mono:</strong> JetBrains Mono &gt; Fira Code &gt; SF Mono &gt; Consolas</p>
+<p>---</p>
+<h2>Design Language: VC-Backed SaaS</h2>
+<h3>Aesthetic Principles</h3>
+<p>1. <strong>Depth through layering</strong> — Surfaces float above backgrounds. Cards and panels have subtle elevation via shadows and fine borders, not flat colored boxes.</p>
+<p>2. <strong>Bold typography, minimal decoration</strong> — Let type hierarchy do the work. No accent lines, no decorative shapes, no clip art.</p>
+<p>3. <strong>Restrained color</strong> — One accent color used sparingly (10%). Mostly neutrals. Color = signal, not decoration.</p>
+<p>4. <strong>Generous whitespace</strong> — Empty space signals confidence. If a slide feels sparse, make the content bigger, don't add more.</p>
+<p>5. <strong>Every element earns its place</strong> — Before adding anything: what does it communicate? If removing it changes nothing, remove it.</p>
+<h3>Light vs Dark Mode</h3>
+<p>The user picks one mode for the entire deck. Never mix modes within a deck.</p>
+<p>---</p>
+<h2>Color System</h2>
+<h3>Dark Mode (Default — Premium/Keynote)</h3>
+<p>| Token | Value | Use |</p>
+<p>|-------|-------|-----|</p>
+<p>| `bg-primary` | `0A0A0C` | Slide backgrounds (deep space black) |</p>
+<p>| `bg-surface` | `17181A` | Cards, panels (deep slate) |</p>
+<p>| `bg-elevated` | `1E1F23` | Elevated surfaces, hover states |</p>
+<p>| `bg-glass` | `FFFFFF` at 4% opacity | Translucent overlays |</p>
+<p>| `text-primary` | `FFFFFF` | Headlines, key content |</p>
+<p>| `text-secondary` | `A0A0A0` | Body text, descriptions |</p>
+<p>| `text-muted` | `5A5A5E` | Captions, metadata, labels |</p>
+<p>| `border-subtle` | `FFFFFF` at 8% opacity | Card borders |</p>
+<h3>Light Mode (Reports/Data-Heavy)</h3>
+<p>| Token | Value | Use |</p>
+<p>|-------|-------|-----|</p>
+<p>| `bg-primary` | `FFFFFF` | Slide backgrounds |</p>
+<p>| `bg-surface` | `F8F9FA` | Cards, panels |</p>
+<p>| `bg-elevated` | `FFFFFF` | Elevated surfaces (use shadow) |</p>
+<p>| `text-primary` | `111111` | Headlines, key content |</p>
+<p>| `text-secondary` | `555555` | Body text, descriptions |</p>
+<p>| `text-muted` | `999999` | Captions, metadata, labels |</p>
+<p>| `border-subtle` | `E8E8E8` | Card borders |</p>
+<p>---</p>
+<h2>Palette System</h2>
+<p>Each palette defines one accent color (used at 10%) plus semantic status colors. The accent is the personality — everything else is neutral.</p>
+<h3>Built-In Palettes</h3>
+<p>| Name | Accent | Hex | Best For |</p>
+<p>|------|--------|-----|----------|</p>
+<p>| <strong>Electric Blue</strong> | Intense azure | `0055FF` | SaaS, tech, product |</p>
+<p>| <strong>Neon Lime</strong> | Acid green | `39FF14` | Dev tools, performance |</p>
+<p>| <strong>Hot Coral</strong> | Warm energy | `FF6B6B` | Marketing, creative |</p>
+<p>| <strong>Indigo</strong> | Deep purple | `6366F1` | Startups, AI/ML |</p>
+<p>| <strong>Teal Trust</strong> | Cool confidence | `0D9488` | Healthcare, finance |</p>
+<p>| <strong>Amber Signal</strong> | Warm authority | `F59E0B` | Consulting, strategy |</p>
+<p>| <strong>Rose</strong> | Refined pink | `F43F5E` | Design, brand, luxury |</p>
+<p>| <strong>Emerald</strong> | Growth green | `10B981` | Sustainability, success |</p>
+<p>| <strong>Cyan Edge</strong> | Sharp blue-green | `06B6D4` | Data, analytics |</p>
+<p>| <strong>Violet</strong> | Creative depth | `8B5CF6` | Education, innovation |</p>
+<p>| <strong>Slate</strong> | No accent | `64748B` | Minimal, understated |</p>
+<p>| <strong>Gold Standard</strong> | Financial premium | `D4AF37` | Investor, board decks |</p>
+<h3>Custom Palette (User Brand Colors)</h3>
+<p>If the user provides brand colors, build a custom palette:</p>
+<pre><code>const palette = {
+  accent: &quot;0055FF&quot;,      // primary brand color
+  accentMuted: &quot;0055FF&quot; + &quot; at 15% opacity&quot;, // for tinted backgrounds
+  positive: &quot;10B981&quot;,    // good, up, success
+  warning: &quot;F59E0B&quot;,     // attention, caution
+  critical: &quot;EF4444&quot;,    // bad, down, error
+};</code></pre>
+<h3>Color Application: 85/10/5 Rule</h3>
+<ul>
+<li><strong>85%</strong> — Backgrounds + neutral text (bg + text tokens from mode)</li>
+<li><strong>10%</strong> — Accent (key numbers, chart primary, CTAs, active states)</li>
+<li><strong>5%</strong> — Semantic status (positive/warning/critical in KPIs and data)</li>
+</ul>
+<p>---</p>
+<h2>Typography</h2>
+<h3>Font Priority</h3>
+<p>Run font discovery (Step 2 above), then pick:</p>
+<p>| Priority | Header | Body | Data/Mono | Vibe |</p>
+<p>|----------|--------|------|-----------|------|</p>
+<p>| 1st | Inter 700 | Inter 400 | JetBrains Mono | Linear/Vercel |</p>
+<p>| 2nd | DM Sans 700 | DM Sans 400 | Fira Code | Geometric startup |</p>
+<p>| 3rd | Avenir Next Bold | Avenir 400 | SF Mono | Apple-adjacent |</p>
+<p>| 4th | Poppins 700 | Poppins 400 | JetBrains Mono | Friendly modern |</p>
+<p>| Safe | Calibri Bold | Calibri | Consolas | Always available |</p>
+<p>For editorial/financial decks:</p>
+<p>| Header | Body | Vibe |</p>
+<p>|--------|------|------|</p>
+<p>| DM Serif Display | DM Sans | Sophisticated editorial |</p>
+<p>| Playfair Display | Source Sans Pro | Luxury, financial |</p>
+<p>| Georgia | Calibri | Classic corporate |</p>
+<h3>Size Scale</h3>
+<p>| Role | Size | Weight | Use |</p>
+<p>|------|------|--------|-----|</p>
+<p>| Hero title | 54-72pt | Bold (700) | Title slide only |</p>
+<p>| Slide title | 32-40pt | Bold (700) | Every content slide |</p>
+<p>| Section header | 20-24pt | Semibold (600) | Within-slide sections |</p>
+<p>| Body text | 14-16pt | Regular (400) | Paragraphs, bullets |</p>
+<p>| Captions/meta | 10-12pt | Regular (400) | Footnotes, sources |</p>
+<p>| Big KPI number | 48-72pt | Bold (700) | Dashboard callouts |</p>
+<p>| KPI label | 9-10pt | Semibold, ALL CAPS, +tracking | Below KPI numbers |</p>
+<p>| Data/numbers | 11-14pt | Mono regular | Tables, data labels |</p>
+<h3>Typography Rules</h3>
+<ul>
+<li><strong>Left-align</strong> body text and lists — center ONLY titles and KPI values</li>
+<li><strong>Max 2 font families</strong> per deck (+1 mono for data)</li>
+<li><strong>ALL CAPS + charSpacing</strong> only for small labels (KPI labels, category tags)</li>
+<li><strong>Line height</strong>: 1.3x for body, 1.1x for titles</li>
+<li><strong>Never underline</strong> for emphasis — use bold or accent color</li>
+</ul>
+<h3>Text Fitting (Prevents Overflow)</h3>
+<p>Big numbers and titles WILL overflow if you use a fixed font size without checking content length. Use these rules:</p>
+<p><strong>Big KPI Numbers — scale font to character count:</strong></p>
+<p>| Characters | Example | Max Font Size (card) | Max Font Size (standalone) |</p>
+<p>|------------|---------|---------------------|--------------------------|</p>
+<p>| 1–4 | `$4.2M` | 48pt | 72pt |</p>
+<p>| 5–7 | `$5,307K` | 36pt | 54pt |</p>
+<p>| 8–10 | `$5,307,540` | 28pt | 44pt |</p>
+<p>| 11+ | `$12,345,678` | 22pt | 36pt |</p>
+<p><strong>Rule: prefer abbreviated numbers.</strong> `$5.3M` &gt; `$5,307,540`. Only use full numbers in tables or footnotes where precision matters.</p>
+<p><strong>Slide Titles — max characters before wrapping:</strong></p>
+<p>| Font Size | Max Chars (~9&quot; wide) | If Longer |</p>
+<p>|-----------|---------------------|-----------|</p>
+<p>| 54pt | ~30 | Reduce to 44pt or rewrite shorter |</p>
+<p>| 44pt | ~38 | Reduce to 36pt or rewrite shorter |</p>
+<p>| 36pt | ~46 | Reduce to 32pt or rewrite shorter |</p>
+<p>| 32pt | ~52 | Use subtitle for overflow |</p>
+<p><strong>Rule: count characters before setting fontSize.</strong> Never let content slide titles wrap to 2 lines. Section dividers can wrap.</p>
+<p><strong>Body Text in Narrow Containers (Insight Panels, Sidebars):</strong></p>
+<p>Text overflow in narrow panels (&lt; 4&quot; wide) is a common problem. PptxGenJS does not auto-shrink text. Apply these rules:</p>
+<p>| Container Width | Max fontSize | Max chars per line (~) | Max lines at 1.25x spacing |</p>
+<p>|----------------|-------------|----------------------|---------------------------|</p>
+<p>| 4.0&quot;+ | 14pt | ~55 | Height ÷ 0.22&quot; |</p>
+<p>| 3.0-3.9&quot; | 11pt | ~45 | Height ÷ 0.18&quot; |</p>
+<p>| 2.0-2.9&quot; | 10pt | ~35 | Height ÷ 0.16&quot; |</p>
+<p>| &lt; 2.0&quot; | 9pt | ~25 | Height ÷ 0.15&quot; |</p>
+<p><strong>Rule: estimate line count before adding text.</strong> Count characters in your text, divide by max chars per line to get line count, then verify it fits in the container height. If it doesn't fit: (1) reduce fontSize, (2) shorten the text, or (3) increase the container. Never let text silently overflow — it gets clipped or overlaps adjacent elements.</p>
+<pre><code>// ✅ CORRECT: 2.8&quot; panel → max 10pt, ~35 chars/line
+// &quot;Welcome series dominates at 62%...&quot; = 90 chars ≈ 3 lines
+// Container h: 1.6&quot; → fits ~10 lines at 10pt. Safe.
+s.addText(&quot;Short, edited copy.&quot;, {
+  x: 6.55, y: 1.45, w: 2.7, h: 1.6,
+  fontSize: 10, fontFace: theme.font.body,
+});
+
+// ❌ WRONG: 2.8&quot; panel with 14pt font and 200+ char paragraph
+s.addText(&quot;Very long paragraph that will overflow...&quot;, {
+  x: 6.55, y: 1.45, w: 2.8, h: 1.6,
+  fontSize: 14, fontFace: theme.font.body,  // too large for narrow panel
+});</code></pre>
+<h3>Chart Number Formatting</h3>
+<p>Always format chart numbers for readability — raw numbers like &quot;1000000&quot; are never acceptable on axes OR data labels.</p>
+<p><strong>CRITICAL: `valAxisLabelFormatCode` only formats the AXIS. Data labels from `showValue: true` are formatted separately via `dataLabelFormatCode`.</strong> If you set `valAxisLabelFormatCode` but not `dataLabelFormatCode`, data labels will show raw unformatted numbers like &quot;2888000&quot;. `numFmt` is NOT a valid PptxGenJS property — always use `dataLabelFormatCode`.</p>
+<p><strong>Preferred approach — OOXML conditional format with raw values:</strong></p>
+<p>Use raw (unscaled) values and let OOXML conditional number formatting handle the display. This is the most reliable approach and handles mixed-magnitude data (e.g., a chart with both $2.9M and $3.6K values).</p>
+<pre><code>// ✅ BEST: Raw values + OOXML conditional format
+// Under 1K: whole number ($500)
+// 1K-999K: X.XXK ($540.18K, $57.72K)
+// 1M+: X.XM ($2.9M)
+const currFmt = '[&gt;=1000000]&quot;$&quot;#,##0.0,,&quot;M&quot;;[&gt;=1000]&quot;$&quot;#,##0.00,&quot;K&quot;;&quot;$&quot;#,##0';
+
+values: [2888000, 717734, 425467, 3655],  // raw dollar values
+dataLabelFormatCode: currFmt,              // conditional brackets OK here
+valAxisLabelFormatCode: '&quot;$&quot;#,##0.0,,&quot;M&quot;', // simple format only (no brackets)</code></pre>
+<pre><code>// ✅ ALSO OK: Pre-scale when all values are same magnitude
+values: [2888, 718, 425],  // raw values divided by 1000
+dataLabelFormatCode: '&quot;$&quot;#,##0&quot;K&quot;',
+valAxisLabelFormatCode: '&quot;$&quot;#,##0&quot;K&quot;',</code></pre>
+<pre><code>// ❌ WRONG: Raw values with axis-only format
+values: [2888000, 718000, 425000],
+valAxisLabelFormatCode: &quot;$#,##0,K&quot;,  // axis may format but data labels show 2888000
+// ❌ WRONG: numFmt (not a valid PptxGenJS property)</code></pre>
+<p><strong>OOXML conditional format reference (use with RAW values):</strong></p>
+<p>| Data Range | Format Code | Renders As |</p>
+<p>|------------|-------------|------------|</p>
+<p>| Currency (auto-scale) | `'[&gt;=1000000]&quot;$&quot;#,##0.0,,&quot;M&quot;;[&gt;=1000]&quot;$&quot;#,##0.00,&quot;K&quot;;&quot;$&quot;#,##0'` | $2.9M, $540.18K, $500 |</p>
+<p>| Plain number (auto-scale) | `'[&gt;=1000000]#,##0.0,,&quot;M&quot;;[&gt;=1000]#,##0.00,&quot;K&quot;;#,##0'` | 2.9M, 540.18K, 500 |</p>
+<p>| Percentage | `'0%'` | 50%, 85% |</p>
+<p><strong>Format code syntax:</strong> OOXML supports up to 2 conditions in brackets + a default: `[condition1]format1;[condition2]format2;defaultFormat`. Each trailing `,` divides by 1,000 (so `,,` divides by 1M).</p>
+<p><strong>IMPORTANT: `valAxisLabelFormatCode` does NOT support OOXML conditional brackets `[&gt;=1000]`.</strong> Use a simple format for the axis based on the data range:</p>
+<p>| Axis Range | `valAxisLabelFormatCode` | Renders As |</p>
+<p>|------------|----------------|------------|</p>
+<p>| Up to ~999K | `'&quot;$&quot;#,##0,&quot;K&quot;'` | $0K, $100K, $500K |</p>
+<p>| Up to ~10M+ | `'&quot;$&quot;#,##0.0,,&quot;M&quot;'` | $0.0M, $0.5M, $1.0M |</p>
+<p>| Up to ~999 | `'&quot;$&quot;#,##0'` | $0, $100, $500 |</p>
+<p>Use the conditional `currFmt` for `dataLabelFormatCode` (which supports brackets), but a simple format for `valAxisLabelFormatCode`. Always set `showValue: true` with `dataLabelPosition: &quot;outEnd&quot;` on bar charts so readers can see exact values without tracing to the axis.</p>
+<p>---</p>
+<h2>Spacing</h2>
+<p>| Token | Value | Use |</p>
+<p>|-------|-------|-----|</p>
+<p>| `xs` | 0.125&quot; | Within grouped elements |</p>
+<p>| `sm` | 0.25&quot; | Label to value, icon to text |</p>
+<p>| `md` | 0.375&quot; | Between sections within a card |</p>
+<p>| `lg` | 0.5&quot; | Between cards, major sections |</p>
+<p>| `xl` | 0.75&quot; | Between content zones |</p>
+<h3>Layout Grid (10&quot; × 5.625&quot;)</h3>
+<pre><code>Margins:       0.5&quot; from all edges
+Content area:  9.0&quot; wide × ~4.5&quot; tall
+Title zone:    y = 0.3&quot;
+Content zone:  y = 1.0&quot; to y = 5.0&quot;
+Footer zone:   y = 5.2&quot;
+Card gap:      0.25&quot; - 0.3&quot;</code></pre>
+<p>---</p>
+<h2>Logo Placement</h2>
+<h3>Finding Logos</h3>
+<pre><code>find ~/Desktop ~/Downloads ~/Documents -maxdepth 3 -iname &quot;*logo*&quot; \( -name &quot;*.png&quot; -o -name &quot;*.svg&quot; -o -name &quot;*.jpg&quot; \) 2&gt;/dev/null</code></pre>
+<h3>Placement Patterns</h3>
+<p>| Slide Type | Position | Size | Notes |</p>
+<p>|------------|----------|------|-------|</p>
+<p>| Title slide (top-left) | `x:0.5, y:0.4` | `w:1.5, h:0.5` | Subtle brand mark |</p>
+<p>| Title slide (centered) | `x:4.0, y:0.8` | `w:2.0, h:0.7` | Above title text |</p>
+<p>| Content slides | `x:8.5, y:0.2` | `w:1.0, h:0.35` | Top-right corner, every slide |</p>
+<p>| Closing slide | `x:3.5, y:1.5` | `w:3.0, h:1.0` | Centered, hero size |</p>
+<h3>Logo Rules</h3>
+<ul>
+<li>Always use `sizing: { type: &quot;contain&quot;, w, h }` to preserve aspect ratio</li>
+<li><strong>Content slides</strong>: max 1&quot; wide, don't compete with content</li>
+<li><strong>Title/closing</strong>: up to 3&quot; wide for brand moment</li>
+<li><strong>Dark mode</strong>: use white/light logo variant if available (ask user)</li>
+<li><strong>Slide master</strong>: if logo goes on every slide, add it to a master definition</li>
+</ul>
+<p>---</p>
+<h2>Icons</h2>
+<h3>Pipeline: react-icons → sharp → PNG → PptxGenJS</h3>
+<pre><code>npm install -g react-icons react react-dom sharp</code></pre>
+<p><strong>Prefer Lucide (`react-icons/lu`) or Feather (`react-icons/fi`)</strong> — they match the Linear/Vercel icon language.</p>
+<p>| Package | Import | Style |</p>
+<p>|---------|--------|-------|</p>
+<p>| `react-icons/lu` | Lucide | Linear-style, clean |</p>
+<p>| `react-icons/fi` | Feather | Thin, modern |</p>
+<p>| `react-icons/hi2` | Heroicons v2 | Apple-ish |</p>
+<p>| `react-icons/tb` | Tabler | Consistent strokes |</p>
+<h3>Icon Sizes</h3>
+<p>| Context | Display Size | Color |</p>
+<p>|---------|-------------|-------|</p>
+<p>| KPI card icon | 0.35&quot; × 0.35&quot; | Accent on dark, muted on light |</p>
+<p>| Feature row icon | 0.4&quot; × 0.4&quot; | White inside accent circle |</p>
+<p>| Section divider | 0.5&quot; × 0.5&quot; | Accent color |</p>
+<p>| Inline bullet | 0.25&quot; × 0.25&quot; | text-secondary |</p>
+<p>---</p>
+<h2>Reusable Components</h2>
+<h3>Bottom Callout Box (Standardized)</h3>
+<p>Many slides end with a highlighted callout box (recommendation, key insight, total impact). <strong>These must be visually identical across all slides:</strong></p>
+<p>| Property | Value | Notes |</p>
+<p>|----------|-------|-------|</p>
+<p>| Box height | 0.6&quot; | Always 0.6&quot; — never 0.5&quot;, 0.7&quot;, 0.9&quot; |</p>
+<p>| Text height | 0.5&quot; | Fits inside 0.6&quot; box with padding |</p>
+<p>| Font size | 11pt | Always 11pt bold — never 12pt or 13pt |</p>
+<p>| Font | `theme.font.body` | Bold, left-aligned, valign: &quot;middle&quot; |</p>
+<p>| Box x/w | `x: 0.5, w: 9.0` | Full content width |</p>
+<p>| Text x/w | `x: 0.7, w: 8.6` | Inset 0.2&quot; from box edges |</p>
+<p>| Text y offset | box y + 0.05&quot; | Centers text vertically in box |</p>
+<p>| Corner radius | 0.06&quot; | Consistent across all callouts |</p>
+<pre><code>// Standard bottom callout — copy this pattern exactly
+s.addShape(pres.shapes.RECTANGLE, {
+  x: 0.5, y: calloutY, w: 9.0, h: 0.6,
+  fill: { color: &quot;DCFCE7&quot; },  // or theme.accentMuted, &quot;FEF3C7&quot;, etc.
+  line: { color: theme.status.positive, width: 0.75 },
+  rectRadius: 0.06,
+});
+
+s.addText(&quot;Callout text here.&quot;, {
+  x: 0.7, y: calloutY + 0.05, w: 8.6, h: 0.5,
+  fontSize: 11, fontFace: theme.font.body, bold: true,
+  color: &quot;166534&quot;, align: &quot;left&quot;, valign: &quot;middle&quot;,
+});</code></pre>
+<h3>Table + Callout Layout (Prevents Overlap)</h3>
+<p><strong>Always calculate the table bottom position before placing a callout below it.</strong> PptxGenJS tables don't auto-report their height, so you must compute it:</p>
+<pre><code>tableBottom = tableY + (rowCount × rowH)
+calloutY = tableBottom + 0.15&quot;  // minimum 0.15&quot; gap</code></pre>
+<p><strong>Verify calloutY + 0.6&quot; (callout height) &lt; 5.2&quot; (footer zone).</strong> If it doesn't fit, reduce `rowH` or table font sizes — never let the callout overlap the footer.</p>
+<p>| Rows (incl header) | rowH: 0.32&quot; | rowH: 0.36&quot; | rowH: 0.42&quot; | rowH: 0.48&quot; | rowH: 0.55&quot; |</p>
+<p>|---------------------|-------------|-------------|-------------|-------------|-------------|</p>
+<p>| 6 rows | 1.92&quot; | 2.16&quot; | 2.52&quot; | 2.88&quot; | 3.30&quot; |</p>
+<p>| 7 rows | 2.24&quot; | 2.52&quot; | 2.94&quot; | 3.36&quot; | 3.85&quot; |</p>
+<p>| 8 rows | 2.56&quot; | 2.88&quot; | 3.36&quot; | 3.84&quot; | 4.40&quot; |</p>
+<p>| 11 rows | 3.52&quot; | 3.96&quot; | 4.62&quot; | — | — |</p>
+<p>With table starting at y: 1.0&quot; and callout needing 0.75&quot; (0.15&quot; gap + 0.6&quot; box), the table height limit is <strong>3.45&quot;</strong> to stay above footer. Choose `rowH` accordingly.</p>
+<h3>Cross-Slide Consistency Rules</h3>
+<p>Repeated elements MUST use identical dimensions across all slides:</p>
+<p>1. <strong>Bottom callout boxes</strong> — same h, fontSize, padding on every slide (see standard above)</p>
+<p>2. <strong>Chart font sizes</strong> — if multiple slides have bar/line charts, use identical `dataLabelFontSize`, `catAxisLabelFontSize`, and `valAxisLabelFontSize` across all of them</p>
+<p>3. <strong>Table styling</strong> — header row style (`hdr()`) and cell style (`cell()`) should be defined once as helpers and reused</p>
+<p>4. <strong>Card dimensions</strong> — if using stat cards on multiple slides, keep card width/height/corner radius consistent</p>
+<p>5. <strong>Section badge positions</strong> — impact badges (e.g., &quot;$400K-$800K&quot;) should use the same x, y, w, h, fontSize</p>
+<p><strong>Rule: define reusable constants at the top of the script</strong> for any dimension that appears on more than one slide.</p>
+<p>---</p>
+<h2>Slide Compositions</h2>
+<h3>Vary Layouts — The #1 Rule</h3>
+<p>Never repeat the same layout more than twice consecutively. Rotate through:</p>
+<p>| Type | When | Elements |</p>
+<p>|------|------|----------|</p>
+<p>| <strong>Title Slide</strong> | Opening/closing | Hero text, subtitle, logo, date |</p>
+<p>| <strong>KPI Dashboard</strong> | Executive summary | 3-5 cards, big numbers |</p>
+<p>| <strong>Chart + Insight</strong> | Data with context | 60/40 split |</p>
+<p>| <strong>Full-Width Chart</strong> | Chart IS the story | Full span, callout overlay |</p>
+<p>| <strong>Icon Feature Grid</strong> | Features, pillars | 3-4 icon+text rows |</p>
+<p>| <strong>Data Table</strong> | Financials, comparisons | Styled rows, mono numbers |</p>
+<p>| <strong>Section Divider</strong> | Between sections | Bold title on dark/accent bg |</p>
+<p>| <strong>Quote</strong> | Testimonials | Large italic, attribution |</p>
+<p>| <strong>Big Number</strong> | Single key stat | Huge centered metric |</p>
+<p>| <strong>Comparison</strong> | Before/after, vs. | Side-by-side columns |</p>
+<p>| <strong>Image + Text</strong> | Products, case studies | Half-bleed image |</p>
+<p>| <strong>Closing</strong> | End | Logo, CTA, contact |</p>
+<p>---</p>
+<h2>Anti-Patterns (Never Do These)</h2>
+<p>1. <strong>NEVER add horizontal accent lines/bars under titles, subtitles, or headings</strong> — This is the #1 AI tell. No thin rectangles (h: 0.03-0.05) placed under text as decorative separators. Not on title slides, not on section dividers, not on closing slides, not anywhere. If you feel a slide needs visual separation, use whitespace or a tinted panel instead.</p>
+<p>2. <strong>No gradient fills on shapes</strong> — use solid colors + subtle borders</p>
+<p>3. <strong>No heavy shadows</strong> — max opacity 0.1, blur 6</p>
+<p>4. <strong>Don't repeat layouts</strong> on consecutive slides</p>
+<p>5. <strong>Don't center body text</strong> — left-align everything except titles/KPIs</p>
+<p>6. <strong>No more than 2 fonts</strong> (+1 mono)</p>
+<p>7. <strong>No walls of text</strong> — max 6 lines body per slide</p>
+<p>8. <strong>No decorative shapes</strong> — no random circles, triangles, swooshes</p>
+<p>9. <strong>No clip art</strong> — use Lucide/Feather icons</p>
+<p>10. <strong>No colored card backgrounds</strong> — cards = `bg-surface` + subtle border</p>
+<p>11. <strong>No unicode bullets</strong> — use `bullet: true`</p>
+<p>12. <strong>No mixing light/dark</strong> within a deck</p>
+<p>13. <strong>No unformatted chart data labels</strong> — if you use `showValue: true`, you MUST also set `dataLabelFormatCode`. `valAxisLabelFormatCode` alone does NOT format data labels. Use OOXML conditional formats with raw values for best results.</p>
+<p>14. <strong>No long text in narrow panels without size checks</strong> — before adding body text to any container &lt; 4&quot; wide, estimate line count (chars ÷ chars-per-line) and verify it fits the container height. Reduce font size or shorten text if it won't fit.</p>
+<p>15. <strong>No inconsistent callout boxes</strong> — all full-width bottom callout boxes must use identical height (0.6&quot;), text fontSize (11pt), and padding across every slide. Define the callout pattern once and copy it exactly.</p>
+<p>16. <strong>No callout-over-table overlap</strong> — always calculate `tableBottom = tableY + (rows × rowH)` and place the callout at `tableBottom + 0.15&quot;` minimum. Never hardcode callout y-positions without verifying they clear the table.</p>
+<p>17. <strong>No inconsistent chart font sizes</strong> — if multiple slides contain charts, use identical `dataLabelFontSize`, `catAxisLabelFontSize`, and `valAxisLabelFontSize` values. Define these as constants and reuse them.</p>
+<p>---</p>
+<h2>QA (Required)</h2>
+<p><strong>Assume there are problems. First render is never correct.</strong></p>
+<h3>Content Check</h3>
+<pre><code>python -m markitdown output.pptx
+python -m markitdown output.pptx | grep -iE &quot;xxxx|lorem|ipsum|placeholder|click to&quot;</code></pre>
+<h3>Visual QA (Use Subagents)</h3>
+<pre><code>python scripts/office/soffice.py --headless --convert-to pdf output.pptx
+pdftoppm -jpeg -r 150 output.pdf slide</code></pre>
+<p>Subagent prompt:</p>
+<pre><code>Inspect these slides. Assume issues exist — find them.
+Look for:
+- TEXT OVERFLOW: Numbers or titles that wrap to a second line inside their container. Also check body text in narrow panels (&lt;4&quot; wide) — long paragraphs at font sizes &gt;11pt will overflow.
+- ACCENT LINES: Any thin horizontal bars/lines under titles or headings (must be removed)
+- CHART DATA LABELS: Raw unformatted numbers on data labels (e.g., &quot;2888000&quot; instead of &quot;$2,889K&quot;). This is the #1 chart bug — valAxisLabelFormatCode does NOT format data labels.
+- CHART AXES: Raw unformatted numbers on axes (should be $500K not 500000)
+- Overlapping elements, cramped spacing (&lt;0.3&quot;), insufficient margins (&lt;0.5&quot;)
+- Low contrast, text-only slides, repeated layouts, placeholder text
+- Mode inconsistency (light elements on dark or vice versa)
+- Big numbers that should be abbreviated ($5.3M not $5,307,540)
+- CALLOUT INCONSISTENCY: Bottom callout boxes with different heights, font sizes, or padding across slides (all must be h:0.6&quot;, fontSize:11)
+- TABLE-CALLOUT OVERLAP: Callout boxes overlapping tables — calculate tableY + (rows × rowH) and verify callout clears it
+- CHART FONT INCONSISTENCY: Different dataLabelFontSize, catAxisLabelFontSize, or valAxisLabelFontSize between charts on different slides</code></pre>
+<p>Fix → re-render → inspect → repeat until clean. <strong>Complete at least one fix cycle.</strong></p>
+<p>---</p>
+<h2>Dependencies</h2>
+<pre><code>npm install -g pptxgenjs                          # Creation
+npm install -g react-icons react react-dom sharp  # Icons
+pip install &quot;markitdown[pptx]&quot; Pillow             # Reading + QA
+# Also: LibreOffice (soffice) + Poppler (pdftoppm) for visual QA</code></pre>
+<h2>Implementation</h2>
+<p>Read [REFERENCE.md](REFERENCE.md) for PptxGenJS API patterns and complete slide composition code for both light and dark modes.</p>
+<h2>Brand Context (Optional)</h2>
+<p>If `brand-profile.json` exists in the working directory, read it before building decks. Override the default RRBC palette with the brand's colors (primary, secondary, background), use brand fonts when available (fall back to system fonts), and include the brand name on title slides and headers. This profile is produced by the `brand-dna` skill.</p></div>
+</div>
+<script>
+function copyInstall(btn) {
+  var text = btn.getAttribute('data-copy');
+  navigator.clipboard.writeText(text).then(function() {
+    btn.classList.add('copied');
+    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+    setTimeout(function() {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>

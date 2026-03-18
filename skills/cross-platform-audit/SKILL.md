@@ -10,11 +10,19 @@ metadata:
   category: paid-media
   domain: cross-platform
   updated: 2026-03-16
+  tested: 2026-03-17
+  tested_with: "Claude Code v2.1"
 ---
 
 # Cross-Platform Audit — Unified Paid Media Assessment
 
 Orchestrates parallel scored audits across Google Ads, Meta Ads, and Microsoft Ads, then merges results into a single budget-weighted health score with cross-platform intelligence.
+
+## Install
+
+```bash
+git clone https://github.com/thatrebeccarae/claude-marketing.git && cp -r claude-marketing/skills/cross-platform-audit ~/.claude/skills/
+```
 
 ## Context Intake (Always Do First)
 

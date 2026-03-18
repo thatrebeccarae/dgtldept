@@ -167,7 +167,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
+  scroll-snap-type: y proximity;
   scroll-padding-top: 60px;
   -webkit-text-size-adjust: 100%;
 }
@@ -607,12 +607,14 @@ a {
 
 .demo-text-col .tab-btn {
   text-align: center;
+  font-family: 'Cartograph CF', monospace;
+  text-transform: uppercase;
   padding: 0.75rem 1.25rem;
-  border: 1px solid #ffffff;
+  border: 1px solid var(--theme-color);
   border-radius: 45px;
   font-size: 0.8rem;
-  font-weight: 500;
-  color: #ffffff;
+  font-weight: 400;
+  color: var(--theme-color);
   opacity: 1;
   background: transparent;
   transition: background 0.2s var(--ease), color 0.2s var(--ease);
@@ -643,9 +645,10 @@ a {
   background: none;
   border: none;
   color: var(--white);
-  font-family: 'Switzer', sans-serif;
-  font-size: 0.875rem;
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
   font-weight: 400;
+  text-transform: uppercase;
   padding: 1rem 1.5rem;
   cursor: pointer;
   opacity: 0.4;
@@ -751,22 +754,22 @@ a {
   display: inline-block;
   font-family: 'Cartograph CF', monospace;
   font-size: 0.8rem;
-  font-weight: 500;
+  font-weight: 400;
   text-transform: uppercase;
   padding: 0.75rem 1.25rem;
-  border: 1px solid #ffffff;
+  border: 1px solid var(--theme-color);
   border-radius: 45px;
-  color: #ffffff;
+  color: var(--theme-color);
   transition: background 0.2s var(--ease), color 0.2s var(--ease);
 }
 
 .install-btn:hover {
-  background: rgba(255,255,255,0.1);
+  background: rgba(var(--theme-bg-rgb), 0.15);
 }
 
 .install-btn.active {
-  background: #ffffff;
-  color: #000000;
+  background: var(--theme-color);
+  color: var(--theme-bg);
 }
 
 .install-btn.active:hover {
@@ -778,7 +781,6 @@ a {
   padding: clamp(40px, 4vw, 60px) clamp(40px, 5vw, 80px) 2rem;
   background: #000000;
   color: #ffffff;
-  scroll-snap-align: start;
 }
 
 .footer-handle {
@@ -797,24 +799,23 @@ a {
 
 .footer-bottom {
   display: grid;
-  grid-template-columns: 1fr auto;
-  gap: var(--grid-gap);
-  align-items: start;
-  margin-bottom: 2.5rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding-bottom: 3rem;
 }
 
 .footer-socials {
   display: flex;
-  flex-direction: column;
-  gap: 0;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: center;
 }
 .footer-socials a {
   font-family: 'Cartograph CF', monospace;
   font-size: 0.85rem;
   font-weight: 400;
-  color: #ffffff;
   text-transform: uppercase;
-  line-height: 1.3;
+  color: #ffffff;
   transition: opacity 0.2s var(--ease);
 }
 .footer-socials a:hover {
@@ -823,83 +824,49 @@ a {
 
 .footer-cta {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 1rem;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2rem;
 }
+
 .footer-cta-text {
-  font-family: 'Switzer', sans-serif;
-  font-size: 1.75rem;
-  font-weight: 400;
-  color: #ffffff;
-  text-align: right;
+  font-family: 'PP Editorial New', 'Georgia', serif;
+  font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+  font-weight: 200;
   line-height: 1.2;
+  text-align: right;
 }
+
 .footer-cta-btn {
-  display: block;
-  width: 100%;
-  text-align: center;
+  display: inline-block;
   font-family: 'Cartograph CF', monospace;
   font-size: 1.25rem;
-  font-weight: 700;
-  padding: 1.25rem 1.5rem;
-  background: #ffffff;
-  color: #0d0f14;
+  font-weight: 400;
+  text-transform: uppercase;
+  padding: 1.25rem 1.75rem;
   border: 1px solid #ffffff;
   border-radius: 45px;
-  text-transform: uppercase;
-  transition: opacity 0.2s var(--ease);
+  color: #ffffff;
+  background: transparent;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+  white-space: nowrap;
 }
 .footer-cta-btn:hover {
-  opacity: 0.8;
+  background: #ffffff;
+  color: #000000;
 }
 
 .footer-bar {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  justify-content: space-between;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
   font-family: 'Cartograph CF', monospace;
-  font-size: 0.85rem;
-  font-weight: 400;
-  color: #ffffff;
+  font-size: 0.75rem;
   text-transform: uppercase;
-  padding-top: 1.5rem;
-}
-.footer-bar span:nth-child(2) {
-  text-align: center;
-}
-.footer-bar span:last-child {
-  text-align: right;
+  opacity: 0.5;
 }
 
-/* ─── SCROLL REVEAL ─── */
-[data-reveal] {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
-}
-[data-reveal].revealed {
-  opacity: 1;
-  transform: translateY(0);
-}
-@media (max-width: 700px) {
-  [data-reveal] {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-}
-
-/* ─── REDUCED MOTION ─── */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
-  }
-  [data-reveal] {
-    opacity: 1;
-    transform: none;
-  }
-}
 
 /* ─── RESPONSIVE: TABLET (1280px) ─── */
 @media (max-width: 1280px) {
@@ -920,7 +887,7 @@ a {
     --theme-color: #ffffff;
     --theme-bg-rgb: 0,0,0;
     background-color: #000000;
-    color: #ffffff;
+    color: var(--theme-color);
   }
 
   .section-label {
@@ -1169,7 +1136,7 @@ a {
     font-size: 0.7rem;
     white-space: nowrap;
     flex-shrink: 0;
-    border: 1px solid #ffffff;
+    border: 1px solid var(--theme-color);
     border-radius: 45px;
   }
   .demo-text-col .tab-btn.active {
@@ -1230,23 +1197,18 @@ a {
     text-align: left;
     gap: 2rem;
   }
-  .footer-socials {
-    align-items: flex-start;
+  .footer-bottom {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
   .footer-cta {
-    align-items: flex-start;
+    justify-content: flex-start;
   }
   .footer-cta-text {
     text-align: left;
-    font-size: 1.35rem;
-  }
-  .footer-cta-btn {
-    width: auto;
-    font-size: 0.9rem;
-    padding: 0.9rem 1.5rem;
   }
   .footer-bar {
-    grid-template-columns: 1fr;
+    flex-direction: column;
     gap: 0.25rem;
     text-align: left;
     font-size: 0.75rem;
@@ -1328,7 +1290,7 @@ a {
 <header class="site-header" id="siteHeader">
   <a href="#" class="header-logo">claude-marketing</a>
   <nav class="header-nav">
-    <a href="#capabilities">Skills</a>
+    <a href="skills.html">Skills</a>
     <a href="#capabilities">Capabilities</a>
     <a href="#demo">Demo</a>
     <a href="#install">Install</a>
@@ -1340,7 +1302,7 @@ a {
 </header>
 
 <nav class="mobile-nav" id="mobileNav">
-  <a href="#capabilities" onclick="closeMobileNav()">Skills</a>
+  <a href="skills.html" onclick="closeMobileNav()">Skills</a>
   <a href="#capabilities" onclick="closeMobileNav()">Capabilities</a>
   <a href="#demo" onclick="closeMobileNav()">Demo</a>
   <a href="#install" onclick="closeMobileNav()">Install</a>
@@ -1402,6 +1364,7 @@ a {
       </div>
     </div>
     <div class="cap-extra" data-reveal>Plus 3 agents: GA4 Monitor · GA4 Gap Analyzer · GTM Implementer — a complete tracking-to-implementation pipeline.</div>
+    <div data-reveal style="margin-top: 1.5rem; grid-column: 1 / -1;"><a href="skills.html" class="install-btn active">View whole catalog</a></div>
   </div>
 </section>
 
@@ -1548,7 +1511,6 @@ python claude-marketing/skill-packs/scripts/setup-paid-media.py
     <div class="footer-socials">
       <a href="https://github.com/thatrebeccarae" target="_blank" rel="noopener">GitHub</a>
       <a href="https://dgtldept.substack.com" target="_blank" rel="noopener">Substack</a>
-      <a href="https://instagram.com/index.html" target="_blank" rel="noopener">Instagram</a>
       <a href="https://linkedin.com/in/rebeccaraebarton" target="_blank" rel="noopener">LinkedIn</a>
       <a href="https://rebeccaraebarton.com" target="_blank" rel="noopener">More Links &#8599;</a>
     </div>

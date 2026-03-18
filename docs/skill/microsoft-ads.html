@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>microsoft-ads — claude-marketing</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-00XHYRHCX4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-00XHYRHCX4');
+</script>
+<meta name="description" content="Microsoft Advertising (Bing Ads) platform expertise. Audit campaigns, keywords, audiences, and UET tracking. Use when the user asks about Microsoft Ads, Bing Ad">
+<meta property="og:title" content="microsoft-ads — claude-marketing">
+<meta property="og:description" content="Microsoft Advertising (Bing Ads) platform expertise. Audit campaigns, keywords, audiences, and UET tracking. Use when the user asks about Microsoft Ads, Bing Ads, search advertising on Microsoft, Link">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="microsoft-ads — claude-marketing">
+<meta name="twitter:description" content="Microsoft Advertising (Bing Ads) platform expertise. Audit campaigns, keywords, audiences, and UET tracking. Use when the user asks about Microsoft Ads, Bing Ads, search advertising on Microsoft, Link">
+<link rel="canonical" href="https://thatrebeccarae.github.io/claude-marketing/skill/microsoft-ads.html">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600,700&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Ultralight.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cartograph CF';
+  src: url('../fonts/CartographCF-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --accent: #5B5F8D;
+  --black: #000000;
+  --white: #ffffff;
+  --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+html {
+  background: #000000;
+  color: #ffffff;
+}
+
+body {
+  font-family: 'Switzer', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(15px, 1.1vw, 17px);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.detail-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 120px clamp(20px, 5vw, 40px) 80px;
+}
+
+.detail-back {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+.detail-back:hover { opacity: 1; }
+
+.detail-name {
+  font-family: 'PP Editorial New', 'Georgia', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 200;
+  line-height: 1.15;
+  letter-spacing: -0.014em;
+  margin-bottom: 0.5rem;
+}
+
+.detail-category {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  letter-spacing: 0.04em;
+  margin-bottom: 2rem;
+}
+
+.detail-desc {
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.65;
+  margin-bottom: 2.5rem;
+  opacity: 0.85;
+}
+
+.detail-install {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.detail-install code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  opacity: 0.6;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.detail-install .copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  color: #ffffff;
+  flex-shrink: 0;
+}
+.detail-install .copy-btn:hover { opacity: 0.8; }
+.detail-install .copy-btn.copied { opacity: 1; color: #4ade80; }
+
+.detail-tested {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  opacity: 0.4;
+  margin-bottom: 2.5rem;
+}
+
+.detail-capabilities h2,
+.detail-sources h2,
+.detail-body h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  margin-top: 2.5rem;
+}
+
+.detail-capabilities ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.detail-capabilities li {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 4px;
+}
+
+.detail-source-links {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.detail-source-links a {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ffffff;
+  border-radius: 45px;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+.detail-source-links a:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+.detail-body {
+  margin-top: 2.5rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 2rem;
+}
+
+.detail-body h2 {
+  font-family: 'Switzer', sans-serif;
+}
+
+.detail-body h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.detail-body p {
+  margin-bottom: 1rem;
+  opacity: 0.85;
+  line-height: 1.65;
+}
+
+.detail-body ul {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.detail-body li {
+  margin-bottom: 0.35rem;
+  opacity: 0.85;
+  line-height: 1.55;
+}
+
+.detail-body pre {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+}
+
+.detail-body code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.85rem;
+}
+
+.detail-body blockquote {
+  border-left: 2px solid rgba(255,255,255,0.2);
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+@media (max-width: 700px) {
+  .detail-page {
+    padding: 100px 20px 60px;
+  }
+  .detail-source-links {
+    flex-wrap: wrap;
+  }
+}
+</style>
+</head>
+<body>
+<div class="detail-page" data-pagefind-body>
+  <a href="../skills.html" class="detail-back">&larr; Back to skills</a>
+  <h1 class="detail-name">microsoft-ads</h1>
+  <div class="detail-category">Paid Media</div>
+  <p class="detail-desc">Microsoft Advertising (Bing Ads) platform expertise. Audit campaigns, keywords, audiences, and UET tracking. Use when the user asks about Microsoft Ads, Bing Ads, search advertising on Microsoft, LinkedIn audience targeting, or Performance Max campaigns on Microsoft.</p>
+  <div class="detail-install">
+    <code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/microsoft-ads ~/.claude/skills/</code>
+    <button class="copy-btn" data-copy="git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/microsoft-ads ~/.claude/skills/" title="Copy install command" onclick="copyInstall(this)">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+    </button>
+  </div>
+  <div class="detail-tested">Tested 2026-03-17 &middot; Claude Code v2.1</div>
+  <div class="detail-capabilities"><h2>Capabilities</h2><ul><li>Campaign Auditing &amp; Optimization</li><li>Campaign Types</li><li>Audience Targeting</li><li>Tracking &amp; Attribution</li><li>Import &amp; Sync</li></ul></div>
+  <div class="detail-sources">
+<h2>Source Files</h2>
+<div class="detail-source-links">
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/microsoft-ads/SKILL.md" target="_blank" rel="noopener">SKILL.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/microsoft-ads/REFERENCE.md" target="_blank" rel="noopener">REFERENCE.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/microsoft-ads/EXAMPLES.md" target="_blank" rel="noopener">EXAMPLES.md</a>
+</div>
+</div>
+  <div class="detail-body"><p>Expert-level guidance for Microsoft Advertising — auditing, building, and optimizing search, shopping, audience, and Performance Max campaigns.</p>
+<h2>Install</h2>
+<pre><code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/microsoft-ads ~/.claude/skills/</code></pre>
+<h2>Core Capabilities</h2>
+<h3>Campaign Auditing &amp; Optimization</h3>
+<ul>
+<li>Audit account structure, campaign settings, bid strategies, and budget allocation</li>
+<li>Review keyword match types, negative keywords, and search term reports</li>
+<li>Analyze quality scores and ad relevance</li>
+<li>Identify wasted spend and missed opportunity gaps</li>
+</ul>
+<h3>Campaign Types</h3>
+<ul>
+<li><strong>Search</strong> — Text ads on Bing, Yahoo, DuckDuckGo, and partner sites</li>
+<li><strong>Shopping</strong> — Product ads from Microsoft Merchant Center feed</li>
+<li><strong>Audience</strong> — Native display ads on Microsoft Audience Network (MSN, Outlook, Edge)</li>
+<li><strong>Performance Max</strong> — Automated cross-format campaigns (search, shopping, audience, display)</li>
+<li><strong>App Install</strong> — Mobile app promotion campaigns</li>
+<li><strong>Dynamic Search</strong> — Auto-generated ads from website content</li>
+</ul>
+<h3>Audience Targeting</h3>
+<ul>
+<li><strong>LinkedIn Profile Targeting</strong> (Microsoft-exclusive) — Target by company, industry, job function</li>
+<li>In-market audiences, custom audiences, remarketing lists</li>
+<li>Customer match (email upload), similar audiences</li>
+<li>Combined audiences with AND/OR logic</li>
+</ul>
+<h3>Tracking &amp; Attribution</h3>
+<ul>
+<li>UET (Universal Event Tracking) tag setup and validation</li>
+<li>Conversion goals: URL, event, duration, pages per visit, app install</li>
+<li>Offline conversion import (GCLID-based)</li>
+<li>Multi-touch attribution models</li>
+<li>Microsoft Clarity integration for session recordings</li>
+</ul>
+<h3>Import &amp; Sync</h3>
+<ul>
+<li>Google Ads import (campaigns, keywords, ads, extensions)</li>
+<li>Scheduled sync from Google Ads (daily/weekly auto-import)</li>
+<li>Differences to watch: audience targeting, bid modifiers, ad formats, extensions</li>
+</ul>
+<h2>Key Benchmarks</h2>
+<p>| Metric | Good | Great | Warning |</p>
+<p>|--------|------|-------|---------|</p>
+<p>| Search CTR | 3-5% | 6%+ | &lt;2% |</p>
+<p>| Search CPC | Typically 30-40% lower than Google Ads | — | Higher than Google |</p>
+<p>| Conversion Rate | 3-5% | 6%+ | &lt;2% |</p>
+<p>| Quality Score | 7-8 | 9-10 | &lt;6 |</p>
+<p>| Impression Share | 60-70% | 80%+ | &lt;40% |</p>
+<p>| Search Term Relevance | 80%+ relevant | 90%+ | &lt;60% |</p>
+<h2>Microsoft Ads vs Google Ads</h2>
+<p>| Feature | Microsoft Ads | Google Ads |</p>
+<p>|---------|--------------|------------|</p>
+<p>| Search Volume | ~10-15% of Google | Dominant |</p>
+<p>| Avg CPC | 30-40% lower | Higher |</p>
+<p>| Audience | Older, higher income, desktop-heavy | Broader |</p>
+<p>| Unique Targeting | LinkedIn Profile Targeting | None |</p>
+<p>| Import | One-click from Google Ads | N/A |</p>
+<p>| Shopping | Merchant Center (separate from Google) | Google Merchant Center |</p>
+<p>| Performance Max | Available (newer) | More mature |</p>
+<h2>Account Structure Best Practices</h2>
+<pre><code>Account
+├── Brand Search Campaign (Exact + Phrase)
+│   ├── Brand Terms Ad Group
+│   └── Brand + Product Ad Groups
+├── Non-Brand Search Campaign (by theme)
+│   ├── [Product/Service Category] Ad Groups
+│   └── [High-Intent Keywords] Ad Groups
+├── Shopping Campaign
+│   ├── Priority: High (top products)
+│   ├── Priority: Medium (categories)
+│   └── Priority: Low (catch-all)
+├── Audience Campaign (Audience Network)
+│   ├── Remarketing
+│   ├── In-Market
+│   └── LinkedIn Targeting
+├── Competitor Campaign (optional)
+│   └── Competitor Brand Terms
+└── Performance Max Campaign
+    └── Asset Groups by theme</code></pre>
+<h2>Workflow: Full Account Audit</h2>
+<p>When asked to audit a Microsoft Ads account:</p>
+<p>1. <strong>Account Settings</strong> — Conversion tracking (UET), attribution model, auto-tagging, time zone</p>
+<p>2. <strong>Campaign Structure</strong> — Organization, naming conventions, budget distribution</p>
+<p>3. <strong>Keyword Analysis</strong> — Match types, quality scores, search term relevance, negative keyword coverage</p>
+<p>4. <strong>Ad Copy Review</strong> — RSA asset quality, ad extensions (sitelinks, callouts, structured snippets)</p>
+<p>5. <strong>Bid Strategy</strong> — Manual vs automated, target CPA/ROAS, portfolio strategies</p>
+<p>6. <strong>Audience Targeting</strong> — Remarketing lists, LinkedIn targeting, in-market audiences</p>
+<p>7. <strong>Shopping Feed</strong> — Product data quality, feed errors, competitive pricing</p>
+<p>8. <strong>Budget Analysis</strong> — Budget pacing, lost impression share (budget vs rank)</p>
+<p>9. <strong>Google Ads Sync</strong> — Import freshness, divergence from Google, Microsoft-specific optimizations</p>
+<p>10. <strong>Recommendations</strong> — Prioritized by expected ROAS impact</p>
+<h2>How to Use This Skill</h2>
+<p>Ask me questions like:</p>
+<ul>
+<li>&quot;Audit my Microsoft Ads account structure&quot;</li>
+<li>&quot;Help me set up LinkedIn Profile Targeting&quot;</li>
+<li>&quot;My Google Ads import isn't performing well on Microsoft — what should I change?&quot;</li>
+<li>&quot;Design a Shopping campaign structure for my product catalog&quot;</li>
+<li>&quot;What Microsoft-specific optimizations should I make beyond the Google import?&quot;</li>
+<li>&quot;Help me set up UET tracking and conversion goals&quot;</li>
+<li>&quot;Plan a Performance Max campaign on Microsoft&quot;</li>
+</ul>
+<p>For detailed Microsoft Ads API reference, UET implementation, and advanced configurations, see [REFERENCE.md](REFERENCE.md).</p>
+<h2>Hard Rules</h2>
+<p>These constraints must never be violated in recommendations:</p>
+<p>1. <strong>UET tag must be verified and firing</strong> before any optimization recommendations.</p>
+<p>2. <strong>Auto-tagging (MSCLKID) must be enabled</strong> — without it, conversion tracking and analytics break.</p>
+<p>3. <strong>Brand syndication must be excluded</strong> from brand campaigns — syndication network delivers low-quality traffic for brand terms.</p>
+<p>4. <strong>Google imports must be reviewed and adjusted</strong> — raw imports without Microsoft-specific optimization waste the CPC advantage.</p>
+<p>5. <strong>Microsoft search terms must be reviewed independently</strong> — different query patterns than Google, Google-imported negatives are insufficient.</p>
+<p>6. <strong>LinkedIn Profile Targeting must be tested</strong> for any B2B account — it is Microsoft's unique differentiator.</p>
+<h2>Scored Audit</h2>
+<p>When performing an account audit, load `skills/shared/scoring-system.md` for the weighted scoring algorithm and `CHECKS.md` for the 30-check Microsoft Ads audit checklist. Produce a health score (0-100, grade A-F) with Quick Wins and a prioritized action plan.</p></div>
+</div>
+<script>
+function copyInstall(btn) {
+  var text = btn.getAttribute('data-copy');
+  navigator.clipboard.writeText(text).then(function() {
+    btn.classList.add('copied');
+    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+    setTimeout(function() {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>

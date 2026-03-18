@@ -10,11 +10,19 @@ metadata:
   category: paid-media
   domain: competitive-intelligence
   updated: 2026-03-13
+  tested: 2026-03-17
+  tested_with: "Claude Code v2.1"
 ---
 
 # Competitor Ads Analyst
 
 Analyze competitor advertising from public ad libraries to understand what messaging, creative formats, and positioning strategies are working.
+
+## Install
+
+```bash
+git clone https://github.com/thatrebeccarae/claude-marketing.git && cp -r claude-marketing/skills/competitor-ads-analyst ~/.claude/skills/
+```
 
 ## Core Capabilities
 

@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>google-ads — claude-marketing</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-00XHYRHCX4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-00XHYRHCX4');
+</script>
+<meta name="description" content="Google Ads platform expertise. Audit campaigns, keywords, audiences, bidding, and conversion tracking. Use when the user asks about Google Ads, PPC, search adve">
+<meta property="og:title" content="google-ads — claude-marketing">
+<meta property="og:description" content="Google Ads platform expertise. Audit campaigns, keywords, audiences, bidding, and conversion tracking. Use when the user asks about Google Ads, PPC, search advertising, Performance Max, Shopping ads, ">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="google-ads — claude-marketing">
+<meta name="twitter:description" content="Google Ads platform expertise. Audit campaigns, keywords, audiences, bidding, and conversion tracking. Use when the user asks about Google Ads, PPC, search advertising, Performance Max, Shopping ads, ">
+<link rel="canonical" href="https://thatrebeccarae.github.io/claude-marketing/skill/google-ads.html">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600,700&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Ultralight.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cartograph CF';
+  src: url('../fonts/CartographCF-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --accent: #5B5F8D;
+  --black: #000000;
+  --white: #ffffff;
+  --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+html {
+  background: #000000;
+  color: #ffffff;
+}
+
+body {
+  font-family: 'Switzer', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(15px, 1.1vw, 17px);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.detail-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 120px clamp(20px, 5vw, 40px) 80px;
+}
+
+.detail-back {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+.detail-back:hover { opacity: 1; }
+
+.detail-name {
+  font-family: 'PP Editorial New', 'Georgia', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 200;
+  line-height: 1.15;
+  letter-spacing: -0.014em;
+  margin-bottom: 0.5rem;
+}
+
+.detail-category {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  letter-spacing: 0.04em;
+  margin-bottom: 2rem;
+}
+
+.detail-desc {
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.65;
+  margin-bottom: 2.5rem;
+  opacity: 0.85;
+}
+
+.detail-install {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.detail-install code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  opacity: 0.6;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.detail-install .copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  color: #ffffff;
+  flex-shrink: 0;
+}
+.detail-install .copy-btn:hover { opacity: 0.8; }
+.detail-install .copy-btn.copied { opacity: 1; color: #4ade80; }
+
+.detail-tested {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  opacity: 0.4;
+  margin-bottom: 2.5rem;
+}
+
+.detail-capabilities h2,
+.detail-sources h2,
+.detail-body h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  margin-top: 2.5rem;
+}
+
+.detail-capabilities ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.detail-capabilities li {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 4px;
+}
+
+.detail-source-links {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.detail-source-links a {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ffffff;
+  border-radius: 45px;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+.detail-source-links a:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+.detail-body {
+  margin-top: 2.5rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 2rem;
+}
+
+.detail-body h2 {
+  font-family: 'Switzer', sans-serif;
+}
+
+.detail-body h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.detail-body p {
+  margin-bottom: 1rem;
+  opacity: 0.85;
+  line-height: 1.65;
+}
+
+.detail-body ul {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.detail-body li {
+  margin-bottom: 0.35rem;
+  opacity: 0.85;
+  line-height: 1.55;
+}
+
+.detail-body pre {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+}
+
+.detail-body code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.85rem;
+}
+
+.detail-body blockquote {
+  border-left: 2px solid rgba(255,255,255,0.2);
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+@media (max-width: 700px) {
+  .detail-page {
+    padding: 100px 20px 60px;
+  }
+  .detail-source-links {
+    flex-wrap: wrap;
+  }
+}
+</style>
+</head>
+<body>
+<div class="detail-page" data-pagefind-body>
+  <a href="../skills.html" class="detail-back">&larr; Back to skills</a>
+  <h1 class="detail-name">google-ads</h1>
+  <div class="detail-category">Paid Media</div>
+  <p class="detail-desc">Google Ads platform expertise. Audit campaigns, keywords, audiences, bidding, and conversion tracking. Use when the user asks about Google Ads, PPC, search advertising, Performance Max, Shopping ads, display campaigns, YouTube ads, or paid search optimization.</p>
+  <div class="detail-install">
+    <code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/google-ads ~/.claude/skills/</code>
+    <button class="copy-btn" data-copy="git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/google-ads ~/.claude/skills/" title="Copy install command" onclick="copyInstall(this)">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+    </button>
+  </div>
+  <div class="detail-tested">Tested 2026-03-17 &middot; Claude Code v2.1</div>
+  <div class="detail-capabilities"><h2>Capabilities</h2><ul><li>Campaign Auditing &amp; Optimization</li><li>Campaign Types</li><li>Bidding Strategies</li><li>Audience Strategy</li><li>Tracking &amp; Measurement</li></ul></div>
+  <div class="detail-sources">
+<h2>Source Files</h2>
+<div class="detail-source-links">
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/google-ads/SKILL.md" target="_blank" rel="noopener">SKILL.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/google-ads/REFERENCE.md" target="_blank" rel="noopener">REFERENCE.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/google-ads/EXAMPLES.md" target="_blank" rel="noopener">EXAMPLES.md</a>
+</div>
+</div>
+  <div class="detail-body"><p>Expert-level guidance for Google Ads — auditing, building, and optimizing search, shopping, display, video, Performance Max, and demand gen campaigns.</p>
+<h2>Install</h2>
+<pre><code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/google-ads ~/.claude/skills/</code></pre>
+<h2>Core Capabilities</h2>
+<h3>Campaign Auditing &amp; Optimization</h3>
+<ul>
+<li>Full account audit covering structure, settings, bidding, keywords, ads, and tracking</li>
+<li>Quality Score optimization (expected CTR, ad relevance, landing page experience)</li>
+<li>Search term analysis and negative keyword management</li>
+<li>Budget allocation and pacing optimization</li>
+<li>Wasted spend identification and elimination</li>
+</ul>
+<h3>Campaign Types</h3>
+<ul>
+<li><strong>Search</strong> — Text ads on Google Search and Search Partners</li>
+<li><strong>Shopping</strong> — Product Listing Ads from Google Merchant Center</li>
+<li><strong>Performance Max</strong> — AI-driven cross-channel (Search, Shopping, Display, YouTube, Discover, Gmail, Maps)</li>
+<li><strong>Display</strong> — Banner/responsive ads across Google Display Network (3M+ sites)</li>
+<li><strong>Video</strong> — YouTube ads (in-stream, bumper, discovery, shorts)</li>
+<li><strong>Demand Gen</strong> — Visual-first ads on YouTube, Discover, Gmail</li>
+<li><strong>App</strong> — App install and engagement campaigns</li>
+</ul>
+<h3>Bidding Strategies</h3>
+<ul>
+<li><strong>Manual CPC / Enhanced CPC</strong> — Direct control, good for learning phases</li>
+<li><strong>Target CPA</strong> — Optimize for cost per conversion</li>
+<li><strong>Target ROAS</strong> — Optimize for return on ad spend</li>
+<li><strong>Maximize Conversions / Maximize Conversion Value</strong> — Spend full budget optimally</li>
+<li><strong>Target Impression Share</strong> — Competitive visibility</li>
+<li>Portfolio bid strategies for cross-campaign optimization</li>
+</ul>
+<h3>Audience Strategy</h3>
+<ul>
+<li>First-party data: Customer Match, website visitors, app users</li>
+<li>Google audiences: In-market, affinity, detailed demographics, life events</li>
+<li>Custom audiences (by keywords, URLs, apps)</li>
+<li>Remarketing lists for Search Ads (RLSA)</li>
+<li>Optimized targeting vs observation mode</li>
+<li>Audience signals for Performance Max</li>
+</ul>
+<h3>Tracking &amp; Measurement</h3>
+<ul>
+<li>Google Tag (gtag.js) / Google Tag Manager implementation</li>
+<li>Conversion actions: website, phone calls, app, import, store visits</li>
+<li>Enhanced conversions (first-party data matching)</li>
+<li>Offline conversion import (GCLID / enhanced conversions for leads)</li>
+<li>Google Ads Data Hub and GA4 integration</li>
+<li>Attribution models: data-driven (default), last-click, cross-channel</li>
+</ul>
+<h2>Key Benchmarks</h2>
+<p>| Metric | Good | Great | Warning |</p>
+<p>|--------|------|-------|---------|</p>
+<p>| Search CTR | 4-6% | 8%+ | &lt;3% |</p>
+<p>| Search CPC | Industry dependent | Below industry avg | Rising trend |</p>
+<p>| Search Conv Rate | 3-5% | 7%+ | &lt;2% |</p>
+<p>| Quality Score | 7-8 | 9-10 | &lt;6 |</p>
+<p>| Impression Share (Brand) | 90%+ | 95%+ | &lt;80% |</p>
+<p>| Impression Share (Non-Brand) | 40-60% | 70%+ | &lt;30% |</p>
+<p>| PMax ROAS | 3-4x | 6x+ | &lt;2x |</p>
+<p>| Display CTR | 0.5-1% | 1.5%+ | &lt;0.3% |</p>
+<p>| YouTube View Rate | 15-25% | 30%+ | &lt;10% |</p>
+<h2>Account Structure Best Practices</h2>
+<pre><code>Account
+├── Brand Search (Exact + Phrase match)
+│   ├── Pure Brand
+│   └── Brand + Product/Service modifiers
+├── Non-Brand Search (by theme/intent)
+│   ├── High-Intent / Bottom-Funnel keywords
+│   ├── Mid-Funnel / Consideration keywords
+│   └── Category / Broad keywords
+├── Competitor Search (optional)
+│   └── Competitor brand terms
+├── Shopping (Standard)
+│   ├── Top Performers (high priority)
+│   ├── Category groups (medium priority)
+│   └── Catch-All (low priority)
+├── Performance Max
+│   ├── Asset Groups by product category or audience theme
+│   └── Audience signals per group
+├── Display (if separate from PMax)
+│   ├── Remarketing
+│   └── Prospecting (in-market / custom)
+├── YouTube / Video
+│   ├── Brand awareness (bumper, in-stream)
+│   └── Action / conversions (in-feed, in-stream)
+└── Demand Gen
+    └── Visual-first prospecting</code></pre>
+<h2>Workflow: Full Account Audit</h2>
+<p>When asked to audit a Google Ads account:</p>
+<p>1. <strong>Conversion Tracking</strong> — Verify Google Tag, conversion actions, enhanced conversions, attribution model</p>
+<p>2. <strong>Account Structure</strong> — Campaign organization, naming conventions, settings consistency</p>
+<p>3. <strong>Budget &amp; Bidding</strong> — Allocation across campaigns, bid strategy alignment with goals, target efficiency</p>
+<p>4. <strong>Keyword Strategy</strong> — Match types, Quality Scores, search term relevance, negative keyword lists</p>
+<p>5. <strong>Ad Copy</strong> — RSA asset quality (headlines, descriptions), pin usage, ad strength, extensions</p>
+<p>6. <strong>Shopping / Merchant Center</strong> — Feed quality, disapprovals, competitive metrics, listing groups</p>
+<p>7. <strong>Performance Max</strong> — Asset group quality, audience signals, URL expansion settings, cannibalizing Search</p>
+<p>8. <strong>Audiences</strong> — First-party lists, remarketing, Customer Match, observation vs targeting</p>
+<p>9. <strong>Landing Pages</strong> — Load speed, message match, conversion rate by landing page</p>
+<p>10. <strong>Competitive Landscape</strong> — Auction insights, impression share losses (budget vs rank)</p>
+<p>11. <strong>Recommendations</strong> — Prioritized by expected revenue impact with effort estimate</p>
+<h2>Performance Max Guidance</h2>
+<p>PMax-specific audit checklist:</p>
+<ul>
+<li>Asset group organization (themes, not catch-all)</li>
+<li>All asset types provided (text, image, video, logo)</li>
+<li>Audience signals configured (not left empty)</li>
+<li>URL expansion settings reviewed (exclude irrelevant pages)</li>
+<li>Search themes added for intent signals</li>
+<li>Brand exclusions applied</li>
+<li>Not cannibalizing high-performing standard Shopping/Search campaigns</li>
+<li>Conversion goals aligned (avoid mixing lead gen and ecommerce)</li>
+</ul>
+<h2>How to Use This Skill</h2>
+<p>Ask me questions like:</p>
+<ul>
+<li>&quot;Audit my Google Ads account and find wasted spend&quot;</li>
+<li>&quot;My Quality Scores are low — help me diagnose and fix&quot;</li>
+<li>&quot;Design a Performance Max campaign structure for my ecommerce store&quot;</li>
+<li>&quot;Should I use Target CPA or Target ROAS?&quot;</li>
+<li>&quot;Help me build a negative keyword strategy&quot;</li>
+<li>&quot;My CPA is increasing — what should I investigate?&quot;</li>
+<li>&quot;Plan a YouTube advertising strategy for brand awareness&quot;</li>
+<li>&quot;Review my Google Merchant Center feed for issues&quot;</li>
+</ul>
+<p>For detailed Google Ads API reference, script templates, and advanced configurations, see [REFERENCE.md](REFERENCE.md).</p>
+<h2>Hard Rules</h2>
+<p>These constraints must never be violated in recommendations:</p>
+<p>1. <strong>Never recommend Broad Match without Smart Bidding.</strong> Broad Match + Manual CPC = uncontrolled spend.</p>
+<p>2. <strong>3x Kill Rule:</strong> Flag any campaign/ad group with CPA &gt;3x target for immediate pause or restructuring.</p>
+<p>3. <strong>Enhanced Conversions must be recommended</strong> if not already active. Foundation for data quality.</p>
+<p>4. <strong>Consent Mode v2 required</strong> for any account serving EU/EEA traffic.</p>
+<p>5. <strong>Negative keyword lists required</strong> — minimum 3 themed lists (Competitor, Jobs, Free, Irrelevant).</p>
+<p>6. <strong>Never recommend edits during active learning phase</strong> — wait for learning to complete or reset intentionally.</p>
+<p>7. <strong>Brand and non-brand must be separated</strong> into distinct campaigns with independent budgets and bidding.</p>
+<p>8. <strong>PMax must have brand exclusions</strong> when a brand Search campaign exists.</p>
+<h2>Scored Audit</h2>
+<p>When performing an account audit, load `skills/shared/scoring-system.md` for the weighted scoring algorithm and `CHECKS.md` for the 74-check Google Ads audit checklist. Produce a health score (0-100, grade A-F) with Quick Wins and a prioritized action plan.</p></div>
+</div>
+<script>
+function copyInstall(btn) {
+  var text = btn.getAttribute('data-copy');
+  navigator.clipboard.writeText(text).then(function() {
+    btn.classList.add('copied');
+    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+    setTimeout(function() {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>

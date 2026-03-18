@@ -46,7 +46,7 @@ git clone https://github.com/thatrebeccarae/claude-marketing.git
 <br>
 <br>
 
-[Why This Exists](#why-this-exists) · [Who This Is For](#who-this-is-for) · [What's Inside](#whats-inside) · [Skills](#skills) · [Skill Packs](#skill-packs) · [Agents](#agents) · [Workflows](#workflows) · [Getting Started](#getting-started) · [How Skills Work](#how-skills-work) · [Example Prompts](#example-prompts) · [Configuration](#configuration) · [Security](#security) · [Troubleshooting](#troubleshooting) · [Documentation](#documentation) · [Contributing](#contributing) · [License](#license)
+[Why This Exists](#why-this-exists) · [Who This Is For](#who-this-is-for) · [Why Depth Over Breadth](#why-depth-over-breadth) · [What's Inside](#whats-inside) · [Skills](#skills) · [Skill Packs](#skill-packs) · [Agents](#agents) · [Workflows](#workflows) · [Getting Started](#getting-started) · [How Skills Work](#how-skills-work) · [Composing Skills](#composing-skills) · [Example Prompts](#example-prompts) · [Configuration](#configuration) · [Security](#security) · [Troubleshooting](#troubleshooting) · [Documentation](#documentation) · [Contributing](#contributing) · [License](#license)
 
 </div>
 
@@ -80,18 +80,35 @@ Active project, open-sourced as-is. Fork it and make it yours — updates and ne
 
 Implementation-ready answers — not tutorials, not blog-post-level overviews.
 
+## Why Depth Over Breadth
+
+There are repos with 100+ AI agent personas — a paragraph of instructions and a personality for every conceivable role. Those are prompt templates, not tools. They tell Claude *what to be*, not *what to know*.
+
+claude-marketing takes the opposite approach. Every skill ships with three layers:
+
+- **SKILL.md** — diagnostic frameworks, decision trees, and workflow patterns tested in real engagements
+- **REFERENCE.md** — platform-specific benchmarks, API schemas, rate limits, and field mappings that Claude doesn't have in its training data
+- **EXAMPLES.md** — worked examples with realistic prompts and expected output formats
+
+A 500-line Klaviyo skill with deliverability thresholds, RFM segment definitions, and flow audit checklists will outperform a 200-word "Klaviyo Specialist" persona every time. The persona knows *about* Klaviyo. The skill knows *how to audit one*.
+
+Depth compounds when skills compose — an ICP grounded in research data produces a better Klaviyo audit, which produces a sharper GA4 cross-reference, which produces a deck that actually tells a story. See [Composing Skills](examples/) for how this works in practice.
+
 ## What's Inside
 
 | Category | What It Is | Count |
 |----------|-----------|-------|
 | **[Skills](skills/)** | Claude Code skills — install individually or as packs | 27 skills |
 | **[Skill Packs](skill-packs/)** | Grouped collections with setup guides and install wizards | 6 packs |
+| **[Examples](examples/)** | Cross-skill workflow walkthroughs showing how skills compose | 3 workflows |
 | **[Agents](agents/)** | Standalone agents — portable analysis logic, usable with or without n8n | 3 agents |
 | **[Workflows](workflows/)** | Autonomous n8n pipelines that wire agents together on a schedule | 1 pipeline |
 
 ## Skills
 
 All 27 skills live in [`skills/`](skills/) — install individually or use a [skill pack](skill-packs/) to set up a related group.
+
+> **All skills tested March 2026 with Claude Code v2.1.** Each skill's SKILL.md includes a `tested` date and `tested_with` version in its frontmatter metadata.
 
 > [**View Live Demo**](https://thatrebeccarae.github.io/claude-marketing/skill-packs/demo/) — See skills in action with example terminal output.
 
@@ -258,6 +275,16 @@ Handles multiple GA4 properties — configure once per property, runs hands-off 
 
 See the [GA4-GTM Pipeline README](workflows/ga4-gtm-pipeline/README.md) and [Getting Started guide](workflows/ga4-gtm-pipeline/GETTING_STARTED.md) for setup.
 
+## Composing Skills
+
+Skills are most powerful when chained together — each skill's output becomes context for the next. See the [full composing guide](examples/) for how context flows between skills.
+
+| Workflow | Skills Chained | What You Get |
+|----------|---------------|--------------|
+| **[DTC Account Audit](examples/dtc-account-audit.md)** | ICP Research → Klaviyo Analyst → Google Analytics → Pro Deck Builder | Client-ready audit deck in ~45 min |
+| **[Paid Media Optimization](examples/paid-media-optimization.md)** | Wasted Spend Finder → Competitor Ads Analyst → Google Ads → Account Structure Review | Exclusion lists + restructuring roadmap |
+| **[Content Production](examples/content-production.md)** | Research Digest → ICP Research → SEO Content Writer → Content Workflow | SEO article + social distribution pack |
+
 ## Example Prompts
 
 ### DTC & E-commerce
@@ -409,6 +436,7 @@ On macOS, `python` may point to Python 2. Use `python3` explicitly or install vi
 
 | Resource | Description |
 |----------|-------------|
+| [Composing Skills](examples/) | How to chain skills together — context flow, tips, and 3 worked workflow examples |
 | [DTC Pack](skill-packs/dtc-pack.md) | 6 e-commerce skills — overview, MCP setup, example prompts, FAQ |
 | [DTC Getting Started](skill-packs/dtc-getting-started.md) | Step-by-step setup for DTC platforms |
 | [Paid Media Pack](skill-packs/paid-media-pack.md) | 6 paid media skills — overview, example prompts, FAQ |

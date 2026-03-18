@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>remotion-video — claude-marketing</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-00XHYRHCX4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-00XHYRHCX4');
+</script>
+<meta name="description" content="Remotion video production best practices — spring animations, interpolation patterns, SVG draw-on effects, scene transitions, chart animations, audio integratio">
+<meta property="og:title" content="remotion-video — claude-marketing">
+<meta property="og:description" content="Remotion video production best practices — spring animations, interpolation patterns, SVG draw-on effects, scene transitions, chart animations, audio integration, and rendering. Use when building prog">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="remotion-video — claude-marketing">
+<meta name="twitter:description" content="Remotion video production best practices — spring animations, interpolation patterns, SVG draw-on effects, scene transitions, chart animations, audio integration, and rendering. Use when building prog">
+<link rel="canonical" href="https://thatrebeccarae.github.io/claude-marketing/skill/remotion-video.html">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600,700&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Ultralight.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cartograph CF';
+  src: url('../fonts/CartographCF-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --accent: #5B5F8D;
+  --black: #000000;
+  --white: #ffffff;
+  --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+html {
+  background: #000000;
+  color: #ffffff;
+}
+
+body {
+  font-family: 'Switzer', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(15px, 1.1vw, 17px);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.detail-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 120px clamp(20px, 5vw, 40px) 80px;
+}
+
+.detail-back {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+.detail-back:hover { opacity: 1; }
+
+.detail-name {
+  font-family: 'PP Editorial New', 'Georgia', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 200;
+  line-height: 1.15;
+  letter-spacing: -0.014em;
+  margin-bottom: 0.5rem;
+}
+
+.detail-category {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  letter-spacing: 0.04em;
+  margin-bottom: 2rem;
+}
+
+.detail-desc {
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.65;
+  margin-bottom: 2.5rem;
+  opacity: 0.85;
+}
+
+.detail-install {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.detail-install code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  opacity: 0.6;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.detail-install .copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  color: #ffffff;
+  flex-shrink: 0;
+}
+.detail-install .copy-btn:hover { opacity: 0.8; }
+.detail-install .copy-btn.copied { opacity: 1; color: #4ade80; }
+
+.detail-tested {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  opacity: 0.4;
+  margin-bottom: 2.5rem;
+}
+
+.detail-capabilities h2,
+.detail-sources h2,
+.detail-body h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  margin-top: 2.5rem;
+}
+
+.detail-capabilities ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.detail-capabilities li {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 4px;
+}
+
+.detail-source-links {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.detail-source-links a {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ffffff;
+  border-radius: 45px;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+.detail-source-links a:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+.detail-body {
+  margin-top: 2.5rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 2rem;
+}
+
+.detail-body h2 {
+  font-family: 'Switzer', sans-serif;
+}
+
+.detail-body h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.detail-body p {
+  margin-bottom: 1rem;
+  opacity: 0.85;
+  line-height: 1.65;
+}
+
+.detail-body ul {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.detail-body li {
+  margin-bottom: 0.35rem;
+  opacity: 0.85;
+  line-height: 1.55;
+}
+
+.detail-body pre {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+}
+
+.detail-body code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.85rem;
+}
+
+.detail-body blockquote {
+  border-left: 2px solid rgba(255,255,255,0.2);
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+@media (max-width: 700px) {
+  .detail-page {
+    padding: 100px 20px 60px;
+  }
+  .detail-source-links {
+    flex-wrap: wrap;
+  }
+}
+</style>
+</head>
+<body>
+<div class="detail-page" data-pagefind-body>
+  <a href="../skills.html" class="detail-back">&larr; Back to skills</a>
+  <h1 class="detail-name">remotion-video</h1>
+  <div class="detail-category">Creative &amp; Design</div>
+  <p class="detail-desc">Remotion video production best practices — spring animations, interpolation patterns, SVG draw-on effects, scene transitions, chart animations, audio integration, and rendering. Use when building programmatic videos with Remotion, creating animated content, or producing marketing videos with code.</p>
+  <div class="detail-install">
+    <code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/remotion-video ~/.claude/skills/</code>
+    <button class="copy-btn" data-copy="git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/remotion-video ~/.claude/skills/" title="Copy install command" onclick="copyInstall(this)">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+    </button>
+  </div>
+  <div class="detail-tested">Tested 2026-03-17 &middot; Claude Code v2.1</div>
+  
+  <div class="detail-sources">
+<h2>Source Files</h2>
+<div class="detail-source-links">
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/remotion-video/SKILL.md" target="_blank" rel="noopener">SKILL.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/remotion-video/REFERENCE.md" target="_blank" rel="noopener">REFERENCE.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/remotion-video/EXAMPLES.md" target="_blank" rel="noopener">EXAMPLES.md</a>
+</div>
+</div>
+  <div class="detail-body"><p>Best practices for building programmatic videos with Remotion — animations, transitions, charts, and rendering.</p>
+<h2>Install</h2>
+<pre><code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/remotion-video ~/.claude/skills/</code></pre>
+<h2>Core Capabilities</h2>
+<ul>
+<li>Spring animation presets (bouncy, smooth, crisp, staggered)</li>
+<li>Interpolation patterns (camera zoom, parallax, scroll simulation)</li>
+<li>SVG draw-on animations (path tracing, stroke reveal)</li>
+<li>Scene transitions via TransitionSeries</li>
+<li>AbsoluteFill layering for compositing</li>
+<li>Chart animations (bar grow, line draw-on, pie reveal, count-up numbers)</li>
+<li>Audio integration and sync</li>
+<li>Rendering configuration</li>
+</ul>
+<h2>Spring Presets</h2>
+<p>Use `spring()` from Remotion for physics-based animations:</p>
+<p>| Preset | Config | Use Case |</p>
+<p>|--------|--------|----------|</p>
+<p>| Bouncy | `mass: 0.5, damping: 8, stiffness: 120` | Playful reveals, logo bounces |</p>
+<p>| Smooth | `mass: 1, damping: 15, stiffness: 80` | UI transitions, slide-ins |</p>
+<p>| Crisp | `mass: 0.8, damping: 20, stiffness: 200` | Snappy interactions, toggles |</p>
+<p>| Staggered | Any preset with frame offset per item | List reveals, grid animations |</p>
+<pre><code>import { spring, useCurrentFrame, useVideoConfig } from &quot;remotion&quot;;
+
+const frame = useCurrentFrame();
+const { fps } = useVideoConfig();
+
+const scale = spring({
+  frame,
+  fps,
+  config: { mass: 0.5, damping: 8, stiffness: 120 },
+});</code></pre>
+<h2>Interpolation Patterns</h2>
+<h3>Camera Zoom</h3>
+<pre><code>import { interpolate } from &quot;remotion&quot;;
+
+const zoom = interpolate(frame, [0, 30], [1, 1.5], {
+  extrapolateRight: &quot;clamp&quot;,
+});</code></pre>
+<h3>Parallax Layers</h3>
+<pre><code>const bgX = interpolate(frame, [0, 100], [0, -50]);
+const fgX = interpolate(frame, [0, 100], [0, -150]);</code></pre>
+<h3>Scroll Simulation</h3>
+<pre><code>const scrollY = interpolate(frame, [0, 90], [0, -800], {
+  extrapolateRight: &quot;clamp&quot;,
+});</code></pre>
+<h2>SVG Draw-On</h2>
+<p>Animate `strokeDashoffset` to reveal SVG paths:</p>
+<pre><code>const pathLength = 500;
+const draw = interpolate(frame, [0, 60], [pathLength, 0], {
+  extrapolateRight: &quot;clamp&quot;,
+});
+
+&lt;path
+  d=&quot;...&quot;
+  strokeDasharray={pathLength}
+  strokeDashoffset={draw}
+/&gt;</code></pre>
+<h2>Chart Animation Patterns</h2>
+<p>| Pattern | Technique |</p>
+<p>|---------|-----------|</p>
+<p>| Bar grow | Animate height from 0 to target, stagger each bar by 3-5 frames |</p>
+<p>| Line draw-on | SVG path with strokeDashoffset animation |</p>
+<p>| Pie/donut reveal | Animate conic-gradient stop or SVG arc path |</p>
+<p>| Count-up numbers | Interpolate from 0 to target, `Math.round()` for display |</p>
+<h2>Scene Transitions</h2>
+<pre><code>import { TransitionSeries, linearTiming } from &quot;@remotion/transitions&quot;;
+import { fade } from &quot;@remotion/transitions/fade&quot;;
+
+&lt;TransitionSeries&gt;
+  &lt;TransitionSeries.Sequence durationInFrames={90}&gt;
+    &lt;SceneOne /&gt;
+  &lt;/TransitionSeries.Sequence&gt;
+  &lt;TransitionSeries.Transition
+    timing={linearTiming({ durationInFrames: 15 })}
+    presentation={fade()}
+  /&gt;
+  &lt;TransitionSeries.Sequence durationInFrames={90}&gt;
+    &lt;SceneTwo /&gt;
+  &lt;/TransitionSeries.Sequence&gt;
+&lt;/TransitionSeries&gt;</code></pre>
+<h2>Performance Rules</h2>
+<p>1. <strong>No `useEffect` for animations.</strong> Use `useCurrentFrame()` + `interpolate()`.</p>
+<p>2. <strong>Memoize static components.</strong> `React.memo` for anything that does not depend on frame.</p>
+<p>3. <strong>Preload assets.</strong> `staticFile()` for local, `prefetch()` for remote URLs.</p>
+<p>4. <strong>Keep compositions under 30s</strong> for fast render iteration during development.</p>
+<p>5. <strong>Test at target resolution</strong> (1920x1080 or 1080x1080) before final render.</p>
+<h2>Anti-Patterns</h2>
+<ul>
+<li>No CSS `transition` or `animation` — use Remotion `interpolate()` and `spring()`</li>
+<li>No `setTimeout` or `setInterval` — frame-based timing only</li>
+<li>No absolute pixel positioning for responsive layouts — use `AbsoluteFill` + flex</li>
+<li>No inline `style` objects recreated every frame — extract to constants or `useMemo`</li>
+<li>No uncontrolled audio — always set explicit `volume` and `startFrom`</li>
+</ul>
+<p>For complete code examples and composition templates, see [REFERENCE.md](REFERENCE.md).</p></div>
+</div>
+<script>
+function copyInstall(btn) {
+  var text = btn.getAttribute('data-copy');
+  navigator.clipboard.writeText(text).then(function() {
+    btn.classList.add('copied');
+    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+    setTimeout(function() {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>facebook-ads — claude-marketing</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-00XHYRHCX4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-00XHYRHCX4');
+</script>
+<meta name="description" content="Meta Ads (Facebook &amp; Instagram) platform expertise. Audit campaigns, audiences, creative strategy, pixel tracking, and CAPI. Use when the user asks about Facebo">
+<meta property="og:title" content="facebook-ads — claude-marketing">
+<meta property="og:description" content="Meta Ads (Facebook &amp; Instagram) platform expertise. Audit campaigns, audiences, creative strategy, pixel tracking, and CAPI. Use when the user asks about Facebook Ads, Instagram Ads, Meta Ads, social ">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="facebook-ads — claude-marketing">
+<meta name="twitter:description" content="Meta Ads (Facebook &amp; Instagram) platform expertise. Audit campaigns, audiences, creative strategy, pixel tracking, and CAPI. Use when the user asks about Facebook Ads, Instagram Ads, Meta Ads, social ">
+<link rel="canonical" href="https://thatrebeccarae.github.io/claude-marketing/skill/facebook-ads.html">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600,700&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Ultralight.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cartograph CF';
+  src: url('../fonts/CartographCF-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --accent: #5B5F8D;
+  --black: #000000;
+  --white: #ffffff;
+  --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+html {
+  background: #000000;
+  color: #ffffff;
+}
+
+body {
+  font-family: 'Switzer', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(15px, 1.1vw, 17px);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.detail-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 120px clamp(20px, 5vw, 40px) 80px;
+}
+
+.detail-back {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+.detail-back:hover { opacity: 1; }
+
+.detail-name {
+  font-family: 'PP Editorial New', 'Georgia', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 200;
+  line-height: 1.15;
+  letter-spacing: -0.014em;
+  margin-bottom: 0.5rem;
+}
+
+.detail-category {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  letter-spacing: 0.04em;
+  margin-bottom: 2rem;
+}
+
+.detail-desc {
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.65;
+  margin-bottom: 2.5rem;
+  opacity: 0.85;
+}
+
+.detail-install {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.detail-install code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  opacity: 0.6;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.detail-install .copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  color: #ffffff;
+  flex-shrink: 0;
+}
+.detail-install .copy-btn:hover { opacity: 0.8; }
+.detail-install .copy-btn.copied { opacity: 1; color: #4ade80; }
+
+.detail-tested {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  opacity: 0.4;
+  margin-bottom: 2.5rem;
+}
+
+.detail-capabilities h2,
+.detail-sources h2,
+.detail-body h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  margin-top: 2.5rem;
+}
+
+.detail-capabilities ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.detail-capabilities li {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 4px;
+}
+
+.detail-source-links {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.detail-source-links a {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ffffff;
+  border-radius: 45px;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+.detail-source-links a:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+.detail-body {
+  margin-top: 2.5rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 2rem;
+}
+
+.detail-body h2 {
+  font-family: 'Switzer', sans-serif;
+}
+
+.detail-body h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.detail-body p {
+  margin-bottom: 1rem;
+  opacity: 0.85;
+  line-height: 1.65;
+}
+
+.detail-body ul {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.detail-body li {
+  margin-bottom: 0.35rem;
+  opacity: 0.85;
+  line-height: 1.55;
+}
+
+.detail-body pre {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+}
+
+.detail-body code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.85rem;
+}
+
+.detail-body blockquote {
+  border-left: 2px solid rgba(255,255,255,0.2);
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+@media (max-width: 700px) {
+  .detail-page {
+    padding: 100px 20px 60px;
+  }
+  .detail-source-links {
+    flex-wrap: wrap;
+  }
+}
+</style>
+</head>
+<body>
+<div class="detail-page" data-pagefind-body>
+  <a href="../skills.html" class="detail-back">&larr; Back to skills</a>
+  <h1 class="detail-name">facebook-ads</h1>
+  <div class="detail-category">Paid Media</div>
+  <p class="detail-desc">Meta Ads (Facebook &amp; Instagram) platform expertise. Audit campaigns, audiences, creative strategy, pixel tracking, and CAPI. Use when the user asks about Facebook Ads, Instagram Ads, Meta Ads, social media advertising, Advantage+ campaigns, or Meta pixel/CAPI setup.</p>
+  <div class="detail-install">
+    <code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/facebook-ads ~/.claude/skills/</code>
+    <button class="copy-btn" data-copy="git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/facebook-ads ~/.claude/skills/" title="Copy install command" onclick="copyInstall(this)">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+    </button>
+  </div>
+  <div class="detail-tested">Tested 2026-03-17 &middot; Claude Code v2.1</div>
+  <div class="detail-capabilities"><h2>Capabilities</h2><ul><li>Campaign Auditing &amp; Optimization</li><li>Campaign Objectives (Outcome-Based)</li><li>Audience Strategy</li><li>Creative Strategy</li><li>Tracking &amp; Attribution</li></ul></div>
+  <div class="detail-sources">
+<h2>Source Files</h2>
+<div class="detail-source-links">
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/facebook-ads/SKILL.md" target="_blank" rel="noopener">SKILL.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/facebook-ads/REFERENCE.md" target="_blank" rel="noopener">REFERENCE.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/facebook-ads/EXAMPLES.md" target="_blank" rel="noopener">EXAMPLES.md</a>
+</div>
+</div>
+  <div class="detail-body"><p>Expert-level guidance for Meta Ads — auditing, building, and optimizing campaigns across Facebook, Instagram, Messenger, and the Audience Network.</p>
+<h2>Install</h2>
+<pre><code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/facebook-ads ~/.claude/skills/</code></pre>
+<h2>Core Capabilities</h2>
+<h3>Campaign Auditing &amp; Optimization</h3>
+<ul>
+<li>Full account audit: structure, objectives, audiences, creative, tracking, attribution</li>
+<li>Identify creative fatigue, audience overlap, and budget inefficiencies</li>
+<li>Diagnose performance drops (iOS privacy, audience saturation, creative burnout)</li>
+<li>Advantage+ Shopping and Advantage+ Audience recommendations</li>
+</ul>
+<h3>Campaign Objectives (Outcome-Based)</h3>
+<ul>
+<li><strong>Awareness</strong> — Reach, brand awareness, video views</li>
+<li><strong>Traffic</strong> — Link clicks, landing page views</li>
+<li><strong>Engagement</strong> — Post engagement, messages, conversions on-platform</li>
+<li><strong>Leads</strong> — Instant Forms, Messenger, website lead gen</li>
+<li><strong>App Promotion</strong> — App installs, app events</li>
+<li><strong>Sales</strong> — Website conversions, catalog sales, Advantage+ Shopping</li>
+</ul>
+<h3>Audience Strategy</h3>
+<ul>
+<li><strong>Core Audiences</strong> — Demographics, interests, behaviors, location</li>
+<li><strong>Custom Audiences</strong> — Website (pixel/CAPI), customer list, app activity, video viewers, engagement</li>
+<li><strong>Lookalike Audiences</strong> — 1-10% based on custom audience seed (value-based LALs preferred)</li>
+<li><strong>Advantage+ Audience</strong> — Meta's AI-driven targeting (audience suggestions as signals, not constraints)</li>
+<li><strong>Broad targeting</strong> — No interests/LAL, rely on creative + pixel data + Meta's ML</li>
+</ul>
+<h3>Creative Strategy</h3>
+<ul>
+<li>Ad format selection: single image, carousel, video, collection, Instant Experience</li>
+<li>Creative testing frameworks: concept testing vs iterative testing</li>
+<li>UGC (user-generated content) integration and creator whitelisting</li>
+<li>Dynamic Creative Optimization (DCO) vs manual A/B testing</li>
+<li>Creative fatigue signals and refresh cadence</li>
+<li>Platform-specific creative (Feed, Stories, Reels, Explore)</li>
+</ul>
+<h3>Tracking &amp; Attribution</h3>
+<ul>
+<li><strong>Meta Pixel</strong> — Standard events, custom events, microdata, aggregated event measurement</li>
+<li><strong>Conversions API (CAPI)</strong> — Server-side tracking for privacy resilience</li>
+<li><strong>Aggregated Event Measurement (AEM)</strong> — iOS 14.5+ handling, 8-event prioritization</li>
+<li>Attribution settings: 7-day click + 1-day view (default), 1-day click, 28-day click</li>
+<li>UTM parameter strategy for GA4 cross-reference</li>
+<li>Conversion lift studies and incrementality testing</li>
+</ul>
+<h2>Key Benchmarks</h2>
+<p>| Metric | Good | Great | Warning |</p>
+<p>|--------|------|-------|---------|</p>
+<p>| CTR (Link Clicks) | 1-2% | 3%+ | &lt;0.8% |</p>
+<p>| CPC (Link Click) | $0.50-$1.50 | &lt;$0.50 | &gt;$2.00 |</p>
+<p>| CPM | $8-$15 | &lt;$8 | &gt;$20 |</p>
+<p>| Conversion Rate (Landing Page) | 3-5% | 8%+ | &lt;2% |</p>
+<p>| ROAS (ecommerce) | 3-4x | 6x+ | &lt;2x |</p>
+<p>| Cost Per Lead | Industry dependent | Below industry avg | Rising trend |</p>
+<p>| Frequency (prospecting) | 1.5-2.5 | 1-1.5 | &gt;3.5 |</p>
+<p>| Frequency (retargeting) | 3-6 | 2-3 | &gt;10 |</p>
+<p>| Thumb-Stop Rate (video) | 25-35% | 40%+ | &lt;20% |</p>
+<p>| Hook Rate (3s video views %) | 30-40% | 50%+ | &lt;25% |</p>
+<h2>Campaign Structure (Modern Best Practice)</h2>
+<pre><code>Ad Account
+├── Advantage+ Shopping Campaign (ecommerce)
+│   ├── Broad targeting (Meta AI optimizes)
+│   ├── Existing customer budget cap (10-20%)
+│   └── Mixed creative (image, video, UGC, carousel)
+├── Prospecting Campaign (Conversions/Sales)
+│   ├── Ad Set: Broad (no targeting, trust the pixel)
+│   ├── Ad Set: Lookalike 1-3% (value-based)
+│   └── Ad Set: Interest stacks (if needed)
+├── Retargeting Campaign (Conversions/Sales)
+│   ├── Ad Set: Website visitors 1-30 days
+│   ├── Ad Set: Engaged (video viewers, IG/FB engaged)
+│   └── Ad Set: Cart abandoners
+├── Lead Gen Campaign (if applicable)
+│   ├── Ad Set: Lookalikes of converters
+│   └── Ad Set: Interest-based
+└── Brand / Top-of-Funnel (optional)
+    ├── Video Views (awareness content)
+    └── Traffic (blog, resources)</code></pre>
+<p><strong>Modern trend</strong>: Consolidate ad sets. Meta's algorithm performs better with fewer, broader ad sets and more creative diversity within each.</p>
+<h2>Workflow: Full Account Audit</h2>
+<p>When asked to audit a Meta Ads account:</p>
+<p>1. <strong>Pixel &amp; CAPI Health</strong> — Event tracking, CAPI coverage, event match quality score, AEM config</p>
+<p>2. <strong>Account Structure</strong> — Campaign consolidation, objective alignment, naming conventions</p>
+<p>3. <strong>Audience Strategy</strong> — Overlap analysis, LAL seeds, audience size, Advantage+ adoption</p>
+<p>4. <strong>Creative Analysis</strong> — Format mix, creative fatigue (frequency + declining CTR), testing velocity</p>
+<p>5. <strong>Budget &amp; Bidding</strong> — CBO vs ABO, budget allocation, bid strategy (lowest cost vs cost cap vs bid cap)</p>
+<p>6. <strong>Funnel Coverage</strong> — Prospecting vs retargeting balance, exclusions between funnels</p>
+<p>7. <strong>Attribution</strong> — Window settings, cross-platform reconciliation (vs GA4), CAPI deduplication</p>
+<p>8. <strong>Placement Optimization</strong> — Advantage+ placements vs manual, creative per placement</p>
+<p>9. <strong>Shopping / Catalog</strong> — Feed quality, product sets, dynamic ads setup</p>
+<p>10. <strong>Recommendations</strong> — Prioritized with expected impact and creative direction</p>
+<h2>Post-iOS 14.5 Best Practices</h2>
+<ul>
+<li>Implement CAPI alongside pixel (aim for 90%+ event match quality)</li>
+<li>Prioritize 8 conversion events per domain in Events Manager</li>
+<li>Use value optimization when possible (Purchase over Add to Cart)</li>
+<li>Broader audiences outperform narrow (give Meta's ML room to optimize)</li>
+<li>UTM tracking + GA4 as secondary attribution source</li>
+<li>Creative is the new targeting — invest in creative testing over audience testing</li>
+</ul>
+<h2>How to Use This Skill</h2>
+<p>Ask me questions like:</p>
+<ul>
+<li>&quot;Audit my Facebook Ads account performance&quot;</li>
+<li>&quot;My ROAS is declining — what should I investigate?&quot;</li>
+<li>&quot;Help me set up Conversions API (CAPI)&quot;</li>
+<li>&quot;Design a creative testing framework for my brand&quot;</li>
+<li>&quot;Should I use Advantage+ Shopping or manual campaigns?&quot;</li>
+<li>&quot;Build a full-funnel campaign structure for my DTC brand&quot;</li>
+<li>&quot;My frequency is too high — how do I manage audience fatigue?&quot;</li>
+<li>&quot;Plan a lead gen campaign for B2B on Facebook/Instagram&quot;</li>
+</ul>
+<p>For detailed Meta Ads API reference, pixel implementation, and advanced configurations, see [REFERENCE.md](REFERENCE.md).</p>
+<h2>Hard Rules</h2>
+<p>These constraints must never be violated in recommendations:</p>
+<p>1. <strong>Pixel + CAPI both required.</strong> Post-iOS 14.5, browser-only tracking loses 30-40% of conversion data.</p>
+<p>2. <strong>Event deduplication must be active</strong> (event_id matching) — without it, conversions are double-counted.</p>
+<p>3. <strong>Event Match Quality ≥8.0</strong> for Purchase event. Below 6.0 is critical.</p>
+<p>4. <strong>Budget must be ≥5x target CPA per ad set</strong> — below this, the algorithm cannot exit learning phase.</p>
+<p>5. <strong>Never recommend edits during active learning phase</strong> — wait for ~50 conversions/week or intentional reset.</p>
+<p>6. <strong>Creative fatigue = action required.</strong> CTR decline &gt;20% over 14 days with frequency &gt;3 = replace creative immediately.</p>
+<p>7. <strong>&lt;30% of ad sets in Learning Limited</strong> — above this threshold, consolidation is mandatory.</p>
+<p>8. <strong>Purchasers/converters must be excluded</strong> from prospecting campaigns.</p>
+<p>9. <strong>Special Ad Categories must be declared</strong> before campaign creation for Housing, Employment, Credit, and Financial Products.</p>
+<h2>Scored Audit</h2>
+<p>When performing an account audit, load `skills/shared/scoring-system.md` for the weighted scoring algorithm and `CHECKS.md` for the 46-check Meta Ads audit checklist. Produce a health score (0-100, grade A-F) with Quick Wins and a prioritized action plan.</p></div>
+</div>
+<script>
+function copyInstall(btn) {
+  var text = btn.getAttribute('data-copy');
+  navigator.clipboard.writeText(text).then(function() {
+    btn.classList.add('copied');
+    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+    setTimeout(function() {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>

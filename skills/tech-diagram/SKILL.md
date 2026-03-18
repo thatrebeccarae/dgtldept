@@ -10,11 +10,19 @@ metadata:
   category: creative
   domain: design
   updated: 2026-03-13
+  tested: 2026-03-17
+  tested_with: "Claude Code v2.1"
 ---
 
 # Technical Diagram Generator
 
 Generate technical architecture diagrams and system illustrations as standalone HTML files with embedded CSS + inline SVG. No external dependencies.
+
+## Install
+
+```bash
+git clone https://github.com/thatrebeccarae/claude-marketing.git && cp -r claude-marketing/skills/tech-diagram ~/.claude/skills/
+```
 
 ## Core Capabilities
 

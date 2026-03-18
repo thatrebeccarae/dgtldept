@@ -10,11 +10,19 @@ metadata:
   category: reporting
   domain: consulting
   updated: 2026-03-13
+  tested: 2026-03-17
+  tested_with: "Claude Code v2.1"
 ---
 
 # HTML Report Builder
 
 Polished consulting reports as standalone HTML. Print to PDF via browser.
+
+## Install
+
+```bash
+git clone https://github.com/thatrebeccarae/claude-marketing.git && cp -r claude-marketing/skills/html-report-builder ~/.claude/skills/
+```
 
 ## When to Use
 

@@ -10,11 +10,19 @@ metadata:
   category: paid-media
   domain: cross-platform
   updated: 2026-03-11
+  tested: 2026-03-17
+  tested_with: "Claude Code v2.1"
 ---
 
 # Account Structure Review — Google + Meta
 
 Expert-level guidance for evaluating paid media account structure against goals, budget, and conversion volume thresholds. Identifies structural anti-patterns that fragment data, starve budgets, or block algorithms from learning.
+
+## Install
+
+```bash
+git clone https://github.com/thatrebeccarae/claude-marketing.git && cp -r claude-marketing/skills/account-structure-review ~/.claude/skills/
+```
 
 ## Core Capabilities
 

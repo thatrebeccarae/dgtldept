@@ -10,11 +10,19 @@ metadata:
   category: dtc-marketing
   domain: shopify
   updated: 2026-02-23
+  tested: 2026-03-17
+  tested_with: "Claude Code v2.1"
 ---
 
 # Shopify Marketing & E-commerce
 
 Expert-level guidance for Shopify — optimizing store conversion, marketing integrations, analytics, product feeds, and the full e-commerce marketing stack.
+
+## Install
+
+```bash
+git clone https://github.com/thatrebeccarae/claude-marketing.git && cp -r claude-marketing/skills/shopify ~/.claude/skills/
+```
 
 ## Core Capabilities
 

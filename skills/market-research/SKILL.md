@@ -10,11 +10,19 @@ metadata:
   category: strategy
   domain: research
   updated: 2026-03-13
+  tested: 2026-03-17
+  tested_with: "Claude Code v2.1"
 ---
 
 # Market Research
 
 Consulting-grade market research reports with professional formatting and strategic analysis frameworks.
+
+## Install
+
+```bash
+git clone https://github.com/thatrebeccarae/claude-marketing.git && cp -r claude-marketing/skills/market-research ~/.claude/skills/
+```
 
 ## Core Capabilities
 

@@ -10,11 +10,19 @@ metadata:
   category: strategy
   domain: audience
   updated: 2026-03-13
+  tested: 2026-03-17
+  tested_with: "Claude Code v2.1"
 ---
 
 # ICP Research
 
 Build comprehensive ideal customer profiles for targeted marketing, including community discovery and voice-of-customer language extraction.
+
+## Install
+
+```bash
+git clone https://github.com/thatrebeccarae/claude-marketing.git && cp -r claude-marketing/skills/icp-research ~/.claude/skills/
+```
 
 ## Workflow
 

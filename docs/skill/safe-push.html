@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>safe-push — claude-marketing</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-00XHYRHCX4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-00XHYRHCX4');
+</script>
+<meta name="description" content="Pre-push hygiene check for GitHub repositories. Scans for PII, secrets, and sensitive data before pushing. Audits commit messages, enforces repo-specific blockl">
+<meta property="og:title" content="safe-push — claude-marketing">
+<meta property="og:description" content="Pre-push hygiene check for GitHub repositories. Scans for PII, secrets, and sensitive data before pushing. Audits commit messages, enforces repo-specific blocklists, and rate-limits pushes to avoid Gi">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="safe-push — claude-marketing">
+<meta name="twitter:description" content="Pre-push hygiene check for GitHub repositories. Scans for PII, secrets, and sensitive data before pushing. Audits commit messages, enforces repo-specific blocklists, and rate-limits pushes to avoid Gi">
+<link rel="canonical" href="https://thatrebeccarae.github.io/claude-marketing/skill/safe-push.html">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600,700&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Ultralight.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cartograph CF';
+  src: url('../fonts/CartographCF-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --accent: #5B5F8D;
+  --black: #000000;
+  --white: #ffffff;
+  --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+html {
+  background: #000000;
+  color: #ffffff;
+}
+
+body {
+  font-family: 'Switzer', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(15px, 1.1vw, 17px);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.detail-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 120px clamp(20px, 5vw, 40px) 80px;
+}
+
+.detail-back {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+.detail-back:hover { opacity: 1; }
+
+.detail-name {
+  font-family: 'PP Editorial New', 'Georgia', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 200;
+  line-height: 1.15;
+  letter-spacing: -0.014em;
+  margin-bottom: 0.5rem;
+}
+
+.detail-category {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  letter-spacing: 0.04em;
+  margin-bottom: 2rem;
+}
+
+.detail-desc {
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.65;
+  margin-bottom: 2.5rem;
+  opacity: 0.85;
+}
+
+.detail-install {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.detail-install code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  opacity: 0.6;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.detail-install .copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  color: #ffffff;
+  flex-shrink: 0;
+}
+.detail-install .copy-btn:hover { opacity: 0.8; }
+.detail-install .copy-btn.copied { opacity: 1; color: #4ade80; }
+
+.detail-tested {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  opacity: 0.4;
+  margin-bottom: 2.5rem;
+}
+
+.detail-capabilities h2,
+.detail-sources h2,
+.detail-body h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  margin-top: 2.5rem;
+}
+
+.detail-capabilities ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.detail-capabilities li {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 4px;
+}
+
+.detail-source-links {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.detail-source-links a {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ffffff;
+  border-radius: 45px;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+.detail-source-links a:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+.detail-body {
+  margin-top: 2.5rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 2rem;
+}
+
+.detail-body h2 {
+  font-family: 'Switzer', sans-serif;
+}
+
+.detail-body h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.detail-body p {
+  margin-bottom: 1rem;
+  opacity: 0.85;
+  line-height: 1.65;
+}
+
+.detail-body ul {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.detail-body li {
+  margin-bottom: 0.35rem;
+  opacity: 0.85;
+  line-height: 1.55;
+}
+
+.detail-body pre {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+}
+
+.detail-body code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.85rem;
+}
+
+.detail-body blockquote {
+  border-left: 2px solid rgba(255,255,255,0.2);
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+@media (max-width: 700px) {
+  .detail-page {
+    padding: 100px 20px 60px;
+  }
+  .detail-source-links {
+    flex-wrap: wrap;
+  }
+}
+</style>
+</head>
+<body>
+<div class="detail-page" data-pagefind-body>
+  <a href="../skills.html" class="detail-back">&larr; Back to skills</a>
+  <h1 class="detail-name">safe-push</h1>
+  <div class="detail-category">Developer Tools</div>
+  <p class="detail-desc">Pre-push hygiene check for GitHub repositories. Scans for PII, secrets, and sensitive data before pushing. Audits commit messages, enforces repo-specific blocklists, and rate-limits pushes to avoid GitHub abuse detection. Use before any git push, especially to public repos.</p>
+  <div class="detail-install">
+    <code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/safe-push ~/.claude/skills/</code>
+    <button class="copy-btn" data-copy="git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/safe-push ~/.claude/skills/" title="Copy install command" onclick="copyInstall(this)">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+    </button>
+  </div>
+  <div class="detail-tested">Tested 2026-03-17 &middot; Claude Code v2.1</div>
+  
+  <div class="detail-sources">
+<h2>Source Files</h2>
+<div class="detail-source-links">
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/safe-push/SKILL.md" target="_blank" rel="noopener">SKILL.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/safe-push/REFERENCE.md" target="_blank" rel="noopener">REFERENCE.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/safe-push/EXAMPLES.md" target="_blank" rel="noopener">EXAMPLES.md</a>
+</div>
+</div>
+  <div class="detail-body"><p>Pre-push hygiene checker for GitHub repositories. Prevents accidental exposure of secrets, PII, and sensitive infrastructure details.</p>
+<h2>Install</h2>
+<pre><code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/safe-push ~/.claude/skills/</code></pre>
+<h2>When to Use</h2>
+<ul>
+<li>Before any `git push` to a remote repository</li>
+<li>Especially before pushing to public repos</li>
+<li>When onboarding a new repo to ensure clean push habits</li>
+<li>After bulk commits or rebases before pushing</li>
+</ul>
+<h2>Procedure</h2>
+<h3>Step 1: Classify the Repo</h3>
+<pre><code># Check remote URL
+git remote -v
+
+# Check for public repo marker
+test -f .public-repo &amp;&amp; echo &quot;PUBLIC&quot; || echo &quot;private or unmarked&quot;</code></pre>
+<p><strong>Public repos</strong> (`.public-repo` marker or public remote): apply ALL checks below.</p>
+<p><strong>Private repos</strong>: apply PII/secrets scan only (Step 2).</p>
+<p>When in doubt, treat a repo as public.</p>
+<h3>Step 2: PII and Secrets Scan</h3>
+<p>Scan the full diff against the target branch:</p>
+<pre><code>git diff origin/main...HEAD</code></pre>
+<p><strong>Always blocked:</strong></p>
+<ul>
+<li>Email addresses (personal or client)</li>
+<li>Phone numbers</li>
+<li>API keys, tokens, secrets (AWS, GitHub, Slack, generic patterns)</li>
+<li>Private IP addresses (RFC 1918 ranges)</li>
+<li>Internal hostnames and infrastructure details</li>
+<li>Private key material (RSA, SSH, PGP headers)</li>
+<li>Hardcoded credentials or passwords</li>
+<li>Client names configured in `.commit-msg-blocklist`</li>
+</ul>
+<p><strong>Allowlist:</strong> Patterns matching repo-local `.pii-allowlist` (one regex per line) are excluded from the scan.</p>
+<p>If anything is found:</p>
+<ul>
+<li>List each finding with file, line number, and what was detected</li>
+<li>Do NOT push until all findings are resolved or allowlisted</li>
+</ul>
+<h3>Step 3: Commit Message Audit</h3>
+<p>Review all commit messages in the push range:</p>
+<pre><code>git log origin/main..HEAD --format=&quot;%h %s&quot;</code></pre>
+<p>For public repos, flag:</p>
+<ul>
+<li>Client names or internal project codenames (per `.commit-msg-blocklist`)</li>
+<li>Internal URLs, private IPs, hostnames</li>
+<li>Infrastructure details (service names, device IDs, network names)</li>
+<li>Personal information</li>
+<li>Vague messages (&quot;fix&quot;, &quot;update&quot;, &quot;wip&quot;) — suggest descriptive rewrites</li>
+</ul>
+<h3>Step 4: Staggered Push (Rate Limiting)</h3>
+<p>To avoid triggering GitHub bulk action / automation abuse detection:</p>
+<p>| Scenario | Strategy |</p>
+<p>|----------|----------|</p>
+<p>| Single branch, &lt; 50 commits | Push normally |</p>
+<p>| Multiple branches | One branch at a time, 5s gap between pushes |</p>
+<p>| &gt; 50 commits on one branch | Batch into groups of 50, 10s gap between batches |</p>
+<p>| New repo, initial push | Push default branch first, wait 10s, then remaining branches with 5s gaps |</p>
+<p>Never use `git push --all` or `git push --mirror` to a public remote without staggering.</p>
+<h3>Step 5: Final Confirmation</h3>
+<p>Present a summary before executing:</p>
+<ul>
+<li>Repository name and public/private classification</li>
+<li>Branch(es) being pushed</li>
+<li>Number of commits</li>
+<li>Any warnings from Steps 2-4</li>
+<li>Push strategy (direct or staggered)</li>
+</ul>
+<p>Wait for explicit user confirmation.</p>
+<h3>Step 6: Push and Verify</h3>
+<pre><code>git push origin &lt;branch&gt;
+git log origin/&lt;branch&gt; --oneline -5</code></pre>
+<p>Report success and the remote URL.</p>
+<h2>Configuration Files</h2>
+<h3>`.pii-allowlist`</h3>
+<p>Place in repo root. One regex per line. Matches are excluded from the PII scan.</p>
+<pre><code># Allow example.com emails in docs
+example\.com
+# Allow documentation IP ranges
+192\.0\.2\.\d+
+198\.51\.100\.\d+</code></pre>
+<h3>`.commit-msg-blocklist`</h3>
+<p>Place in repo root. Terms that must never appear in public commit messages.</p>
+<pre><code># Client names
+acme-corp
+bigco
+# Internal project codenames
+project-phoenix
+# Infrastructure
+staging\.internal</code></pre>
+<h2>Key Principles</h2>
+<p>1. <strong>Default to caution.</strong> If unsure whether a repo is public, treat it as public.</p>
+<p>2. <strong>Never bypass.</strong> This skill complements pre-commit hooks — they work together.</p>
+<p>3. <strong>Fix, don't suppress.</strong> Remove the sensitive data rather than allowlisting it, when possible.</p>
+<p>4. <strong>Audit the full range.</strong> Always scan from the divergence point, not just the latest commit.</p>
+<p>For regex patterns and detection details, see [REFERENCE.md](REFERENCE.md).</p></div>
+</div>
+<script>
+function copyInstall(btn) {
+  var text = btn.getAttribute('data-copy');
+  navigator.clipboard.writeText(text).then(function() {
+    btn.classList.add('copied');
+    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+    setTimeout(function() {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>

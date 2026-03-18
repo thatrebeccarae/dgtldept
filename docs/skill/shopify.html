@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>shopify — claude-marketing</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-00XHYRHCX4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-00XHYRHCX4');
+</script>
+<meta name="description" content="Shopify e-commerce platform marketing expertise. Audit store performance, optimize conversion funnels, configure tracking, and integrate marketing tools. Use wh">
+<meta property="og:title" content="shopify — claude-marketing">
+<meta property="og:description" content="Shopify e-commerce platform marketing expertise. Audit store performance, optimize conversion funnels, configure tracking, and integrate marketing tools. Use when the user asks about Shopify, e-commer">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="shopify — claude-marketing">
+<meta name="twitter:description" content="Shopify e-commerce platform marketing expertise. Audit store performance, optimize conversion funnels, configure tracking, and integrate marketing tools. Use when the user asks about Shopify, e-commer">
+<link rel="canonical" href="https://thatrebeccarae.github.io/claude-marketing/skill/shopify.html">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600,700&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Ultralight.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cartograph CF';
+  src: url('../fonts/CartographCF-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --accent: #5B5F8D;
+  --black: #000000;
+  --white: #ffffff;
+  --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+html {
+  background: #000000;
+  color: #ffffff;
+}
+
+body {
+  font-family: 'Switzer', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(15px, 1.1vw, 17px);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.detail-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 120px clamp(20px, 5vw, 40px) 80px;
+}
+
+.detail-back {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+.detail-back:hover { opacity: 1; }
+
+.detail-name {
+  font-family: 'PP Editorial New', 'Georgia', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 200;
+  line-height: 1.15;
+  letter-spacing: -0.014em;
+  margin-bottom: 0.5rem;
+}
+
+.detail-category {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  letter-spacing: 0.04em;
+  margin-bottom: 2rem;
+}
+
+.detail-desc {
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.65;
+  margin-bottom: 2.5rem;
+  opacity: 0.85;
+}
+
+.detail-install {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.detail-install code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  opacity: 0.6;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.detail-install .copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  color: #ffffff;
+  flex-shrink: 0;
+}
+.detail-install .copy-btn:hover { opacity: 0.8; }
+.detail-install .copy-btn.copied { opacity: 1; color: #4ade80; }
+
+.detail-tested {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  opacity: 0.4;
+  margin-bottom: 2.5rem;
+}
+
+.detail-capabilities h2,
+.detail-sources h2,
+.detail-body h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  margin-top: 2.5rem;
+}
+
+.detail-capabilities ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.detail-capabilities li {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 4px;
+}
+
+.detail-source-links {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.detail-source-links a {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ffffff;
+  border-radius: 45px;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+.detail-source-links a:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+.detail-body {
+  margin-top: 2.5rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 2rem;
+}
+
+.detail-body h2 {
+  font-family: 'Switzer', sans-serif;
+}
+
+.detail-body h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.detail-body p {
+  margin-bottom: 1rem;
+  opacity: 0.85;
+  line-height: 1.65;
+}
+
+.detail-body ul {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.detail-body li {
+  margin-bottom: 0.35rem;
+  opacity: 0.85;
+  line-height: 1.55;
+}
+
+.detail-body pre {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+}
+
+.detail-body code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.85rem;
+}
+
+.detail-body blockquote {
+  border-left: 2px solid rgba(255,255,255,0.2);
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+@media (max-width: 700px) {
+  .detail-page {
+    padding: 100px 20px 60px;
+  }
+  .detail-source-links {
+    flex-wrap: wrap;
+  }
+}
+</style>
+</head>
+<body>
+<div class="detail-page" data-pagefind-body>
+  <a href="../skills.html" class="detail-back">&larr; Back to skills</a>
+  <h1 class="detail-name">shopify</h1>
+  <div class="detail-category">DTC &amp; E-commerce</div>
+  <p class="detail-desc">Shopify e-commerce platform marketing expertise. Audit store performance, optimize conversion funnels, configure tracking, and integrate marketing tools. Use when the user asks about Shopify, e-commerce optimization, Shopify analytics, store conversion, product feeds, or Shopify app integrations.</p>
+  <div class="detail-install">
+    <code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/shopify ~/.claude/skills/</code>
+    <button class="copy-btn" data-copy="git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/shopify ~/.claude/skills/" title="Copy install command" onclick="copyInstall(this)">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+    </button>
+  </div>
+  <div class="detail-tested">Tested 2026-03-17 &middot; Claude Code v2.1</div>
+  <div class="detail-capabilities"><h2>Capabilities</h2><ul><li>Store Performance Auditing</li><li>Marketing Integrations</li><li>Analytics &amp; Reporting</li><li>Product Feed Management</li><li>Conversion Rate Optimization (CRO)</li></ul></div>
+  <div class="detail-sources">
+<h2>Source Files</h2>
+<div class="detail-source-links">
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/shopify/SKILL.md" target="_blank" rel="noopener">SKILL.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/shopify/REFERENCE.md" target="_blank" rel="noopener">REFERENCE.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/shopify/EXAMPLES.md" target="_blank" rel="noopener">EXAMPLES.md</a>
+</div>
+</div>
+  <div class="detail-body"><p>Expert-level guidance for Shopify — optimizing store conversion, marketing integrations, analytics, product feeds, and the full e-commerce marketing stack.</p>
+<h2>Install</h2>
+<pre><code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/shopify ~/.claude/skills/</code></pre>
+<h2>Core Capabilities</h2>
+<h3>Store Performance Auditing</h3>
+<ul>
+<li>Conversion funnel analysis (visit → add to cart → checkout → purchase)</li>
+<li>Site speed and Core Web Vitals assessment</li>
+<li>Mobile experience review (60-70%+ of DTC traffic is mobile)</li>
+<li>Checkout optimization (Shopify Checkout extensibility, one-page checkout)</li>
+<li>Product page optimization (layout, copy, social proof, urgency)</li>
+</ul>
+<h3>Marketing Integrations</h3>
+<ul>
+<li><strong>Email/SMS</strong>: Klaviyo (recommended), Omnisend, Postscript, Attentive</li>
+<li><strong>Ads</strong>: Meta Pixel + CAPI, Google Ads + Enhanced Conversions, TikTok Pixel, Pinterest Tag</li>
+<li><strong>Attribution</strong>: Triple Whale, Northbeam, Polar Analytics, Lifetimely</li>
+<li><strong>Reviews</strong>: Judge.me, Yotpo, Stamped, Loox (photo reviews)</li>
+<li><strong>Loyalty</strong>: Smile.io, LoyaltyLion, Yotpo Loyalty</li>
+<li><strong>Subscriptions</strong>: Recharge, Loop, Bold, Skio</li>
+<li><strong>SEO</strong>: JSON-LD structured data, sitemap optimization, page speed</li>
+</ul>
+<h3>Analytics &amp; Reporting</h3>
+<ul>
+<li>Shopify Analytics (built-in) — sessions, conversion rate, AOV, returning customer rate</li>
+<li>GA4 integration via Google &amp; YouTube channel or GTM</li>
+<li>Server-side tracking setup (Shopify Pixel API + CAPI)</li>
+<li>Customer cohort analysis (LTV, retention, purchase frequency)</li>
+<li>Product analytics (sell-through rate, margin analysis)</li>
+</ul>
+<h3>Product Feed Management</h3>
+<ul>
+<li>Google Merchant Center feed optimization</li>
+<li>Facebook/Instagram Catalog (via Meta Commerce Manager)</li>
+<li>Feed attribute optimization: title, description, product type, custom labels</li>
+<li>Variant handling and inventory sync</li>
+<li>Disapproval diagnosis and feed error resolution</li>
+</ul>
+<h3>Conversion Rate Optimization (CRO)</h3>
+<ul>
+<li>A/B testing (using Shopify's built-in or tools like Shoplift, Visually)</li>
+<li>Collection page optimization (filters, sorting, layout)</li>
+<li>Cart and checkout optimization (cart drawer vs page, upsells, trust badges)</li>
+<li>Post-purchase upsell flows (Zipify OCU, ReConvert, AfterSell)</li>
+<li>Pop-up and lead capture strategy (Privy, Justuno, Wisepops)</li>
+</ul>
+<h2>Key Benchmarks</h2>
+<p>| Metric | Good | Great | Warning |</p>
+<p>|--------|------|-------|---------|</p>
+<p>| Overall Conversion Rate | 2-3% | 4%+ | &lt;1.5% |</p>
+<p>| Add-to-Cart Rate | 8-10% | 12%+ | &lt;5% |</p>
+<p>| Cart-to-Checkout Rate | 50-60% | 70%+ | &lt;40% |</p>
+<p>| Checkout Completion Rate | 45-55% | 60%+ | &lt;35% |</p>
+<p>| AOV | Industry dependent | Growing trend | Declining |</p>
+<p>| Returning Customer Rate | 25-30% | 40%+ | &lt;20% |</p>
+<p>| Mobile Conversion Rate | 1.5-2.5% | 3%+ | &lt;1% |</p>
+<p>| Email Revenue % | 25-35% | 40%+ | &lt;15% |</p>
+<p>| LTV:CAC Ratio | 3:1 | 4:1+ | &lt;2:1 |</p>
+<p>| Page Load (LCP) | &lt;2.5s | &lt;1.5s | &gt;4s |</p>
+<h2>Essential Shopify Marketing Stack</h2>
+<h3>Tier 1 — Must-Have</h3>
+<p>1. <strong>Klaviyo</strong> — Email + SMS marketing, flows, segmentation</p>
+<p>2. <strong>Meta Pixel + CAPI</strong> — Facebook/Instagram ad tracking</p>
+<p>3. <strong>Google &amp; YouTube channel</strong> — Google Ads, Shopping, free listings</p>
+<p>4. <strong>Judge.me or Yotpo</strong> — Product reviews and social proof</p>
+<p>5. <strong>GA4</strong> — Web analytics (via GTM or Shopify Pixel API)</p>
+<h3>Tier 2 — Growth Stage</h3>
+<p>6. <strong>Triple Whale or Polar Analytics</strong> — Attribution and analytics</p>
+<p>7. <strong>Smile.io</strong> — Loyalty and rewards program</p>
+<p>8. <strong>ReConvert or AfterSell</strong> — Post-purchase upsells</p>
+<p>9. <strong>Recharge</strong> — Subscriptions (if applicable)</p>
+<p>10. <strong>Privy or Wisepops</strong> — Pop-ups and lead capture</p>
+<h3>Tier 3 — Scale Stage</h3>
+<p>11. <strong>Northbeam</strong> — Advanced multi-touch attribution</p>
+<p>12. <strong>Gorgias or Zendesk</strong> — Customer support (impacts repeat rate)</p>
+<p>13. <strong>TikTok Pixel</strong> — TikTok ad tracking</p>
+<p>14. <strong>Loop Returns</strong> — Returns management</p>
+<p>15. <strong>Rebuy</strong> — Personalized product recommendations</p>
+<h2>Workflow: Full Shopify Audit</h2>
+<p>When asked to audit a Shopify store's marketing:</p>
+<p>1. <strong>Tracking &amp; Analytics</strong> — Pixel/CAPI setup, GA4 integration, UTM consistency, attribution tool</p>
+<p>2. <strong>Conversion Funnel</strong> — Session → ATC → Checkout → Purchase rates, identify largest drop-off</p>
+<p>3. <strong>Site Speed</strong> — Core Web Vitals, theme performance, app bloat, image optimization</p>
+<p>4. <strong>Product Pages</strong> — Layout, imagery, copy, reviews, trust signals, urgency elements</p>
+<p>5. <strong>Collection Pages</strong> — Navigation, filters, sorting, merchandising rules</p>
+<p>6. <strong>Cart &amp; Checkout</strong> — Cart experience, checkout completion rate, payment options, trust badges</p>
+<p>7. <strong>Email/SMS</strong> — Platform integration, flow coverage, campaign frequency, revenue attribution</p>
+<p>8. <strong>Paid Media Integration</strong> — Pixel health, CAPI event match quality, product feed quality</p>
+<p>9. <strong>SEO</strong> — Title tags, meta descriptions, structured data, site architecture, blog content</p>
+<p>10. <strong>Customer Retention</strong> — Loyalty program, subscription offering, post-purchase experience</p>
+<p>11. <strong>App Stack</strong> — Review installed apps for redundancy, performance impact, cost</p>
+<p>12. <strong>Recommendations</strong> — Prioritized by expected revenue impact and implementation effort</p>
+<h2>Shopify-Specific Tracking Setup</h2>
+<h3>Meta Pixel + CAPI</h3>
+<ul>
+<li>Use Shopify's Customer Events (Pixel API) — not the old theme-based pixel</li>
+<li>Enable CAPI through Facebook &amp; Instagram channel app</li>
+<li>Verify Event Match Quality score in Meta Events Manager (target 8+)</li>
+<li>Track: PageView, ViewContent, AddToCart, InitiateCheckout, Purchase</li>
+</ul>
+<h3>Google Ads + Enhanced Conversions</h3>
+<ul>
+<li>Install Google &amp; YouTube channel for Shopping + Performance Max</li>
+<li>Set up Enhanced Conversions in Google Ads</li>
+<li>Verify conversion tracking in Google Tag Assistant</li>
+<li>Feed optimization: product titles, descriptions, GTINs, custom labels</li>
+</ul>
+<h3>GA4</h3>
+<ul>
+<li>Recommended: Google Tag Manager via Shopify Pixel API (Custom Pixel)</li>
+<li>Alternative: Google &amp; YouTube channel (simpler but less control)</li>
+<li>Key events: page_view, view_item, add_to_cart, begin_checkout, purchase</li>
+<li>Enhanced measurement: site search, scroll depth, outbound clicks</li>
+</ul>
+<h2>How to Use This Skill</h2>
+<p>Ask me questions like:</p>
+<ul>
+<li>&quot;Audit my Shopify store's conversion funnel&quot;</li>
+<li>&quot;What apps should I add to my Shopify marketing stack?&quot;</li>
+<li>&quot;Help me set up Meta CAPI on Shopify&quot;</li>
+<li>&quot;My add-to-cart rate is low — what should I optimize?&quot;</li>
+<li>&quot;Design a post-purchase upsell strategy&quot;</li>
+<li>&quot;How do I optimize my Google Shopping product feed?&quot;</li>
+<li>&quot;Review my Shopify checkout for conversion improvements&quot;</li>
+<li>&quot;Plan a loyalty program for my DTC brand&quot;</li>
+</ul>
+<p>For detailed Shopify API reference, Liquid theme customization, and advanced configurations, see [REFERENCE.md](REFERENCE.md).</p>
+<h2>Analysis Examples</h2>
+<p>For complete analysis patterns, sample outputs, and use cases, see [EXAMPLES.md](EXAMPLES.md).</p>
+<h2>Scripts</h2>
+<p>The skill includes utility scripts for API interaction and automated analysis:</p>
+<h3>Fetch Store Data</h3>
+<pre><code># Get store info (API health check)
+python scripts/shopify_client.py --resource shop
+
+# List recent orders
+python scripts/shopify_client.py --resource orders --days 30
+
+# Export products as CSV
+python scripts/shopify_client.py --resource products --status active --format csv --output products.csv
+
+# Quick order count
+python scripts/shopify_client.py --resource order-count --status any</code></pre>
+<h3>Run Analysis</h3>
+<pre><code># Full store audit (all analyses combined)
+python scripts/analyze.py --analysis-type full-audit
+
+# Conversion funnel (last 30 days)
+python scripts/analyze.py --analysis-type conversion-funnel --days 30
+
+# Product performance
+python scripts/analyze.py --analysis-type product-performance --days 30
+
+# Customer cohorts (last 90 days)
+python scripts/analyze.py --analysis-type customer-cohorts --days 90
+
+# Revenue analysis with output file
+python scripts/analyze.py --analysis-type revenue-analysis --days 30 --output revenue.json</code></pre>
+<p>The scripts handle API authentication, rate limiting, pagination, and basic analysis. I'll interpret the results and provide actionable recommendations.</p>
+<h2>Troubleshooting</h2>
+<p><strong>Authentication Error</strong>: Verify that:</p>
+<ul>
+<li>`SHOPIFY_STORE_URL` is your `.myshopify.com` URL (not your custom domain)</li>
+<li>`SHOPIFY_ACCESS_TOKEN` starts with `shpat_` and is from a Custom App</li>
+<li>The app has the required API scopes (read_orders, read_products, read_customers)</li>
+</ul>
+<p><strong>Rate Limiting</strong>: The scripts handle Shopify's 2 requests/second limit automatically. If you see 429 errors, the retry logic will wait and continue. For large stores, consider using `--limit` to reduce data volume.</p>
+<p><strong>No Orders Returned</strong>: Check that:</p>
+<ul>
+<li>The date range (`--days`) covers a period with orders</li>
+<li>The `--status` filter matches your orders (use `any` to see all)</li>
+<li>The Admin API access token hasn't expired</li>
+</ul>
+<p><strong>Import Errors</strong>: Install required packages:</p>
+<pre><code>pip install -r requirements.txt</code></pre>
+<h2>Security &amp; Privacy</h2>
+<ul>
+<li><strong>Never hardcode</strong> API credentials in code — use `.env` files</li>
+<li>Store access tokens <strong>outside</strong> version control</li>
+<li>Add `.env` and credential files to `.gitignore`</li>
+<li>The scripts are <strong>read-only</strong> — they do not create, modify, or delete any Shopify data</li>
+<li>Use Admin API scopes with minimum required access (read-only)</li>
+<li>Customer PII (emails, names) is processed locally and never stored persistently</li>
+<li>Rotate access tokens periodically</li>
+</ul></div>
+</div>
+<script>
+function copyInstall(btn) {
+  var text = btn.getAttribute('data-copy');
+  navigator.clipboard.writeText(text).then(function() {
+    btn.classList.add('copied');
+    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+    setTimeout(function() {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>

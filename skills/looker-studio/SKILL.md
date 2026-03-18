@@ -10,11 +10,19 @@ metadata:
   category: dtc-marketing
   domain: looker-studio
   updated: 2026-02-23
+  tested: 2026-03-17
+  tested_with: "Claude Code v2.1"
 ---
 
 # Looker Studio (Google Data Studio)
 
 Expert-level guidance for Looker Studio — building dashboards, connecting data sources, designing visualizations, and creating automated marketing reports.
+
+## Install
+
+```bash
+git clone https://github.com/thatrebeccarae/claude-marketing.git && cp -r claude-marketing/skills/looker-studio ~/.claude/skills/
+```
 
 ## Core Capabilities
 

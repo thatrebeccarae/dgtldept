@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>klaviyo-analyst — claude-marketing</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-00XHYRHCX4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-00XHYRHCX4');
+</script>
+<meta name="description" content="Klaviyo marketing operations and analyst expertise. Audit flows, segments, campaigns, deliverability, and revenue attribution. Use when the user asks about Klav">
+<meta property="og:title" content="klaviyo-analyst — claude-marketing">
+<meta property="og:description" content="Klaviyo marketing operations and analyst expertise. Audit flows, segments, campaigns, deliverability, and revenue attribution. Use when the user asks about Klaviyo marketing strategy, email/SMS automa">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="klaviyo-analyst — claude-marketing">
+<meta name="twitter:description" content="Klaviyo marketing operations and analyst expertise. Audit flows, segments, campaigns, deliverability, and revenue attribution. Use when the user asks about Klaviyo marketing strategy, email/SMS automa">
+<link rel="canonical" href="https://thatrebeccarae.github.io/claude-marketing/skill/klaviyo-analyst.html">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600,700&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Ultralight.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cartograph CF';
+  src: url('../fonts/CartographCF-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --accent: #5B5F8D;
+  --black: #000000;
+  --white: #ffffff;
+  --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+html {
+  background: #000000;
+  color: #ffffff;
+}
+
+body {
+  font-family: 'Switzer', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(15px, 1.1vw, 17px);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.detail-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 120px clamp(20px, 5vw, 40px) 80px;
+}
+
+.detail-back {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+.detail-back:hover { opacity: 1; }
+
+.detail-name {
+  font-family: 'PP Editorial New', 'Georgia', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 200;
+  line-height: 1.15;
+  letter-spacing: -0.014em;
+  margin-bottom: 0.5rem;
+}
+
+.detail-category {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  letter-spacing: 0.04em;
+  margin-bottom: 2rem;
+}
+
+.detail-desc {
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.65;
+  margin-bottom: 2.5rem;
+  opacity: 0.85;
+}
+
+.detail-install {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.detail-install code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  opacity: 0.6;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.detail-install .copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  color: #ffffff;
+  flex-shrink: 0;
+}
+.detail-install .copy-btn:hover { opacity: 0.8; }
+.detail-install .copy-btn.copied { opacity: 1; color: #4ade80; }
+
+.detail-tested {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  opacity: 0.4;
+  margin-bottom: 2.5rem;
+}
+
+.detail-capabilities h2,
+.detail-sources h2,
+.detail-body h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  margin-top: 2.5rem;
+}
+
+.detail-capabilities ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.detail-capabilities li {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 4px;
+}
+
+.detail-source-links {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.detail-source-links a {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ffffff;
+  border-radius: 45px;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+.detail-source-links a:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+.detail-body {
+  margin-top: 2.5rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 2rem;
+}
+
+.detail-body h2 {
+  font-family: 'Switzer', sans-serif;
+}
+
+.detail-body h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.detail-body p {
+  margin-bottom: 1rem;
+  opacity: 0.85;
+  line-height: 1.65;
+}
+
+.detail-body ul {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.detail-body li {
+  margin-bottom: 0.35rem;
+  opacity: 0.85;
+  line-height: 1.55;
+}
+
+.detail-body pre {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+}
+
+.detail-body code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.85rem;
+}
+
+.detail-body blockquote {
+  border-left: 2px solid rgba(255,255,255,0.2);
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+@media (max-width: 700px) {
+  .detail-page {
+    padding: 100px 20px 60px;
+  }
+  .detail-source-links {
+    flex-wrap: wrap;
+  }
+}
+</style>
+</head>
+<body>
+<div class="detail-page" data-pagefind-body>
+  <a href="../skills.html" class="detail-back">&larr; Back to skills</a>
+  <h1 class="detail-name">klaviyo-analyst</h1>
+  <div class="detail-category">Email &amp; Lifecycle</div>
+  <p class="detail-desc">Klaviyo marketing operations and analyst expertise. Audit flows, segments, campaigns, deliverability, and revenue attribution. Use when the user asks about Klaviyo marketing strategy, email/SMS automation, customer segmentation, flow optimization, or lifecycle marketing. For API integration, SDK, webhook, or developer questions, see the klaviyo-developer skill.</p>
+  <div class="detail-install">
+    <code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/klaviyo-analyst ~/.claude/skills/</code>
+    <button class="copy-btn" data-copy="git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/klaviyo-analyst ~/.claude/skills/" title="Copy install command" onclick="copyInstall(this)">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+    </button>
+  </div>
+  <div class="detail-tested">Tested 2026-03-17 &middot; Claude Code v2.1</div>
+  <div class="detail-capabilities"><h2>Capabilities</h2><ul><li>Flow Auditing &amp; Optimization</li><li>Segmentation Strategy</li><li>Campaign Strategy</li><li>Deliverability Management</li><li>Revenue Attribution &amp; Reporting</li><li>Event Schema Auditing</li><li>Integration Health Review</li><li>Profile Data Utilization Analysis</li></ul></div>
+  <div class="detail-sources">
+<h2>Source Files</h2>
+<div class="detail-source-links">
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/klaviyo-analyst/SKILL.md" target="_blank" rel="noopener">SKILL.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/klaviyo-analyst/REFERENCE.md" target="_blank" rel="noopener">REFERENCE.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/klaviyo-analyst/EXAMPLES.md" target="_blank" rel="noopener">EXAMPLES.md</a>
+</div>
+</div>
+  <div class="detail-body"><p>Expert-level guidance for Klaviyo email and SMS marketing from the <strong>marketing operations and analyst perspective</strong> — auditing, building, and optimizing flows, segments, campaigns, and integrations.</p>
+<blockquote>For API integration, SDK usage, event tracking implementation, webhooks, and developer patterns, see the <strong>klaviyo-developer</strong> skill.</blockquote>
+<h2>Install</h2>
+<pre><code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/klaviyo-analyst ~/.claude/skills/</code></pre>
+<h2>Core Capabilities</h2>
+<h3>Flow Auditing &amp; Optimization</h3>
+<ul>
+<li>Audit existing flows against best practices (welcome series, abandoned cart, post-purchase, winback, browse abandonment, sunset)</li>
+<li>Identify revenue leakage from missing or underperforming flows</li>
+<li>Recommend split tests, timing adjustments, and conditional logic improvements</li>
+<li>Review flow filters and trigger conditions for accuracy</li>
+</ul>
+<h3>Segmentation Strategy</h3>
+<ul>
+<li>Build RFM-based segments (Recency, Frequency, Monetary)</li>
+<li>Design engagement tiers: Active (0-30d), Warm (31-90d), At-Risk (91-180d), Lapsed (180d+)</li>
+<li>Create predictive segments using Klaviyo's predictive analytics (CLV, churn risk, next order date)</li>
+<li>Suppress unengaged contacts to protect deliverability</li>
+</ul>
+<h3>Campaign Strategy</h3>
+<ul>
+<li>Plan campaign calendars balancing promotional and value content</li>
+<li>A/B testing frameworks for subject lines, send times, content blocks</li>
+<li>Dynamic content personalization using profile properties and catalog data</li>
+<li>SMS campaign compliance (TCPA, quiet hours, opt-in requirements)</li>
+</ul>
+<h3>Deliverability Management</h3>
+<ul>
+<li>Monitor and diagnose deliverability issues (bounce rates, spam complaints, inbox placement)</li>
+<li>Warm-up strategies for new sending domains/IPs</li>
+<li>Authentication setup: SPF, DKIM, DMARC</li>
+<li>List hygiene practices and sunset flow design</li>
+</ul>
+<h3>Revenue Attribution &amp; Reporting</h3>
+<ul>
+<li>Interpret Klaviyo's attribution model (click-based, 5-day email / 24-hour SMS default windows)</li>
+<li>Build custom dashboards for flow revenue, campaign ROI, list growth</li>
+<li>Benchmark KPIs against industry standards</li>
+</ul>
+<h3>Event Schema Auditing</h3>
+<ul>
+<li>Inventory all tracked metrics by source (built-in integration, custom API, Klaviyo-internal, forms)</li>
+<li>Identify duplicate/redundant events, unused events, and missing standard events</li>
+<li>Assess event property structures for segmentation and personalization accessibility</li>
+<li>Diagnose nested object limitations blocking flow splits and segment conditions</li>
+</ul>
+<h3>Integration Health Review</h3>
+<ul>
+<li>Audit active integrations (e-commerce, review platforms, loyalty, ads)</li>
+<li>Identify stale/dead integrations and orphaned event sources</li>
+<li>Assess flow trigger architecture: direct metric triggers (robust) vs segment-entry triggers via API-synced properties (brittle)</li>
+<li>Evaluate catalog sync health: product coverage, variant handling, freshness</li>
+</ul>
+<h3>Profile Data Utilization Analysis</h3>
+<ul>
+<li>Map profile properties: what's collected vs what's used in segmentation/personalization</li>
+<li>Identify stale calculated properties (set once, never updated)</li>
+<li>Flag properties on events but not synced to profiles (limits segmentation)</li>
+<li>Recommend property flattening strategies for nested data accessibility</li>
+</ul>
+<h2>Key Benchmarks</h2>
+<p>| Metric | Good | Great | Warning |</p>
+<p>|--------|------|-------|---------|</p>
+<p>| Open Rate (email) | 20-25% | 30%+ | &lt;15% |</p>
+<p>| Click Rate (email) | 2-3% | 4%+ | &lt;1.5% |</p>
+<p>| Unsubscribe Rate | &lt;0.3% | &lt;0.1% | &gt;0.5% |</p>
+<p>| Spam Complaint Rate | &lt;0.05% | &lt;0.02% | &gt;0.1% |</p>
+<p>| Flow Revenue % of Total | 30-40% | 50%+ | &lt;20% |</p>
+<p>| SMS Click Rate | 8-12% | 15%+ | &lt;5% |</p>
+<p>| List Growth Rate (monthly) | 3-5% | 8%+ | &lt;1% |</p>
+<h2>Essential Flows Checklist</h2>
+<p>1. <strong>Welcome Series</strong> (3-5 emails + optional SMS) — triggers on list subscribe</p>
+<p>2. <strong>Abandoned Cart</strong> (2-3 emails + 1 SMS) — triggers on Started Checkout</p>
+<p>3. <strong>Browse Abandonment</strong> (1-2 emails) — triggers on Viewed Product, exclude recent purchasers</p>
+<p>4. <strong>Post-Purchase</strong> (2-4 emails) — triggers on Placed Order, split by first-time vs repeat</p>
+<p>5. <strong>Winback</strong> (2-3 emails) — triggers on time since last purchase (60-90 days)</p>
+<p>6. <strong>Sunset/Re-engagement</strong> (2 emails) — targets unengaged 90-180 days, then suppress</p>
+<p>7. <strong>Review Request</strong> — triggers post-delivery, integrates with review platform</p>
+<p>8. <strong>Replenishment</strong> (if applicable) — triggers based on expected repurchase cycle</p>
+<p>9. <strong>Birthday/Anniversary</strong> — triggers on date property</p>
+<p>10. <strong>VIP/Loyalty</strong> — triggers on high-CLV segment entry</p>
+<h2>Workflow: Full Klaviyo Audit (4-Phase Deep Framework)</h2>
+<p>When asked to audit a Klaviyo account, follow this 4-phase framework:</p>
+<h3>Phase 1: Status Inventory</h3>
+<p>1. <strong>List/Segment/Flow/Campaign Inventory</strong> — Count and categorize all objects by status (live, draft, inactive)</p>
+<p>2. <strong>Event Schema Inventory</strong> — Pull all metrics, categorize by source (built-in, custom API, Klaviyo-internal, forms), flag zero-volume events</p>
+<p>3. <strong>Integration Inventory</strong> — List all active integrations, identify stale connections</p>
+<p>4. <strong>Custom Profile Property Inventory</strong> — Document all custom properties with types and usage</p>
+<h3>Phase 2: Configuration Audit</h3>
+<p>5. <strong>Per-Flow Configuration Teardown</strong> — For each active flow:</p>
+<p>   - Trigger type and conditions</p>
+<p>   - Smart Send settings (on/off and implications)</p>
+<p>   - Exclusion filters (segment membership, event conditions)</p>
+<p>   - Timing between messages (compare to benchmarks)</p>
+<p>   - Branching logic (conditional splits, A/B splits)</p>
+<p>   - Flow duration (first message to last)</p>
+<p>6. <strong>Campaign Targeting Audit</strong> — Segment exclusivity, frequency capping, send-time optimization</p>
+<p>7. <strong>A/B Testing Methodology Audit</strong> — Univariate vs multivariate, KPI alignment, statistical significance practices</p>
+<p>8. <strong>Deliverability Configuration</strong> — Authentication (SPF/DKIM/DMARC), dedicated IP, warmup status</p>
+<h3>Phase 3: Data Structure Audit</h3>
+<p>9. <strong>Event Schema Health</strong> — Check for duplicates, missing standard events, nested objects blocking segmentation</p>
+<p>10. <strong>Profile Data Utilization</strong> — What's collected vs what's used in segmentation/personalization</p>
+<p>11. <strong>Catalog Sync Health</strong> — Product feed freshness, coverage, variant handling</p>
+<h3>Phase 4: Strategic Recommendations</h3>
+<p>12. <strong>Three-Tier Recommendations</strong> — For each finding:</p>
+<p>    - <strong>Finding</strong>: What's wrong + evidence from audit data</p>
+<p>    - <strong>Recommendation</strong>: What to do (client-facing, plain language)</p>
+<p>    - <strong>Implementation Spec</strong>: How to build it (internal SOW with triggers, filters, content brief, timing, testing plan)</p>
+<p>13. <strong>Sequential Testing Plans</strong> — Univariate A/B tests with stat sig framework</p>
+<p>14. <strong>Quantified ROI</strong> — Expected uplift % x current revenue baseline</p>
+<p>15. <strong>Implementation Roadmap</strong> — Phased timeline with dependencies mapped</p>
+<h2>Industry-Specific Benchmarks</h2>
+<h3>B2B / Wholesale E-Commerce</h3>
+<p>| Metric | Good | Great | Warning | Notes |</p>
+<p>|--------|------|-------|---------|-------|</p>
+<p>| Open Rate | 25-35% | 40%+ | &lt;20% | Higher than DTC due to professional relevance |</p>
+<p>| Click Rate | 3-5% | 6%+ | &lt;2% | Product-focused CTAs perform well |</p>
+<p>| CTOR | 10-15% | 18%+ | &lt;8% | Key diagnostic — content relevance signal |</p>
+<p>| Flow Revenue % | 25-35% | 40%+ | &lt;15% | Reorder flows are high-value in B2B |</p>
+<p>| Avg Order Value | Varies | — | — | Track by segment (industry, company size) |</p>
+<p>| Reorder Rate | 60-70% | 80%+ | &lt;50% | Critical for consumable categories |</p>
+<h3>DTC (Direct-to-Consumer)</h3>
+<p>| Metric | Good | Great | Warning |</p>
+<p>|--------|------|-------|---------|</p>
+<p>| Open Rate | 20-25% | 30%+ | &lt;15% |</p>
+<p>| Click Rate | 2-3% | 4%+ | &lt;1.5% |</p>
+<p>| Flow Revenue % | 30-40% | 50%+ | &lt;20% |</p>
+<p>| Welcome Series Conv. | 3-5% | 8%+ | &lt;2% |</p>
+<p>| Cart Recovery Rate | 5-10% | 15%+ | &lt;3% |</p>
+<h3>Subscription / Recurring Revenue</h3>
+<p>| Metric | Good | Great | Warning |</p>
+<p>|--------|------|-------|---------|</p>
+<p>| Churn Rate (monthly) | &lt;5% | &lt;3% | &gt;8% |</p>
+<p>| Reactivation Rate | 5-10% | 15%+ | &lt;3% |</p>
+<p>| Replenishment Flow Conv. | 8-12% | 15%+ | &lt;5% |</p>
+<p>| Subscription Upgrade Rate | 3-5% | 8%+ | &lt;1% |</p>
+<h2>SMS Platform Comparison Framework</h2>
+<p>When evaluating Klaviyo SMS vs Attentive (common in audits):</p>
+<p>| Capability | Klaviyo SMS | Attentive |</p>
+<p>|------------|------------|-----------|</p>
+<p>| Email + SMS unified | Yes (native) | No (separate platform) |</p>
+<p>| Shared segments | Yes | Requires sync |</p>
+<p>| Unified attribution | Yes | Separate reporting |</p>
+<p>| Conversational SMS | Limited | Strong (two-way) |</p>
+<p>| Sign-up units | Basic (popup, form) | Advanced (two-tap, link-based) |</p>
+<p>| AI features | Predictive analytics, smart send time | AI journeys, smart sending |</p>
+<p>| Compliance | Built-in TCPA, quiet hours | Built-in + compliance team |</p>
+<p>| Cost | Included in Klaviyo plan (per SMS) | Separate platform fee + per SMS |</p>
+<p>| Best for | Unified email+SMS, simplicity | SMS-first strategy, high volume SMS |</p>
+<p><strong>Recommendation framework</strong>: Use Klaviyo SMS when email is the primary channel and SMS is supplementary (most B2B and mid-market DTC). Consider Attentive when SMS is a primary revenue channel (high-frequency DTC, mobile-first brands).</p>
+<h2>Repeatable Audit Workflow (MCP Tool Sequence)</h2>
+<p>When auditing an account via the Klaviyo MCP tools, follow this sequence:</p>
+<p>1. `klaviyo_get_account_details` — Account config, timezone, integrations</p>
+<p>2. `klaviyo_get_metrics` — Full event inventory (all metric names and IDs)</p>
+<p>3. `klaviyo_get_flows` — All flows with status</p>
+<p>4. `klaviyo_get_flow` (per flow) — Trigger details, actions, filters for each live flow</p>
+<p>5. `klaviyo_get_campaigns` — Recent campaigns with send dates</p>
+<p>6. `klaviyo_get_campaign_report` (per campaign) — Open/click/unsub/revenue metrics</p>
+<p>7. `klaviyo_get_flow_report` (per flow) — Revenue, conversion, engagement per flow</p>
+<p>8. `klaviyo_get_segments` + `klaviyo_get_segment` — Segment inventory and condition definitions</p>
+<p>9. `klaviyo_get_lists` — List inventory</p>
+<p>10. `klaviyo_get_catalog_items` — Catalog sync health check</p>
+<p>After data pull, analyze using the 4-Phase Deep Framework above.</p>
+<h2>Integration Context</h2>
+<h3>E-commerce Platforms</h3>
+<ul>
+<li><strong>Shopify</strong>: Native integration, syncs orders/products/customers automatically. Use Shopify-specific metrics (Placed Order, Started Checkout, Viewed Product).</li>
+<li><strong>WooCommerce / BigCommerce / Magento</strong>: Similar event sync, may need plugin configuration.</li>
+<li><strong>Custom platforms</strong>: Coordinate with developers using the <strong>klaviyo-developer</strong> skill for API event tracking and profile management.</li>
+</ul>
+<h3>Common Integration Points</h3>
+<ul>
+<li>Review platforms (Yotpo, Judge.me, Stamped) for post-purchase review flows</li>
+<li>Loyalty programs (Smile.io, LoyaltyLion) for points-based segmentation</li>
+<li>Subscription platforms (Recharge, Bold) for subscription lifecycle flows</li>
+<li>SMS: Built-in Klaviyo SMS or integration with Attentive/Postscript</li>
+</ul>
+<h2>How to Use This Skill</h2>
+<p>Ask me questions like:</p>
+<ul>
+<li>&quot;Audit my Klaviyo flows and identify gaps&quot;</li>
+<li>&quot;Design a welcome series for my DTC brand&quot;</li>
+<li>&quot;My open rates dropped — help me diagnose deliverability issues&quot;</li>
+<li>&quot;Build an RFM segmentation strategy&quot;</li>
+<li>&quot;What A/B tests should I run on my abandoned cart flow?&quot;</li>
+<li>&quot;Help me set up a sunset flow to clean my list&quot;</li>
+<li>&quot;Plan a Black Friday email/SMS campaign calendar&quot;</li>
+<li>&quot;Audit my event schema — are we tracking everything we need?&quot;</li>
+<li>&quot;Give me a three-tier recommendation for fixing our click rates&quot;</li>
+</ul>
+<h2>Analysis Examples</h2>
+<p>For complete analysis patterns, worked examples with sample output, and use cases, see [EXAMPLES.md](EXAMPLES.md).</p>
+<h2>Scripts</h2>
+<p>The skill includes utility scripts for data fetching and analysis:</p>
+<h3>Fetch Klaviyo Data</h3>
+<pre><code># List all flows
+python scripts/klaviyo_client.py --resource flows
+
+# List campaigns as table
+python scripts/klaviyo_client.py --resource campaigns --format table
+
+# Get flow performance report
+python scripts/klaviyo_client.py --resource report --report-type flow --id FLOW_ID
+
+# Export metrics to file
+python scripts/klaviyo_client.py --resource metrics --output metrics.json</code></pre>
+<h3>Analyze and Generate Reports</h3>
+<pre><code># Full account audit
+python scripts/analyze.py --analysis-type full-audit
+
+# Flow gap analysis
+python scripts/analyze.py --analysis-type flow-audit
+
+# Segment health check
+python scripts/analyze.py --analysis-type segment-health
+
+# Campaign performance comparison
+python scripts/analyze.py --analysis-type campaign-comparison --days 30
+
+# Deliverability diagnostic
+python scripts/analyze.py --analysis-type deliverability
+
+# Revenue attribution
+python scripts/analyze.py --analysis-type revenue-attribution</code></pre>
+<p>The scripts handle API authentication, data fetching, and analysis. I'll interpret the results and provide actionable recommendations.</p>
+<h2>Troubleshooting</h2>
+<p><strong>Authentication Error</strong>: Verify that:</p>
+<ul>
+<li>`KLAVIYO_API_KEY` is set as an environment variable or in a `.env` file</li>
+<li>The key starts with `pk_` (private API key, not public)</li>
+<li>The key has read scopes: `profiles:read`, `flows:read`, `campaigns:read`, `segments:read`, `lists:read`, `metrics:read`</li>
+</ul>
+<p><strong>No Data Returned</strong>: Check that:</p>
+<ul>
+<li>The API key is associated with the correct Klaviyo account</li>
+<li>The account has active flows, campaigns, or segments to analyze</li>
+<li>Filters are correctly formatted (e.g., `equals(status,&quot;live&quot;)`)</li>
+</ul>
+<p><strong>Rate Limit Errors</strong>: The SDK handles retries automatically (up to 3 retries with 60s max delay). If you still hit limits:</p>
+<ul>
+<li>Reduce concurrent requests</li>
+<li>Add delays between sequential calls</li>
+<li>Check `RateLimit-Remaining` header</li>
+</ul>
+<p><strong>Import Errors</strong>: Install required packages:</p>
+<pre><code>pip install klaviyo-api python-dotenv pandas</code></pre>
+<h2>Security Notes</h2>
+<ul>
+<li><strong>Never hardcode</strong> API keys in code or commit them to version control</li>
+<li>Store keys in environment variables or `.env` files</li>
+<li>Add `.env` to `.gitignore`</li>
+<li>Use <strong>read-only scopes</strong> for analyst tasks — no write access needed</li>
+<li>Rotate API keys periodically in Klaviyo Settings</li>
+</ul>
+<h2>Data Privacy</h2>
+<p>This skill accesses aggregated marketing data only. It does not:</p>
+<ul>
+<li>Access personally identifiable information (PII) beyond email/profile aggregates</li>
+<li>Store Klaviyo data persistently</li>
+<li>Share data with external services</li>
+<li>Modify your Klaviyo configuration (read-only operations)</li>
+</ul>
+<p>All data is processed locally and used only to generate recommendations during the conversation.</p>
+<p>For detailed Klaviyo data model, flow builder reference, segmentation conditions, deliverability, and SMS reference, see [REFERENCE.md](REFERENCE.md).</p>
+<p>For API integration, SDK usage, and developer patterns, use the <strong>klaviyo-developer</strong> skill.</p></div>
+</div>
+<script>
+function copyInstall(btn) {
+  var text = btn.getAttribute('data-copy');
+  navigator.clipboard.writeText(text).then(function() {
+    btn.classList.add('copied');
+    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+    setTimeout(function() {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>
