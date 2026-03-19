@@ -1,121 +1,82 @@
-Generate, audit, or update GitHub READMEs. Three modes: generate (new), audit (check existing), update (patch). Detects repo type (library/CLI/app/API/monorepo), selects appropriate badges, and generates sections following conventions for the detected type.
+Generate, audit, or update GitHub READMEs with project-type-aware structure, voice calibration, and SEO/AEO discoverability guidance. Three modes: generate (new), audit (check existing), update (patch). Detects repo type and adapts sections, tone, and badges accordingly.
 
 
 # GitHub README Generator
 
-Generate, audit, or update GitHub READMEs against a standard template. Detects repo type and adapts structure accordingly.
+Generate, audit, or update repository READMEs with project-type detection, voice calibration, discoverability guidance, and scored quality audits.
+
+## When to Use
+
+- Starting a new public repo and need a solid README from scratch
+- Auditing an existing README for quality, discoverability, and security issues
+- Updating a README after the repo has evolved (new deps, features, structure)
+- Preparing a repo for public release and want discoverability optimized
 
 ## Modes
 
-### 1. Generate (New README)
+```
+/github:readme generate [repo-path]   # Scan repo, detect type, generate README
+/github:readme audit [repo-path]      # Score existing README (read-only, 0-100)
+/github:readme update [repo-path]     # Re-scan, silent audit, patch with approval
+```
 
-Create a README from scratch by analyzing the repo.
+Default `repo-path` is the current working directory if omitted.
 
-**Steps:**
-1. Detect repo type (library, CLI tool, web app, API, monorepo, skill pack)
-2. Read package.json/pyproject.toml/Cargo.toml for metadata
-3. Scan directory structure for key patterns
-4. Select badge set based on repo type and detected CI/tooling
-5. Generate sections appropriate to repo type
-6. Write README.md
 
-### 2. Audit (Check Existing)
+## Step 0: Parse and Validate
 
-Evaluate an existing README for completeness and quality.
+Expect: `/github:readme {mode} [repo-path]`
 
-**Checks:**
-- All required sections present for the repo type
-- Badge URLs resolve (not broken)
-- Version numbers are current
-- Install commands work
-- Code examples are syntactically valid
-- Links are not broken
-- No placeholder text remaining
-- PII/infrastructure scrub (no internal IPs, hostnames, credentials)
+1. **Extract mode** — `generate`, `audit`, or `update`. Any other value or missing → error with usage hint. STOP.
+2. **Extract repo-path** — second argument, or current working directory if omitted.
+3. **Validate** — confirm path exists, is a directory, and contains `.git`. If not → error. STOP.
 
-**Output:** Score (0-100) + findings report with specific fix recommendations.
+Store `repo_path` (absolute) and `mode`.
 
-### 3. Update (Patch Existing)
 
-Modify an existing README while preserving its structure.
+## Step 1: Scan the Repo
 
-**Steps:**
-1. Read current README
-2. Identify sections and their content
-3. Plan changes (add missing sections, update stale content)
-4. Show diff-style preview
-5. Apply updates on approval
+Gather context by reading available files. Skip gracefully if a file does not exist.
 
-## Repo Type Detection
+**Package/config files** (tech stack detection):
+- `package.json` — Node/TypeScript/React
+- `Cargo.toml` — Rust
+- `pyproject.toml`, `setup.py`, `requirements.txt` — Python
+- `go.mod` — Go
+- `tsconfig.json` — TypeScript confirmation
+- `Dockerfile`, `docker-compose.yml` — containerization
+- `Makefile`, `justfile` — build system
+- `.github/workflows/` — CI/CD
 
-| Signal | Type |
-|--------|------|
-| `src/` + `package.json` with `main`/`exports` | Library |
-| `bin` field in package.json or CLI entry point | CLI Tool |
-| `app/` or `pages/` directory, framework config | Web App |
-| `routes/` or OpenAPI spec | API |
-| `packages/` or workspace config | Monorepo |
-| `skills/` with SKILL.md files | Skill Pack |
+**Directory structure:**
+- Run `ls` at repo root for top-level layout
+- Note: `src/`, `bin/`, `lib/`, `scripts/`, `docs/`, `tests/`, `skills/`, `templates/`, `plugins/`, `.github/`
 
-## Section Order by Type
+**Existing docs:**
+- `README.md`, `CONTRIBUTING.md`, `SECURITY.md`, `LICENSE`, `ARCHITECTURE.md`, `CHANGELOG.md`, `CODE_OF_CONDUCT.md`, `llms.txt`
 
-### Library
-1. Title + badges
-2. One-line description
-3. Features
-4. Installation
-5. Quick Start
-6. API Reference
-7. Configuration
-8. Contributing
-9. License
+**Git remote:**
+- Run `git -C {repo_path} remote get-url origin`
+- Extract `{owner}` and `{repo}` from the URL
+- Determine public/private: `.public-repo` marker → public; `-dev` suffix or no marker → ask user
 
-### CLI Tool
-1. Title + badges
-2. One-line description
-3. Installation (brew, npm, cargo, etc.)
-4. Quick Start
-5. Commands reference
-6. Configuration
-7. Contributing
-8. License
 
-### Web App
-1. Title + badges
-2. One-line description
-3. Screenshots/demo
-4. Features
-5. Getting Started (prerequisites, install, run)
-6. Environment Variables
-7. Deployment
-8. Contributing
-9. License
+## Step 2: Detect Project Type
 
-### API
-1. Title + badges
-2. One-line description
-3. Base URL + authentication
-4. Quick Start
-5. Endpoints reference
-6. Error handling
-7. Rate limits
-8. Contributing
-9. License
+Classify the repo into exactly one type based on scan signals:
 
-## Badge Selection
+| Type | Signals |
+|------|---------|
+| **tool/CLI** | Has `bin` field in package.json, CLI entry points, man pages, command parsers (yargs, clap, cobra) |
+| **library/SDK** | Has `main`/`exports`/`module` field, published to npm/PyPI/crates.io, no CLI entry |
+| **collection/marketplace** | Contains multiple independent items: `skills/`, `templates/`, `plugins/`, `recipes/` directories with 3+ subdirectories |
+| **web-app** | Has React/Vue/Svelte/Next/Nuxt, server framework (Express, FastAPI, Actix), deployment config (Vercel, Dockerfile) |
+| **personal/experimental** | Small repo (<20 files), no package publishing config, no CI, no semver tags |
 
-| Badge | When to Include |
-|-------|----------------|
-| Build/CI status | CI config detected (.github/workflows/) |
-| Coverage | Coverage config detected (codecov, coveralls) |
-| npm version | package.json with npm publish |
-| PyPI version | pyproject.toml with PyPI config |
-| License | Always |
-| Node/Python version | When runtime version matters |
-| TypeScript | tsconfig.json present |
-| Docker | Dockerfile present |
+If ambiguous, ask the user to confirm. Store as `project_type`.
 
-## Key Principles
+
+## Step 3: Discoverability Audit
 
 
 (Truncated. See full skill at github.com/thatrebeccarae/claude-marketing)

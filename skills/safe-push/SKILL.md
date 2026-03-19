@@ -7,7 +7,7 @@ author: Rebecca Rae Barton
 author_url: https://github.com/thatrebeccarae
 metadata:
   version: 1.0.0
-  category: developer-tools
+  category: devops
   domain: git
   updated: 2026-03-13
   tested: 2026-03-17

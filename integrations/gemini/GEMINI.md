@@ -99,11 +99,11 @@ Transform audit data, performance reports, and structured analyses into polished
 
 @./reference/data-viz-deck.md
 
-## docx
+## dep-audit
 
-Comprehensive Word document creation, editing, and analysis with support for tracked changes, comments, formatting preservation, and text extraction. Use when working with .docx files for creating new documents, modifying existing content, adding tracked changes (redlining), or extracting and analyzing document contents.
+Cross-repository dependency audit. Scans package manifests for outdated packages, security advisories, version conflicts, and license issues. Produces a prioritized update plan. Supports Node.js, Python, Rust, and Go projects.
 
-@./reference/docx.md
+@./reference/dep-audit.md
 
 ## email-composer
 
@@ -125,7 +125,7 @@ Create distinctive, production-grade frontend interfaces with high design qualit
 
 ## github-readme
 
-Generate, audit, or update GitHub READMEs. Three modes: generate (new), audit (check existing), update (patch). Detects repo type (library/CLI/app/API/monorepo), selects appropriate badges, and generates sections following conventions for the detected type.
+Generate, audit, or update GitHub READMEs with project-type-aware structure, voice calibration, and SEO/AEO discoverability guidance. Three modes: generate (new), audit (check existing), update (patch). Detects repo type and adapts sections, tone, and badges accordingly.
 
 @./reference/github-readme.md
 
@@ -183,6 +183,12 @@ LinkedIn Ads platform expertise. Audit campaigns, optimize targeting (job title,
 
 @./reference/linkedin-ads.md
 
+## llms-txt
+
+Generate and maintain llms.txt files for AI discoverability. Scans repos to create curated content maps that help AI answer engines surface your project accurately. Implements the llms.txt specification from Answer.AI.
+
+@./reference/llms-txt.md
+
 ## looker-studio
 
 Looker Studio (formerly Google Data Studio) expertise. Build dashboards, design data visualizations, connect data sources, and create marketing reports. Use when the user asks about Looker Studio, Data Studio, marketing dashboards, data visualization, report building, or connecting analytics data sources.
@@ -194,12 +200,6 @@ Looker Studio (formerly Google Data Studio) expertise. Build dashboards, design 
 Generate comprehensive market research reports (50+ pages) in the style of top consulting firms (McKinsey, BCG, Gartner). Professional LaTeX formatting, strategic analysis frameworks (Porter's Five Forces, PESTLE, SWOT, TAM/SAM/SOM, BCG Matrix), and deep research integration.
 
 @./reference/market-research.md
-
-## mcp-builder
-
-Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools. Use when building MCP servers to integrate external APIs or services, whether in Python (FastMCP) or Node/TypeScript (MCP SDK).
-
-@./reference/mcp-builder.md
 
 ## microsoft-ads
 
@@ -231,17 +231,29 @@ Template-based page generation at scale for SEO. Data-driven content, internal l
 
 @./reference/programmatic-seo.md
 
-## react-best-practices
+## release-notes
 
-Comprehensive React and Next.js performance optimization guide with 40+ rules for eliminating waterfalls, optimizing bundles, and improving rendering. Use when optimizing React apps, reviewing performance, or refactoring components.
+Generate changelog entries and GitHub releases from git history. Categorizes commits into features, fixes, breaking changes, and docs. Supports conventional commits, PR-based grouping, and semantic versioning. Creates formatted CHANGELOG.md entries and GitHub releases.
 
-@./reference/react-best-practices.md
+@./reference/release-notes.md
 
 ## remotion-video
 
 Remotion video production best practices — spring animations, interpolation patterns, SVG draw-on effects, scene transitions, chart animations, audio integration, and rendering. Use when building programmatic videos with Remotion, creating animated content, or producing marketing videos with code.
 
 @./reference/remotion-video.md
+
+## repo-health
+
+One-command GitHub repository health audit. Checks for missing standard files, GitHub configuration, branch protection, documentation quality, and code hygiene. Produces a scored health report with prioritized fix recommendations.
+
+@./reference/repo-health.md
+
+## repo-scaffold
+
+Initialize GitHub repositories with standard files and configuration. Generates LICENSE, CONTRIBUTING.md, SECURITY.md, issue/PR templates, CI config, and .gitignore. Detects project type and adapts templates accordingly.
+
+@./reference/repo-scaffold.md
 
 ## research-digest
 
@@ -279,17 +291,23 @@ Shopify e-commerce platform marketing expertise. Audit store performance, optimi
 
 @./reference/shopify.md
 
-## skill-creator
-
-Guide for creating effective Claude Code skills that extend capabilities with specialized knowledge, workflows, and tool integrations. Use when users want to create a new skill or update an existing skill.
-
-@./reference/skill-creator.md
-
 ## social-media-strategy
 
 Platform-specific organic social media strategy, content calendars, engagement tactics, community building, and performance measurement. Use when the user asks about social media strategy, organic social, content calendars, community management, or social media metrics.
 
 @./reference/social-media-strategy.md
+
+## social-preview
+
+Generate Open Graph social preview images (1280x640) for GitHub repositories. Creates branded OG images that display when repos are shared on Twitter, LinkedIn, and Slack. Supports custom templates, dark/light themes, and automated generation.
+
+@./reference/social-preview.md
+
+## sync-repos
+
+Manage public/private repository pairs. Verify parity, detect drift, run sync scripts, and validate no sensitive data leaks to the public repo. Use for projects that maintain separate dev and public repositories.
+
+@./reference/sync-repos.md
 
 ## tech-diagram
 

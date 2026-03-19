@@ -2536,90 +2536,200 @@ Follow the code patterns in REFERENCE.md for the chosen output format.
 
 For complete code templates and reference, see [REFERENCE.md](REFERENCE.md).
 
-## docx
+## dep-audit
 
-Comprehensive Word document creation, editing, and analysis with support for tracked changes, comments, formatting preservation, and text extraction. Use when working with .docx files for creating new documents, modifying existing content, adding tracked changes (redlining), or extracting and analyzing document contents.
+Cross-repository dependency audit. Scans package manifests for outdated packages, security advisories, version conflicts, and license issues. Produces a prioritized update plan. Supports Node.js, Python, Rust, and Go projects.
 
 
-# DOCX Creation, Editing, and Analysis
+# Dependency Audit
 
-## Overview
+Cross-repository dependency audit. Scans package manifests (package.json, pyproject.toml, Cargo.toml, go.mod) for outdated packages, security advisories, version conflicts between repos, and license compatibility issues. Produces a prioritized update plan.
 
-Work with .docx files — create, edit, or analyze. A .docx file is a ZIP archive containing XML files and other resources that can be read or edited directly.
+## When to Use
 
-## Workflow Decision Tree
+- **Monthly hygiene**: Run on a cadence to catch dependency drift before it compounds
+- **Before releases**: Verify no known vulnerabilities ship to production
+- **Security incidents**: When a CVE drops, quickly assess exposure across all repos
+- **Onboarding new repos**: Baseline the dependency health of a repo you're inheriting or adopting
 
-### Reading/Analyzing Content
-Use text extraction or raw XML access sections below.
+## Usage
 
-### Creating New Document
-Use the docx-js workflow (JavaScript/TypeScript).
+- `/dep-audit [repo-path]` — audit a single repository
+- `/dep-audit [repo-path1] [repo-path2] ...` — cross-repo audit (enables version conflict detection)
 
-### Editing Existing Document
-- **Your own document + simple changes**: Use basic OOXML editing workflow
-- **Someone else's document**: Use **redlining workflow** (recommended)
-- **Legal, academic, business, or government docs**: Use **redlining workflow** (required)
+## Procedure
 
-## Reading and Analyzing Content
+### 1. Detect Package Managers
 
-### Text Extraction
-Convert to markdown using pandoc:
-```bash
-pandoc --track-changes=all path-to-file.docx -o output.md
-```
+Scan the target repo(s) for manifest files:
 
-### Raw XML Access
-For comments, complex formatting, metadata, and embedded media — unpack the document:
-```bash
-python ooxml/scripts/unpack.py <office_file> <output_directory>
-```
-
-Key files: `word/document.xml` (main content), `word/comments.xml` (comments), `word/media/` (images).
-
-## Creating a New Word Document
-
-Use **docx-js** (JavaScript/TypeScript):
-
-1. **Read `docx-js.md`** for detailed syntax and best practices
-2. Create a JavaScript file using Document, Paragraph, TextRun components
-3. Export as .docx using `Packer.toBuffer()`
-
-## Editing an Existing Document
-
-Use the **Document library** (Python OOXML manipulation):
-
-1. **Read `ooxml.md`** for the Document library API and XML patterns
-2. Unpack: `python ooxml/scripts/unpack.py <file.docx> <dir>`
-3. Create and run a Python script using the Document library
-4. Pack: `python ooxml/scripts/pack.py <dir> <output.docx>`
-
-## Redlining Workflow
-
-For tracked changes with professional-quality diffs:
-
-1. **Get markdown**: `pandoc --track-changes=all file.docx -o current.md`
-2. **Identify and group changes** into batches of 3-10 related edits
-3. **Read `ooxml.md`** and unpack the document
-4. **Implement changes in batches** using the Document library
-5. **Pack the document**: `python ooxml/scripts/pack.py unpacked/ reviewed.docx`
-6. **Verify**: Convert final document and check all changes applied
-
-**Principle: Minimal, Precise Edits** — Only mark text that actually changes. Break replacements into [unchanged] + [deletion] + [insertion] + [unchanged].
-
-## Converting Documents to Images
+| Manager | Manifest | Lock File |
+|---------|----------|-----------|
+| npm | `package.json` | `package-lock.json` |
+| yarn | `package.json` | `yarn.lock` |
+| pnpm | `package.json` | `pnpm-lock.yaml` |
+| pip | `requirements.txt`, `setup.py`, `setup.cfg` | `requirements.txt` (pinned) |
+| poetry | `pyproject.toml` (has `[tool.poetry]`) | `poetry.lock` |
+| uv | `pyproject.toml` (has `[tool.uv]`) | `uv.lock` |
+| cargo | `Cargo.toml` | `Cargo.lock` |
+| go mod | `go.mod` | `go.sum` |
 
 ```bash
-soffice --headless --convert-to pdf document.docx
-pdftoppm -jpeg -r 150 document.pdf page
+# Detect which manifests exist
+ls package.json pyproject.toml Cargo.toml go.mod requirements.txt 2>/dev/null
+# Detect lock files
+ls package-lock.json yarn.lock pnpm-lock.yaml poetry.lock uv.lock Cargo.lock go.sum 2>/dev/null
 ```
 
-## Dependencies
+If multiple ecosystems are present (e.g., a monorepo with Node.js frontend and Go backend), audit each independently and merge results.
 
-- **pandoc**: Text extraction and markdown conversion
-- **docx** (npm): Creating new documents
-- **LibreOffice**: PDF conversion
-- **Poppler** (pdftoppm): PDF to image conversion
-- **defusedxml** (pip): Secure XML parsing
+### 2. Parse Manifests and Lock Files
+
+Read the manifest to identify declared dependencies (direct) and the lock file for resolved versions (transitive). Distinguish between:
+- **Production dependencies** (`dependencies`, `[dependencies]`, main requires)
+- **Development dependencies** (`devDependencies`, `[dev-dependencies]`, extras)
+
+### 3. Check for Outdated Packages
+
+Query the registry for latest versions and categorize the delta:
+
+```bash
+# Node.js
+npm outdated --json
+
+# Python (pip)
+pip list --outdated --format=json
+
+# Python (poetry)
+poetry show --outdated
+
+# Rust
+cargo outdated --format json  # requires cargo-outdated
+
+# Go
+go list -m -u all
+```
+
+Categorize each outdated package:
+- **Patch update** (e.g., 2.3.1 -> 2.3.4): Safe, usually bug fixes
+- **Minor update** (e.g., 2.3.1 -> 2.5.0): New features, should be backward-compatible
+- **Major update** (e.g., 2.3.1 -> 3.0.0): Breaking changes likely, needs migration review
+
+### 4. Check for Security Advisories
+
+Run ecosystem-native audit tools:
+
+```bash
+# Node.js
+npm audit --json
+
+# Python
+pip-audit --format=json  # or: safety check
+
+# Rust
+cargo audit --json  # requires cargo-audit
+
+# Go
+govulncheck ./...
+```
+
+Parse severity from results:
+- **Critical**: Remote code execution, authentication bypass, data exfiltration
+- **High**: Privilege escalation, significant data exposure
+- **Medium**: DoS potential, limited data exposure
+- **Low**: Information disclosure, minor issues
+
+### 5. Cross-Repo Analysis (Multiple Repos)
+
+When auditing two or more repos, compare dependency versions:
+
+- **Version conflicts**: Same package at different versions across repos (e.g., `axios@0.27.2` in repo A, `axios@1.6.2` in repo B)
+- **Shared dependencies**: Packages used by multiple repos that could be aligned to a single version
+- **Divergent major versions**: Flag these as highest priority — they indicate repos drifting apart
+
+Present a conflict table showing package, version per repo, and recommended target version.
+
+### 6. License Scan
+
+Check dependency licenses against compatibility rules:
+
+```bash
+# Node.js
+npx license-checker --json
+
+# Python
+pip-licenses --format=json
+
+# Rust
+cargo license --json  # requires cargo-license
+
+# Go
+go-licenses report ./...  # requires go-licenses
+```
+
+Flag issues:
+- **Copyleft in permissive projects**: GPL/AGPL dependencies in MIT/Apache-licensed projects
+- **Unknown or missing licenses**: Dependencies with no license metadata
+- **Non-OSI-approved licenses**: Custom or restrictive licenses
+- **License conflicts**: Incompatible license combinations (e.g., GPLv2-only with Apache-2.0)
+
+### 7. Generate Update Plan
+
+Prioritize all findings into a single ordered list:
+
+1. **Critical security advisories** — fix immediately
+2. **High security advisories** — fix this sprint
+3. **License violations** — assess and remediate
+4. **Major outdated (with known issues)** — plan migration
+5. **Cross-repo version conflicts** — align versions
+6. **Minor outdated** — batch update
+7. **Patch outdated** — batch update
+
+Group related updates together:
+- All `@types/*` packages in one PR
+- All packages from the same org (e.g., `@babel/*`)
+- Peer dependency chains that must move together
+
+Note breaking change risks for any major update. Link to migration guides where available.
+
+### 8. Report
+
+Produce a severity-coded summary table:
+
+| Priority | Package | Current | Latest | Type | Severity | Repos Affected | Action |
+|----------|---------|---------|--------|------|----------|---------------|--------|
+| 1 | lodash | 4.17.19 | 4.17.21 | patch | CRITICAL (CVE-2021-23337) | repo-a, repo-b | Update immediately |
+| 2 | express | 4.17.1 | 4.21.2 | minor | HIGH (CVE-2024-29041) | repo-a | Update this sprint |
+| 3 | webpack | 4.46.0 | 5.94.0 | major | MEDIUM (outdated) | repo-a | Plan migration |
+| ... | | | | | | | |
+
+Follow with:
+- Total dependency count (direct / transitive) per repo
+- Security summary: X critical, Y high, Z medium, W low
+- Outdated summary: X major, Y minor, Z patch
+- License summary: X flagged, Y clean
+- Cross-repo conflicts: X packages with version divergence
+
+## Key Principles
+
+1. **Never auto-update.** This skill audits and recommends. The human decides what to update and when. Automated updates can introduce breaking changes, especially for major versions.
+2. **Security first.** Critical and high-severity vulnerabilities always top the priority list, regardless of how old other dependencies are.
+3. **Group related updates.** Updating `react` without updating `react-dom` creates version mismatches. Always identify peer dependency chains.
+4. **Context matters.** A major version bump on a dev-only dependency (e.g., `eslint`) is lower risk than a patch on a production runtime dependency with a CVE.
+5. **Lock files are truth.** Always read the lock file for actual resolved versions, not just the range specifier in the manifest.
+6. **Don't chase latest for its own sake.** If a dependency is working, stable, and has no advisories, "outdated" is not the same as "broken."
+
+## How to Use This Skill
+
+Ask:
+- "Audit the dependencies in ~/Repos/my-app"
+- "Compare dependency versions across these three repos"
+- "Are there any security vulnerabilities in this project?"
+- "Check for license issues before we open-source this repo"
+- "Build me an update plan for everything that's behind"
+
+For command reference, license compatibility details, and false positive handling, see [REFERENCE.md](REFERENCE.md).
+For worked examples, see [EXAMPLES.md](EXAMPLES.md).
 
 ## email-composer
 
@@ -3062,142 +3172,264 @@ If `brand-profile.json` exists in the working directory, read it before designin
 
 ## github-readme
 
-Generate, audit, or update GitHub READMEs. Three modes: generate (new), audit (check existing), update (patch). Detects repo type (library/CLI/app/API/monorepo), selects appropriate badges, and generates sections following conventions for the detected type.
+Generate, audit, or update GitHub READMEs with project-type-aware structure, voice calibration, and SEO/AEO discoverability guidance. Three modes: generate (new), audit (check existing), update (patch). Detects repo type and adapts sections, tone, and badges accordingly.
 
 
 # GitHub README Generator
 
-Generate, audit, or update GitHub READMEs against a standard template. Detects repo type and adapts structure accordingly.
+Generate, audit, or update repository READMEs with project-type detection, voice calibration, discoverability guidance, and scored quality audits.
+
+## When to Use
+
+- Starting a new public repo and need a solid README from scratch
+- Auditing an existing README for quality, discoverability, and security issues
+- Updating a README after the repo has evolved (new deps, features, structure)
+- Preparing a repo for public release and want discoverability optimized
 
 ## Modes
 
-### 1. Generate (New README)
+```
+/github:readme generate [repo-path]   # Scan repo, detect type, generate README
+/github:readme audit [repo-path]      # Score existing README (read-only, 0-100)
+/github:readme update [repo-path]     # Re-scan, silent audit, patch with approval
+```
 
-Create a README from scratch by analyzing the repo.
+Default `repo-path` is the current working directory if omitted.
 
-**Steps:**
-1. Detect repo type (library, CLI tool, web app, API, monorepo, skill pack)
-2. Read package.json/pyproject.toml/Cargo.toml for metadata
-3. Scan directory structure for key patterns
-4. Select badge set based on repo type and detected CI/tooling
-5. Generate sections appropriate to repo type
-6. Write README.md
 
-### 2. Audit (Check Existing)
+## Step 0: Parse and Validate
 
-Evaluate an existing README for completeness and quality.
+Expect: `/github:readme {mode} [repo-path]`
 
-**Checks:**
-- All required sections present for the repo type
-- Badge URLs resolve (not broken)
-- Version numbers are current
-- Install commands work
-- Code examples are syntactically valid
-- Links are not broken
-- No placeholder text remaining
-- PII/infrastructure scrub (no internal IPs, hostnames, credentials)
+1. **Extract mode** — `generate`, `audit`, or `update`. Any other value or missing → error with usage hint. STOP.
+2. **Extract repo-path** — second argument, or current working directory if omitted.
+3. **Validate** — confirm path exists, is a directory, and contains `.git`. If not → error. STOP.
 
-**Output:** Score (0-100) + findings report with specific fix recommendations.
+Store `repo_path` (absolute) and `mode`.
 
-### 3. Update (Patch Existing)
 
-Modify an existing README while preserving its structure.
+## Step 1: Scan the Repo
 
-**Steps:**
-1. Read current README
-2. Identify sections and their content
-3. Plan changes (add missing sections, update stale content)
-4. Show diff-style preview
-5. Apply updates on approval
+Gather context by reading available files. Skip gracefully if a file does not exist.
 
-## Repo Type Detection
+**Package/config files** (tech stack detection):
+- `package.json` — Node/TypeScript/React
+- `Cargo.toml` — Rust
+- `pyproject.toml`, `setup.py`, `requirements.txt` — Python
+- `go.mod` — Go
+- `tsconfig.json` — TypeScript confirmation
+- `Dockerfile`, `docker-compose.yml` — containerization
+- `Makefile`, `justfile` — build system
+- `.github/workflows/` — CI/CD
 
-| Signal | Type |
-|--------|------|
-| `src/` + `package.json` with `main`/`exports` | Library |
-| `bin` field in package.json or CLI entry point | CLI Tool |
-| `app/` or `pages/` directory, framework config | Web App |
-| `routes/` or OpenAPI spec | API |
-| `packages/` or workspace config | Monorepo |
-| `skills/` with SKILL.md files | Skill Pack |
+**Directory structure:**
+- Run `ls` at repo root for top-level layout
+- Note: `src/`, `bin/`, `lib/`, `scripts/`, `docs/`, `tests/`, `skills/`, `templates/`, `plugins/`, `.github/`
 
-## Section Order by Type
+**Existing docs:**
+- `README.md`, `CONTRIBUTING.md`, `SECURITY.md`, `LICENSE`, `ARCHITECTURE.md`, `CHANGELOG.md`, `CODE_OF_CONDUCT.md`, `llms.txt`
 
-### Library
-1. Title + badges
-2. One-line description
-3. Features
-4. Installation
-5. Quick Start
-6. API Reference
-7. Configuration
-8. Contributing
-9. License
+**Git remote:**
+- Run `git -C {repo_path} remote get-url origin`
+- Extract `{owner}` and `{repo}` from the URL
+- Determine public/private: `.public-repo` marker → public; `-dev` suffix or no marker → ask user
 
-### CLI Tool
-1. Title + badges
-2. One-line description
-3. Installation (brew, npm, cargo, etc.)
-4. Quick Start
-5. Commands reference
-6. Configuration
-7. Contributing
-8. License
 
-### Web App
-1. Title + badges
-2. One-line description
-3. Screenshots/demo
-4. Features
-5. Getting Started (prerequisites, install, run)
-6. Environment Variables
-7. Deployment
-8. Contributing
-9. License
+## Step 2: Detect Project Type
 
-### API
-1. Title + badges
-2. One-line description
-3. Base URL + authentication
-4. Quick Start
-5. Endpoints reference
-6. Error handling
-7. Rate limits
-8. Contributing
-9. License
+Classify the repo into exactly one type based on scan signals:
+
+| Type | Signals |
+|------|---------|
+| **tool/CLI** | Has `bin` field in package.json, CLI entry points, man pages, command parsers (yargs, clap, cobra) |
+| **library/SDK** | Has `main`/`exports`/`module` field, published to npm/PyPI/crates.io, no CLI entry |
+| **collection/marketplace** | Contains multiple independent items: `skills/`, `templates/`, `plugins/`, `recipes/` directories with 3+ subdirectories |
+| **web-app** | Has React/Vue/Svelte/Next/Nuxt, server framework (Express, FastAPI, Actix), deployment config (Vercel, Dockerfile) |
+| **personal/experimental** | Small repo (<20 files), no package publishing config, no CI, no semver tags |
+
+If ambiguous, ask the user to confirm. Store as `project_type`.
+
+
+## Step 3: Discoverability Audit
+
+Before generating or auditing README content, check these repo-level discoverability signals. Present findings and suggestions to the user.
+
+**Repo name:**
+- Is it keyword-rich and searchable? (e.g., `markdown-lint-action` > `my-linter`)
+- Flag generic names: `app`, `project`, `tool`, `my-thing`
+
+**GitHub About/description:**
+- Read via `gh repo view` if available
+- Should be 3-8 words, front-loaded with primary keyword
+- Suggest improvement if missing or generic
+
+**Topics:**
+- GitHub allows up to 20 topics
+- Suggest relevant topics based on detected tech stack, project type, and domain
+- Include both broad (`typescript`, `cli`) and specific (`markdown-parser`, `github-action`) topics
+
+**Social preview image:**
+- Flag if missing — suggest creating one (1280x640px recommended)
+
+**llms.txt (optional):**
+- If repo is a library/SDK or tool/CLI, suggest generating an `llms.txt` file
+- Purpose: helps LLMs understand and recommend the project accurately
+
+Present discoverability suggestions. User can accept, skip, or defer. These do NOT block README generation.
+
+
+## Step 4: Generate / Audit / Update
+
+### Generate Mode
+
+**4a. Check for existing README** — if present, confirm overwrite or suggest update mode instead.
+
+**4b. Select sections** based on project type (see Section Menu below).
+
+**4c. Voice calibration:**
+- Default: professional product voice — clear, direct, no hedge language, no marketing fluff
+- Personal/experimental repos OR explicit user opt-in: first-person voice allowed
+- Never: passive voice in problem statements, emojis in prose, marketing fluff
+
+**4d. Generate each section:**
+- **Title + description** — derive name from package config or directory; one-line bold description under 120 chars
+- **Badges** — see Badge Selection below
+- **Getting Started / Install** — prerequisites with versions, install steps, first-run command. Under 20 lines.
+- **Type-specific sections** — per Section Menu. Only include if enough scanned context exists.
+- **"Why" section** (personal/experimental only) — ask user for 2-3 sentences. Do not fabricate.
+- **License** — read LICENSE file type. One line linking to the file.
+
+**4e. Run PII/infrastructure scrub** (see below). Remove violations before writing.
+
+**4f. Write** `{repo_path}/README.md` and display summary.
+
+### Audit Mode (read-only)
+
+Read existing README. Do NOT modify any files.
+
+Run quality-signal checks and score against weighted rubric:
+
+| Category | Weight | Checks |
+|----------|--------|--------|
+| **Clarity** | 25 | Clear one-line description? Title is descriptive? |
+| **Usability** | 25 | Working install/setup command? Code examples? Getting started under 20 lines? |
+| **Credibility** | 15 | Badges present? Badge URLs resolve? License section present? |
+| **Currency** | 15 | Version numbers match package config? Tech stack matches repo? No stale links? |
+| **Security** | 20 | No PII or infrastructure leaks? No API keys/tokens? No private hostnames/IPs? |
+
+**Scoring:** Each category scored 0-100, final score = weighted average.
+
+```
+=== README Audit: {repo-name} ===
+Score: {X}/100
+
+Clarity:      {X}/25
+Usability:    {X}/25
+Credibility:  {X}/15
+Currency:     {X}/15
+Security:     {X}/20
+
+PASS:
+  - {passing checks}
+
+WARN:
+  - {warnings with specific detail}
+
+FAIL:
+  - {failures with specific detail and fix suggestion}
+```
+
+### Update Mode
+
+1. **Re-scan** repo (Step 1) to detect current state
+2. **Run silent audit** — store results, do not display
+3. **Generate update plan** — diff-style, grouped by category:
+   - `[STRUCTURE]` — missing/outdated sections, badge changes
+   - `[CONTENT]` — stale version numbers, outdated tech references
+   - `[VOICE]` — hedge language, marketing fluff, passive voice
+   - `[SECURITY]` — PII/infra violations (applied automatically)
+4. **Show preview** — numbered list of proposed changes
+5. **User approval** — `y` (all), `N` (cancel), or comma-separated numbers
+6. **Apply**, run final PII scrub, write file, display summary
+
+
+## Section Menu by Project Type
+
+| Section | tool/CLI | library/SDK | collection | web-app | personal |
+|---------|:--------:|:-----------:|:----------:|:-------:|:--------:|
+| Title + description | Required | Required | Required | Required | Required |
+| Badges | Required | Required | Required | Required | Optional |
+| Getting Started / Install | Required | Required | Required | Required | Required |
+| Usage / Commands | Required | -- | -- | -- | -- |
+| API Reference | -- | Required | -- | -- | -- |
+| Catalog / Index | -- | -- | Required | -- | -- |
+| Features | Recommended | Recommended | -- | Required | -- |
+| Configuration | Recommended | Recommended | -- | Recommended | -- |
+| Architecture | -- | -- | -- | Recommended | -- |
+| Why I Built This | -- | -- | -- | -- | Required |
+| Who This Is For | Recommended | Recommended | Recommended | -- | -- |
+| Contributing | Recommended | Required | Recommended | Recommended | -- |
+| License | Required | Required | Required | Required | Required |
+
+
+## Voice Guidelines
+
+| Type | Default Tone | Example Opening |
+|------|-------------|-----------------|
+| tool/CLI | Direct, practical | "Fast Markdown linting for CI pipelines." |
+| library/SDK | Technical, precise | "A typed HTTP client for the Stripe API." |
+| collection | Organized, scannable | "50+ reusable GitHub Actions workflows." |
+| web-app | Product-focused, clear | "Real-time project dashboard with team analytics." |
+| personal | First-person, opinionated | "I needed a better way to track reading habits." |
+
+**Always:** direct, specific, opinionated, short paragraphs (4 sentences max).
+**Never:** hedge language, marketing fluff, passive voice in problem statements, emojis in prose.
+
 
 ## Badge Selection
 
-| Badge | When to Include |
-|-------|----------------|
-| Build/CI status | CI config detected (.github/workflows/) |
-| Coverage | Coverage config detected (codecov, coveralls) |
-| npm version | package.json with npm publish |
-| PyPI version | pyproject.toml with PyPI config |
-| License | Always |
-| Node/Python version | When runtime version matters |
-| TypeScript | tsconfig.json present |
-| Docker | Dockerfile present |
+Based on detected tech stack, generate 1-3 tech badges + license badge minimum.
+
+Use `style=for-the-badge` for all badges. Generic patterns:
+
+```markdown
+![License](https://img.shields.io/github/license/{owner}/{repo}?style=for-the-badge)
+![GitHub Stars](https://img.shields.io/github/stars/{owner}/{repo}?style=for-the-badge)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+```
+
+Badge order: tech stack (left) → stars → license (right).
+
+
+## PII / Infrastructure Scrub
+
+Run in ALL modes. Scan generated or existing README text for:
+
+- [ ] Private hostnames
+- [ ] IP addresses (especially 10.x, 172.16-31.x, 192.168.x, 100.x Tailscale)
+- [ ] Internal network/VLAN names
+- [ ] Device identifiers or serial numbers
+- [ ] Client or employer names that should not be public
+- [ ] Personal email addresses
+- [ ] API keys or tokens (`sk-`, `token_`, `ghp_`, `Bearer`, long alphanumeric strings)
+- [ ] Internal Docker/service config (private port mappings, container names)
+- [ ] SSH config references (aliases, private key paths)
+
+**If violations found:** list each, remove or redact, show user what was removed.
+**Security violations are never optional** — applied automatically in update mode.
+
 
 ## Key Principles
 
-1. **Lead with what it does.** First sentence should explain the tool in one line.
-2. **Show, don't tell.** Code examples > descriptions.
-3. **Install command must work.** Test it mentally — does it reference the right package name?
-4. **No placeholder text.** Every `TODO`, `YOUR_`, `CHANGEME` must be resolved.
-5. **No stale badges.** Remove badges for services not configured.
-
-## Anti-Patterns
-
-- Walls of text without code examples
-- Broken badge URLs or badges for unconfigured services
-- Generic descriptions ("A tool for doing things")
-- Missing install instructions
-- Stale version numbers in examples
-- Internal URLs, IPs, or credentials in examples
-- Placeholder text left in ("TODO", "Add description here")
-
-For badge URL patterns and section templates, see [REFERENCE.md](REFERENCE.md).
+- **Detect, don't assume.** Scan the repo and adapt structure to what actually exists.
+- **Professional by default.** First-person voice is opt-in, not the default.
+- **Discoverability matters.** Repo name, description, topics, and llms.txt are part of the README story.
+- **Quality over completeness.** Fewer well-written sections beat bloated README with empty placeholders.
+- **Security is non-negotiable.** PII/infra scrub runs in every mode, every time.
+- **Audit mode is read-only.** Never modify files during an audit.
 
 ## google-ads
 
@@ -4803,6 +5035,130 @@ B2B advertising on LinkedIn — campaigns, targeting, creative, Lead Gen Forms, 
 - **wasted-spend-finder** — Identify wasted LinkedIn spend
 - **copywriting-frameworks** — Apply PAS/AIDA to LinkedIn ad copy
 
+## llms-txt
+
+Generate and maintain llms.txt files for AI discoverability. Scans repos to create curated content maps that help AI answer engines surface your project accurately. Implements the llms.txt specification from Answer.AI.
+
+
+# llms.txt Generator
+
+Generate and maintain llms.txt files that help AI answer engines surface your project accurately.
+
+## When to Use
+
+- Launching a new open-source project or documentation site
+- Major documentation restructure or content overhaul
+- Improving your project's visibility in AI search (ChatGPT, Perplexity, Google AI Overviews)
+- Onboarding a project to AI-friendly discoverability standards
+- Periodic refresh after significant repo changes
+
+## What Is llms.txt
+
+llms.txt is a plain-text markdown file placed in a project's root that gives LLMs a curated map of the project's most important content. Think of it as robots.txt for AI comprehension — instead of telling crawlers where they can go, it tells them what matters and how the project is organized.
+
+The specification was proposed by Answer.AI and is documented at [llmstxt.org](https://llmstxt.org). Adoption is growing across developer tools, documentation sites, and open-source projects. Projects with an llms.txt are easier for AI to understand, cite, and recommend accurately.
+
+## Usage
+
+### `/llms-txt generate [repo-path]`
+
+Scan a repository and generate a new llms.txt file. If no path is provided, uses the current working directory.
+
+### `/llms-txt audit [repo-path]`
+
+Check an existing llms.txt for completeness, broken links, stale descriptions, and missing high-priority content. Produces a report with specific recommendations.
+
+### `/llms-txt update [repo-path]`
+
+Refresh an existing llms.txt based on current repo state. Preserves manually curated descriptions while adding new content and removing references to deleted files.
+
+## Procedure
+
+### Step 1: Scan Repo Structure
+
+Identify all documentation-relevant files in the repository:
+
+- README.md (root and significant subdirectories)
+- `docs/` directory and its contents
+- API documentation (OpenAPI specs, API reference pages)
+- Tutorials, guides, and getting-started content
+- CHANGELOG.md, CONTRIBUTING.md, FAQ.md
+- Architecture and design decision docs
+- Configuration and deployment guides
+- Example directories with their own READMEs
+
+### Step 2: Prioritize Content
+
+Rank discovered content by importance to an LLM trying to understand the project:
+
+| Priority | Content Type | Why It Matters |
+|----------|-------------|---------------|
+| **P0** | README, Getting Started, API Reference | Entry points — what the project is and how to use it |
+| **P1** | Tutorials, Guides, Architecture docs | Deeper understanding — how it works and common workflows |
+| **P2** | CHANGELOG, CONTRIBUTING, FAQ, Config docs | Supporting context — history, community, troubleshooting |
+
+### Step 3: Extract Metadata
+
+For each content page, extract or write:
+
+- **Title**: Clear, descriptive page title
+- **URL or path**: Where to find the content (full URL for hosted docs, relative path for repo files)
+- **Description**: One-line action-oriented summary of what the page covers
+
+### Step 4: Generate llms.txt
+
+Assemble the file following the specification format:
+
+1. **Title line**: `# Project Name`
+2. **Description block**: 2-3 sentence summary of what the project does, who it is for, and its primary use case
+3. **Sections**: Group content logically (e.g., "Getting Started", "API", "Guides", "Community")
+4. **Content items**: Each item is a markdown link with a colon-separated description
+
+See REFERENCE.md for the exact format specification.
+
+### Step 5: Optionally Generate llms-full.txt
+
+For projects that benefit from it, generate an expanded version that inlines the actual content of key pages. This is useful for smaller projects where the full documentation fits in a single context window.
+
+### Step 6: User Review
+
+Present the generated llms.txt for review. Flag any decisions made during curation:
+
+- Content that was excluded and why
+- Descriptions that were inferred vs extracted from existing metadata
+- Sections where additional documentation would improve AI discoverability
+
+### Step 7: Write to Repo Root
+
+Save `llms.txt` (and optionally `llms-full.txt`) to the repository root.
+
+For projects with hosted documentation sites, also note the recommended placement for the hosted version (site root, e.g., `https://docs.example.com/llms.txt`).
+
+## Hosted Docs and GitHub Pages
+
+If the project has a documentation site (GitHub Pages, ReadTheDocs, Docusaurus, etc.):
+
+- Generate llms.txt with full URLs pointing to the hosted docs, not repo file paths
+- Place the file where it will be served at `https://yourdomain.com/llms.txt`
+- For GitHub Pages: add llms.txt to the docs source directory so it deploys automatically
+- Consider adding llms.txt to your sitemap or linking it from robots.txt
+
+## Key Principles
+
+1. **Curate, don't dump.** An llms.txt that lists every file in the repo is worse than useless. Select the 10-30 most important pages that give an LLM the clearest picture of the project.
+2. **Prioritize entry points.** The first few items should answer: what is this, who is it for, and how do I start?
+3. **Keep descriptions action-oriented.** "How to configure authentication for SSO providers" beats "Authentication configuration page."
+4. **Match the reader's mental model.** Organize sections the way a newcomer would learn the project, not the way the repo is structured.
+5. **Maintain freshness.** Stale llms.txt with broken links or outdated descriptions erodes trust. Run `/llms-txt audit` after major documentation changes.
+
+## Integration with Other Skills
+
+- **aeo-geo-optimizer** — llms.txt complements broader AI search optimization; use both for maximum AI discoverability
+- **technical-seo-audit** — Ensure AI crawlers can access your docs before generating llms.txt
+- **github-readme** — A strong README is the foundation of a good llms.txt; optimize it first
+
+For the full specification format, priority ranking criteria, and placement guidance, see [REFERENCE.md](REFERENCE.md).
+
 ## looker-studio
 
 Looker Studio (formerly Google Data Studio) expertise. Build dashboards, design data visualizations, connect data sources, and create marketing reports. Use when the user asks about Looker Studio, Data Studio, marketing dashboards, data visualization, report building, or connecting analytics data sources.
@@ -5281,59 +5637,6 @@ Professional LaTeX with custom environments:
 6. **No filler.** Every paragraph must add information or insight.
 
 For analysis templates, LaTeX formatting, and data patterns, see [REFERENCE.md](REFERENCE.md).
-
-## mcp-builder
-
-Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools. Use when building MCP servers to integrate external APIs or services, whether in Python (FastMCP) or Node/TypeScript (MCP SDK).
-
-
-# MCP Server Development Guide
-
-## Overview
-
-Create high-quality MCP servers that enable LLMs to effectively interact with external services. Quality is measured by how well the server enables LLMs to accomplish real-world tasks.
-
-## High-Level Workflow
-
-### Phase 1: Deep Research and Planning
-
-**Agent-Centric Design Principles:**
-- Build for workflows, not just API endpoints — consolidate related operations
-- Optimize for limited context — return high-signal information, not data dumps
-- Design actionable error messages that guide agents toward correct usage
-- Follow natural task subdivisions — tool names should reflect how humans think
-
-**Study the documentation:**
-1. Fetch MCP protocol docs: `https://modelcontextprotocol.io/llms-full.txt`
-2. Read `reference/mcp_best_practices.md`
-3. For Python: read `reference/python_mcp_server.md`
-4. For TypeScript: read `reference/node_mcp_server.md`
-
-**Create implementation plan:** Tool selection, shared utilities, input/output design, error handling strategy.
-
-### Phase 2: Implementation
-
-1. Set up project structure (see language-specific guides in `reference/`)
-2. Implement core infrastructure first (API helpers, error handling, pagination)
-3. Implement tools systematically with input schemas, comprehensive docstrings, and tool annotations
-
-**Tool annotations:** `readOnlyHint`, `destructiveHint`, `idempotentHint`, `openWorldHint`
-
-### Phase 3: Review and Refine
-
-- DRY principle, composability, consistency, error handling, type safety, documentation
-- Test safely (MCP servers are long-running — use evaluation harness or tmux)
-
-### Phase 4: Create Evaluations
-
-Create 10 evaluation questions that are independent, read-only, complex, realistic, verifiable, and stable.
-
-## Reference Files
-
-- `reference/mcp_best_practices.md` — Universal MCP guidelines
-- `reference/python_mcp_server.md` — Python/FastMCP implementation guide
-- `reference/node_mcp_server.md` — TypeScript implementation guide
-- `reference/evaluation.md` — Evaluation creation guide
 
 ## microsoft-ads
 
@@ -6561,77 +6864,159 @@ Hub page: "[Category] Guide" (high authority)
 - **aeo-geo-optimizer** — Optimize programmatic pages for AI citation
 - **seo-content-writer** — Enhance template content quality
 
-## react-best-practices
+## release-notes
 
-Comprehensive React and Next.js performance optimization guide with 40+ rules for eliminating waterfalls, optimizing bundles, and improving rendering. Use when optimizing React apps, reviewing performance, or refactoring components.
+Generate changelog entries and GitHub releases from git history. Categorizes commits into features, fixes, breaking changes, and docs. Supports conventional commits, PR-based grouping, and semantic versioning. Creates formatted CHANGELOG.md entries and GitHub releases.
 
 
-# React Best Practices — Performance Optimization
+# release-notes
 
-40+ performance optimization rules for React and Next.js applications organized by impact level.
+Generate changelog entries and GitHub releases from git history.
 
 ## When to Use
 
-- Optimizing React or Next.js application performance
-- Reviewing code for performance improvements
-- Refactoring existing components
-- Debugging slow rendering or loading issues
-- Reducing bundle size
-- Eliminating request waterfalls
+- **Cutting a release**: You have commits ready to ship and need a changelog entry and/or GitHub release.
+- **Monthly changelog update**: You maintain a regular changelog cadence and need to capture everything since the last entry.
+- **Retroactive changelog**: An existing project has no CHANGELOG.md and you want to generate one from the full git history.
 
-## Quick Reference — Critical Priorities
+## Usage
 
-1. **Defer await until needed** — Move awaits into branches where they are used
-2. **Use Promise.all()** — Parallelize independent async operations
-3. **Avoid barrel imports** — Import directly from source files
-4. **Dynamic imports** — Lazy-load heavy components
-5. **Strategic Suspense** — Stream content while showing layout
+### Generate a changelog entry
 
-## Categories
+```
+/release-notes changelog [repo-path]
+```
 
-### 1. Eliminating Waterfalls (CRITICAL)
-The #1 performance killer. Each sequential await adds full network latency.
+Reads commits since the last tag, categorizes them, and prepends a new entry to CHANGELOG.md.
 
-### 2. Bundle Size Optimization (CRITICAL)
-Reducing initial bundle improves TTI and LCP.
+### Create a changelog entry and GitHub release
 
-### 3. Server-Side Performance (HIGH)
-Optimize RSC and data fetching.
+```
+/release-notes release [repo-path] [version]
+```
 
-### 4. Client-Side Data Fetching (MEDIUM-HIGH)
-Automatic deduplication and efficient patterns.
+Does everything `changelog` does, then creates a GitHub release via `gh release create`. If `version` is omitted, a version is suggested based on the changes detected.
 
-### 5. Re-render Optimization (MEDIUM)
-Reduce unnecessary re-renders.
+### Retroactively generate a full changelog
 
-### 6. Rendering Performance (MEDIUM)
-Optimize browser rendering process.
+```
+/release-notes init [repo-path]
+```
 
-### 7. JavaScript Performance (LOW-MEDIUM)
-Micro-optimizations for hot paths.
+Walks the entire tag history (or full commit history if untagged) and generates a complete CHANGELOG.md from scratch.
 
-### 8. Advanced Patterns (LOW)
-Specialized techniques for edge cases.
+## Procedure
 
-## Implementation Approach
+### Step 1 — Find the last tag or release
 
-1. **Profile first**: Use React DevTools Profiler and browser performance tools
-2. **Focus on critical paths**: Start with waterfalls and bundle size
-3. **Measure impact**: Verify with LCP, TTI, FID metrics
-4. **Apply incrementally**: Do not over-optimize prematurely
-5. **Test thoroughly**: Ensure optimizations do not break functionality
+Run `git describe --tags --abbrev=0` to find the most recent tag. If no tags exist, use the initial commit as the starting point. Cross-reference with `gh release list --limit 1` to check for GitHub releases that may differ from local tags.
 
-## Complete Guidelines
+### Step 2 — Collect commits since last tag
 
-The full 40+ rules with code examples are in `references/react-performance-guidelines.md`.
+```bash
+git log <last-tag>..HEAD --pretty=format:"%H %s" --no-merges
+```
 
-## Key Metrics
+Parse each commit message for conventional commit prefixes (`type(scope): description`). Record the raw message for commits that do not follow conventional format.
 
-- **TTI**: When page becomes fully interactive
-- **LCP**: When main content is visible
-- **FID**: Responsiveness to user interactions
-- **CLS**: Visual stability
-- **Bundle size**: Initial JavaScript payload
+### Step 3 — Check merged PRs
+
+```bash
+gh pr list --state merged --search "merged:>YYYY-MM-DD" --json number,title,labels,mergedAt --limit 200
+```
+
+Use the date of the last tag as the cutoff. Cross-reference PR titles with commit messages to avoid duplicates. PR titles often provide cleaner descriptions than commit messages — prefer the PR title when a commit is associated with a merged PR.
+
+### Step 4 — Categorize changes
+
+Map each commit or PR to a changelog category:
+
+| Prefix / Signal | Category |
+|---|---|
+| `feat`, `feature` | **Added** |
+| `fix` | **Fixed** |
+| `BREAKING CHANGE` in body or `!` suffix (e.g., `feat!:`) | **Breaking Changes** |
+| `docs` | **Documentation** |
+| `refactor`, `perf` | **Changed** |
+| `chore`, `ci`, `build` | **Maintenance** |
+| `deprecate` | **Deprecated** |
+| `remove` | **Removed** |
+| `security` | **Security** |
+
+**When conventional commits are not used**: Analyze commit message content to infer categories. Look for keywords like "add", "fix", "remove", "update", "refactor", "document". Group ambiguous commits under **Changed** and flag them for human review.
+
+### Step 5 — Suggest version bump
+
+Apply semantic versioning rules:
+
+- **Major** bump if any Breaking Changes are present.
+- **Minor** bump if any Added entries exist and no breaking changes.
+- **Patch** bump if only Fixed, Changed, or Maintenance entries.
+
+Present the suggestion with reasoning. The human decides the final version.
+
+### Step 6 — Format the changelog entry
+
+Use [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) format:
+
+```markdown
+## [X.Y.Z] — YYYY-MM-DD
+
+### Breaking Changes
+- Description of breaking change (#PR)
+
+### Added
+- Description of new feature (#PR)
+
+### Fixed
+- Description of bug fix (#PR)
+
+### Changed
+- Description of refactor or improvement (#PR)
+
+### Documentation
+- Description of docs change (#PR)
+
+### Maintenance
+- Description of chore (#PR)
+```
+
+Omit empty categories. Order categories as shown above — Breaking Changes always first.
+
+### Step 7 — Human review
+
+Present the formatted entry and suggested version to the user. Wait for explicit approval before writing anything. Highlight any commits that were ambiguously categorized.
+
+### Step 8 — Write to CHANGELOG.md
+
+Prepend the new entry after the file header. Never overwrite or reorder existing entries. If CHANGELOG.md does not exist, create it with a standard header:
+
+```markdown
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+```
+
+### Step 9 — Optionally create GitHub release
+
+Only when the user invoked `/release-notes release` or explicitly requests it:
+
+```bash
+gh release create vX.Y.Z --title "vX.Y.Z" --notes "RELEASE_BODY"
+```
+
+Use the changelog entry as the release body. Never create a release without user confirmation.
+
+## Key Principles
+
+1. **Never auto-publish.** Every release and changelog write requires explicit human approval.
+2. **Preserve existing entries.** Never modify, reorder, or delete previous changelog entries.
+3. **Human-readable over machine-parseable.** Write descriptions that make sense to a person reading the changelog, not a parser. Prefer plain language over commit hashes.
+4. **Attribute PRs and authors.** Include PR numbers as links. For multi-contributor projects, consider noting first-time contributors.
+5. **When in doubt, ask.** If a commit is ambiguous, surface it to the user rather than guessing the category.
 
 ## remotion-video
 
@@ -6767,6 +7152,411 @@ import { fade } from "@remotion/transitions/fade";
 - No uncontrolled audio — always set explicit `volume` and `startFrom`
 
 For complete code examples and composition templates, see [REFERENCE.md](REFERENCE.md).
+
+## repo-health
+
+One-command GitHub repository health audit. Checks for missing standard files, GitHub configuration, branch protection, documentation quality, and code hygiene. Produces a scored health report with prioritized fix recommendations.
+
+
+# Repo Health
+
+One-command health audit for GitHub repositories. Produces a scored report with prioritized fix recommendations.
+
+## When to Use
+
+- Setting up a new repo and want to make sure nothing is missing
+- Periodic health checks on active repositories
+- Before open-sourcing a private repo (what needs to be added?)
+- Onboarding onto an unfamiliar repo to assess its state
+- Pre-release hygiene sweep
+
+## How to Use
+
+```
+/repo-health [repo-path]        # Full audit with scored report
+/repo-health [repo-path] --fix  # Audit + generate missing files
+```
+
+Default `repo-path` is the current working directory if omitted.
+
+
+## Procedure
+
+Execute each step in order. Do not skip steps.
+
+### Step 1: Validate Repo Path
+
+1. If `repo-path` is provided, resolve to absolute path. If omitted, use current working directory.
+2. Confirm the path exists and is a directory.
+3. Confirm it contains a `.git` directory (is a git repo).
+
+If validation fails:
+```
+Error: {repo-path} is not a git repository.
+Provide a path to a git repo or run from within one.
+```
+STOP.
+
+### Step 2: Detect Public/Private
+
+Determine repo visibility:
+1. Check for `.public-repo` marker file at repo root -> public
+2. Check if "public" appears in the remote URL -> public
+3. Run `gh repo view --json isPrivate -q '.isPrivate'` if `gh` is available -> use result
+4. If none of the above resolve it -> ask the user
+
+Store as `repo_visibility` (public or private). Public repos are held to a stricter standard in scoring.
+
+### Step 3: File Presence Checks
+
+Check for each standard file. Track result as PRESENT or MISSING.
+
+| File | Required (Public) | Required (Private) |
+|------|-------------------|--------------------|
+| `LICENSE` | Yes | No |
+| `README.md` | Yes | Yes |
+| `.gitignore` | Yes | Yes |
+| `SECURITY.md` | Yes | No |
+| `CONTRIBUTING.md` | Yes | No |
+| `CODEOWNERS` | Recommended | No |
+| `.editorconfig` | Recommended | Recommended |
+| `.github/pull_request_template.md` or `.github/PULL_REQUEST_TEMPLATE.md` | Recommended | No |
+| `.github/ISSUE_TEMPLATE/` directory (or `.github/ISSUE_TEMPLATE.md`) | Recommended | No |
+| `CHANGELOG.md` | Recommended | No |
+| `CODE_OF_CONDUCT.md` | Recommended (public) | No |
+
+### Step 4: GitHub Configuration Checks
+
+Use `gh` CLI to query repo metadata. If `gh` is not available, skip this category and note it in the report.
+
+```bash
+gh repo view --json description,repositoryTopics,hasWikiEnabled,defaultBranchRef,homepageUrl
+```
+
+Check each item. Track as PASS or FAIL.
+
+| Check | Criteria |
+|-------|----------|
+| Description set | `description` is non-empty |
+| Topics set | `repositoryTopics` has at least 3 topics |
+| Homepage URL | `homepageUrl` is set (if project has a site) |
+| Default branch name | `defaultBranchRef.name` is `main` (not `master`) |
+| Branch protection | `gh api repos/{owner}/{repo}/branches/main/protection` returns 200 (public repos only) |
+| Social preview | `gh api repos/{owner}/{repo}` and check for custom Open Graph image (informational only) |
+
+### Step 5: Documentation Quality
+
+**README checks:**
+1. README.md exists (from Step 3)
+2. README length: < 50 lines = WARN (too short), > 500 lines = INFO (consider splitting)
+3. Has a project description in the first 5 lines (H1 or bold text)
+4. Has install/setup instructions (scan for "install", "getting started", "setup", "usage")
+5. Has a license reference (scan for "license", "LICENSE")
+6. If the `/github-readme` skill is available, note that a deeper README audit can be run via `/github:readme audit`
+
+**CHANGELOG checks:**
+1. CHANGELOG.md exists (from Step 3)
+2. If present: follows Keep a Changelog format (scan for `## [` version headers)
+3. Most recent entry is within the last 90 days (WARN if stale)
+
+### Step 6: Code Hygiene
+
+**Stale branches:**
+```bash
+git branch -r --merged main | grep -v main | grep -v HEAD
+git for-each-ref --sort=committerdate --format='%(refname:short) %(committerdate:relative)' refs/remotes/
+```
+- Flag branches with no commits in > 90 days as stale
+- Count total stale branches
+
+**Tracked secrets/env files:**
+```bash
+git ls-files | grep -E '\.env$|\.env\.|credentials|secrets'
+```
+- Any `.env`, `.env.*`, `credentials.*`, or `secrets.*` files tracked in git = FAIL
+
+**Large binary files:**
+```bash
+git ls-files | while read f; do
+  size=$(wc -c < "$f" 2>/dev/null)
+  [ "$size" -gt 5242880 ] && echo "$f ($size bytes)"
+done
+```
+- Files > 5MB tracked in git without Git LFS = WARN
+- Check for `.gitattributes` with LFS patterns if large binaries exist
+
+**Dependency freshness (if applicable):**
+- If `package.json` exists: check for `package-lock.json` presence
+- If `requirements.txt` exists: check if pinned (versions specified)
+- Do NOT run install commands or modify anything
+
+### Step 7: Score and Report
+
+#### Scoring Categories
+
+| Category | Weight | What It Covers |
+|----------|--------|----------------|
+| Standard Files | 30% | LICENSE, SECURITY.md, CONTRIBUTING.md, CODEOWNERS, .gitignore, .editorconfig, templates |
+| GitHub Config | 15% | Description, topics, branch protection, default branch |
+| Documentation | 25% | README quality, CHANGELOG presence and freshness |
+| Code Hygiene | 20% | Stale branches, tracked secrets, large binaries |
+| Community | 10% | CODE_OF_CONDUCT, issue templates, PR templates, CONTRIBUTING.md |
+
+#### Per-Category Scoring
+
+Each category scores 0-100 based on checks passed within it. See REFERENCE.md for the full rubric.
+
+#### Letter Grade
+
+| Score | Grade |
+|-------|-------|
+| 90-100 | A |
+| 80-89 | B |
+| 70-79 | C |
+| 60-69 | D |
+| 0-59 | F |
+
+#### Report Format
+
+```
+=== Repo Health Report: {repo-name} ===
+Visibility: {public | private}
+Overall Score: {score}/100 (Grade: {letter})
+
+--- Standard Files (30%) --- Score: {n}/100
+  [PASS] .gitignore
+  [PASS] LICENSE (MIT)
+  [MISS] SECURITY.md
+  [MISS] CONTRIBUTING.md
+  [PASS] CODEOWNERS
+  ...
+
+--- GitHub Config (15%) --- Score: {n}/100
+  [PASS] Description: "One-command repo health audit..."
+  [FAIL] Topics: none set
+  [PASS] Default branch: main
+  [FAIL] Branch protection: not enabled
+  ...
+
+--- Documentation (25%) --- Score: {n}/100
+  [PASS] README.md (142 lines)
+  [WARN] No install/setup instructions found in README
+  [MISS] CHANGELOG.md
+  ...
+
+--- Code Hygiene (20%) --- Score: {n}/100
+  [PASS] No tracked .env files
+  [WARN] 3 stale branches (>90 days)
+  [PASS] No large binary files tracked
+  ...
+
+--- Community (10%) --- Score: {n}/100
+  [MISS] CODE_OF_CONDUCT.md
+  [MISS] Issue templates
+  [PASS] PR template
+  ...
+
+=== Prioritized Fixes ===
+1. [HIGH] Add SECURITY.md — required for public repos. See template in REFERENCE.md.
+2. [HIGH] Enable branch protection on main — prevents force pushes and requires reviews.
+3. [HIGH] Add repository topics — improves discoverability. Suggest: {topic1}, {topic2}, {topic3}.
+4. [MED]  Add CONTRIBUTING.md — guides external contributors.
+5. [MED]  Add CHANGELOG.md — tracks releases for users.
+6. [LOW]  Clean up 3 stale branches.
+7. [LOW]  Add CODE_OF_CONDUCT.md — signals welcoming community.
+```
+
+Priority levels:
+- **HIGH**: Security, legal (LICENSE/SECURITY.md), or protection issues
+- **MED**: Documentation and community gaps that affect usability
+- **LOW**: Cleanup and nice-to-haves
+
+### Step 8: Fix Mode (--fix)
+
+If `--fix` flag was passed:
+
+1. Present the list of MISS and FAIL items that can be auto-generated
+2. Ask the user to confirm which files to create (show numbered list, accept comma-separated selection or "all")
+3. For each confirmed file, generate it using sensible defaults:
+   - `SECURITY.md`: Standard vulnerability reporting template
+   - `CONTRIBUTING.md`: Fork/branch/PR workflow with code style notes
+   - `CODE_OF_CONDUCT.md`: Contributor Covenant v2.1
+   - `.editorconfig`: Sensible defaults for the detected tech stack
+   - `CODEOWNERS`: Prompt user for owner patterns
+   - Issue/PR templates: YAML form-based templates (see REFERENCE.md)
+4. Do NOT overwrite existing files
+5. Run infra/PII scrub on all generated content before writing
+
+
+## Key Principles
+
+- **Read-only by default.** The audit never modifies files unless `--fix` is explicitly passed.
+- **Public repos are held to a higher standard.** Private repos skip community and some config checks.
+- **Prioritize actionable output.** Every finding includes a specific fix recommendation.
+- **No false urgency.** Recommended items are scored lower than required items. The report distinguishes between must-fix and nice-to-have.
+- **Respect existing work.** Fix mode never overwrites. It only creates missing files.
+- **Infra/PII awareness.** All generated files pass through the standard PII scrub before writing.
+
+## Anti-Patterns -- Do NOT
+
+- Modify any files during a standard audit (no `--fix` flag)
+- Run install commands (`npm install`, `pip install`, etc.)
+- Push changes or create commits -- the user decides when to commit
+- Fabricate repository metadata -- use what `gh` and `git` report
+- Rate repos you do not have local access to -- this is a local audit tool
+- Skip the PII scrub when generating files in fix mode
+
+## repo-scaffold
+
+Initialize GitHub repositories with standard files and configuration. Generates LICENSE, CONTRIBUTING.md, SECURITY.md, issue/PR templates, CI config, and .gitignore. Detects project type and adapts templates accordingly.
+
+
+# Repo Scaffold
+
+Initialize GitHub repositories with standard files and configuration. This skill generates LICENSE, CONTRIBUTING.md, SECURITY.md, CODEOWNERS, .gitignore, .editorconfig, YAML-based issue templates, PR template, CI config skeleton, and optional safety files. It detects project type from existing files and adapts all templates accordingly.
+
+## When to Use
+
+This skill should be used when:
+- Setting up a new GitHub repository from scratch
+- Adding missing standard files to an existing repository
+- Standardizing repository configuration across projects
+- Preparing a private repo for open-source release
+
+## Usage
+
+```
+/repo-scaffold [repo-path] [--license MIT|Apache-2.0|ISC] [--public] [--ci github-actions|none]
+```
+
+| Flag | Default | Description |
+|------|---------|-------------|
+| `repo-path` | `.` (cwd) | Path to the git repository root |
+| `--license` | `MIT` | License type (MIT, Apache-2.0, ISC, GPL-3.0, BSD-2-Clause) |
+| `--public` | off | Include `.public-repo`, `.pii-allowlist`, `.commit-msg-blocklist` |
+| `--ci` | `github-actions` | CI provider skeleton (`github-actions` or `none`) |
+
+## Procedure
+
+### Step 1: Validate Repo Path
+
+Confirm the target path is an initialized git repository (contains `.git/`). If not, halt and inform the user. Never run `git init` without explicit permission.
+
+### Step 2: Scan Existing Files
+
+Inventory the repo root and `.github/` directory for any files this skill would generate. Build a conflict list. **Never overwrite existing files.** If conflicts exist, present them and ask which to skip or replace.
+
+### Step 3: Detect Project Type
+
+Identify the primary language and tooling by checking for marker files:
+
+| Marker File | Project Type |
+|-------------|-------------|
+| `package.json` | Node.js / JavaScript / TypeScript |
+| `pyproject.toml`, `setup.py`, `requirements.txt` | Python |
+| `Cargo.toml` | Rust |
+| `go.mod` | Go |
+| Multiple markers | Multi-language |
+| None of the above | Generic |
+
+If multiple markers are found, treat as multi-language and combine relevant patterns.
+
+### Step 4: Generate Files
+
+Generate each file with language-appropriate content. Refer to [REFERENCE.md](REFERENCE.md) for templates, patterns, and format specifications.
+
+#### 4a. LICENSE
+
+Prompt the user for license choice if `--license` was not provided. Default to MIT. Insert the current year and the repo owner's name (from `git config user.name` or ask). See REFERENCE.md license comparison table for guidance.
+
+#### 4b. .gitignore
+
+Generate language-appropriate ignore patterns based on the detected project type. Combine patterns for multi-language repos. Always include OS-level ignores (`.DS_Store`, `Thumbs.db`) and editor ignores (`.vscode/`, `.idea/`).
+
+#### 4c. CONTRIBUTING.md
+
+Generate a fork-branch-PR contribution guide. Include:
+- Fork and clone instructions
+- Branch naming conventions (`feat/`, `fix/`, `docs/`)
+- Code style notes (link to linter config if detected)
+- Commit message format
+- PR checklist
+
+#### 4d. SECURITY.md
+
+Generate a security policy with:
+- Supported versions table (populate from package version if detectable)
+- Vulnerability reporting instructions (email-based, not public issues)
+- Response timeline expectations
+
+#### 4e. CODEOWNERS
+
+Scan the top-level directory structure and generate a CODEOWNERS file. Map directories to the repo owner by default. Add comments explaining how to customize.
+
+#### 4f. .editorconfig
+
+Generate settings appropriate to the detected project type:
+- Indent style and size
+- End-of-line character
+- Trim trailing whitespace
+- Insert final newline
+- Charset (utf-8)
+
+#### 4g. .github/ISSUE_TEMPLATE/bug-report.yml
+
+Generate a YAML form-based bug report template with fields: description, steps to reproduce, expected behavior, actual behavior, environment, and optional screenshots. See REFERENCE.md for YAML form spec.
+
+#### 4h. .github/ISSUE_TEMPLATE/feature-request.yml
+
+Generate a YAML form-based feature request template with fields: problem statement, proposed solution, alternatives considered, and additional context.
+
+#### 4i. .github/pull_request_template.md
+
+Generate a PR template with sections: summary of changes, type of change (checkboxes), testing performed, and checklist.
+
+#### 4j. .github/workflows/ci.yml
+
+Generate a CI skeleton for GitHub Actions (unless `--ci none`). Include:
+- Trigger on push to main and pull requests
+- Language-appropriate setup step
+- Lint step (ESLint, ruff, clippy, golangci-lint)
+- Test step (language-appropriate test runner)
+- Placeholder comments for additional steps
+
+#### 4k. Optional: Safety Files (when --public)
+
+When `--public` is passed, also generate:
+- `.public-repo` — Empty marker file indicating the repo is public
+- `.pii-allowlist` — One regex per line; starts with a comment header explaining usage
+- `.commit-msg-blocklist` — One term per line; starts with a comment header and common defaults
+
+### Step 5: Present Plan
+
+Before writing any files, present the full list of files to be created with a one-line description of each. Show which files were skipped due to conflicts. Ask the user to confirm before proceeding.
+
+### Step 6: Write Files
+
+Write all confirmed files. Report each file as it is written.
+
+### Step 7: Summary
+
+Print a summary table:
+- Files created (with paths)
+- Files skipped (with reason)
+- Suggested next steps (e.g., review CODEOWNERS, customize CONTRIBUTING.md, add secrets to CI)
+
+## Key Principles
+
+1. **Never overwrite existing files.** Always scan first, flag conflicts, and ask.
+2. **Always ask before writing.** Present the plan and get explicit confirmation.
+3. **Language-appropriate defaults.** Detect the project type and tailor every template.
+4. **Minimal but complete.** Generate the standard set every well-maintained repo needs, nothing more.
+5. **Composable.** Each file stands alone. Re-run the skill later to add missing files without disrupting existing ones.
+
+## References
+
+- [REFERENCE.md](REFERENCE.md) — License comparison, .gitignore patterns, YAML template spec, CI skeletons, CODEOWNERS syntax, .editorconfig settings, SECURITY.md and CONTRIBUTING.md templates
+- [EXAMPLES.md](EXAMPLES.md) — Worked examples for Node.js, Python, and public repo scaffolding
 
 ## research-digest
 
@@ -7606,62 +8396,6 @@ pip install -r requirements.txt
 - Customer PII (emails, names) is processed locally and never stored persistently
 - Rotate access tokens periodically
 
-## skill-creator
-
-Guide for creating effective Claude Code skills that extend capabilities with specialized knowledge, workflows, and tool integrations. Use when users want to create a new skill or update an existing skill.
-
-
-# Skill Creator
-
-Guide for creating effective skills that extend Claude's capabilities.
-
-## About Skills
-
-Skills are modular, self-contained packages that provide specialized knowledge, workflows, and tools. They transform Claude from a general-purpose agent into a specialized one.
-
-### Anatomy of a Skill
-
-```
-skill-name/
-+-- SKILL.md (required)
-|   +-- YAML frontmatter (name, description)
-|   +-- Markdown instructions
-+-- scripts/          - Executable code
-+-- references/       - Documentation loaded as needed
-+-- assets/           - Files used in output (templates, icons)
-```
-
-### Progressive Disclosure
-
-1. **Metadata** (~100 words) — Always in context
-2. **SKILL.md body** (<5k words) — When skill triggers
-3. **Bundled resources** (unlimited) — As needed
-
-## Skill Creation Process
-
-### Step 1: Understand with Concrete Examples
-Gather concrete examples of how the skill will be used. Ask about functionality, usage patterns, and trigger phrases.
-
-### Step 2: Plan Reusable Contents
-Analyze each example to identify what scripts, references, and assets would help. Example: a PDF editor skill needs `scripts/rotate_pdf.py`; a BigQuery skill needs `references/schema.md`.
-
-### Step 3: Initialize the Skill
-```bash
-scripts/init_skill.py <skill-name> --path <output-directory>
-```
-
-### Step 4: Edit the Skill
-Start with bundled resources (scripts/, references/, assets/), then update SKILL.md. Write in imperative/infinitive form. Focus on non-obvious procedural knowledge.
-
-### Step 5: Package
-```bash
-scripts/package_skill.py <path/to/skill-folder>
-```
-Validates structure, frontmatter, and creates distributable zip.
-
-### Step 6: Iterate
-Use the skill on real tasks, notice struggles, update, and test again.
-
 ## social-media-strategy
 
 Platform-specific organic social media strategy, content calendars, engagement tactics, community building, and performance measurement. Use when the user asks about social media strategy, organic social, content calendars, community management, or social media metrics.
@@ -7764,6 +8498,338 @@ Blog post (Mon) → LinkedIn carousel (Tue) → Twitter thread (Wed) → IG Reel
 - **content-pipeline** — Social distribution as the final pipeline stage
 - **copywriting-frameworks** — Apply PAS/AIDA to social copy
 - **content-workflow** — Plan and schedule social content
+
+## social-preview
+
+Generate Open Graph social preview images (1280x640) for GitHub repositories. Creates branded OG images that display when repos are shared on Twitter, LinkedIn, and Slack. Supports custom templates, dark/light themes, and automated generation.
+
+
+# Social Preview
+
+Generate Open Graph social preview images (1280x640px) for GitHub repositories. The social preview is the single highest-leverage visual asset when repos are shared on Twitter, LinkedIn, Slack, and Discord.
+
+## When to Use
+
+- New public repo needs a social preview before sharing
+- Rebranding a project (new colors, name change, logo update)
+- Major release or launch -- refresh the preview to reflect the milestone
+- Before marketing pushes (LinkedIn posts, Twitter threads, blog features)
+- Audit existing repos to catch missing or outdated social previews
+
+## Usage
+
+```
+/social-preview generate [repo-path]   # Create OG image from repo context
+/social-preview audit [repo-path]      # Check if social preview is set, dimensions correct
+```
+
+Default `repo-path` is the current working directory if omitted.
+
+
+## Procedure: Generate
+
+Execute each step in order. Do not skip steps.
+
+### Step 0: Parse Command
+
+Expect: `/social-preview {mode} [repo-path]`
+
+Extract mode (`generate` or `audit`). If missing or invalid:
+```
+Error: Invalid or missing mode.
+Usage:
+  /social-preview generate [repo-path]
+  /social-preview audit [repo-path]
+```
+STOP.
+
+Validate `repo-path` is a directory containing `.git`. Default to cwd if omitted.
+
+### Step 1: Scan Repo for Context
+
+Gather:
+- **Project name** -- from `package.json` name, `Cargo.toml` [package] name, `pyproject.toml` name, or directory name
+- **Description/tagline** -- from package.json description, repo description, or ask user
+- **Primary language** -- from file extensions, package manager files, or `gh repo view --json primaryLanguage`
+- **Logo/icon** -- check for `logo.png`, `logo.svg`, `icon.png`, `icon.svg`, `.github/logo.png`, `assets/logo.*`, `branding/logo.*`
+- **Git remote** -- `git remote get-url origin` to extract owner/repo
+- **Existing social preview** -- `gh api repos/{owner}/{repo}` to check current state
+
+### Step 2: Select Template
+
+Present template options to the user:
+
+1. **Dark** (recommended) -- Dark background (#0d1117 or #141414), light text. Highest contrast, best performance on most feeds.
+2. **Light** -- Light background (#fafbfc), dark text. Matches certain brand aesthetics.
+3. **Minimal** -- Just project name + tagline, no decoration. Clean and typographic.
+
+Ask: "Which template? [dark/light/minimal] (default: dark)"
+
+If the repo has established brand colors (detected from CSS variables, tailwind config, or user-specified), offer to use those as accent colors.
+
+### Step 3: Generate HTML Template
+
+Create a standalone HTML file (1280x640px viewport) containing:
+
+- **Project name** -- large, prominent, max 40 characters displayed. Use system-safe fonts only (no external font dependencies).
+- **One-line description/tagline** -- below the name, lighter weight, max 80 characters.
+- **Primary language/tech icon** (optional) -- simple text-based indicator or Unicode symbol. No external image dependencies.
+- **Author/org attribution** (optional) -- small, bottom corner. GitHub username or org name.
+- **Background** -- solid color, CSS gradient, or subtle CSS pattern (dots, grid). No external images.
+
+Write the HTML file to `{repo-path}/social-preview.html` (or `/tmp/social-preview-{repo-name}.html` if user prefers).
+
+### Step 4: Render to PNG
+
+Guide the user through one of three rendering paths:
+
+**Option A -- Browser screenshot (simplest, no deps):**
+1. Open the HTML file in any browser
+2. Set viewport to exactly 1280x640
+3. Take a full-page screenshot
+4. Save as PNG
+
+**Option B -- Puppeteer/Playwright (automated, requires Node):**
+```bash
+node -e "
+const puppeteer = require('puppeteer');
+(async () => {
+  const browser = await puppeteer.launch({ headless: true });
+  const page = await browser.newPage();
+  await page.setViewport({ width: 1280, height: 640, deviceScaleFactor: 2 });
+  await page.goto('file:///PATH/TO/social-preview.html', { waitUntil: 'networkidle0' });
+  await page.screenshot({ path: 'social-preview.png', clip: { x: 0, y: 0, width: 1280, height: 640 } });
+  await browser.close();
+})();
+"
+```
+
+**Option C -- Cloud renderer:**
+- Use `npx @vercel/og` or a hosted OG image service if the user prefers URL-based generation.
+
+### Step 5: Set as Social Preview
+
+Guide the user through one of two methods:
+
+**Method A -- GitHub UI:**
+1. Go to `https://github.com/{owner}/{repo}/settings`
+2. Scroll to "Social preview"
+3. Click "Edit" -> "Upload an image..."
+4. Upload the generated PNG
+5. Click "Save"
+
+**Method B -- GitHub API:**
+```bash
+gh api repos/{owner}/{repo} \
+  --method PATCH \
+  --field "social_preview=$(base64 -i social-preview.png)"
+```
+
+Note: The GitHub REST API does not directly support uploading social preview images via base64. The UI method is the most reliable. For automation, use the repository settings page.
+
+### Step 6: Verify
+
+Provide validation URLs:
+- Twitter Card Validator: `https://cards-dev.twitter.com/validator`
+- Facebook Sharing Debugger: `https://developers.facebook.com/tools/debug/`
+- LinkedIn Post Inspector: `https://www.linkedin.com/post-inspector/inspect/`
+- Open Graph Debugger: `https://opengraph.dev/`
+
+Tell user to paste the repo URL and verify the preview renders correctly.
+
+
+## Procedure: Audit
+
+### Step 1: Check Repo
+
+Validate repo-path is a git repo with a remote.
+
+### Step 2: Fetch Current Social Preview State
+
+```bash
+gh api repos/{owner}/{repo} --jq '.description, .homepage'
+```
+
+Check if a custom social preview image is set (GitHub auto-generates one if not).
+
+### Step 3: Report
+
+```
+=== Social Preview Audit: {repo-name} ===
+
+Custom preview set: {YES / NO (using auto-generated)}
+Description:       {repo description or "MISSING -- add one"}
+Homepage URL:       {homepage or "not set"}
+
+Recommendations:
+  - {actionable items: missing preview, missing description, etc.}
+
+Run /social-preview generate to create one.
+```
+
+
+## Design Principles
+
+- **Readable at thumbnail size.** Social feeds show previews at ~400px wide. Text must be legible at that scale.
+- **High contrast.** Dark backgrounds with light text outperform on most platforms. Minimum 4.5:1 contrast ratio.
+- **No small text.** If it won't be readable at 400px wide, remove it. Project name should be 48-72px at 1280px canvas.
+- **2:1 aspect ratio.** 1280x640 is the standard. Platforms crop outside this ratio.
+- **No external dependencies.** HTML must render with zero network requests. System fonts only. Inline all CSS.
+- **Keep text minimal.** Project name + one-line tagline. Nothing else is guaranteed to be readable.
+- **Test at actual share size.** Always preview at 400x200 before finalizing.
+
+## Key Principles
+
+1. Dark backgrounds perform better across Twitter, LinkedIn, and Slack feeds.
+2. Keep text to two lines maximum: name + tagline.
+3. Test at actual share size (400px wide), not at full resolution.
+4. PNG format, under 1MB. Avoid JPEG for text-heavy images (compression artifacts).
+5. Update the preview when the project description or branding changes.
+6. A missing social preview is worse than a simple one -- GitHub's auto-generated preview is generic and forgettable.
+
+## Files
+
+- **HTML template:** `{repo-path}/social-preview.html` or `/tmp/social-preview-{repo-name}.html`
+- **PNG output:** `{repo-path}/social-preview.png`
+
+## Anti-Patterns
+
+- No external font CDN links -- system fonts only for guaranteed rendering
+- No images or logos that require network requests -- inline SVG or omit
+- No text below 24px at 1280px canvas (will be illegible at thumbnail size)
+- No busy backgrounds or photographic backgrounds -- solid or gradient only
+- No more than 3 colors total (background, primary text, accent)
+- No rounded corners or complex shapes that get lost at small sizes
+- Do not include full URLs in the image -- waste of space, unreadable at thumbnail
+
+## sync-repos
+
+Manage public/private repository pairs. Verify parity, detect drift, run sync scripts, and validate no sensitive data leaks to the public repo. Use for projects that maintain separate dev and public repositories.
+
+
+# Sync Repos
+
+Manage public/private repository pairs. Verify parity between a dev (private) repo and its public counterpart, detect drift, run sync scripts, validate results, and ensure no PII or secrets leak to the public side.
+
+## When to Use
+
+- Before pushing a public repo — verify the sync is clean and current
+- After major dev work — check whether the public repo has drifted behind
+- On a periodic cadence — weekly or before releases, catch unsynced changes early
+- When setting up a new public/private repo pair for the first time
+
+## Usage
+
+- `/sync-repos check [dev-path] [public-path]` — Compare repos and report drift
+- `/sync-repos sync [dev-path] [public-path]` — Run sync script and validate
+- `/sync-repos setup [dev-path] [public-path]` — Create initial sync-public.sh and config
+
+If paths are omitted, prompt the user for them. Look for `.syncignore` or `scripts/sync-public.conf` in the dev repo to auto-detect the pair.
+
+## Procedure
+
+### Check Mode
+
+1. **Validate paths.** Confirm both paths exist and contain `.git/` directories. Abort with a clear message if either is not a git repo.
+
+2. **Detect sync script.** Look for `scripts/sync-public.sh`, `scripts/sync-public.conf`, or `.syncignore` in the dev repo. Report whether a sync mechanism exists.
+
+3. **Compare file lists.** Generate sorted file lists for both repos (excluding `.git/`, `node_modules/`, `dist/`). Categorize differences:
+   - **Expected exclusions** — files matching known exclusion patterns (see Common Exclusion Patterns below) or listed in `.syncignore` / `sync-public.conf`
+   - **Unexpected drift** — files present in dev but missing from public that are NOT in any exclusion list
+   - **Diverged files** — files present in both repos but with different content (compare via `sha256sum` or `git hash-object`)
+   - **Public-only files** — files in public but not in dev (legitimate: README, CONTRIBUTING, LICENSE, .github/)
+
+4. **Check last sync timestamp.** If `scripts/sync-public.sh` exists, check its last execution time via the most recent commit in the public repo that matches a sync pattern. Compare against the latest commit in the dev repo.
+
+5. **Report.** Present a summary table:
+   - Sync script: found / not found
+   - Files only in dev (expected): count
+   - Files only in dev (unexpected): count + list
+   - Diverged files: count + list
+   - Public-only files: count + list
+   - Estimated drift: number of dev commits since last sync
+   - Recommendation: "in sync", "minor drift", or "sync needed"
+
+### Sync Mode
+
+1. **Run check first.** Execute the full check procedure above. If no drift is detected, report "already in sync" and stop.
+
+2. **Locate sync script.** Look for `scripts/sync-public.sh` in the dev repo. If not found, ask the user whether to run setup mode to create one.
+
+3. **Preview the sync.** Show what the sync script will do — files to copy, exclusions, text replacements. Require user confirmation before proceeding.
+
+4. **Execute the sync script.** Run from the dev repo root:
+   ```bash
+   bash scripts/sync-public.sh
+   ```
+   Capture stdout and stderr. If the script exits non-zero, report the error and stop.
+
+5. **Post-sync validation.** After the script completes:
+   - Run the check procedure again to confirm parity
+   - Scan the public repo diff for PII and secrets (see REFERENCE.md for scan patterns)
+   - Flag any findings and block until resolved
+
+6. **Report results.** Summarize:
+   - Files synced: count
+   - Exclusions applied: count
+   - PII/secrets scan: clean or findings
+   - Next step: "Review changes in public repo, then `/safe-push` when ready"
+
+### Setup Mode
+
+1. **Scan the dev repo.** Identify files and directories that should NOT sync to public:
+   - Environment files: `.env`, `.env.*` (except `.env.example`)
+   - Planning/internal: `.planning/`, `.claude/`, `CLAUDE_CONTEXT.md`, `briefs/`
+   - Data/build artifacts: `data/`, `dist/`, `node_modules/`, `.git/`
+   - Sync infrastructure: `scripts/sync-public.sh`, `scripts/sync-public.conf`
+   - Sensitive config: `*.pem`, `*.key`, `*.plist`, `config/soul.md`
+   - Project-specific patterns detected via `.gitignore` analysis
+
+2. **Generate sync-public.conf.** Create a config file with:
+   - `SOURCE_DIR` and `TARGET_DIR` variables
+   - `PACKAGE_NAME` for the public repo
+   - `EXCLUDE_PATHS` array with all identified exclusions
+   - `PRESERVE_PATHS` array for public-only files (README, LICENSE, .github/)
+
+3. **Generate sync-public.sh.** Create the sync script using the rsync-based template from REFERENCE.md. Include:
+   - Config file sourcing
+   - Path validation
+   - Target cleanup (preserve `.git/` and `PRESERVE_PATHS`)
+   - rsync with `--delete-excluded` and exclusion list
+   - Personal data leak check
+   - File count summary
+
+4. **User review.** Display the generated config and script. Wait for explicit approval before writing.
+
+5. **Write files.** Save `scripts/sync-public.sh` (chmod +x) and `scripts/sync-public.conf` to the dev repo.
+
+## Common Exclusion Patterns
+
+These patterns are excluded from sync by default. Append project-specific patterns as needed.
+
+| Pattern | Reason |
+|---------|--------|
+| `.git/` | Git history stays separate |
+| `.env`, `.env.*` | Secrets and environment config |
+| `.planning/` | Internal planning docs |
+| `.claude/` | Claude Code project config |
+| `CLAUDE_CONTEXT.md` | Internal agent context |
+| `data/` | Local data / databases |
+| `dist/`, `node_modules/` | Build artifacts |
+| `*.pem`, `*.key` | Private key material |
+| `*.plist` | macOS service config |
+| `scripts/sync-public.*` | Sync infrastructure itself |
+| `briefs/` | Internal content briefs |
+| `config/soul.md` | Personal agent config |
+
+## Key Principles
+
+- **Never auto-push.** Sync writes files locally. Pushing to remote is always a separate, user-confirmed step via `/safe-push`.
+- **Always validate after sync.** Every sync run ends with a PII/secrets scan on the public repo. No exceptions.
+- **Exclusion list is append-only.** Never remove exclusion patterns without explicit user approval. It is safer to exclude too much than too little.
+- **Preserve public-only files.** The public repo may have its own README, LICENSE, CONTRIBUTING, .github/ workflows. Sync must never overwrite these.
+- **Conf is separate from script.** Keep `sync-public.conf` separate so exclusion lists are easy to review and update without touching script logic.
 
 ## tech-diagram
 

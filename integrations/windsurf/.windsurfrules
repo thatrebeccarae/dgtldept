@@ -64,9 +64,9 @@ Map customer journeys from awareness to advocacy.
 
 Transform audit data, performance reports, and structured analyses into polished visual deliverables.
 
-## docx
+## dep-audit
 
-Comprehensive Word document creation, editing, and analysis with support for tracked changes, comments, formatting preservation, and text extraction.
+Cross-repository dependency audit.
 
 ## email-composer
 
@@ -82,7 +82,7 @@ Create distinctive, production-grade frontend interfaces with high design qualit
 
 ## github-readme
 
-Generate, audit, or update GitHub READMEs.
+Generate, audit, or update GitHub READMEs with project-type-aware structure, voice calibration, and SEO/AEO discoverability guidance.
 
 ## google-ads
 
@@ -120,6 +120,10 @@ Landing page audit and optimization for conversion.
 
 LinkedIn Ads platform expertise.
 
+## llms-txt
+
+Generate and maintain llms.txt files for AI discoverability.
+
 ## looker-studio
 
 Looker Studio (formerly Google Data Studio) expertise.
@@ -127,10 +131,6 @@ Looker Studio (formerly Google Data Studio) expertise.
 ## market-research
 
 Generate comprehensive market research reports (50+ pages) in the style of top consulting firms (McKinsey, BCG, Gartner).
-
-## mcp-builder
-
-Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools.
 
 ## microsoft-ads
 
@@ -152,13 +152,21 @@ Create polished HTML technical reports and multi-page documents for consulting d
 
 Template-based page generation at scale for SEO.
 
-## react-best-practices
+## release-notes
 
-Comprehensive React and Next.js performance optimization guide with 40+ rules for eliminating waterfalls, optimizing bundles, and improving rendering.
+Generate changelog entries and GitHub releases from git history.
 
 ## remotion-video
 
 Remotion video production best practices — spring animations, interpolation patterns, SVG draw-on effects, scene transitions, chart animations, audio integration, and rendering.
+
+## repo-health
+
+One-command GitHub repository health audit.
+
+## repo-scaffold
+
+Initialize GitHub repositories with standard files and configuration.
 
 ## research-digest
 
@@ -184,13 +192,17 @@ SEO-optimized content creation with brand voice analysis and platform-specific f
 
 Shopify e-commerce platform marketing expertise.
 
-## skill-creator
-
-Guide for creating effective Claude Code skills that extend capabilities with specialized knowledge, workflows, and tool integrations.
-
 ## social-media-strategy
 
 Platform-specific organic social media strategy, content calendars, engagement tactics, community building, and performance measurement.
+
+## social-preview
+
+Generate Open Graph social preview images (1280x640) for GitHub repositories.
+
+## sync-repos
+
+Manage public/private repository pairs.
 
 ## tech-diagram
 

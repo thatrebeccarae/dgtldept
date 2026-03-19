@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>release-notes — claude-marketing</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-00XHYRHCX4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-00XHYRHCX4');
+</script>
+<meta name="description" content="Generate changelog entries and GitHub releases from git history. Categorizes commits into features, fixes, breaking changes, and docs. Supports conventional com">
+<meta property="og:title" content="release-notes — claude-marketing">
+<meta property="og:description" content="Generate changelog entries and GitHub releases from git history. Categorizes commits into features, fixes, breaking changes, and docs. Supports conventional commits, PR-based grouping, and semantic ve">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="release-notes — claude-marketing">
+<meta name="twitter:description" content="Generate changelog entries and GitHub releases from git history. Categorizes commits into features, fixes, breaking changes, and docs. Supports conventional commits, PR-based grouping, and semantic ve">
+<link rel="canonical" href="https://thatrebeccarae.github.io/claude-marketing/skill/release-notes.html">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600,700&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Ultralight.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cartograph CF';
+  src: url('../fonts/CartographCF-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --accent: #5B5F8D;
+  --black: #000000;
+  --white: #ffffff;
+  --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+html {
+  background: #000000;
+  color: #ffffff;
+}
+
+body {
+  font-family: 'Switzer', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(15px, 1.1vw, 17px);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.detail-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 120px clamp(20px, 5vw, 40px) 80px;
+}
+
+.detail-back {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+.detail-back:hover { opacity: 1; }
+
+.detail-name {
+  font-family: 'PP Editorial New', 'Georgia', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 200;
+  line-height: 1.15;
+  letter-spacing: -0.014em;
+  margin-bottom: 0.5rem;
+}
+
+.detail-category {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  letter-spacing: 0.04em;
+  margin-bottom: 2rem;
+}
+
+.detail-desc {
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.65;
+  margin-bottom: 2.5rem;
+  opacity: 0.85;
+}
+
+.detail-install {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.detail-install code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  opacity: 0.6;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.detail-install .copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  color: #ffffff;
+  flex-shrink: 0;
+}
+.detail-install .copy-btn:hover { opacity: 0.8; }
+.detail-install .copy-btn.copied { opacity: 1; color: #4ade80; }
+
+.detail-tested {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  opacity: 0.4;
+  margin-bottom: 2.5rem;
+}
+
+.detail-capabilities h2,
+.detail-sources h2,
+.detail-body h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  margin-top: 2.5rem;
+}
+
+.detail-capabilities ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.detail-capabilities li {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 4px;
+}
+
+.detail-source-links {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.detail-source-links a {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ffffff;
+  border-radius: 45px;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+.detail-source-links a:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+.detail-body {
+  margin-top: 2.5rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 2rem;
+}
+
+.detail-body h2 {
+  font-family: 'Switzer', sans-serif;
+}
+
+.detail-body h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.detail-body p {
+  margin-bottom: 1rem;
+  opacity: 0.85;
+  line-height: 1.65;
+}
+
+.detail-body ul {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.detail-body li {
+  margin-bottom: 0.35rem;
+  opacity: 0.85;
+  line-height: 1.55;
+}
+
+.detail-body pre {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+}
+
+.detail-body code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.85rem;
+}
+
+.detail-body blockquote {
+  border-left: 2px solid rgba(255,255,255,0.2);
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+@media (max-width: 700px) {
+  .detail-page {
+    padding: 100px 20px 60px;
+  }
+  .detail-source-links {
+    flex-wrap: wrap;
+  }
+}
+</style>
+</head>
+<body>
+<div class="detail-page" data-pagefind-body>
+  <a href="../skills.html" class="detail-back">&larr; Back to skills</a>
+  <h1 class="detail-name">release-notes</h1>
+  <div class="detail-category">DevOps</div>
+  <p class="detail-desc">Generate changelog entries and GitHub releases from git history. Categorizes commits into features, fixes, breaking changes, and docs. Supports conventional commits, PR-based grouping, and semantic versioning. Creates formatted CHANGELOG.md entries and GitHub releases.</p>
+  <div class="detail-install">
+    <code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/release-notes ~/.claude/skills/</code>
+    <button class="copy-btn" data-copy="git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/release-notes ~/.claude/skills/" title="Copy install command" onclick="copyInstall(this)">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+    </button>
+  </div>
+  <div class="detail-tested">Tested 2026-03-19 &middot; Claude Code v2.1</div>
+  
+  <div class="detail-sources">
+<h2>Source Files</h2>
+<div class="detail-source-links">
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/release-notes/SKILL.md" target="_blank" rel="noopener">SKILL.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/release-notes/REFERENCE.md" target="_blank" rel="noopener">REFERENCE.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/release-notes/EXAMPLES.md" target="_blank" rel="noopener">EXAMPLES.md</a>
+</div>
+</div>
+  <div class="detail-body"><p>Generate changelog entries and GitHub releases from git history.</p>
+<h2>Install</h2>
+<pre><code>claude skill add --from https://github.com/thatrebeccarae/claude-skills/release-notes</code></pre>
+<h2>When to Use</h2>
+<ul>
+<li><strong>Cutting a release</strong>: You have commits ready to ship and need a changelog entry and/or GitHub release.</li>
+<li><strong>Monthly changelog update</strong>: You maintain a regular changelog cadence and need to capture everything since the last entry.</li>
+<li><strong>Retroactive changelog</strong>: An existing project has no CHANGELOG.md and you want to generate one from the full git history.</li>
+</ul>
+<h2>Usage</h2>
+<h3>Generate a changelog entry</h3>
+<pre><code>/release-notes changelog [repo-path]</code></pre>
+<p>Reads commits since the last tag, categorizes them, and prepends a new entry to CHANGELOG.md.</p>
+<h3>Create a changelog entry and GitHub release</h3>
+<pre><code>/release-notes release [repo-path] [version]</code></pre>
+<p>Does everything `changelog` does, then creates a GitHub release via `gh release create`. If `version` is omitted, a version is suggested based on the changes detected.</p>
+<h3>Retroactively generate a full changelog</h3>
+<pre><code>/release-notes init [repo-path]</code></pre>
+<p>Walks the entire tag history (or full commit history if untagged) and generates a complete CHANGELOG.md from scratch.</p>
+<h2>Procedure</h2>
+<h3>Step 1 — Find the last tag or release</h3>
+<p>Run `git describe --tags --abbrev=0` to find the most recent tag. If no tags exist, use the initial commit as the starting point. Cross-reference with `gh release list --limit 1` to check for GitHub releases that may differ from local tags.</p>
+<h3>Step 2 — Collect commits since last tag</h3>
+<pre><code>git log &lt;last-tag&gt;..HEAD --pretty=format:&quot;%H %s&quot; --no-merges</code></pre>
+<p>Parse each commit message for conventional commit prefixes (`type(scope): description`). Record the raw message for commits that do not follow conventional format.</p>
+<h3>Step 3 — Check merged PRs</h3>
+<pre><code>gh pr list --state merged --search &quot;merged:&gt;YYYY-MM-DD&quot; --json number,title,labels,mergedAt --limit 200</code></pre>
+<p>Use the date of the last tag as the cutoff. Cross-reference PR titles with commit messages to avoid duplicates. PR titles often provide cleaner descriptions than commit messages — prefer the PR title when a commit is associated with a merged PR.</p>
+<h3>Step 4 — Categorize changes</h3>
+<p>Map each commit or PR to a changelog category:</p>
+<p>| Prefix / Signal | Category |</p>
+<p>|---|---|</p>
+<p>| `feat`, `feature` | <strong>Added</strong> |</p>
+<p>| `fix` | <strong>Fixed</strong> |</p>
+<p>| `BREAKING CHANGE` in body or `!` suffix (e.g., `feat!:`) | <strong>Breaking Changes</strong> |</p>
+<p>| `docs` | <strong>Documentation</strong> |</p>
+<p>| `refactor`, `perf` | <strong>Changed</strong> |</p>
+<p>| `chore`, `ci`, `build` | <strong>Maintenance</strong> |</p>
+<p>| `deprecate` | <strong>Deprecated</strong> |</p>
+<p>| `remove` | <strong>Removed</strong> |</p>
+<p>| `security` | <strong>Security</strong> |</p>
+<p><strong>When conventional commits are not used</strong>: Analyze commit message content to infer categories. Look for keywords like &quot;add&quot;, &quot;fix&quot;, &quot;remove&quot;, &quot;update&quot;, &quot;refactor&quot;, &quot;document&quot;. Group ambiguous commits under <strong>Changed</strong> and flag them for human review.</p>
+<h3>Step 5 — Suggest version bump</h3>
+<p>Apply semantic versioning rules:</p>
+<ul>
+<li><strong>Major</strong> bump if any Breaking Changes are present.</li>
+<li><strong>Minor</strong> bump if any Added entries exist and no breaking changes.</li>
+<li><strong>Patch</strong> bump if only Fixed, Changed, or Maintenance entries.</li>
+</ul>
+<p>Present the suggestion with reasoning. The human decides the final version.</p>
+<h3>Step 6 — Format the changelog entry</h3>
+<p>Use [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) format:</p>
+<pre><code>## [X.Y.Z] — YYYY-MM-DD
+
+### Breaking Changes
+- Description of breaking change (#PR)
+
+### Added
+- Description of new feature (#PR)
+
+### Fixed
+- Description of bug fix (#PR)
+
+### Changed
+- Description of refactor or improvement (#PR)
+
+### Documentation
+- Description of docs change (#PR)
+
+### Maintenance
+- Description of chore (#PR)</code></pre>
+<p>Omit empty categories. Order categories as shown above — Breaking Changes always first.</p>
+<h3>Step 7 — Human review</h3>
+<p>Present the formatted entry and suggested version to the user. Wait for explicit approval before writing anything. Highlight any commits that were ambiguously categorized.</p>
+<h3>Step 8 — Write to CHANGELOG.md</h3>
+<p>Prepend the new entry after the file header. Never overwrite or reorder existing entries. If CHANGELOG.md does not exist, create it with a standard header:</p>
+<pre><code># Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).</code></pre>
+<h3>Step 9 — Optionally create GitHub release</h3>
+<p>Only when the user invoked `/release-notes release` or explicitly requests it:</p>
+<pre><code>gh release create vX.Y.Z --title &quot;vX.Y.Z&quot; --notes &quot;RELEASE_BODY&quot;</code></pre>
+<p>Use the changelog entry as the release body. Never create a release without user confirmation.</p>
+<h2>Key Principles</h2>
+<p>1. <strong>Never auto-publish.</strong> Every release and changelog write requires explicit human approval.</p>
+<p>2. <strong>Preserve existing entries.</strong> Never modify, reorder, or delete previous changelog entries.</p>
+<p>3. <strong>Human-readable over machine-parseable.</strong> Write descriptions that make sense to a person reading the changelog, not a parser. Prefer plain language over commit hashes.</p>
+<p>4. <strong>Attribute PRs and authors.</strong> Include PR numbers as links. For multi-contributor projects, consider noting first-time contributors.</p>
+<p>5. <strong>When in doubt, ask.</strong> If a commit is ambiguous, surface it to the user rather than guessing the category.</p></div>
+</div>
+<script>
+function copyInstall(btn) {
+  var text = btn.getAttribute('data-copy');
+  navigator.clipboard.writeText(text).then(function() {
+    btn.classList.add('copied');
+    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+    setTimeout(function() {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>

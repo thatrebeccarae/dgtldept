@@ -30,7 +30,7 @@ CATEGORIES = {
     "analytics": {"label": "Analytics", "order": 7},
     "creative": {"label": "Creative & Design", "order": 8},
     "reporting": {"label": "Reporting & Deliverables", "order": 9},
-    "developer-tools": {"label": "Developer Tools", "order": 10},
+    "devops": {"label": "DevOps", "order": 11},
 }
 
 

@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>dep-audit — claude-marketing</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-00XHYRHCX4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-00XHYRHCX4');
+</script>
+<meta name="description" content="Cross-repository dependency audit. Scans package manifests for outdated packages, security advisories, version conflicts, and license issues. Produces a priorit">
+<meta property="og:title" content="dep-audit — claude-marketing">
+<meta property="og:description" content="Cross-repository dependency audit. Scans package manifests for outdated packages, security advisories, version conflicts, and license issues. Produces a prioritized update plan. Supports Node.js, Pyth">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="dep-audit — claude-marketing">
+<meta name="twitter:description" content="Cross-repository dependency audit. Scans package manifests for outdated packages, security advisories, version conflicts, and license issues. Produces a prioritized update plan. Supports Node.js, Pyth">
+<link rel="canonical" href="https://thatrebeccarae.github.io/claude-marketing/skill/dep-audit.html">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600,700&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Ultralight.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cartograph CF';
+  src: url('../fonts/CartographCF-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --accent: #5B5F8D;
+  --black: #000000;
+  --white: #ffffff;
+  --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+html {
+  background: #000000;
+  color: #ffffff;
+}
+
+body {
+  font-family: 'Switzer', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(15px, 1.1vw, 17px);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.detail-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 120px clamp(20px, 5vw, 40px) 80px;
+}
+
+.detail-back {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+.detail-back:hover { opacity: 1; }
+
+.detail-name {
+  font-family: 'PP Editorial New', 'Georgia', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 200;
+  line-height: 1.15;
+  letter-spacing: -0.014em;
+  margin-bottom: 0.5rem;
+}
+
+.detail-category {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  letter-spacing: 0.04em;
+  margin-bottom: 2rem;
+}
+
+.detail-desc {
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.65;
+  margin-bottom: 2.5rem;
+  opacity: 0.85;
+}
+
+.detail-install {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.detail-install code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  opacity: 0.6;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.detail-install .copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  color: #ffffff;
+  flex-shrink: 0;
+}
+.detail-install .copy-btn:hover { opacity: 0.8; }
+.detail-install .copy-btn.copied { opacity: 1; color: #4ade80; }
+
+.detail-tested {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  opacity: 0.4;
+  margin-bottom: 2.5rem;
+}
+
+.detail-capabilities h2,
+.detail-sources h2,
+.detail-body h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  margin-top: 2.5rem;
+}
+
+.detail-capabilities ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.detail-capabilities li {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 4px;
+}
+
+.detail-source-links {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.detail-source-links a {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ffffff;
+  border-radius: 45px;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+.detail-source-links a:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+.detail-body {
+  margin-top: 2.5rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 2rem;
+}
+
+.detail-body h2 {
+  font-family: 'Switzer', sans-serif;
+}
+
+.detail-body h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.detail-body p {
+  margin-bottom: 1rem;
+  opacity: 0.85;
+  line-height: 1.65;
+}
+
+.detail-body ul {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.detail-body li {
+  margin-bottom: 0.35rem;
+  opacity: 0.85;
+  line-height: 1.55;
+}
+
+.detail-body pre {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+}
+
+.detail-body code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.85rem;
+}
+
+.detail-body blockquote {
+  border-left: 2px solid rgba(255,255,255,0.2);
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+@media (max-width: 700px) {
+  .detail-page {
+    padding: 100px 20px 60px;
+  }
+  .detail-source-links {
+    flex-wrap: wrap;
+  }
+}
+</style>
+</head>
+<body>
+<div class="detail-page" data-pagefind-body>
+  <a href="../skills.html" class="detail-back">&larr; Back to skills</a>
+  <h1 class="detail-name">dep-audit</h1>
+  <div class="detail-category">DevOps</div>
+  <p class="detail-desc">Cross-repository dependency audit. Scans package manifests for outdated packages, security advisories, version conflicts, and license issues. Produces a prioritized update plan. Supports Node.js, Python, Rust, and Go projects.</p>
+  <div class="detail-install">
+    <code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/dep-audit ~/.claude/skills/</code>
+    <button class="copy-btn" data-copy="git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/dep-audit ~/.claude/skills/" title="Copy install command" onclick="copyInstall(this)">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+    </button>
+  </div>
+  <div class="detail-tested">Tested 2026-03-19 &middot; Claude Code v2.1</div>
+  
+  <div class="detail-sources">
+<h2>Source Files</h2>
+<div class="detail-source-links">
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/dep-audit/SKILL.md" target="_blank" rel="noopener">SKILL.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/dep-audit/REFERENCE.md" target="_blank" rel="noopener">REFERENCE.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/dep-audit/EXAMPLES.md" target="_blank" rel="noopener">EXAMPLES.md</a>
+</div>
+</div>
+  <div class="detail-body"><p>Cross-repository dependency audit. Scans package manifests (package.json, pyproject.toml, Cargo.toml, go.mod) for outdated packages, security advisories, version conflicts between repos, and license compatibility issues. Produces a prioritized update plan.</p>
+<h2>Install</h2>
+<pre><code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/dep-audit ~/.claude/skills/</code></pre>
+<h2>When to Use</h2>
+<ul>
+<li><strong>Monthly hygiene</strong>: Run on a cadence to catch dependency drift before it compounds</li>
+<li><strong>Before releases</strong>: Verify no known vulnerabilities ship to production</li>
+<li><strong>Security incidents</strong>: When a CVE drops, quickly assess exposure across all repos</li>
+<li><strong>Onboarding new repos</strong>: Baseline the dependency health of a repo you're inheriting or adopting</li>
+</ul>
+<h2>Usage</h2>
+<ul>
+<li>`/dep-audit [repo-path]` — audit a single repository</li>
+<li>`/dep-audit [repo-path1] [repo-path2] ...` — cross-repo audit (enables version conflict detection)</li>
+</ul>
+<h2>Procedure</h2>
+<h3>1. Detect Package Managers</h3>
+<p>Scan the target repo(s) for manifest files:</p>
+<p>| Manager | Manifest | Lock File |</p>
+<p>|---------|----------|-----------|</p>
+<p>| npm | `package.json` | `package-lock.json` |</p>
+<p>| yarn | `package.json` | `yarn.lock` |</p>
+<p>| pnpm | `package.json` | `pnpm-lock.yaml` |</p>
+<p>| pip | `requirements.txt`, `setup.py`, `setup.cfg` | `requirements.txt` (pinned) |</p>
+<p>| poetry | `pyproject.toml` (has `[tool.poetry]`) | `poetry.lock` |</p>
+<p>| uv | `pyproject.toml` (has `[tool.uv]`) | `uv.lock` |</p>
+<p>| cargo | `Cargo.toml` | `Cargo.lock` |</p>
+<p>| go mod | `go.mod` | `go.sum` |</p>
+<pre><code># Detect which manifests exist
+ls package.json pyproject.toml Cargo.toml go.mod requirements.txt 2&gt;/dev/null
+# Detect lock files
+ls package-lock.json yarn.lock pnpm-lock.yaml poetry.lock uv.lock Cargo.lock go.sum 2&gt;/dev/null</code></pre>
+<p>If multiple ecosystems are present (e.g., a monorepo with Node.js frontend and Go backend), audit each independently and merge results.</p>
+<h3>2. Parse Manifests and Lock Files</h3>
+<p>Read the manifest to identify declared dependencies (direct) and the lock file for resolved versions (transitive). Distinguish between:</p>
+<ul>
+<li><strong>Production dependencies</strong> (`dependencies`, `[dependencies]`, main requires)</li>
+<li><strong>Development dependencies</strong> (`devDependencies`, `[dev-dependencies]`, extras)</li>
+</ul>
+<h3>3. Check for Outdated Packages</h3>
+<p>Query the registry for latest versions and categorize the delta:</p>
+<pre><code># Node.js
+npm outdated --json
+
+# Python (pip)
+pip list --outdated --format=json
+
+# Python (poetry)
+poetry show --outdated
+
+# Rust
+cargo outdated --format json  # requires cargo-outdated
+
+# Go
+go list -m -u all</code></pre>
+<p>Categorize each outdated package:</p>
+<ul>
+<li><strong>Patch update</strong> (e.g., 2.3.1 -&gt; 2.3.4): Safe, usually bug fixes</li>
+<li><strong>Minor update</strong> (e.g., 2.3.1 -&gt; 2.5.0): New features, should be backward-compatible</li>
+<li><strong>Major update</strong> (e.g., 2.3.1 -&gt; 3.0.0): Breaking changes likely, needs migration review</li>
+</ul>
+<h3>4. Check for Security Advisories</h3>
+<p>Run ecosystem-native audit tools:</p>
+<pre><code># Node.js
+npm audit --json
+
+# Python
+pip-audit --format=json  # or: safety check
+
+# Rust
+cargo audit --json  # requires cargo-audit
+
+# Go
+govulncheck ./...</code></pre>
+<p>Parse severity from results:</p>
+<ul>
+<li><strong>Critical</strong>: Remote code execution, authentication bypass, data exfiltration</li>
+<li><strong>High</strong>: Privilege escalation, significant data exposure</li>
+<li><strong>Medium</strong>: DoS potential, limited data exposure</li>
+<li><strong>Low</strong>: Information disclosure, minor issues</li>
+</ul>
+<h3>5. Cross-Repo Analysis (Multiple Repos)</h3>
+<p>When auditing two or more repos, compare dependency versions:</p>
+<ul>
+<li><strong>Version conflicts</strong>: Same package at different versions across repos (e.g., `axios@0.27.2` in repo A, `axios@1.6.2` in repo B)</li>
+<li><strong>Shared dependencies</strong>: Packages used by multiple repos that could be aligned to a single version</li>
+<li><strong>Divergent major versions</strong>: Flag these as highest priority — they indicate repos drifting apart</li>
+</ul>
+<p>Present a conflict table showing package, version per repo, and recommended target version.</p>
+<h3>6. License Scan</h3>
+<p>Check dependency licenses against compatibility rules:</p>
+<pre><code># Node.js
+npx license-checker --json
+
+# Python
+pip-licenses --format=json
+
+# Rust
+cargo license --json  # requires cargo-license
+
+# Go
+go-licenses report ./...  # requires go-licenses</code></pre>
+<p>Flag issues:</p>
+<ul>
+<li><strong>Copyleft in permissive projects</strong>: GPL/AGPL dependencies in MIT/Apache-licensed projects</li>
+<li><strong>Unknown or missing licenses</strong>: Dependencies with no license metadata</li>
+<li><strong>Non-OSI-approved licenses</strong>: Custom or restrictive licenses</li>
+<li><strong>License conflicts</strong>: Incompatible license combinations (e.g., GPLv2-only with Apache-2.0)</li>
+</ul>
+<h3>7. Generate Update Plan</h3>
+<p>Prioritize all findings into a single ordered list:</p>
+<p>1. <strong>Critical security advisories</strong> — fix immediately</p>
+<p>2. <strong>High security advisories</strong> — fix this sprint</p>
+<p>3. <strong>License violations</strong> — assess and remediate</p>
+<p>4. <strong>Major outdated (with known issues)</strong> — plan migration</p>
+<p>5. <strong>Cross-repo version conflicts</strong> — align versions</p>
+<p>6. <strong>Minor outdated</strong> — batch update</p>
+<p>7. <strong>Patch outdated</strong> — batch update</p>
+<p>Group related updates together:</p>
+<ul>
+<li>All `@types/*` packages in one PR</li>
+<li>All packages from the same org (e.g., `@babel/*`)</li>
+<li>Peer dependency chains that must move together</li>
+</ul>
+<p>Note breaking change risks for any major update. Link to migration guides where available.</p>
+<h3>8. Report</h3>
+<p>Produce a severity-coded summary table:</p>
+<p>| Priority | Package | Current | Latest | Type | Severity | Repos Affected | Action |</p>
+<p>|----------|---------|---------|--------|------|----------|---------------|--------|</p>
+<p>| 1 | lodash | 4.17.19 | 4.17.21 | patch | CRITICAL (CVE-2021-23337) | repo-a, repo-b | Update immediately |</p>
+<p>| 2 | express | 4.17.1 | 4.21.2 | minor | HIGH (CVE-2024-29041) | repo-a | Update this sprint |</p>
+<p>| 3 | webpack | 4.46.0 | 5.94.0 | major | MEDIUM (outdated) | repo-a | Plan migration |</p>
+<p>| ... | | | | | | | |</p>
+<p>Follow with:</p>
+<ul>
+<li>Total dependency count (direct / transitive) per repo</li>
+<li>Security summary: X critical, Y high, Z medium, W low</li>
+<li>Outdated summary: X major, Y minor, Z patch</li>
+<li>License summary: X flagged, Y clean</li>
+<li>Cross-repo conflicts: X packages with version divergence</li>
+</ul>
+<h2>Key Principles</h2>
+<p>1. <strong>Never auto-update.</strong> This skill audits and recommends. The human decides what to update and when. Automated updates can introduce breaking changes, especially for major versions.</p>
+<p>2. <strong>Security first.</strong> Critical and high-severity vulnerabilities always top the priority list, regardless of how old other dependencies are.</p>
+<p>3. <strong>Group related updates.</strong> Updating `react` without updating `react-dom` creates version mismatches. Always identify peer dependency chains.</p>
+<p>4. <strong>Context matters.</strong> A major version bump on a dev-only dependency (e.g., `eslint`) is lower risk than a patch on a production runtime dependency with a CVE.</p>
+<p>5. <strong>Lock files are truth.</strong> Always read the lock file for actual resolved versions, not just the range specifier in the manifest.</p>
+<p>6. <strong>Don't chase latest for its own sake.</strong> If a dependency is working, stable, and has no advisories, &quot;outdated&quot; is not the same as &quot;broken.&quot;</p>
+<h2>How to Use This Skill</h2>
+<p>Ask:</p>
+<ul>
+<li>&quot;Audit the dependencies in ~/Repos/my-app&quot;</li>
+<li>&quot;Compare dependency versions across these three repos&quot;</li>
+<li>&quot;Are there any security vulnerabilities in this project?&quot;</li>
+<li>&quot;Check for license issues before we open-source this repo&quot;</li>
+<li>&quot;Build me an update plan for everything that's behind&quot;</li>
+</ul>
+<p>For command reference, license compatibility details, and false positive handling, see [REFERENCE.md](REFERENCE.md).</p>
+<p>For worked examples, see [EXAMPLES.md](EXAMPLES.md).</p></div>
+</div>
+<script>
+function copyInstall(btn) {
+  var text = btn.getAttribute('data-copy');
+  navigator.clipboard.writeText(text).then(function() {
+    btn.classList.add('copied');
+    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+    setTimeout(function() {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>

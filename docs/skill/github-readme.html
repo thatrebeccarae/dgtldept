@@ -11,13 +11,13 @@
   gtag('js', new Date());
   gtag('config', 'G-00XHYRHCX4');
 </script>
-<meta name="description" content="Generate, audit, or update GitHub READMEs. Three modes: generate (new), audit (check existing), update (patch). Detects repo type (library/CLI/app/API/monorepo)">
+<meta name="description" content="Generate, audit, or update GitHub READMEs with project-type-aware structure, voice calibration, and SEO/AEO discoverability guidance. Three modes: generate (new">
 <meta property="og:title" content="github-readme — claude-marketing">
-<meta property="og:description" content="Generate, audit, or update GitHub READMEs. Three modes: generate (new), audit (check existing), update (patch). Detects repo type (library/CLI/app/API/monorepo), selects appropriate badges, and genera">
+<meta property="og:description" content="Generate, audit, or update GitHub READMEs with project-type-aware structure, voice calibration, and SEO/AEO discoverability guidance. Three modes: generate (new), audit (check existing), update (patch">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="github-readme — claude-marketing">
-<meta name="twitter:description" content="Generate, audit, or update GitHub READMEs. Three modes: generate (new), audit (check existing), update (patch). Detects repo type (library/CLI/app/API/monorepo), selects appropriate badges, and genera">
+<meta name="twitter:description" content="Generate, audit, or update GitHub READMEs with project-type-aware structure, voice calibration, and SEO/AEO discoverability guidance. Three modes: generate (new), audit (check existing), update (patch">
 <link rel="canonical" href="https://thatrebeccarae.github.io/claude-marketing/skill/github-readme.html">
 <link href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600,700&display=swap" rel="stylesheet">
 <style>
@@ -275,15 +275,15 @@ a { color: inherit; text-decoration: none; }
 <div class="detail-page" data-pagefind-body>
   <a href="../skills.html" class="detail-back">&larr; Back to skills</a>
   <h1 class="detail-name">github-readme</h1>
-  <div class="detail-category">Developer Tools</div>
-  <p class="detail-desc">Generate, audit, or update GitHub READMEs. Three modes: generate (new), audit (check existing), update (patch). Detects repo type (library/CLI/app/API/monorepo), selects appropriate badges, and generates sections following conventions for the detected type.</p>
+  <div class="detail-category">DevOps</div>
+  <p class="detail-desc">Generate, audit, or update GitHub READMEs with project-type-aware structure, voice calibration, and SEO/AEO discoverability guidance. Three modes: generate (new), audit (check existing), update (patch). Detects repo type and adapts sections, tone, and badges accordingly.</p>
   <div class="detail-install">
     <code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/github-readme ~/.claude/skills/</code>
     <button class="copy-btn" data-copy="git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/github-readme ~/.claude/skills/" title="Copy install command" onclick="copyInstall(this)">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
     </button>
   </div>
-  <div class="detail-tested">Tested 2026-03-17 &middot; Claude Code v2.1</div>
+  <div class="detail-tested">Tested 2026-03-19 &middot; Claude Code v2.1</div>
   
   <div class="detail-sources">
 <h2>Source Files</h2>
@@ -293,118 +293,224 @@ a { color: inherit; text-decoration: none; }
 <a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/github-readme/EXAMPLES.md" target="_blank" rel="noopener">EXAMPLES.md</a>
 </div>
 </div>
-  <div class="detail-body"><p>Generate, audit, or update GitHub READMEs against a standard template. Detects repo type and adapts structure accordingly.</p>
+  <div class="detail-body"><p>Generate, audit, or update repository READMEs with project-type detection, voice calibration, discoverability guidance, and scored quality audits.</p>
 <h2>Install</h2>
 <pre><code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/github-readme ~/.claude/skills/</code></pre>
+<h2>When to Use</h2>
+<ul>
+<li>Starting a new public repo and need a solid README from scratch</li>
+<li>Auditing an existing README for quality, discoverability, and security issues</li>
+<li>Updating a README after the repo has evolved (new deps, features, structure)</li>
+<li>Preparing a repo for public release and want discoverability optimized</li>
+</ul>
 <h2>Modes</h2>
-<h3>1. Generate (New README)</h3>
-<p>Create a README from scratch by analyzing the repo.</p>
-<p><strong>Steps:</strong></p>
-<p>1. Detect repo type (library, CLI tool, web app, API, monorepo, skill pack)</p>
-<p>2. Read package.json/pyproject.toml/Cargo.toml for metadata</p>
-<p>3. Scan directory structure for key patterns</p>
-<p>4. Select badge set based on repo type and detected CI/tooling</p>
-<p>5. Generate sections appropriate to repo type</p>
-<p>6. Write README.md</p>
-<h3>2. Audit (Check Existing)</h3>
-<p>Evaluate an existing README for completeness and quality.</p>
-<p><strong>Checks:</strong></p>
+<pre><code>/github:readme generate [repo-path]   # Scan repo, detect type, generate README
+/github:readme audit [repo-path]      # Score existing README (read-only, 0-100)
+/github:readme update [repo-path]     # Re-scan, silent audit, patch with approval</code></pre>
+<p>Default `repo-path` is the current working directory if omitted.</p>
+<p>---</p>
+<h2>Step 0: Parse and Validate</h2>
+<p>Expect: `/github:readme {mode} [repo-path]`</p>
+<p>1. <strong>Extract mode</strong> — `generate`, `audit`, or `update`. Any other value or missing → error with usage hint. STOP.</p>
+<p>2. <strong>Extract repo-path</strong> — second argument, or current working directory if omitted.</p>
+<p>3. <strong>Validate</strong> — confirm path exists, is a directory, and contains `.git`. If not → error. STOP.</p>
+<p>Store `repo_path` (absolute) and `mode`.</p>
+<p>---</p>
+<h2>Step 1: Scan the Repo</h2>
+<p>Gather context by reading available files. Skip gracefully if a file does not exist.</p>
+<p><strong>Package/config files</strong> (tech stack detection):</p>
 <ul>
-<li>All required sections present for the repo type</li>
-<li>Badge URLs resolve (not broken)</li>
-<li>Version numbers are current</li>
-<li>Install commands work</li>
-<li>Code examples are syntactically valid</li>
-<li>Links are not broken</li>
-<li>No placeholder text remaining</li>
-<li>PII/infrastructure scrub (no internal IPs, hostnames, credentials)</li>
+<li>`package.json` — Node/TypeScript/React</li>
+<li>`Cargo.toml` — Rust</li>
+<li>`pyproject.toml`, `setup.py`, `requirements.txt` — Python</li>
+<li>`go.mod` — Go</li>
+<li>`tsconfig.json` — TypeScript confirmation</li>
+<li>`Dockerfile`, `docker-compose.yml` — containerization</li>
+<li>`Makefile`, `justfile` — build system</li>
+<li>`.github/workflows/` — CI/CD</li>
 </ul>
-<p><strong>Output:</strong> Score (0-100) + findings report with specific fix recommendations.</p>
-<h3>3. Update (Patch Existing)</h3>
-<p>Modify an existing README while preserving its structure.</p>
-<p><strong>Steps:</strong></p>
-<p>1. Read current README</p>
-<p>2. Identify sections and their content</p>
-<p>3. Plan changes (add missing sections, update stale content)</p>
-<p>4. Show diff-style preview</p>
-<p>5. Apply updates on approval</p>
-<h2>Repo Type Detection</h2>
-<p>| Signal | Type |</p>
-<p>|--------|------|</p>
-<p>| `src/` + `package.json` with `main`/`exports` | Library |</p>
-<p>| `bin` field in package.json or CLI entry point | CLI Tool |</p>
-<p>| `app/` or `pages/` directory, framework config | Web App |</p>
-<p>| `routes/` or OpenAPI spec | API |</p>
-<p>| `packages/` or workspace config | Monorepo |</p>
-<p>| `skills/` with SKILL.md files | Skill Pack |</p>
-<h2>Section Order by Type</h2>
-<h3>Library</h3>
-<p>1. Title + badges</p>
-<p>2. One-line description</p>
-<p>3. Features</p>
-<p>4. Installation</p>
-<p>5. Quick Start</p>
-<p>6. API Reference</p>
-<p>7. Configuration</p>
-<p>8. Contributing</p>
-<p>9. License</p>
-<h3>CLI Tool</h3>
-<p>1. Title + badges</p>
-<p>2. One-line description</p>
-<p>3. Installation (brew, npm, cargo, etc.)</p>
-<p>4. Quick Start</p>
-<p>5. Commands reference</p>
-<p>6. Configuration</p>
-<p>7. Contributing</p>
-<p>8. License</p>
-<h3>Web App</h3>
-<p>1. Title + badges</p>
-<p>2. One-line description</p>
-<p>3. Screenshots/demo</p>
-<p>4. Features</p>
-<p>5. Getting Started (prerequisites, install, run)</p>
-<p>6. Environment Variables</p>
-<p>7. Deployment</p>
-<p>8. Contributing</p>
-<p>9. License</p>
-<h3>API</h3>
-<p>1. Title + badges</p>
-<p>2. One-line description</p>
-<p>3. Base URL + authentication</p>
-<p>4. Quick Start</p>
-<p>5. Endpoints reference</p>
-<p>6. Error handling</p>
-<p>7. Rate limits</p>
-<p>8. Contributing</p>
-<p>9. License</p>
+<p><strong>Directory structure:</strong></p>
+<ul>
+<li>Run `ls` at repo root for top-level layout</li>
+<li>Note: `src/`, `bin/`, `lib/`, `scripts/`, `docs/`, `tests/`, `skills/`, `templates/`, `plugins/`, `.github/`</li>
+</ul>
+<p><strong>Existing docs:</strong></p>
+<ul>
+<li>`README.md`, `CONTRIBUTING.md`, `SECURITY.md`, `LICENSE`, `ARCHITECTURE.md`, `CHANGELOG.md`, `CODE_OF_CONDUCT.md`, `llms.txt`</li>
+</ul>
+<p><strong>Git remote:</strong></p>
+<ul>
+<li>Run `git -C {repo_path} remote get-url origin`</li>
+<li>Extract `{owner}` and `{repo}` from the URL</li>
+<li>Determine public/private: `.public-repo` marker → public; `-dev` suffix or no marker → ask user</li>
+</ul>
+<p>---</p>
+<h2>Step 2: Detect Project Type</h2>
+<p>Classify the repo into exactly one type based on scan signals:</p>
+<p>| Type | Signals |</p>
+<p>|------|---------|</p>
+<p>| <strong>tool/CLI</strong> | Has `bin` field in package.json, CLI entry points, man pages, command parsers (yargs, clap, cobra) |</p>
+<p>| <strong>library/SDK</strong> | Has `main`/`exports`/`module` field, published to npm/PyPI/crates.io, no CLI entry |</p>
+<p>| <strong>collection/marketplace</strong> | Contains multiple independent items: `skills/`, `templates/`, `plugins/`, `recipes/` directories with 3+ subdirectories |</p>
+<p>| <strong>web-app</strong> | Has React/Vue/Svelte/Next/Nuxt, server framework (Express, FastAPI, Actix), deployment config (Vercel, Dockerfile) |</p>
+<p>| <strong>personal/experimental</strong> | Small repo (&lt;20 files), no package publishing config, no CI, no semver tags |</p>
+<p>If ambiguous, ask the user to confirm. Store as `project_type`.</p>
+<p>---</p>
+<h2>Step 3: Discoverability Audit</h2>
+<p>Before generating or auditing README content, check these repo-level discoverability signals. Present findings and suggestions to the user.</p>
+<p><strong>Repo name:</strong></p>
+<ul>
+<li>Is it keyword-rich and searchable? (e.g., `markdown-lint-action` &gt; `my-linter`)</li>
+<li>Flag generic names: `app`, `project`, `tool`, `my-thing`</li>
+</ul>
+<p><strong>GitHub About/description:</strong></p>
+<ul>
+<li>Read via `gh repo view` if available</li>
+<li>Should be 3-8 words, front-loaded with primary keyword</li>
+<li>Suggest improvement if missing or generic</li>
+</ul>
+<p><strong>Topics:</strong></p>
+<ul>
+<li>GitHub allows up to 20 topics</li>
+<li>Suggest relevant topics based on detected tech stack, project type, and domain</li>
+<li>Include both broad (`typescript`, `cli`) and specific (`markdown-parser`, `github-action`) topics</li>
+</ul>
+<p><strong>Social preview image:</strong></p>
+<ul>
+<li>Flag if missing — suggest creating one (1280x640px recommended)</li>
+</ul>
+<p><strong>llms.txt (optional):</strong></p>
+<ul>
+<li>If repo is a library/SDK or tool/CLI, suggest generating an `llms.txt` file</li>
+<li>Purpose: helps LLMs understand and recommend the project accurately</li>
+</ul>
+<p>Present discoverability suggestions. User can accept, skip, or defer. These do NOT block README generation.</p>
+<p>---</p>
+<h2>Step 4: Generate / Audit / Update</h2>
+<h3>Generate Mode</h3>
+<p><strong>4a. Check for existing README</strong> — if present, confirm overwrite or suggest update mode instead.</p>
+<p><strong>4b. Select sections</strong> based on project type (see Section Menu below).</p>
+<p><strong>4c. Voice calibration:</strong></p>
+<ul>
+<li>Default: professional product voice — clear, direct, no hedge language, no marketing fluff</li>
+<li>Personal/experimental repos OR explicit user opt-in: first-person voice allowed</li>
+<li>Never: passive voice in problem statements, emojis in prose, marketing fluff</li>
+</ul>
+<p><strong>4d. Generate each section:</strong></p>
+<ul>
+<li><strong>Title + description</strong> — derive name from package config or directory; one-line bold description under 120 chars</li>
+<li><strong>Badges</strong> — see Badge Selection below</li>
+<li><strong>Getting Started / Install</strong> — prerequisites with versions, install steps, first-run command. Under 20 lines.</li>
+<li><strong>Type-specific sections</strong> — per Section Menu. Only include if enough scanned context exists.</li>
+<li><strong>&quot;Why&quot; section</strong> (personal/experimental only) — ask user for 2-3 sentences. Do not fabricate.</li>
+<li><strong>License</strong> — read LICENSE file type. One line linking to the file.</li>
+</ul>
+<p><strong>4e. Run PII/infrastructure scrub</strong> (see below). Remove violations before writing.</p>
+<p><strong>4f. Write</strong> `{repo_path}/README.md` and display summary.</p>
+<h3>Audit Mode (read-only)</h3>
+<p>Read existing README. Do NOT modify any files.</p>
+<p>Run quality-signal checks and score against weighted rubric:</p>
+<p>| Category | Weight | Checks |</p>
+<p>|----------|--------|--------|</p>
+<p>| <strong>Clarity</strong> | 25 | Clear one-line description? Title is descriptive? |</p>
+<p>| <strong>Usability</strong> | 25 | Working install/setup command? Code examples? Getting started under 20 lines? |</p>
+<p>| <strong>Credibility</strong> | 15 | Badges present? Badge URLs resolve? License section present? |</p>
+<p>| <strong>Currency</strong> | 15 | Version numbers match package config? Tech stack matches repo? No stale links? |</p>
+<p>| <strong>Security</strong> | 20 | No PII or infrastructure leaks? No API keys/tokens? No private hostnames/IPs? |</p>
+<p><strong>Scoring:</strong> Each category scored 0-100, final score = weighted average.</p>
+<pre><code>=== README Audit: {repo-name} ===
+Score: {X}/100
+
+Clarity:      {X}/25
+Usability:    {X}/25
+Credibility:  {X}/15
+Currency:     {X}/15
+Security:     {X}/20
+
+PASS:
+  - {passing checks}
+
+WARN:
+  - {warnings with specific detail}
+
+FAIL:
+  - {failures with specific detail and fix suggestion}</code></pre>
+<h3>Update Mode</h3>
+<p>1. <strong>Re-scan</strong> repo (Step 1) to detect current state</p>
+<p>2. <strong>Run silent audit</strong> — store results, do not display</p>
+<p>3. <strong>Generate update plan</strong> — diff-style, grouped by category:</p>
+<p>   - `[STRUCTURE]` — missing/outdated sections, badge changes</p>
+<p>   - `[CONTENT]` — stale version numbers, outdated tech references</p>
+<p>   - `[VOICE]` — hedge language, marketing fluff, passive voice</p>
+<p>   - `[SECURITY]` — PII/infra violations (applied automatically)</p>
+<p>4. <strong>Show preview</strong> — numbered list of proposed changes</p>
+<p>5. <strong>User approval</strong> — `y` (all), `N` (cancel), or comma-separated numbers</p>
+<p>6. <strong>Apply</strong>, run final PII scrub, write file, display summary</p>
+<p>---</p>
+<h2>Section Menu by Project Type</h2>
+<p>| Section | tool/CLI | library/SDK | collection | web-app | personal |</p>
+<p>|---------|:--------:|:-----------:|:----------:|:-------:|:--------:|</p>
+<p>| Title + description | Required | Required | Required | Required | Required |</p>
+<p>| Badges | Required | Required | Required | Required | Optional |</p>
+<p>| Getting Started / Install | Required | Required | Required | Required | Required |</p>
+<p>| Usage / Commands | Required | -- | -- | -- | -- |</p>
+<p>| API Reference | -- | Required | -- | -- | -- |</p>
+<p>| Catalog / Index | -- | -- | Required | -- | -- |</p>
+<p>| Features | Recommended | Recommended | -- | Required | -- |</p>
+<p>| Configuration | Recommended | Recommended | -- | Recommended | -- |</p>
+<p>| Architecture | -- | -- | -- | Recommended | -- |</p>
+<p>| Why I Built This | -- | -- | -- | -- | Required |</p>
+<p>| Who This Is For | Recommended | Recommended | Recommended | -- | -- |</p>
+<p>| Contributing | Recommended | Required | Recommended | Recommended | -- |</p>
+<p>| License | Required | Required | Required | Required | Required |</p>
+<p>---</p>
+<h2>Voice Guidelines</h2>
+<p>| Type | Default Tone | Example Opening |</p>
+<p>|------|-------------|-----------------|</p>
+<p>| tool/CLI | Direct, practical | &quot;Fast Markdown linting for CI pipelines.&quot; |</p>
+<p>| library/SDK | Technical, precise | &quot;A typed HTTP client for the Stripe API.&quot; |</p>
+<p>| collection | Organized, scannable | &quot;50+ reusable GitHub Actions workflows.&quot; |</p>
+<p>| web-app | Product-focused, clear | &quot;Real-time project dashboard with team analytics.&quot; |</p>
+<p>| personal | First-person, opinionated | &quot;I needed a better way to track reading habits.&quot; |</p>
+<p><strong>Always:</strong> direct, specific, opinionated, short paragraphs (4 sentences max).</p>
+<p><strong>Never:</strong> hedge language, marketing fluff, passive voice in problem statements, emojis in prose.</p>
+<p>---</p>
 <h2>Badge Selection</h2>
-<p>| Badge | When to Include |</p>
-<p>|-------|----------------|</p>
-<p>| Build/CI status | CI config detected (.github/workflows/) |</p>
-<p>| Coverage | Coverage config detected (codecov, coveralls) |</p>
-<p>| npm version | package.json with npm publish |</p>
-<p>| PyPI version | pyproject.toml with PyPI config |</p>
-<p>| License | Always |</p>
-<p>| Node/Python version | When runtime version matters |</p>
-<p>| TypeScript | tsconfig.json present |</p>
-<p>| Docker | Dockerfile present |</p>
-<h2>Key Principles</h2>
-<p>1. <strong>Lead with what it does.</strong> First sentence should explain the tool in one line.</p>
-<p>2. <strong>Show, don't tell.</strong> Code examples &gt; descriptions.</p>
-<p>3. <strong>Install command must work.</strong> Test it mentally — does it reference the right package name?</p>
-<p>4. <strong>No placeholder text.</strong> Every `TODO`, `YOUR_`, `CHANGEME` must be resolved.</p>
-<p>5. <strong>No stale badges.</strong> Remove badges for services not configured.</p>
-<h2>Anti-Patterns</h2>
+<p>Based on detected tech stack, generate 1-3 tech badges + license badge minimum.</p>
+<p>Use `style=for-the-badge` for all badges. Generic patterns:</p>
+<pre><code>![License](https://img.shields.io/github/license/{owner}/{repo}?style=for-the-badge)
+![GitHub Stars](https://img.shields.io/github/stars/{owner}/{repo}?style=for-the-badge)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&amp;logo=typescript&amp;logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&amp;logo=python&amp;logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&amp;logo=nodedotjs&amp;logoColor=white)
+![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&amp;logo=react&amp;logoColor=black)</code></pre>
+<p>Badge order: tech stack (left) → stars → license (right).</p>
+<p>---</p>
+<h2>PII / Infrastructure Scrub</h2>
+<p>Run in ALL modes. Scan generated or existing README text for:</p>
 <ul>
-<li>Walls of text without code examples</li>
-<li>Broken badge URLs or badges for unconfigured services</li>
-<li>Generic descriptions (&quot;A tool for doing things&quot;)</li>
-<li>Missing install instructions</li>
-<li>Stale version numbers in examples</li>
-<li>Internal URLs, IPs, or credentials in examples</li>
-<li>Placeholder text left in (&quot;TODO&quot;, &quot;Add description here&quot;)</li>
+<li>[ ] Private hostnames</li>
+<li>[ ] IP addresses (especially 10.x, 172.16-31.x, 192.168.x, 100.x Tailscale)</li>
+<li>[ ] Internal network/VLAN names</li>
+<li>[ ] Device identifiers or serial numbers</li>
+<li>[ ] Client or employer names that should not be public</li>
+<li>[ ] Personal email addresses</li>
+<li>[ ] API keys or tokens (`sk-`, `token_`, `ghp_`, `Bearer`, long alphanumeric strings)</li>
+<li>[ ] Internal Docker/service config (private port mappings, container names)</li>
+<li>[ ] SSH config references (aliases, private key paths)</li>
 </ul>
-<p>For badge URL patterns and section templates, see [REFERENCE.md](REFERENCE.md).</p></div>
+<p><strong>If violations found:</strong> list each, remove or redact, show user what was removed.</p>
+<p><strong>Security violations are never optional</strong> — applied automatically in update mode.</p>
+<p>---</p>
+<h2>Key Principles</h2>
+<ul>
+<li><strong>Detect, don't assume.</strong> Scan the repo and adapt structure to what actually exists.</li>
+<li><strong>Professional by default.</strong> First-person voice is opt-in, not the default.</li>
+<li><strong>Discoverability matters.</strong> Repo name, description, topics, and llms.txt are part of the README story.</li>
+<li><strong>Quality over completeness.</strong> Fewer well-written sections beat bloated README with empty placeholders.</li>
+<li><strong>Security is non-negotiable.</strong> PII/infra scrub runs in every mode, every time.</li>
+<li><strong>Audit mode is read-only.</strong> Never modify files during an audit.</li>
+</ul></div>
 </div>
 <script>
 function copyInstall(btn) {

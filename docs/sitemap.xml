@@ -109,7 +109,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://thatrebeccarae.github.io/claude-marketing/skill/docx.html</loc>
+    <loc>https://thatrebeccarae.github.io/claude-marketing/skill/dep-audit.html</loc>
     <lastmod>2026-03-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -193,6 +193,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://thatrebeccarae.github.io/claude-marketing/skill/llms-txt.html</loc>
+    <lastmod>2026-03-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://thatrebeccarae.github.io/claude-marketing/skill/looker-studio.html</loc>
     <lastmod>2026-03-19</lastmod>
     <changefreq>monthly</changefreq>
@@ -200,12 +206,6 @@
   </url>
   <url>
     <loc>https://thatrebeccarae.github.io/claude-marketing/skill/market-research.html</loc>
-    <lastmod>2026-03-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://thatrebeccarae.github.io/claude-marketing/skill/mcp-builder.html</loc>
     <lastmod>2026-03-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -241,13 +241,25 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://thatrebeccarae.github.io/claude-marketing/skill/react-best-practices.html</loc>
+    <loc>https://thatrebeccarae.github.io/claude-marketing/skill/release-notes.html</loc>
     <lastmod>2026-03-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://thatrebeccarae.github.io/claude-marketing/skill/remotion-video.html</loc>
+    <lastmod>2026-03-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thatrebeccarae.github.io/claude-marketing/skill/repo-health.html</loc>
+    <lastmod>2026-03-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thatrebeccarae.github.io/claude-marketing/skill/repo-scaffold.html</loc>
     <lastmod>2026-03-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -289,13 +301,19 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://thatrebeccarae.github.io/claude-marketing/skill/skill-creator.html</loc>
+    <loc>https://thatrebeccarae.github.io/claude-marketing/skill/social-media-strategy.html</loc>
     <lastmod>2026-03-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://thatrebeccarae.github.io/claude-marketing/skill/social-media-strategy.html</loc>
+    <loc>https://thatrebeccarae.github.io/claude-marketing/skill/social-preview.html</loc>
+    <lastmod>2026-03-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thatrebeccarae.github.io/claude-marketing/skill/sync-repos.html</loc>
     <lastmod>2026-03-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

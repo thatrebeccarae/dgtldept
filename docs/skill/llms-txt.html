@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>llms-txt — claude-marketing</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-00XHYRHCX4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-00XHYRHCX4');
+</script>
+<meta name="description" content="Generate and maintain llms.txt files for AI discoverability. Scans repos to create curated content maps that help AI answer engines surface your project accurat">
+<meta property="og:title" content="llms-txt — claude-marketing">
+<meta property="og:description" content="Generate and maintain llms.txt files for AI discoverability. Scans repos to create curated content maps that help AI answer engines surface your project accurately. Implements the llms.txt specificati">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="llms-txt — claude-marketing">
+<meta name="twitter:description" content="Generate and maintain llms.txt files for AI discoverability. Scans repos to create curated content maps that help AI answer engines surface your project accurately. Implements the llms.txt specificati">
+<link rel="canonical" href="https://thatrebeccarae.github.io/claude-marketing/skill/llms-txt.html">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600,700&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Ultralight.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cartograph CF';
+  src: url('../fonts/CartographCF-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --accent: #5B5F8D;
+  --black: #000000;
+  --white: #ffffff;
+  --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+html {
+  background: #000000;
+  color: #ffffff;
+}
+
+body {
+  font-family: 'Switzer', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(15px, 1.1vw, 17px);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.detail-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 120px clamp(20px, 5vw, 40px) 80px;
+}
+
+.detail-back {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+.detail-back:hover { opacity: 1; }
+
+.detail-name {
+  font-family: 'PP Editorial New', 'Georgia', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 200;
+  line-height: 1.15;
+  letter-spacing: -0.014em;
+  margin-bottom: 0.5rem;
+}
+
+.detail-category {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  letter-spacing: 0.04em;
+  margin-bottom: 2rem;
+}
+
+.detail-desc {
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.65;
+  margin-bottom: 2.5rem;
+  opacity: 0.85;
+}
+
+.detail-install {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.detail-install code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  opacity: 0.6;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.detail-install .copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  color: #ffffff;
+  flex-shrink: 0;
+}
+.detail-install .copy-btn:hover { opacity: 0.8; }
+.detail-install .copy-btn.copied { opacity: 1; color: #4ade80; }
+
+.detail-tested {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  opacity: 0.4;
+  margin-bottom: 2.5rem;
+}
+
+.detail-capabilities h2,
+.detail-sources h2,
+.detail-body h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  margin-top: 2.5rem;
+}
+
+.detail-capabilities ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.detail-capabilities li {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 4px;
+}
+
+.detail-source-links {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.detail-source-links a {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ffffff;
+  border-radius: 45px;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+.detail-source-links a:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+.detail-body {
+  margin-top: 2.5rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 2rem;
+}
+
+.detail-body h2 {
+  font-family: 'Switzer', sans-serif;
+}
+
+.detail-body h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.detail-body p {
+  margin-bottom: 1rem;
+  opacity: 0.85;
+  line-height: 1.65;
+}
+
+.detail-body ul {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.detail-body li {
+  margin-bottom: 0.35rem;
+  opacity: 0.85;
+  line-height: 1.55;
+}
+
+.detail-body pre {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+}
+
+.detail-body code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.85rem;
+}
+
+.detail-body blockquote {
+  border-left: 2px solid rgba(255,255,255,0.2);
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+@media (max-width: 700px) {
+  .detail-page {
+    padding: 100px 20px 60px;
+  }
+  .detail-source-links {
+    flex-wrap: wrap;
+  }
+}
+</style>
+</head>
+<body>
+<div class="detail-page" data-pagefind-body>
+  <a href="../skills.html" class="detail-back">&larr; Back to skills</a>
+  <h1 class="detail-name">llms-txt</h1>
+  <div class="detail-category">SEO &amp; AI Search</div>
+  <p class="detail-desc">Generate and maintain llms.txt files for AI discoverability. Scans repos to create curated content maps that help AI answer engines surface your project accurately. Implements the llms.txt specification from Answer.AI.</p>
+  <div class="detail-install">
+    <code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/llms-txt ~/.claude/skills/</code>
+    <button class="copy-btn" data-copy="git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/llms-txt ~/.claude/skills/" title="Copy install command" onclick="copyInstall(this)">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+    </button>
+  </div>
+  <div class="detail-tested">Tested 2026-03-19 &middot; Claude Code v2.1</div>
+  
+  <div class="detail-sources">
+<h2>Source Files</h2>
+<div class="detail-source-links">
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/llms-txt/SKILL.md" target="_blank" rel="noopener">SKILL.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/llms-txt/REFERENCE.md" target="_blank" rel="noopener">REFERENCE.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/llms-txt/EXAMPLES.md" target="_blank" rel="noopener">EXAMPLES.md</a>
+</div>
+</div>
+  <div class="detail-body"><p>Generate and maintain llms.txt files that help AI answer engines surface your project accurately.</p>
+<h2>Install</h2>
+<pre><code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/llms-txt ~/.claude/skills/</code></pre>
+<h2>When to Use</h2>
+<ul>
+<li>Launching a new open-source project or documentation site</li>
+<li>Major documentation restructure or content overhaul</li>
+<li>Improving your project's visibility in AI search (ChatGPT, Perplexity, Google AI Overviews)</li>
+<li>Onboarding a project to AI-friendly discoverability standards</li>
+<li>Periodic refresh after significant repo changes</li>
+</ul>
+<h2>What Is llms.txt</h2>
+<p>llms.txt is a plain-text markdown file placed in a project's root that gives LLMs a curated map of the project's most important content. Think of it as robots.txt for AI comprehension — instead of telling crawlers where they can go, it tells them what matters and how the project is organized.</p>
+<p>The specification was proposed by Answer.AI and is documented at [llmstxt.org](https://llmstxt.org). Adoption is growing across developer tools, documentation sites, and open-source projects. Projects with an llms.txt are easier for AI to understand, cite, and recommend accurately.</p>
+<h2>Usage</h2>
+<h3>`/llms-txt generate [repo-path]`</h3>
+<p>Scan a repository and generate a new llms.txt file. If no path is provided, uses the current working directory.</p>
+<h3>`/llms-txt audit [repo-path]`</h3>
+<p>Check an existing llms.txt for completeness, broken links, stale descriptions, and missing high-priority content. Produces a report with specific recommendations.</p>
+<h3>`/llms-txt update [repo-path]`</h3>
+<p>Refresh an existing llms.txt based on current repo state. Preserves manually curated descriptions while adding new content and removing references to deleted files.</p>
+<h2>Procedure</h2>
+<h3>Step 1: Scan Repo Structure</h3>
+<p>Identify all documentation-relevant files in the repository:</p>
+<ul>
+<li>README.md (root and significant subdirectories)</li>
+<li>`docs/` directory and its contents</li>
+<li>API documentation (OpenAPI specs, API reference pages)</li>
+<li>Tutorials, guides, and getting-started content</li>
+<li>CHANGELOG.md, CONTRIBUTING.md, FAQ.md</li>
+<li>Architecture and design decision docs</li>
+<li>Configuration and deployment guides</li>
+<li>Example directories with their own READMEs</li>
+</ul>
+<h3>Step 2: Prioritize Content</h3>
+<p>Rank discovered content by importance to an LLM trying to understand the project:</p>
+<p>| Priority | Content Type | Why It Matters |</p>
+<p>|----------|-------------|---------------|</p>
+<p>| <strong>P0</strong> | README, Getting Started, API Reference | Entry points — what the project is and how to use it |</p>
+<p>| <strong>P1</strong> | Tutorials, Guides, Architecture docs | Deeper understanding — how it works and common workflows |</p>
+<p>| <strong>P2</strong> | CHANGELOG, CONTRIBUTING, FAQ, Config docs | Supporting context — history, community, troubleshooting |</p>
+<h3>Step 3: Extract Metadata</h3>
+<p>For each content page, extract or write:</p>
+<ul>
+<li><strong>Title</strong>: Clear, descriptive page title</li>
+<li><strong>URL or path</strong>: Where to find the content (full URL for hosted docs, relative path for repo files)</li>
+<li><strong>Description</strong>: One-line action-oriented summary of what the page covers</li>
+</ul>
+<h3>Step 4: Generate llms.txt</h3>
+<p>Assemble the file following the specification format:</p>
+<p>1. <strong>Title line</strong>: `# Project Name`</p>
+<p>2. <strong>Description block</strong>: 2-3 sentence summary of what the project does, who it is for, and its primary use case</p>
+<p>3. <strong>Sections</strong>: Group content logically (e.g., &quot;Getting Started&quot;, &quot;API&quot;, &quot;Guides&quot;, &quot;Community&quot;)</p>
+<p>4. <strong>Content items</strong>: Each item is a markdown link with a colon-separated description</p>
+<p>See REFERENCE.md for the exact format specification.</p>
+<h3>Step 5: Optionally Generate llms-full.txt</h3>
+<p>For projects that benefit from it, generate an expanded version that inlines the actual content of key pages. This is useful for smaller projects where the full documentation fits in a single context window.</p>
+<h3>Step 6: User Review</h3>
+<p>Present the generated llms.txt for review. Flag any decisions made during curation:</p>
+<ul>
+<li>Content that was excluded and why</li>
+<li>Descriptions that were inferred vs extracted from existing metadata</li>
+<li>Sections where additional documentation would improve AI discoverability</li>
+</ul>
+<h3>Step 7: Write to Repo Root</h3>
+<p>Save `llms.txt` (and optionally `llms-full.txt`) to the repository root.</p>
+<p>For projects with hosted documentation sites, also note the recommended placement for the hosted version (site root, e.g., `https://docs.example.com/llms.txt`).</p>
+<h2>Hosted Docs and GitHub Pages</h2>
+<p>If the project has a documentation site (GitHub Pages, ReadTheDocs, Docusaurus, etc.):</p>
+<ul>
+<li>Generate llms.txt with full URLs pointing to the hosted docs, not repo file paths</li>
+<li>Place the file where it will be served at `https://yourdomain.com/llms.txt`</li>
+<li>For GitHub Pages: add llms.txt to the docs source directory so it deploys automatically</li>
+<li>Consider adding llms.txt to your sitemap or linking it from robots.txt</li>
+</ul>
+<h2>Key Principles</h2>
+<p>1. <strong>Curate, don't dump.</strong> An llms.txt that lists every file in the repo is worse than useless. Select the 10-30 most important pages that give an LLM the clearest picture of the project.</p>
+<p>2. <strong>Prioritize entry points.</strong> The first few items should answer: what is this, who is it for, and how do I start?</p>
+<p>3. <strong>Keep descriptions action-oriented.</strong> &quot;How to configure authentication for SSO providers&quot; beats &quot;Authentication configuration page.&quot;</p>
+<p>4. <strong>Match the reader's mental model.</strong> Organize sections the way a newcomer would learn the project, not the way the repo is structured.</p>
+<p>5. <strong>Maintain freshness.</strong> Stale llms.txt with broken links or outdated descriptions erodes trust. Run `/llms-txt audit` after major documentation changes.</p>
+<h2>Integration with Other Skills</h2>
+<ul>
+<li><strong>aeo-geo-optimizer</strong> — llms.txt complements broader AI search optimization; use both for maximum AI discoverability</li>
+<li><strong>technical-seo-audit</strong> — Ensure AI crawlers can access your docs before generating llms.txt</li>
+<li><strong>github-readme</strong> — A strong README is the foundation of a good llms.txt; optimize it first</li>
+</ul>
+<p>For the full specification format, priority ranking criteria, and placement guidance, see [REFERENCE.md](REFERENCE.md).</p></div>
+</div>
+<script>
+function copyInstall(btn) {
+  var text = btn.getAttribute('data-copy');
+  navigator.clipboard.writeText(text).then(function() {
+    btn.classList.add('copied');
+    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+    setTimeout(function() {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>

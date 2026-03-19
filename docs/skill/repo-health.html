@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>repo-health — claude-marketing</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-00XHYRHCX4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-00XHYRHCX4');
+</script>
+<meta name="description" content="One-command GitHub repository health audit. Checks for missing standard files, GitHub configuration, branch protection, documentation quality, and code hygiene.">
+<meta property="og:title" content="repo-health — claude-marketing">
+<meta property="og:description" content="One-command GitHub repository health audit. Checks for missing standard files, GitHub configuration, branch protection, documentation quality, and code hygiene. Produces a scored health report with pr">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="repo-health — claude-marketing">
+<meta name="twitter:description" content="One-command GitHub repository health audit. Checks for missing standard files, GitHub configuration, branch protection, documentation quality, and code hygiene. Produces a scored health report with pr">
+<link rel="canonical" href="https://thatrebeccarae.github.io/claude-marketing/skill/repo-health.html">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600,700&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Ultralight.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cartograph CF';
+  src: url('../fonts/CartographCF-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --accent: #5B5F8D;
+  --black: #000000;
+  --white: #ffffff;
+  --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+html {
+  background: #000000;
+  color: #ffffff;
+}
+
+body {
+  font-family: 'Switzer', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(15px, 1.1vw, 17px);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.detail-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 120px clamp(20px, 5vw, 40px) 80px;
+}
+
+.detail-back {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+.detail-back:hover { opacity: 1; }
+
+.detail-name {
+  font-family: 'PP Editorial New', 'Georgia', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 200;
+  line-height: 1.15;
+  letter-spacing: -0.014em;
+  margin-bottom: 0.5rem;
+}
+
+.detail-category {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  letter-spacing: 0.04em;
+  margin-bottom: 2rem;
+}
+
+.detail-desc {
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.65;
+  margin-bottom: 2.5rem;
+  opacity: 0.85;
+}
+
+.detail-install {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.detail-install code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  opacity: 0.6;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.detail-install .copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  color: #ffffff;
+  flex-shrink: 0;
+}
+.detail-install .copy-btn:hover { opacity: 0.8; }
+.detail-install .copy-btn.copied { opacity: 1; color: #4ade80; }
+
+.detail-tested {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  opacity: 0.4;
+  margin-bottom: 2.5rem;
+}
+
+.detail-capabilities h2,
+.detail-sources h2,
+.detail-body h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  margin-top: 2.5rem;
+}
+
+.detail-capabilities ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.detail-capabilities li {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 4px;
+}
+
+.detail-source-links {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.detail-source-links a {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ffffff;
+  border-radius: 45px;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+.detail-source-links a:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+.detail-body {
+  margin-top: 2.5rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 2rem;
+}
+
+.detail-body h2 {
+  font-family: 'Switzer', sans-serif;
+}
+
+.detail-body h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.detail-body p {
+  margin-bottom: 1rem;
+  opacity: 0.85;
+  line-height: 1.65;
+}
+
+.detail-body ul {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.detail-body li {
+  margin-bottom: 0.35rem;
+  opacity: 0.85;
+  line-height: 1.55;
+}
+
+.detail-body pre {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+}
+
+.detail-body code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.85rem;
+}
+
+.detail-body blockquote {
+  border-left: 2px solid rgba(255,255,255,0.2);
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+@media (max-width: 700px) {
+  .detail-page {
+    padding: 100px 20px 60px;
+  }
+  .detail-source-links {
+    flex-wrap: wrap;
+  }
+}
+</style>
+</head>
+<body>
+<div class="detail-page" data-pagefind-body>
+  <a href="../skills.html" class="detail-back">&larr; Back to skills</a>
+  <h1 class="detail-name">repo-health</h1>
+  <div class="detail-category">DevOps</div>
+  <p class="detail-desc">One-command GitHub repository health audit. Checks for missing standard files, GitHub configuration, branch protection, documentation quality, and code hygiene. Produces a scored health report with prioritized fix recommendations.</p>
+  <div class="detail-install">
+    <code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/repo-health ~/.claude/skills/</code>
+    <button class="copy-btn" data-copy="git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/repo-health ~/.claude/skills/" title="Copy install command" onclick="copyInstall(this)">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+    </button>
+  </div>
+  <div class="detail-tested">Tested 2026-03-19 &middot; Claude Code v2.1</div>
+  
+  <div class="detail-sources">
+<h2>Source Files</h2>
+<div class="detail-source-links">
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/repo-health/SKILL.md" target="_blank" rel="noopener">SKILL.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/repo-health/REFERENCE.md" target="_blank" rel="noopener">REFERENCE.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/repo-health/EXAMPLES.md" target="_blank" rel="noopener">EXAMPLES.md</a>
+</div>
+</div>
+  <div class="detail-body"><p>One-command health audit for GitHub repositories. Produces a scored report with prioritized fix recommendations.</p>
+<h2>Install</h2>
+<pre><code>claude skill add --from https://github.com/thatrebeccarae/claude-marketing/skills/repo-health</code></pre>
+<h2>When to Use</h2>
+<ul>
+<li>Setting up a new repo and want to make sure nothing is missing</li>
+<li>Periodic health checks on active repositories</li>
+<li>Before open-sourcing a private repo (what needs to be added?)</li>
+<li>Onboarding onto an unfamiliar repo to assess its state</li>
+<li>Pre-release hygiene sweep</li>
+</ul>
+<h2>How to Use</h2>
+<pre><code>/repo-health [repo-path]        # Full audit with scored report
+/repo-health [repo-path] --fix  # Audit + generate missing files</code></pre>
+<p>Default `repo-path` is the current working directory if omitted.</p>
+<p>---</p>
+<h2>Procedure</h2>
+<p>Execute each step in order. Do not skip steps.</p>
+<h3>Step 1: Validate Repo Path</h3>
+<p>1. If `repo-path` is provided, resolve to absolute path. If omitted, use current working directory.</p>
+<p>2. Confirm the path exists and is a directory.</p>
+<p>3. Confirm it contains a `.git` directory (is a git repo).</p>
+<p>If validation fails:</p>
+<pre><code>Error: {repo-path} is not a git repository.
+Provide a path to a git repo or run from within one.</code></pre>
+<p>STOP.</p>
+<h3>Step 2: Detect Public/Private</h3>
+<p>Determine repo visibility:</p>
+<p>1. Check for `.public-repo` marker file at repo root -&gt; public</p>
+<p>2. Check if &quot;public&quot; appears in the remote URL -&gt; public</p>
+<p>3. Run `gh repo view --json isPrivate -q '.isPrivate'` if `gh` is available -&gt; use result</p>
+<p>4. If none of the above resolve it -&gt; ask the user</p>
+<p>Store as `repo_visibility` (public or private). Public repos are held to a stricter standard in scoring.</p>
+<h3>Step 3: File Presence Checks</h3>
+<p>Check for each standard file. Track result as PRESENT or MISSING.</p>
+<p>| File | Required (Public) | Required (Private) |</p>
+<p>|------|-------------------|--------------------|</p>
+<p>| `LICENSE` | Yes | No |</p>
+<p>| `README.md` | Yes | Yes |</p>
+<p>| `.gitignore` | Yes | Yes |</p>
+<p>| `SECURITY.md` | Yes | No |</p>
+<p>| `CONTRIBUTING.md` | Yes | No |</p>
+<p>| `CODEOWNERS` | Recommended | No |</p>
+<p>| `.editorconfig` | Recommended | Recommended |</p>
+<p>| `.github/pull_request_template.md` or `.github/PULL_REQUEST_TEMPLATE.md` | Recommended | No |</p>
+<p>| `.github/ISSUE_TEMPLATE/` directory (or `.github/ISSUE_TEMPLATE.md`) | Recommended | No |</p>
+<p>| `CHANGELOG.md` | Recommended | No |</p>
+<p>| `CODE_OF_CONDUCT.md` | Recommended (public) | No |</p>
+<h3>Step 4: GitHub Configuration Checks</h3>
+<p>Use `gh` CLI to query repo metadata. If `gh` is not available, skip this category and note it in the report.</p>
+<pre><code>gh repo view --json description,repositoryTopics,hasWikiEnabled,defaultBranchRef,homepageUrl</code></pre>
+<p>Check each item. Track as PASS or FAIL.</p>
+<p>| Check | Criteria |</p>
+<p>|-------|----------|</p>
+<p>| Description set | `description` is non-empty |</p>
+<p>| Topics set | `repositoryTopics` has at least 3 topics |</p>
+<p>| Homepage URL | `homepageUrl` is set (if project has a site) |</p>
+<p>| Default branch name | `defaultBranchRef.name` is `main` (not `master`) |</p>
+<p>| Branch protection | `gh api repos/{owner}/{repo}/branches/main/protection` returns 200 (public repos only) |</p>
+<p>| Social preview | `gh api repos/{owner}/{repo}` and check for custom Open Graph image (informational only) |</p>
+<h3>Step 5: Documentation Quality</h3>
+<p><strong>README checks:</strong></p>
+<p>1. README.md exists (from Step 3)</p>
+<p>2. README length: &lt; 50 lines = WARN (too short), &gt; 500 lines = INFO (consider splitting)</p>
+<p>3. Has a project description in the first 5 lines (H1 or bold text)</p>
+<p>4. Has install/setup instructions (scan for &quot;install&quot;, &quot;getting started&quot;, &quot;setup&quot;, &quot;usage&quot;)</p>
+<p>5. Has a license reference (scan for &quot;license&quot;, &quot;LICENSE&quot;)</p>
+<p>6. If the `/github-readme` skill is available, note that a deeper README audit can be run via `/github:readme audit`</p>
+<p><strong>CHANGELOG checks:</strong></p>
+<p>1. CHANGELOG.md exists (from Step 3)</p>
+<p>2. If present: follows Keep a Changelog format (scan for `## [` version headers)</p>
+<p>3. Most recent entry is within the last 90 days (WARN if stale)</p>
+<h3>Step 6: Code Hygiene</h3>
+<p><strong>Stale branches:</strong></p>
+<pre><code>git branch -r --merged main | grep -v main | grep -v HEAD
+git for-each-ref --sort=committerdate --format='%(refname:short) %(committerdate:relative)' refs/remotes/</code></pre>
+<ul>
+<li>Flag branches with no commits in &gt; 90 days as stale</li>
+<li>Count total stale branches</li>
+</ul>
+<p><strong>Tracked secrets/env files:</strong></p>
+<pre><code>git ls-files | grep -E '\.env$|\.env\.|credentials|secrets'</code></pre>
+<ul>
+<li>Any `.env`, `.env.*`, `credentials.*`, or `secrets.*` files tracked in git = FAIL</li>
+</ul>
+<p><strong>Large binary files:</strong></p>
+<pre><code>git ls-files | while read f; do
+  size=$(wc -c &lt; &quot;$f&quot; 2&gt;/dev/null)
+  [ &quot;$size&quot; -gt 5242880 ] &amp;&amp; echo &quot;$f ($size bytes)&quot;
+done</code></pre>
+<ul>
+<li>Files &gt; 5MB tracked in git without Git LFS = WARN</li>
+<li>Check for `.gitattributes` with LFS patterns if large binaries exist</li>
+</ul>
+<p><strong>Dependency freshness (if applicable):</strong></p>
+<ul>
+<li>If `package.json` exists: check for `package-lock.json` presence</li>
+<li>If `requirements.txt` exists: check if pinned (versions specified)</li>
+<li>Do NOT run install commands or modify anything</li>
+</ul>
+<h3>Step 7: Score and Report</h3>
+<p>#### Scoring Categories</p>
+<p>| Category | Weight | What It Covers |</p>
+<p>|----------|--------|----------------|</p>
+<p>| Standard Files | 30% | LICENSE, SECURITY.md, CONTRIBUTING.md, CODEOWNERS, .gitignore, .editorconfig, templates |</p>
+<p>| GitHub Config | 15% | Description, topics, branch protection, default branch |</p>
+<p>| Documentation | 25% | README quality, CHANGELOG presence and freshness |</p>
+<p>| Code Hygiene | 20% | Stale branches, tracked secrets, large binaries |</p>
+<p>| Community | 10% | CODE_OF_CONDUCT, issue templates, PR templates, CONTRIBUTING.md |</p>
+<p>#### Per-Category Scoring</p>
+<p>Each category scores 0-100 based on checks passed within it. See REFERENCE.md for the full rubric.</p>
+<p>#### Letter Grade</p>
+<p>| Score | Grade |</p>
+<p>|-------|-------|</p>
+<p>| 90-100 | A |</p>
+<p>| 80-89 | B |</p>
+<p>| 70-79 | C |</p>
+<p>| 60-69 | D |</p>
+<p>| 0-59 | F |</p>
+<p>#### Report Format</p>
+<pre><code>=== Repo Health Report: {repo-name} ===
+Visibility: {public | private}
+Overall Score: {score}/100 (Grade: {letter})
+
+--- Standard Files (30%) --- Score: {n}/100
+  [PASS] .gitignore
+  [PASS] LICENSE (MIT)
+  [MISS] SECURITY.md
+  [MISS] CONTRIBUTING.md
+  [PASS] CODEOWNERS
+  ...
+
+--- GitHub Config (15%) --- Score: {n}/100
+  [PASS] Description: &quot;One-command repo health audit...&quot;
+  [FAIL] Topics: none set
+  [PASS] Default branch: main
+  [FAIL] Branch protection: not enabled
+  ...
+
+--- Documentation (25%) --- Score: {n}/100
+  [PASS] README.md (142 lines)
+  [WARN] No install/setup instructions found in README
+  [MISS] CHANGELOG.md
+  ...
+
+--- Code Hygiene (20%) --- Score: {n}/100
+  [PASS] No tracked .env files
+  [WARN] 3 stale branches (&gt;90 days)
+  [PASS] No large binary files tracked
+  ...
+
+--- Community (10%) --- Score: {n}/100
+  [MISS] CODE_OF_CONDUCT.md
+  [MISS] Issue templates
+  [PASS] PR template
+  ...
+
+=== Prioritized Fixes ===
+1. [HIGH] Add SECURITY.md — required for public repos. See template in REFERENCE.md.
+2. [HIGH] Enable branch protection on main — prevents force pushes and requires reviews.
+3. [HIGH] Add repository topics — improves discoverability. Suggest: {topic1}, {topic2}, {topic3}.
+4. [MED]  Add CONTRIBUTING.md — guides external contributors.
+5. [MED]  Add CHANGELOG.md — tracks releases for users.
+6. [LOW]  Clean up 3 stale branches.
+7. [LOW]  Add CODE_OF_CONDUCT.md — signals welcoming community.</code></pre>
+<p>Priority levels:</p>
+<ul>
+<li><strong>HIGH</strong>: Security, legal (LICENSE/SECURITY.md), or protection issues</li>
+<li><strong>MED</strong>: Documentation and community gaps that affect usability</li>
+<li><strong>LOW</strong>: Cleanup and nice-to-haves</li>
+</ul>
+<h3>Step 8: Fix Mode (--fix)</h3>
+<p>If `--fix` flag was passed:</p>
+<p>1. Present the list of MISS and FAIL items that can be auto-generated</p>
+<p>2. Ask the user to confirm which files to create (show numbered list, accept comma-separated selection or &quot;all&quot;)</p>
+<p>3. For each confirmed file, generate it using sensible defaults:</p>
+<p>   - `SECURITY.md`: Standard vulnerability reporting template</p>
+<p>   - `CONTRIBUTING.md`: Fork/branch/PR workflow with code style notes</p>
+<p>   - `CODE_OF_CONDUCT.md`: Contributor Covenant v2.1</p>
+<p>   - `.editorconfig`: Sensible defaults for the detected tech stack</p>
+<p>   - `CODEOWNERS`: Prompt user for owner patterns</p>
+<p>   - Issue/PR templates: YAML form-based templates (see REFERENCE.md)</p>
+<p>4. Do NOT overwrite existing files</p>
+<p>5. Run infra/PII scrub on all generated content before writing</p>
+<p>---</p>
+<h2>Key Principles</h2>
+<ul>
+<li><strong>Read-only by default.</strong> The audit never modifies files unless `--fix` is explicitly passed.</li>
+<li><strong>Public repos are held to a higher standard.</strong> Private repos skip community and some config checks.</li>
+<li><strong>Prioritize actionable output.</strong> Every finding includes a specific fix recommendation.</li>
+<li><strong>No false urgency.</strong> Recommended items are scored lower than required items. The report distinguishes between must-fix and nice-to-have.</li>
+<li><strong>Respect existing work.</strong> Fix mode never overwrites. It only creates missing files.</li>
+<li><strong>Infra/PII awareness.</strong> All generated files pass through the standard PII scrub before writing.</li>
+</ul>
+<h2>Anti-Patterns -- Do NOT</h2>
+<ul>
+<li>Modify any files during a standard audit (no `--fix` flag)</li>
+<li>Run install commands (`npm install`, `pip install`, etc.)</li>
+<li>Push changes or create commits -- the user decides when to commit</li>
+<li>Fabricate repository metadata -- use what `gh` and `git` report</li>
+<li>Rate repos you do not have local access to -- this is a local audit tool</li>
+<li>Skip the PII scrub when generating files in fix mode</li>
+</ul></div>
+</div>
+<script>
+function copyInstall(btn) {
+  var text = btn.getAttribute('data-copy');
+  navigator.clipboard.writeText(text).then(function() {
+    btn.classList.add('copied');
+    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+    setTimeout(function() {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>

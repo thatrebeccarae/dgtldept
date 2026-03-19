@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>repo-scaffold — claude-marketing</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-00XHYRHCX4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-00XHYRHCX4');
+</script>
+<meta name="description" content="Initialize GitHub repositories with standard files and configuration. Generates LICENSE, CONTRIBUTING.md, SECURITY.md, issue/PR templates, CI config, and .gitig">
+<meta property="og:title" content="repo-scaffold — claude-marketing">
+<meta property="og:description" content="Initialize GitHub repositories with standard files and configuration. Generates LICENSE, CONTRIBUTING.md, SECURITY.md, issue/PR templates, CI config, and .gitignore. Detects project type and adapts te">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="repo-scaffold — claude-marketing">
+<meta name="twitter:description" content="Initialize GitHub repositories with standard files and configuration. Generates LICENSE, CONTRIBUTING.md, SECURITY.md, issue/PR templates, CI config, and .gitignore. Detects project type and adapts te">
+<link rel="canonical" href="https://thatrebeccarae.github.io/claude-marketing/skill/repo-scaffold.html">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600,700&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Ultralight.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cartograph CF';
+  src: url('../fonts/CartographCF-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --accent: #5B5F8D;
+  --black: #000000;
+  --white: #ffffff;
+  --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+html {
+  background: #000000;
+  color: #ffffff;
+}
+
+body {
+  font-family: 'Switzer', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(15px, 1.1vw, 17px);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.detail-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 120px clamp(20px, 5vw, 40px) 80px;
+}
+
+.detail-back {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+.detail-back:hover { opacity: 1; }
+
+.detail-name {
+  font-family: 'PP Editorial New', 'Georgia', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 200;
+  line-height: 1.15;
+  letter-spacing: -0.014em;
+  margin-bottom: 0.5rem;
+}
+
+.detail-category {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  letter-spacing: 0.04em;
+  margin-bottom: 2rem;
+}
+
+.detail-desc {
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.65;
+  margin-bottom: 2.5rem;
+  opacity: 0.85;
+}
+
+.detail-install {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.detail-install code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  opacity: 0.6;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.detail-install .copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  color: #ffffff;
+  flex-shrink: 0;
+}
+.detail-install .copy-btn:hover { opacity: 0.8; }
+.detail-install .copy-btn.copied { opacity: 1; color: #4ade80; }
+
+.detail-tested {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  opacity: 0.4;
+  margin-bottom: 2.5rem;
+}
+
+.detail-capabilities h2,
+.detail-sources h2,
+.detail-body h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  margin-top: 2.5rem;
+}
+
+.detail-capabilities ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.detail-capabilities li {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 4px;
+}
+
+.detail-source-links {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.detail-source-links a {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ffffff;
+  border-radius: 45px;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+.detail-source-links a:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+.detail-body {
+  margin-top: 2.5rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 2rem;
+}
+
+.detail-body h2 {
+  font-family: 'Switzer', sans-serif;
+}
+
+.detail-body h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.detail-body p {
+  margin-bottom: 1rem;
+  opacity: 0.85;
+  line-height: 1.65;
+}
+
+.detail-body ul {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.detail-body li {
+  margin-bottom: 0.35rem;
+  opacity: 0.85;
+  line-height: 1.55;
+}
+
+.detail-body pre {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+}
+
+.detail-body code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.85rem;
+}
+
+.detail-body blockquote {
+  border-left: 2px solid rgba(255,255,255,0.2);
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+@media (max-width: 700px) {
+  .detail-page {
+    padding: 100px 20px 60px;
+  }
+  .detail-source-links {
+    flex-wrap: wrap;
+  }
+}
+</style>
+</head>
+<body>
+<div class="detail-page" data-pagefind-body>
+  <a href="../skills.html" class="detail-back">&larr; Back to skills</a>
+  <h1 class="detail-name">repo-scaffold</h1>
+  <div class="detail-category">DevOps</div>
+  <p class="detail-desc">Initialize GitHub repositories with standard files and configuration. Generates LICENSE, CONTRIBUTING.md, SECURITY.md, issue/PR templates, CI config, and .gitignore. Detects project type and adapts templates accordingly.</p>
+  <div class="detail-install">
+    <code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/repo-scaffold ~/.claude/skills/</code>
+    <button class="copy-btn" data-copy="git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/repo-scaffold ~/.claude/skills/" title="Copy install command" onclick="copyInstall(this)">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+    </button>
+  </div>
+  <div class="detail-tested">Tested 2026-03-19 &middot; Claude Code v2.1</div>
+  
+  <div class="detail-sources">
+<h2>Source Files</h2>
+<div class="detail-source-links">
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/repo-scaffold/SKILL.md" target="_blank" rel="noopener">SKILL.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/repo-scaffold/REFERENCE.md" target="_blank" rel="noopener">REFERENCE.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/repo-scaffold/EXAMPLES.md" target="_blank" rel="noopener">EXAMPLES.md</a>
+</div>
+</div>
+  <div class="detail-body"><p>Initialize GitHub repositories with standard files and configuration. This skill generates LICENSE, CONTRIBUTING.md, SECURITY.md, CODEOWNERS, .gitignore, .editorconfig, YAML-based issue templates, PR template, CI config skeleton, and optional safety files. It detects project type from existing files and adapts all templates accordingly.</p>
+<h2>Install</h2>
+<pre><code>claude skill install repo-scaffold</code></pre>
+<h2>When to Use</h2>
+<p>This skill should be used when:</p>
+<ul>
+<li>Setting up a new GitHub repository from scratch</li>
+<li>Adding missing standard files to an existing repository</li>
+<li>Standardizing repository configuration across projects</li>
+<li>Preparing a private repo for open-source release</li>
+</ul>
+<h2>Usage</h2>
+<pre><code>/repo-scaffold [repo-path] [--license MIT|Apache-2.0|ISC] [--public] [--ci github-actions|none]</code></pre>
+<p>| Flag | Default | Description |</p>
+<p>|------|---------|-------------|</p>
+<p>| `repo-path` | `.` (cwd) | Path to the git repository root |</p>
+<p>| `--license` | `MIT` | License type (MIT, Apache-2.0, ISC, GPL-3.0, BSD-2-Clause) |</p>
+<p>| `--public` | off | Include `.public-repo`, `.pii-allowlist`, `.commit-msg-blocklist` |</p>
+<p>| `--ci` | `github-actions` | CI provider skeleton (`github-actions` or `none`) |</p>
+<h2>Procedure</h2>
+<h3>Step 1: Validate Repo Path</h3>
+<p>Confirm the target path is an initialized git repository (contains `.git/`). If not, halt and inform the user. Never run `git init` without explicit permission.</p>
+<h3>Step 2: Scan Existing Files</h3>
+<p>Inventory the repo root and `.github/` directory for any files this skill would generate. Build a conflict list. <strong>Never overwrite existing files.</strong> If conflicts exist, present them and ask which to skip or replace.</p>
+<h3>Step 3: Detect Project Type</h3>
+<p>Identify the primary language and tooling by checking for marker files:</p>
+<p>| Marker File | Project Type |</p>
+<p>|-------------|-------------|</p>
+<p>| `package.json` | Node.js / JavaScript / TypeScript |</p>
+<p>| `pyproject.toml`, `setup.py`, `requirements.txt` | Python |</p>
+<p>| `Cargo.toml` | Rust |</p>
+<p>| `go.mod` | Go |</p>
+<p>| Multiple markers | Multi-language |</p>
+<p>| None of the above | Generic |</p>
+<p>If multiple markers are found, treat as multi-language and combine relevant patterns.</p>
+<h3>Step 4: Generate Files</h3>
+<p>Generate each file with language-appropriate content. Refer to [REFERENCE.md](REFERENCE.md) for templates, patterns, and format specifications.</p>
+<p>#### 4a. LICENSE</p>
+<p>Prompt the user for license choice if `--license` was not provided. Default to MIT. Insert the current year and the repo owner's name (from `git config user.name` or ask). See REFERENCE.md license comparison table for guidance.</p>
+<p>#### 4b. .gitignore</p>
+<p>Generate language-appropriate ignore patterns based on the detected project type. Combine patterns for multi-language repos. Always include OS-level ignores (`.DS_Store`, `Thumbs.db`) and editor ignores (`.vscode/`, `.idea/`).</p>
+<p>#### 4c. CONTRIBUTING.md</p>
+<p>Generate a fork-branch-PR contribution guide. Include:</p>
+<ul>
+<li>Fork and clone instructions</li>
+<li>Branch naming conventions (`feat/`, `fix/`, `docs/`)</li>
+<li>Code style notes (link to linter config if detected)</li>
+<li>Commit message format</li>
+<li>PR checklist</li>
+</ul>
+<p>#### 4d. SECURITY.md</p>
+<p>Generate a security policy with:</p>
+<ul>
+<li>Supported versions table (populate from package version if detectable)</li>
+<li>Vulnerability reporting instructions (email-based, not public issues)</li>
+<li>Response timeline expectations</li>
+</ul>
+<p>#### 4e. CODEOWNERS</p>
+<p>Scan the top-level directory structure and generate a CODEOWNERS file. Map directories to the repo owner by default. Add comments explaining how to customize.</p>
+<p>#### 4f. .editorconfig</p>
+<p>Generate settings appropriate to the detected project type:</p>
+<ul>
+<li>Indent style and size</li>
+<li>End-of-line character</li>
+<li>Trim trailing whitespace</li>
+<li>Insert final newline</li>
+<li>Charset (utf-8)</li>
+</ul>
+<p>#### 4g. .github/ISSUE_TEMPLATE/bug-report.yml</p>
+<p>Generate a YAML form-based bug report template with fields: description, steps to reproduce, expected behavior, actual behavior, environment, and optional screenshots. See REFERENCE.md for YAML form spec.</p>
+<p>#### 4h. .github/ISSUE_TEMPLATE/feature-request.yml</p>
+<p>Generate a YAML form-based feature request template with fields: problem statement, proposed solution, alternatives considered, and additional context.</p>
+<p>#### 4i. .github/pull_request_template.md</p>
+<p>Generate a PR template with sections: summary of changes, type of change (checkboxes), testing performed, and checklist.</p>
+<p>#### 4j. .github/workflows/ci.yml</p>
+<p>Generate a CI skeleton for GitHub Actions (unless `--ci none`). Include:</p>
+<ul>
+<li>Trigger on push to main and pull requests</li>
+<li>Language-appropriate setup step</li>
+<li>Lint step (ESLint, ruff, clippy, golangci-lint)</li>
+<li>Test step (language-appropriate test runner)</li>
+<li>Placeholder comments for additional steps</li>
+</ul>
+<p>#### 4k. Optional: Safety Files (when --public)</p>
+<p>When `--public` is passed, also generate:</p>
+<ul>
+<li>`.public-repo` — Empty marker file indicating the repo is public</li>
+<li>`.pii-allowlist` — One regex per line; starts with a comment header explaining usage</li>
+<li>`.commit-msg-blocklist` — One term per line; starts with a comment header and common defaults</li>
+</ul>
+<h3>Step 5: Present Plan</h3>
+<p>Before writing any files, present the full list of files to be created with a one-line description of each. Show which files were skipped due to conflicts. Ask the user to confirm before proceeding.</p>
+<h3>Step 6: Write Files</h3>
+<p>Write all confirmed files. Report each file as it is written.</p>
+<h3>Step 7: Summary</h3>
+<p>Print a summary table:</p>
+<ul>
+<li>Files created (with paths)</li>
+<li>Files skipped (with reason)</li>
+<li>Suggested next steps (e.g., review CODEOWNERS, customize CONTRIBUTING.md, add secrets to CI)</li>
+</ul>
+<h2>Key Principles</h2>
+<p>1. <strong>Never overwrite existing files.</strong> Always scan first, flag conflicts, and ask.</p>
+<p>2. <strong>Always ask before writing.</strong> Present the plan and get explicit confirmation.</p>
+<p>3. <strong>Language-appropriate defaults.</strong> Detect the project type and tailor every template.</p>
+<p>4. <strong>Minimal but complete.</strong> Generate the standard set every well-maintained repo needs, nothing more.</p>
+<p>5. <strong>Composable.</strong> Each file stands alone. Re-run the skill later to add missing files without disrupting existing ones.</p>
+<h2>References</h2>
+<ul>
+<li>[REFERENCE.md](REFERENCE.md) — License comparison, .gitignore patterns, YAML template spec, CI skeletons, CODEOWNERS syntax, .editorconfig settings, SECURITY.md and CONTRIBUTING.md templates</li>
+<li>[EXAMPLES.md](EXAMPLES.md) — Worked examples for Node.js, Python, and public repo scaffolding</li>
+</ul></div>
+</div>
+<script>
+function copyInstall(btn) {
+  var text = btn.getAttribute('data-copy');
+  navigator.clipboard.writeText(text).then(function() {
+    btn.classList.add('copied');
+    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+    setTimeout(function() {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>
