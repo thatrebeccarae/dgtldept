@@ -1,5 +1,9 @@
 # dgtldept Marketing Skills
 
+## ab-testing-framework
+
+A/B and multivariate testing methodology.
+
 ## account-structure-review
 
 Google and Meta paid media account structure evaluation.
@@ -12,9 +16,17 @@ Answer Engine Optimization (AEO) and Generative Engine Optimization (GEO) specia
 
 Extract brand identity from a website URL — voice, colors, typography, imagery, values, and target audience — into a structured brand-profile.json.
 
+## brand-voice-guidelines
+
+Develop brand voice, tone matrices, messaging frameworks, and brand book documentation.
+
 ## braze
 
 Braze customer engagement platform expertise.
+
+## cold-email-outreach
+
+Cold email and outreach sequence design with personalization, deliverability optimization, follow-up cadence, and compliance (CAN-SPAM/GDPR).
 
 ## competitor-ads-analyst
 
@@ -32,9 +44,21 @@ End-to-end content creation workflow that orchestrates research, editorial revie
 
 End-to-end content creation pipeline from research through editorial review to social distribution.
 
+## copywriting-frameworks
+
+Framework-driven copywriting for ads, landing pages, emails, sales pages, and CTAs.
+
+## cro-auditor
+
+Conversion Rate Optimization auditing for landing pages, signup flows, checkout funnels, forms, and CTAs.
+
 ## cross-platform-audit
 
 Unified multi-platform paid media audit with parallel execution.
+
+## customer-journey-mapping
+
+Map customer journeys from awareness to advocacy.
 
 ## data-viz-deck
 
@@ -88,6 +112,14 @@ Klaviyo marketing operations and analyst expertise.
 
 Klaviyo API and developer integration expertise.
 
+## landing-page-optimizer
+
+Landing page audit and optimization for conversion.
+
+## linkedin-ads
+
+LinkedIn Ads platform expertise.
+
 ## looker-studio
 
 Looker Studio (formerly Google Data Studio) expertise.
@@ -104,6 +136,10 @@ Guide for creating high-quality MCP (Model Context Protocol) servers that enable
 
 Microsoft Advertising (Bing Ads) platform expertise.
 
+## pricing-strategy
+
+Pricing model design, competitive positioning, value metric selection, price testing, and pricing page optimization.
+
 ## pro-deck-builder
 
 Create polished HTML slide decks and PDF-ready documents for consulting deliverables.
@@ -111,6 +147,10 @@ Create polished HTML slide decks and PDF-ready documents for consulting delivera
 ## pro-report-builder
 
 Create polished HTML technical reports and multi-page documents for consulting deliverables.
+
+## programmatic-seo
+
+Template-based page generation at scale for SEO.
 
 ## react-best-practices
 
@@ -123,6 +163,10 @@ Remotion video production best practices — spring animations, interpolation pa
 ## research-digest
 
 Generate structured research briefs from RSS feeds and web sources on any topic.
+
+## retention-churn-prevention
+
+Customer retention analysis, churn prediction, cohort analysis, win-back campaigns, and loyalty program design.
 
 ## safe-push
 
@@ -144,6 +188,10 @@ Shopify e-commerce platform marketing expertise.
 
 Guide for creating effective Claude Code skills that extend capabilities with specialized knowledge, workflows, and tool integrations.
 
+## social-media-strategy
+
+Platform-specific organic social media strategy, content calendars, engagement tactics, community building, and performance measurement.
+
 ## tech-diagram
 
 Generate technical architecture diagrams, pipeline flows, layer/stack diagrams, and system illustrations as standalone HTML files.
@@ -151,6 +199,14 @@ Generate technical architecture diagrams, pipeline flows, layer/stack diagrams, 
 ## technical-seo-audit
 
 Deep technical SEO auditing covering crawlability, indexation, Core Web Vitals, site architecture, canonicalization, structured data validation, and performance optimization.
+
+## tiktok-ads
+
+TikTok Ads platform expertise.
+
+## utm-attribution-strategy
+
+UTM parameter strategy, campaign tracking, and marketing attribution modeling.
 
 ## wasted-spend-finder
 

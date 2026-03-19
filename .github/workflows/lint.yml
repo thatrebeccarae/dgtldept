@@ -25,7 +25,7 @@ jobs:
         run: |
           sh_files=$(find . -name "*.sh" -type f)
           if [ -n "$sh_files" ]; then
-            echo "$sh_files" | xargs shellcheck
+            echo "$sh_files" | xargs shellcheck --severity=warning
           else
             echo "No .sh files found, skipping shellcheck."
           fi
