@@ -21,17 +21,16 @@ SKIP_DIRS = {"shared"}
 
 # Category display names and order
 CATEGORIES = {
-    "dtc-marketing": {"label": "DTC & E-commerce", "order": 1},
-    "email-marketing": {"label": "Email & Lifecycle", "order": 2},
-    "paid-media": {"label": "Paid Media", "order": 3},
-    "content": {"label": "Content", "order": 4},
+    "paid-media": {"label": "Paid Media", "order": 1},
+    "seo": {"label": "SEO & AI Search", "order": 2},
+    "content": {"label": "Content", "order": 3},
+    "growth": {"label": "Growth & Conversion", "order": 4},
     "strategy": {"label": "Strategy & Research", "order": 5},
-    "creative": {"label": "Creative & Design", "order": 6},
-    "reporting": {"label": "Reporting & Deliverables", "order": 7},
-    "dev-tools": {"label": "Developer Tools", "order": 8},
-    "seo": {"label": "SEO & AI Search", "order": 9},
-    "growth": {"label": "Growth & Conversion", "order": 10},
-    "analytics": {"label": "Analytics & Measurement", "order": 11},
+    "email-lifecycle": {"label": "Email & Lifecycle", "order": 6},
+    "analytics": {"label": "Analytics", "order": 7},
+    "creative": {"label": "Creative & Design", "order": 8},
+    "reporting": {"label": "Reporting & Deliverables", "order": 9},
+    "developer-tools": {"label": "Developer Tools", "order": 10},
 }
 
 

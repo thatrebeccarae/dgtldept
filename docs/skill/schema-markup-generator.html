@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>schema-markup-generator — claude-marketing</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-00XHYRHCX4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-00XHYRHCX4');
+</script>
+<meta name="description" content="Generate structured data markup (JSON-LD) for rich results, AI search visibility, and enhanced SERP features. Supports Article, FAQ, HowTo, Product, Review, Loc">
+<meta property="og:title" content="schema-markup-generator — claude-marketing">
+<meta property="og:description" content="Generate structured data markup (JSON-LD) for rich results, AI search visibility, and enhanced SERP features. Supports Article, FAQ, HowTo, Product, Review, LocalBusiness, Event, BreadcrumbList, Perso">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="schema-markup-generator — claude-marketing">
+<meta name="twitter:description" content="Generate structured data markup (JSON-LD) for rich results, AI search visibility, and enhanced SERP features. Supports Article, FAQ, HowTo, Product, Review, LocalBusiness, Event, BreadcrumbList, Perso">
+<link rel="canonical" href="https://thatrebeccarae.github.io/claude-marketing/skill/schema-markup-generator.html">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600,700&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Ultralight.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cartograph CF';
+  src: url('../fonts/CartographCF-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --accent: #5B5F8D;
+  --black: #000000;
+  --white: #ffffff;
+  --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+html {
+  background: #000000;
+  color: #ffffff;
+}
+
+body {
+  font-family: 'Switzer', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(15px, 1.1vw, 17px);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.detail-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 120px clamp(20px, 5vw, 40px) 80px;
+}
+
+.detail-back {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+.detail-back:hover { opacity: 1; }
+
+.detail-name {
+  font-family: 'PP Editorial New', 'Georgia', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 200;
+  line-height: 1.15;
+  letter-spacing: -0.014em;
+  margin-bottom: 0.5rem;
+}
+
+.detail-category {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  letter-spacing: 0.04em;
+  margin-bottom: 2rem;
+}
+
+.detail-desc {
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.65;
+  margin-bottom: 2.5rem;
+  opacity: 0.85;
+}
+
+.detail-install {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.detail-install code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  opacity: 0.6;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.detail-install .copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  color: #ffffff;
+  flex-shrink: 0;
+}
+.detail-install .copy-btn:hover { opacity: 0.8; }
+.detail-install .copy-btn.copied { opacity: 1; color: #4ade80; }
+
+.detail-tested {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  opacity: 0.4;
+  margin-bottom: 2.5rem;
+}
+
+.detail-capabilities h2,
+.detail-sources h2,
+.detail-body h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  margin-top: 2.5rem;
+}
+
+.detail-capabilities ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.detail-capabilities li {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 4px;
+}
+
+.detail-source-links {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.detail-source-links a {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ffffff;
+  border-radius: 45px;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+.detail-source-links a:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+.detail-body {
+  margin-top: 2.5rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 2rem;
+}
+
+.detail-body h2 {
+  font-family: 'Switzer', sans-serif;
+}
+
+.detail-body h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.detail-body p {
+  margin-bottom: 1rem;
+  opacity: 0.85;
+  line-height: 1.65;
+}
+
+.detail-body ul {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.detail-body li {
+  margin-bottom: 0.35rem;
+  opacity: 0.85;
+  line-height: 1.55;
+}
+
+.detail-body pre {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+}
+
+.detail-body code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.85rem;
+}
+
+.detail-body blockquote {
+  border-left: 2px solid rgba(255,255,255,0.2);
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+@media (max-width: 700px) {
+  .detail-page {
+    padding: 100px 20px 60px;
+  }
+  .detail-source-links {
+    flex-wrap: wrap;
+  }
+}
+</style>
+</head>
+<body>
+<div class="detail-page" data-pagefind-body>
+  <a href="../skills.html" class="detail-back">&larr; Back to skills</a>
+  <h1 class="detail-name">schema-markup-generator</h1>
+  <div class="detail-category">SEO &amp; AI Search</div>
+  <p class="detail-desc">Generate structured data markup (JSON-LD) for rich results, AI search visibility, and enhanced SERP features. Supports Article, FAQ, HowTo, Product, Review, LocalBusiness, Event, BreadcrumbList, Person, Organization, and more. Use when the user needs schema markup, structured data, rich snippets, JSON-LD, or wants to improve search appearance.</p>
+  <div class="detail-install">
+    <code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/schema-markup-generator ~/.claude/skills/</code>
+    <button class="copy-btn" data-copy="git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/schema-markup-generator ~/.claude/skills/" title="Copy install command" onclick="copyInstall(this)">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+    </button>
+  </div>
+  <div class="detail-tested">Tested 2026-03-18 &middot; Claude Code v2.1</div>
+  
+  <div class="detail-sources">
+<h2>Source Files</h2>
+<div class="detail-source-links">
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/schema-markup-generator/SKILL.md" target="_blank" rel="noopener">SKILL.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/schema-markup-generator/REFERENCE.md" target="_blank" rel="noopener">REFERENCE.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/schema-markup-generator/EXAMPLES.md" target="_blank" rel="noopener">EXAMPLES.md</a>
+</div>
+</div>
+  <div class="detail-body"><p>Generate JSON-LD structured data for rich results, AI citations, and enhanced search visibility.</p>
+<h2>Install</h2>
+<pre><code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/schema-markup-generator ~/.claude/skills/</code></pre>
+<h2>When to Use</h2>
+<ul>
+<li>Adding structured data to new or existing pages</li>
+<li>Generating JSON-LD for specific schema types</li>
+<li>Auditing existing schema for errors or missing fields</li>
+<li>Improving AI search visibility (pairs with aeo-geo-optimizer)</li>
+<li>Enabling rich results (FAQ dropdowns, star ratings, how-to steps)</li>
+</ul>
+<h2>Workflow</h2>
+<h3>Step 1: Identify Content Type</h3>
+<p>| Content | Primary Schema | Rich Result |</p>
+<p>|---------|---------------|------------|</p>
+<p>| Blog post | Article | Enhanced listing with author, date |</p>
+<p>| FAQ section | FAQPage | Expandable Q&amp;A in SERPs |</p>
+<p>| Tutorial | HowTo | Step-by-step with images/time |</p>
+<p>| Product page | Product | Price, availability, ratings |</p>
+<p>| Review | Review + Rating | Star ratings in SERPs |</p>
+<p>| Recipe | Recipe | Cooking time, ingredients, ratings |</p>
+<p>| Event | Event | Date, location, ticket info |</p>
+<p>| Local business | LocalBusiness | Maps, hours, contact |</p>
+<p>| Person/author | Person | Knowledge panel |</p>
+<p>| Breadcrumbs | BreadcrumbList | Breadcrumb trail in SERPs |</p>
+<p>| Video | VideoObject | Video carousel, thumbnails |</p>
+<p>| Software | SoftwareApplication | App info in SERPs |</p>
+<p>| Course | Course | Course info in SERPs |</p>
+<p>| Dataset | Dataset | Dataset search results |</p>
+<h3>Step 2: Generate JSON-LD</h3>
+<p>Generate a `&lt;script type=&quot;application/ld+json&quot;&gt;` block with all required and recommended fields for the schema type. Always use JSON-LD format (not Microdata or RDFa).</p>
+<h3>Step 3: Validate</h3>
+<ul>
+<li>Google Rich Results Test: https://search.google.com/test/rich-results</li>
+<li>Schema.org Validator: https://validator.schema.org/</li>
+<li>Check Google Search Console for structured data errors</li>
+</ul>
+<h2>Schema Templates</h2>
+<h3>Article</h3>
+<pre><code>{
+  &quot;@context&quot;: &quot;https://schema.org&quot;,
+  &quot;@type&quot;: &quot;Article&quot;,
+  &quot;headline&quot;: &quot;Article Title (max 110 chars)&quot;,
+  &quot;description&quot;: &quot;Brief description of the article&quot;,
+  &quot;author&quot;: {
+    &quot;@type&quot;: &quot;Person&quot;,
+    &quot;name&quot;: &quot;Author Name&quot;,
+    &quot;url&quot;: &quot;https://example.com/author/name&quot;,
+    &quot;jobTitle&quot;: &quot;Author Title&quot;,
+    &quot;sameAs&quot;: [&quot;https://linkedin.com/in/author&quot;, &quot;https://twitter.com/author&quot;]
+  },
+  &quot;publisher&quot;: {
+    &quot;@type&quot;: &quot;Organization&quot;,
+    &quot;name&quot;: &quot;Publisher Name&quot;,
+    &quot;logo&quot;: {&quot;@type&quot;: &quot;ImageObject&quot;, &quot;url&quot;: &quot;https://example.com/logo.png&quot;}
+  },
+  &quot;datePublished&quot;: &quot;2026-03-18T00:00:00Z&quot;,
+  &quot;dateModified&quot;: &quot;2026-03-18T00:00:00Z&quot;,
+  &quot;image&quot;: &quot;https://example.com/article-image.jpg&quot;,
+  &quot;mainEntityOfPage&quot;: {&quot;@type&quot;: &quot;WebPage&quot;, &quot;@id&quot;: &quot;https://example.com/article-url&quot;}
+}</code></pre>
+<h3>FAQPage</h3>
+<pre><code>{
+  &quot;@context&quot;: &quot;https://schema.org&quot;,
+  &quot;@type&quot;: &quot;FAQPage&quot;,
+  &quot;mainEntity&quot;: [
+    {
+      &quot;@type&quot;: &quot;Question&quot;,
+      &quot;name&quot;: &quot;What is the question?&quot;,
+      &quot;acceptedAnswer&quot;: {
+        &quot;@type&quot;: &quot;Answer&quot;,
+        &quot;text&quot;: &quot;The complete answer text. Can include &lt;a href=url&gt;HTML links&lt;/a&gt;.&quot;
+      }
+    }
+  ]
+}</code></pre>
+<h3>HowTo</h3>
+<pre><code>{
+  &quot;@context&quot;: &quot;https://schema.org&quot;,
+  &quot;@type&quot;: &quot;HowTo&quot;,
+  &quot;name&quot;: &quot;How to Do Something&quot;,
+  &quot;description&quot;: &quot;Brief description&quot;,
+  &quot;totalTime&quot;: &quot;PT30M&quot;,
+  &quot;estimatedCost&quot;: {&quot;@type&quot;: &quot;MonetaryAmount&quot;, &quot;currency&quot;: &quot;USD&quot;, &quot;value&quot;: &quot;0&quot;},
+  &quot;step&quot;: [
+    {
+      &quot;@type&quot;: &quot;HowToStep&quot;,
+      &quot;name&quot;: &quot;Step 1 Title&quot;,
+      &quot;text&quot;: &quot;Detailed step instructions&quot;,
+      &quot;image&quot;: &quot;https://example.com/step1.jpg&quot;
+    }
+  ]
+}</code></pre>
+<h3>Product</h3>
+<pre><code>{
+  &quot;@context&quot;: &quot;https://schema.org&quot;,
+  &quot;@type&quot;: &quot;Product&quot;,
+  &quot;name&quot;: &quot;Product Name&quot;,
+  &quot;description&quot;: &quot;Product description&quot;,
+  &quot;image&quot;: &quot;https://example.com/product.jpg&quot;,
+  &quot;brand&quot;: {&quot;@type&quot;: &quot;Brand&quot;, &quot;name&quot;: &quot;Brand Name&quot;},
+  &quot;sku&quot;: &quot;SKU-12345&quot;,
+  &quot;offers&quot;: {
+    &quot;@type&quot;: &quot;Offer&quot;,
+    &quot;price&quot;: &quot;29.99&quot;,
+    &quot;priceCurrency&quot;: &quot;USD&quot;,
+    &quot;availability&quot;: &quot;https://schema.org/InStock&quot;,
+    &quot;url&quot;: &quot;https://example.com/product&quot;
+  },
+  &quot;aggregateRating&quot;: {
+    &quot;@type&quot;: &quot;AggregateRating&quot;,
+    &quot;ratingValue&quot;: &quot;4.5&quot;,
+    &quot;reviewCount&quot;: &quot;127&quot;
+  }
+}</code></pre>
+<h3>BreadcrumbList</h3>
+<pre><code>{
+  &quot;@context&quot;: &quot;https://schema.org&quot;,
+  &quot;@type&quot;: &quot;BreadcrumbList&quot;,
+  &quot;itemListElement&quot;: [
+    {&quot;@type&quot;: &quot;ListItem&quot;, &quot;position&quot;: 1, &quot;name&quot;: &quot;Home&quot;, &quot;item&quot;: &quot;https://example.com&quot;},
+    {&quot;@type&quot;: &quot;ListItem&quot;, &quot;position&quot;: 2, &quot;name&quot;: &quot;Category&quot;, &quot;item&quot;: &quot;https://example.com/category&quot;},
+    {&quot;@type&quot;: &quot;ListItem&quot;, &quot;position&quot;: 3, &quot;name&quot;: &quot;Current Page&quot;}
+  ]
+}</code></pre>
+<h2>Required vs Recommended Fields</h2>
+<p>| Schema Type | Required Fields | Recommended Fields |</p>
+<p>|------------|----------------|-------------------|</p>
+<p>| Article | headline, author, datePublished, image | dateModified, publisher, description |</p>
+<p>| FAQPage | mainEntity (Question + Answer) | — |</p>
+<p>| HowTo | name, step | totalTime, estimatedCost, image |</p>
+<p>| Product | name, offers (price + currency + availability) | brand, sku, aggregateRating, image |</p>
+<p>| LocalBusiness | name, address | phone, hours, geo, image, priceRange |</p>
+<p>| Event | name, startDate, location | endDate, offers, image, performer |</p>
+<p>| Person | name | jobTitle, url, sameAs, image |</p>
+<h2>Common Mistakes</h2>
+<p>1. <strong>Missing required fields</strong> — always check per-type requirements</p>
+<p>2. <strong>Incorrect date format</strong> — use ISO 8601 (YYYY-MM-DDTHH:MM:SSZ)</p>
+<p>3. <strong>Markup does not match visible content</strong> — schema must reflect what users see</p>
+<p>4. <strong>Using Microdata instead of JSON-LD</strong> — Google recommends JSON-LD</p>
+<p>5. <strong>Nesting errors</strong> — validate JSON syntax before deploying</p>
+<p>6. <strong>Duplicate schema</strong> — one schema block per type per page</p>
+<p>7. <strong>Self-referencing Organization</strong> — publisher should be the organization, not the page</p>
+<h2>Integration with Other Skills</h2>
+<ul>
+<li><strong>aeo-geo-optimizer</strong> — Schema is a key AEO signal; implement types recommended by the AEO audit</li>
+<li><strong>technical-seo-audit</strong> — Audit identifies missing/broken schema; this skill generates the fixes</li>
+<li><strong>seo-content-writer</strong> — Content structure should align with schema structure</li>
+</ul></div>
+</div>
+<script>
+function copyInstall(btn) {
+  var text = btn.getAttribute('data-copy');
+  navigator.clipboard.writeText(text).then(function() {
+    btn.classList.add('copied');
+    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+    setTimeout(function() {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>

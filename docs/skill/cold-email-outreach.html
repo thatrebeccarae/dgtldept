@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>cold-email-outreach — claude-marketing</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-00XHYRHCX4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-00XHYRHCX4');
+</script>
+<meta name="description" content="Cold email and outreach sequence design with personalization, deliverability optimization, follow-up cadence, and compliance (CAN-SPAM/GDPR). Use when the user ">
+<meta property="og:title" content="cold-email-outreach — claude-marketing">
+<meta property="og:description" content="Cold email and outreach sequence design with personalization, deliverability optimization, follow-up cadence, and compliance (CAN-SPAM/GDPR). Use when the user asks about cold email, outreach sequence">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="cold-email-outreach — claude-marketing">
+<meta name="twitter:description" content="Cold email and outreach sequence design with personalization, deliverability optimization, follow-up cadence, and compliance (CAN-SPAM/GDPR). Use when the user asks about cold email, outreach sequence">
+<link rel="canonical" href="https://thatrebeccarae.github.io/claude-marketing/skill/cold-email-outreach.html">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600,700&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Ultralight.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cartograph CF';
+  src: url('../fonts/CartographCF-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --accent: #5B5F8D;
+  --black: #000000;
+  --white: #ffffff;
+  --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+html {
+  background: #000000;
+  color: #ffffff;
+}
+
+body {
+  font-family: 'Switzer', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(15px, 1.1vw, 17px);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.detail-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 120px clamp(20px, 5vw, 40px) 80px;
+}
+
+.detail-back {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+.detail-back:hover { opacity: 1; }
+
+.detail-name {
+  font-family: 'PP Editorial New', 'Georgia', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 200;
+  line-height: 1.15;
+  letter-spacing: -0.014em;
+  margin-bottom: 0.5rem;
+}
+
+.detail-category {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  letter-spacing: 0.04em;
+  margin-bottom: 2rem;
+}
+
+.detail-desc {
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.65;
+  margin-bottom: 2.5rem;
+  opacity: 0.85;
+}
+
+.detail-install {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.detail-install code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  opacity: 0.6;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.detail-install .copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  color: #ffffff;
+  flex-shrink: 0;
+}
+.detail-install .copy-btn:hover { opacity: 0.8; }
+.detail-install .copy-btn.copied { opacity: 1; color: #4ade80; }
+
+.detail-tested {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  opacity: 0.4;
+  margin-bottom: 2.5rem;
+}
+
+.detail-capabilities h2,
+.detail-sources h2,
+.detail-body h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  margin-top: 2.5rem;
+}
+
+.detail-capabilities ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.detail-capabilities li {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 4px;
+}
+
+.detail-source-links {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.detail-source-links a {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ffffff;
+  border-radius: 45px;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+.detail-source-links a:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+.detail-body {
+  margin-top: 2.5rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 2rem;
+}
+
+.detail-body h2 {
+  font-family: 'Switzer', sans-serif;
+}
+
+.detail-body h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.detail-body p {
+  margin-bottom: 1rem;
+  opacity: 0.85;
+  line-height: 1.65;
+}
+
+.detail-body ul {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.detail-body li {
+  margin-bottom: 0.35rem;
+  opacity: 0.85;
+  line-height: 1.55;
+}
+
+.detail-body pre {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+}
+
+.detail-body code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.85rem;
+}
+
+.detail-body blockquote {
+  border-left: 2px solid rgba(255,255,255,0.2);
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+@media (max-width: 700px) {
+  .detail-page {
+    padding: 100px 20px 60px;
+  }
+  .detail-source-links {
+    flex-wrap: wrap;
+  }
+}
+</style>
+</head>
+<body>
+<div class="detail-page" data-pagefind-body>
+  <a href="../skills.html" class="detail-back">&larr; Back to skills</a>
+  <h1 class="detail-name">cold-email-outreach</h1>
+  <div class="detail-category">Growth &amp; Conversion</div>
+  <p class="detail-desc">Cold email and outreach sequence design with personalization, deliverability optimization, follow-up cadence, and compliance (CAN-SPAM/GDPR). Use when the user asks about cold email, outreach sequences, email prospecting, cold outreach, or email deliverability for outbound.</p>
+  <div class="detail-install">
+    <code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/cold-email-outreach ~/.claude/skills/</code>
+    <button class="copy-btn" data-copy="git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/cold-email-outreach ~/.claude/skills/" title="Copy install command" onclick="copyInstall(this)">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+    </button>
+  </div>
+  <div class="detail-tested">Tested 2026-03-18 &middot; Claude Code v2.1</div>
+  
+  <div class="detail-sources">
+<h2>Source Files</h2>
+<div class="detail-source-links">
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/cold-email-outreach/SKILL.md" target="_blank" rel="noopener">SKILL.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/cold-email-outreach/REFERENCE.md" target="_blank" rel="noopener">REFERENCE.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/cold-email-outreach/EXAMPLES.md" target="_blank" rel="noopener">EXAMPLES.md</a>
+</div>
+</div>
+  <div class="detail-body"><p>Design, optimize, and scale cold email outreach with high deliverability and compliance.</p>
+<h2>Install</h2>
+<pre><code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/cold-email-outreach ~/.claude/skills/</code></pre>
+<h2>Deliverability Fundamentals</h2>
+<h3>Authentication (Required)</h3>
+<p>| Record | Purpose | Check |</p>
+<p>|--------|---------|-------|</p>
+<p>| SPF | Authorizes sending servers | `dig TXT domain.com` |</p>
+<p>| DKIM | Cryptographic message signing | DKIM selector lookup |</p>
+<p>| DMARC | Policy for failed auth | `dig TXT _dmarc.domain.com` |</p>
+<h3>Domain Warming</h3>
+<p>New domains or IPs need gradual volume ramp:</p>
+<p>| Week | Daily Volume | Notes |</p>
+<p>|------|-------------|-------|</p>
+<p>| 1 | 5-10 | Known contacts only |</p>
+<p>| 2 | 15-25 | Mix of known and new |</p>
+<p>| 3 | 30-50 | Monitor bounce/spam rates |</p>
+<p>| 4 | 50-100 | Scale if rates healthy |</p>
+<p>| 5+ | 100-200 | Max per domain/day |</p>
+<p><strong>Dedicated sending domain:</strong> Use a subdomain (outreach.company.com) to protect your primary domain reputation.</p>
+<h3>Health Benchmarks</h3>
+<p>| Metric | Healthy | Warning | Critical |</p>
+<p>|--------|---------|---------|----------|</p>
+<p>| Bounce rate | &lt;2% | 2-5% | &gt;5% |</p>
+<p>| Spam complaint | &lt;0.1% | 0.1-0.3% | &gt;0.3% |</p>
+<p>| Open rate | &gt;40% | 20-40% | &lt;20% |</p>
+<p>| Reply rate | &gt;5% | 2-5% | &lt;2% |</p>
+<h2>Sequence Design</h2>
+<h3>Optimal Sequence Structure</h3>
+<pre><code>Email 1 (Day 0)  — Value-first introduction
+Email 2 (Day 3)  — Follow-up with new angle
+Email 3 (Day 7)  — Social proof / case study
+Email 4 (Day 14) — Breakup email (last attempt)</code></pre>
+<h3>Timing</h3>
+<ul>
+<li><strong>Best send days:</strong> Tuesday, Wednesday, Thursday</li>
+<li><strong>Best send times:</strong> 8-10am recipient timezone</li>
+<li><strong>Avoid:</strong> Monday morning, Friday afternoon, weekends</li>
+<li><strong>Follow-up spacing:</strong> 3-5 days between emails (never daily)</li>
+</ul>
+<h3>Subject Line Formulas</h3>
+<p>| Formula | Example | Open Rate |</p>
+<p>|---------|---------|-----------|</p>
+<p>| Question | &quot;Quick question about [company] growth?&quot; | High |</p>
+<p>| Mutual connection | &quot;Saw your talk at [event]&quot; | Very high |</p>
+<p>| Specific result | &quot;[Company] could save $40K/year on [X]&quot; | High |</p>
+<p>| Curiosity | &quot;Idea for [specific initiative]&quot; | Medium-high |</p>
+<p>| Direct | &quot;15-min call about [pain point]?&quot; | Medium |</p>
+<p><strong>Rules:</strong> Under 50 characters. No ALL CAPS. No spam triggers (free, guarantee, act now). Personalized &gt; generic.</p>
+<h3>Email Body Framework</h3>
+<pre><code>Line 1: Personalized opener (research-based, NOT &quot;I hope this finds you well&quot;)
+Line 2-3: Pain point or observation specific to them
+Line 4-5: How you solve it (one sentence, with social proof)
+Line 6: Low-friction CTA (question, not demand)</code></pre>
+<p><strong>Length:</strong> 50-125 words. 3-5 sentences max. Mobile-readable.</p>
+<h3>Personalization Tiers</h3>
+<p>| Tier | Effort | When | Example |</p>
+<p>|------|--------|------|---------|</p>
+<p>| <strong>Researched</strong> | High (5+ min/email) | Top 50 accounts | Reference specific blog post, recent funding, or LinkedIn activity |</p>
+<p>| <strong>Templated</strong> | Medium (1 min) | Mid-tier prospects | Company name, industry pain point, role-specific angle |</p>
+<p>| <strong>Dynamic</strong> | Low (automated) | Scale outreach | First name, company name, industry via merge fields |</p>
+<h2>Compliance</h2>
+<h3>CAN-SPAM (US)</h3>
+<ul>
+<li>Clear sender identity (real name and company)</li>
+<li>Accurate subject line (not misleading)</li>
+<li>Physical mailing address in footer</li>
+<li>Unsubscribe mechanism (honor within 10 days)</li>
+<li>Mark as advertisement if applicable</li>
+</ul>
+<h3>GDPR (EU/UK)</h3>
+<ul>
+<li>Legitimate interest basis for B2B cold email (document it)</li>
+<li>Clear identity and purpose in first email</li>
+<li>Easy opt-out mechanism</li>
+<li>Do not email personal email addresses without consent</li>
+<li>Data retention policy for prospect data</li>
+</ul>
+<h3>Best Practices</h3>
+<ul>
+<li>Always include unsubscribe link</li>
+<li>Respect opt-outs immediately (automated)</li>
+<li>Never buy email lists</li>
+<li>Verify emails before sending (reduce bounces)</li>
+<li>Keep records of consent and opt-outs</li>
+</ul>
+<h2>Anti-Patterns</h2>
+<p>1. <strong>Mass blasting</strong> — sending same email to 1000+ at once kills deliverability</p>
+<p>2. <strong>No personalization</strong> — &quot;Dear Sir/Madam&quot; or obviously templated</p>
+<p>3. <strong>Feature dumping</strong> — listing product features instead of addressing pain</p>
+<p>4. <strong>Aggressive follow-ups</strong> — daily follow-ups = spam reports</p>
+<p>5. <strong>No unsubscribe</strong> — illegal under CAN-SPAM and GDPR</p>
+<p>6. <strong>Misleading subjects</strong> — &quot;Re:&quot; or &quot;Fwd:&quot; on first contact</p>
+<p>7. <strong>Too many links/images</strong> — triggers spam filters</p>
+<p>8. <strong>No domain warming</strong> — sending 500 emails day 1 from new domain</p>
+<h2>Integration with Other Skills</h2>
+<ul>
+<li><strong>copywriting-frameworks</strong> — Apply PAS, BAB, QUEST to cold email copy</li>
+<li><strong>icp-research</strong> — Define ideal customer profile before building prospect lists</li>
+<li><strong>email-composer</strong> — General email writing (cold-email-outreach is specifically for outbound sequences)</li>
+<li><strong>klaviyo-analyst</strong> — For marketing automation email (different from cold outreach)</li>
+</ul></div>
+</div>
+<script>
+function copyInstall(btn) {
+  var text = btn.getAttribute('data-copy');
+  navigator.clipboard.writeText(text).then(function() {
+    btn.classList.add('copied');
+    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+    setTimeout(function() {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>

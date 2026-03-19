@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>technical-seo-audit — claude-marketing</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-00XHYRHCX4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-00XHYRHCX4');
+</script>
+<meta name="description" content="Deep technical SEO auditing covering crawlability, indexation, Core Web Vitals, site architecture, canonicalization, structured data validation, and performance">
+<meta property="og:title" content="technical-seo-audit — claude-marketing">
+<meta property="og:description" content="Deep technical SEO auditing covering crawlability, indexation, Core Web Vitals, site architecture, canonicalization, structured data validation, and performance optimization. Use when the user asks ab">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="technical-seo-audit — claude-marketing">
+<meta name="twitter:description" content="Deep technical SEO auditing covering crawlability, indexation, Core Web Vitals, site architecture, canonicalization, structured data validation, and performance optimization. Use when the user asks ab">
+<link rel="canonical" href="https://thatrebeccarae.github.io/claude-marketing/skill/technical-seo-audit.html">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600,700&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Ultralight.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cartograph CF';
+  src: url('../fonts/CartographCF-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --accent: #5B5F8D;
+  --black: #000000;
+  --white: #ffffff;
+  --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+html {
+  background: #000000;
+  color: #ffffff;
+}
+
+body {
+  font-family: 'Switzer', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(15px, 1.1vw, 17px);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.detail-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 120px clamp(20px, 5vw, 40px) 80px;
+}
+
+.detail-back {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+.detail-back:hover { opacity: 1; }
+
+.detail-name {
+  font-family: 'PP Editorial New', 'Georgia', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 200;
+  line-height: 1.15;
+  letter-spacing: -0.014em;
+  margin-bottom: 0.5rem;
+}
+
+.detail-category {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  letter-spacing: 0.04em;
+  margin-bottom: 2rem;
+}
+
+.detail-desc {
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.65;
+  margin-bottom: 2.5rem;
+  opacity: 0.85;
+}
+
+.detail-install {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.detail-install code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  opacity: 0.6;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.detail-install .copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  color: #ffffff;
+  flex-shrink: 0;
+}
+.detail-install .copy-btn:hover { opacity: 0.8; }
+.detail-install .copy-btn.copied { opacity: 1; color: #4ade80; }
+
+.detail-tested {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  opacity: 0.4;
+  margin-bottom: 2.5rem;
+}
+
+.detail-capabilities h2,
+.detail-sources h2,
+.detail-body h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  margin-top: 2.5rem;
+}
+
+.detail-capabilities ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.detail-capabilities li {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 4px;
+}
+
+.detail-source-links {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.detail-source-links a {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ffffff;
+  border-radius: 45px;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+.detail-source-links a:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+.detail-body {
+  margin-top: 2.5rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 2rem;
+}
+
+.detail-body h2 {
+  font-family: 'Switzer', sans-serif;
+}
+
+.detail-body h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.detail-body p {
+  margin-bottom: 1rem;
+  opacity: 0.85;
+  line-height: 1.65;
+}
+
+.detail-body ul {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.detail-body li {
+  margin-bottom: 0.35rem;
+  opacity: 0.85;
+  line-height: 1.55;
+}
+
+.detail-body pre {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+}
+
+.detail-body code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.85rem;
+}
+
+.detail-body blockquote {
+  border-left: 2px solid rgba(255,255,255,0.2);
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+@media (max-width: 700px) {
+  .detail-page {
+    padding: 100px 20px 60px;
+  }
+  .detail-source-links {
+    flex-wrap: wrap;
+  }
+}
+</style>
+</head>
+<body>
+<div class="detail-page" data-pagefind-body>
+  <a href="../skills.html" class="detail-back">&larr; Back to skills</a>
+  <h1 class="detail-name">technical-seo-audit</h1>
+  <div class="detail-category">SEO &amp; AI Search</div>
+  <p class="detail-desc">Deep technical SEO auditing covering crawlability, indexation, Core Web Vitals, site architecture, canonicalization, structured data validation, and performance optimization. Use when the user asks about technical SEO, site audits, crawl issues, indexation problems, Core Web Vitals, page speed, or site architecture optimization. For content-focused SEO, see the seo-content-writer skill.</p>
+  <div class="detail-install">
+    <code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/technical-seo-audit ~/.claude/skills/</code>
+    <button class="copy-btn" data-copy="git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/technical-seo-audit ~/.claude/skills/" title="Copy install command" onclick="copyInstall(this)">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+    </button>
+  </div>
+  <div class="detail-tested">Tested 2026-03-18 &middot; Claude Code v2.1</div>
+  
+  <div class="detail-sources">
+<h2>Source Files</h2>
+<div class="detail-source-links">
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/technical-seo-audit/SKILL.md" target="_blank" rel="noopener">SKILL.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/technical-seo-audit/REFERENCE.md" target="_blank" rel="noopener">REFERENCE.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/technical-seo-audit/EXAMPLES.md" target="_blank" rel="noopener">EXAMPLES.md</a>
+</div>
+</div>
+  <div class="detail-body"><p>Deep technical SEO analysis: crawlability, indexation, Core Web Vitals, site architecture, and performance.</p>
+<h2>Install</h2>
+<pre><code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/technical-seo-audit ~/.claude/skills/</code></pre>
+<blockquote><strong>How this differs from seo-content-writer:</strong> The seo-content-writer skill focuses on content optimization — keywords, readability, meta tags, heading structure. This skill audits the technical foundation — can search engines crawl, render, and index your site correctly?</blockquote>
+<h2>Audit Framework</h2>
+<h3>Phase 1: Crawlability &amp; Indexation</h3>
+<p>#### robots.txt Analysis</p>
+<ul>
+<li>Verify file exists at `/robots.txt`</li>
+<li>Check for unintentional blocks (`Disallow: /` on production)</li>
+<li>Validate sitemap reference</li>
+<li>Review AI crawler directives (GPTBot, ClaudeBot, PerplexityBot)</li>
+</ul>
+<p>#### XML Sitemap Audit</p>
+<ul>
+<li>Validate sitemap format (XML schema compliance)</li>
+<li>Check for 404, 301, or 5xx URLs in sitemap</li>
+<li>Verify lastmod dates are accurate (not all the same date)</li>
+<li>Confirm sitemap is referenced in robots.txt</li>
+<li>Check sitemap size (under 50MB / 50,000 URLs per file)</li>
+<li>For large sites: verify sitemap index file structure</li>
+</ul>
+<p>#### Indexation Health</p>
+<ul>
+<li>Compare indexed pages (site:domain.com) vs expected pages</li>
+<li>Identify index bloat (thin, duplicate, or low-value pages indexed)</li>
+<li>Check for noindex tags on important pages</li>
+<li>Review Google Search Console coverage report patterns</li>
+<li>Identify orphan pages (in sitemap but no internal links)</li>
+</ul>
+<p>#### Crawl Budget Optimization</p>
+<ul>
+<li>Identify crawl traps (infinite pagination, calendar URLs, faceted navigation)</li>
+<li>Check crawl depth (critical pages should be within 3 clicks)</li>
+<li>Review log files for crawler behavior patterns</li>
+<li>Identify wasted crawl budget on low-value URLs</li>
+</ul>
+<h3>Phase 2: Site Architecture &amp; Internal Linking</h3>
+<p>#### URL Structure</p>
+<ul>
+<li>Consistent URL patterns (lowercase, hyphens, no trailing slashes OR consistent trailing slashes)</li>
+<li>Logical hierarchy reflecting content taxonomy</li>
+<li>No URL parameters where clean URLs are possible</li>
+<li>Proper handling of pagination (rel=next/prev or load-more)</li>
+</ul>
+<p>#### Internal Link Analysis</p>
+<ul>
+<li>PageRank flow: are high-authority pages linking to important content?</li>
+<li>Orphan page detection (pages with zero internal links)</li>
+<li>Broken internal links (404s)</li>
+<li>Anchor text distribution (relevant, varied, not over-optimized)</li>
+<li>Link depth audit (pages more than 3 clicks from homepage)</li>
+</ul>
+<p>#### Navigation &amp; Hierarchy</p>
+<ul>
+<li>Breadcrumb implementation (with BreadcrumbList schema)</li>
+<li>Navigation depth (flatten deep hierarchies)</li>
+<li>Footer link optimization</li>
+<li>Faceted navigation handling (noindex, canonical, or robots)</li>
+</ul>
+<h3>Phase 3: Core Web Vitals &amp; Performance</h3>
+<p>#### Largest Contentful Paint (LCP) — Target: &lt;2.5s</p>
+<ul>
+<li>Identify LCP element (usually hero image or H1)</li>
+<li>Check image optimization (format, compression, dimensions)</li>
+<li>Verify preload for LCP resources</li>
+<li>Check server response time (TTFB)</li>
+<li>Review render-blocking resources</li>
+</ul>
+<p>#### Interaction to Next Paint (INP) — Target: &lt;200ms</p>
+<ul>
+<li>Identify long tasks blocking the main thread</li>
+<li>Review JavaScript execution time</li>
+<li>Check event handler performance</li>
+<li>Evaluate third-party script impact</li>
+</ul>
+<p>#### Cumulative Layout Shift (CLS) — Target: &lt;0.1</p>
+<ul>
+<li>Check for images/embeds without dimensions</li>
+<li>Review dynamic content injection above the fold</li>
+<li>Verify font loading strategy (font-display: swap or optional)</li>
+<li>Check ad slot reservations</li>
+</ul>
+<p>#### Performance Checklist</p>
+<ul>
+<li>[ ] Images: WebP/AVIF format, responsive srcset, lazy loading below fold</li>
+<li>[ ] CSS: Critical CSS inlined, non-critical deferred</li>
+<li>[ ] JavaScript: Deferred or async loading, code splitting</li>
+<li>[ ] Fonts: Preloaded, font-display set, subset if possible</li>
+<li>[ ] Server: HTTP/2 or HTTP/3, compression (Brotli &gt; gzip), CDN</li>
+<li>[ ] Caching: Proper cache-control headers, service worker for repeat visits</li>
+</ul>
+<h3>Phase 4: On-Page Technical Elements</h3>
+<p>#### Meta Tags</p>
+<ul>
+<li>Title tags: unique, 50-60 characters, primary keyword near start</li>
+<li>Meta descriptions: unique, 150-160 characters, include CTA</li>
+<li>Viewport meta tag present</li>
+<li>Charset declaration (UTF-8)</li>
+<li>No conflicting meta robots directives</li>
+</ul>
+<p>#### Canonical Tags</p>
+<ul>
+<li>Every page has a canonical tag (self-referencing or pointing to canonical version)</li>
+<li>Canonical tags are absolute URLs (not relative)</li>
+<li>No canonical chains (A -&gt; B -&gt; C)</li>
+<li>Canonicals consistent with internal links, sitemaps, and hreflang</li>
+<li>HTTP pages canonical to HTTPS versions</li>
+</ul>
+<p>#### Heading Hierarchy</p>
+<ul>
+<li>Single H1 per page</li>
+<li>Logical H1 &gt; H2 &gt; H3 nesting (no skipped levels)</li>
+<li>H1 contains primary keyword</li>
+<li>Headings are descriptive (not &quot;Introduction&quot; or &quot;Section 1&quot;)</li>
+</ul>
+<p>#### Structured Data</p>
+<ul>
+<li>Validate with Google Rich Results Test</li>
+<li>Check for errors/warnings in Search Console</li>
+<li>Verify required fields per schema type</li>
+<li>Cross-reference with aeo-geo-optimizer and schema-markup-generator skills</li>
+</ul>
+<h3>Phase 5: HTTPS &amp; Security</h3>
+<ul>
+<li>SSL certificate valid and not expiring soon</li>
+<li>All resources loaded over HTTPS (no mixed content)</li>
+<li>HTTP to HTTPS redirect chain (single 301, not chain)</li>
+<li>HSTS header present</li>
+<li>Security headers (X-Content-Type-Options, X-Frame-Options, CSP)</li>
+</ul>
+<h3>Phase 6: International &amp; Multi-Language (if applicable)</h3>
+<ul>
+<li>Hreflang implementation (correct language/region codes)</li>
+<li>Hreflang reciprocal links (A points to B, B points to A)</li>
+<li>X-default tag for fallback</li>
+<li>Language-specific sitemaps</li>
+<li>Content localization quality (not just translation)</li>
+</ul>
+<h3>Phase 7: Mobile Optimization</h3>
+<ul>
+<li>Mobile-first indexing readiness (same content on mobile and desktop)</li>
+<li>Touch targets sized appropriately (48x48px minimum)</li>
+<li>No horizontal scrolling</li>
+<li>Readable font sizes without zooming (16px base minimum)</li>
+<li>Mobile page speed (test on 3G connection profile)</li>
+</ul>
+<h2>Audit Report Structure</h2>
+<h3>Executive Summary</h3>
+<ul>
+<li>Overall technical health score (0-100)</li>
+<li>Critical issues count (blocking indexation/ranking)</li>
+<li>High-priority issues count (impacting performance)</li>
+<li>Quick wins count (easy fixes, high impact)</li>
+</ul>
+<h3>Issue Classification</h3>
+<p>| Severity | Definition | Response Time |</p>
+<p>|----------|-----------|---------------|</p>
+<p>| Critical | Blocking crawling, indexation, or rendering | Immediate |</p>
+<p>| High | Significantly impacting rankings or UX | Within 1 week |</p>
+<p>| Medium | Impacting performance or best practices | Within 1 month |</p>
+<p>| Low | Minor optimizations or future-proofing | Backlog |</p>
+<h3>Per-Issue Format</h3>
+<pre><code>**Issue:** [What is wrong]
+**Impact:** [How it affects SEO performance]
+**Pages Affected:** [Count or list]
+**Fix:** [Specific remediation steps]
+**Validation:** [How to verify the fix worked]</code></pre>
+<h2>Common Tools &amp; Commands</h2>
+<pre><code># Check robots.txt
+curl -s https://example.com/robots.txt
+
+# Check HTTP headers
+curl -I https://example.com
+
+# Check redirect chain
+curl -sIL https://example.com 2&gt;&amp;1 | grep -E &quot;HTTP/|Location:&quot;
+
+# Validate sitemap
+curl -s https://example.com/sitemap.xml | head -20
+
+# Check page speed (via PageSpeed Insights API)
+curl &quot;https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://example.com&amp;strategy=mobile&quot;
+
+# Check DNS resolution
+dig example.com +short
+
+# Check SSL certificate
+echo | openssl s_client -servername example.com -connect example.com:443 2&gt;/dev/null | openssl x509 -noout -dates</code></pre>
+<h2>Benchmarks</h2>
+<p>| Metric | Good | Needs Work | Poor |</p>
+<p>|--------|------|------------|------|</p>
+<p>| LCP | &lt;2.5s | 2.5-4.0s | &gt;4.0s |</p>
+<p>| INP | &lt;200ms | 200-500ms | &gt;500ms |</p>
+<p>| CLS | &lt;0.1 | 0.1-0.25 | &gt;0.25 |</p>
+<p>| TTFB | &lt;800ms | 800ms-1.8s | &gt;1.8s |</p>
+<p>| Page size | &lt;1.5MB | 1.5-3MB | &gt;3MB |</p>
+<p>| Requests | &lt;50 | 50-100 | &gt;100 |</p>
+<p>| Crawl depth | &lt;=3 clicks | 4-5 clicks | &gt;5 clicks |</p>
+<h2>Integration with Other Skills</h2>
+<ul>
+<li><strong>aeo-geo-optimizer</strong> — Layer AI search optimization after technical foundation is solid</li>
+<li><strong>schema-markup-generator</strong> — Generate structured data identified as missing during audit</li>
+<li><strong>google-analytics</strong> — Correlate technical issues with traffic impact</li>
+<li><strong>pro-report-builder</strong> — Generate professional audit deliverable from findings</li>
+</ul></div>
+</div>
+<script>
+function copyInstall(btn) {
+  var text = btn.getAttribute('data-copy');
+  navigator.clipboard.writeText(text).then(function() {
+    btn.classList.add('copied');
+    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+    setTimeout(function() {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>

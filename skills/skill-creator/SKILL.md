@@ -7,7 +7,7 @@ author: Anthropic
 author_url: https://github.com/anthropics
 metadata:
   version: 1.0.0
-  category: dev-tools
+  category: developer-tools
   domain: skill-development
   updated: 2026-03-18
   tested: 2026-03-18

@@ -7,7 +7,7 @@ author: Vercel Engineering
 author_url: https://vercel.com
 metadata:
   version: 1.0.0
-  category: dev-tools
+  category: developer-tools
   domain: react
   updated: 2026-03-18
   tested: 2026-03-18

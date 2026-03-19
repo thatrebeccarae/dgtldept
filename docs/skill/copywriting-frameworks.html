@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>copywriting-frameworks — claude-marketing</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-00XHYRHCX4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-00XHYRHCX4');
+</script>
+<meta name="description" content="Framework-driven copywriting for ads, landing pages, emails, sales pages, and CTAs. Includes AIDA, PAS, BAB, 4Ps, StoryBrand, QUEST, FAB, and more. Use when wri">
+<meta property="og:title" content="copywriting-frameworks — claude-marketing">
+<meta property="og:description" content="Framework-driven copywriting for ads, landing pages, emails, sales pages, and CTAs. Includes AIDA, PAS, BAB, 4Ps, StoryBrand, QUEST, FAB, and more. Use when writing conversion-focused copy, ad creativ">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="copywriting-frameworks — claude-marketing">
+<meta name="twitter:description" content="Framework-driven copywriting for ads, landing pages, emails, sales pages, and CTAs. Includes AIDA, PAS, BAB, 4Ps, StoryBrand, QUEST, FAB, and more. Use when writing conversion-focused copy, ad creativ">
+<link rel="canonical" href="https://thatrebeccarae.github.io/claude-marketing/skill/copywriting-frameworks.html">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600,700&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Ultralight.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cartograph CF';
+  src: url('../fonts/CartographCF-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --accent: #5B5F8D;
+  --black: #000000;
+  --white: #ffffff;
+  --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+html {
+  background: #000000;
+  color: #ffffff;
+}
+
+body {
+  font-family: 'Switzer', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(15px, 1.1vw, 17px);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.detail-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 120px clamp(20px, 5vw, 40px) 80px;
+}
+
+.detail-back {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+.detail-back:hover { opacity: 1; }
+
+.detail-name {
+  font-family: 'PP Editorial New', 'Georgia', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 200;
+  line-height: 1.15;
+  letter-spacing: -0.014em;
+  margin-bottom: 0.5rem;
+}
+
+.detail-category {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  letter-spacing: 0.04em;
+  margin-bottom: 2rem;
+}
+
+.detail-desc {
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.65;
+  margin-bottom: 2.5rem;
+  opacity: 0.85;
+}
+
+.detail-install {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.detail-install code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  opacity: 0.6;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.detail-install .copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  color: #ffffff;
+  flex-shrink: 0;
+}
+.detail-install .copy-btn:hover { opacity: 0.8; }
+.detail-install .copy-btn.copied { opacity: 1; color: #4ade80; }
+
+.detail-tested {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  opacity: 0.4;
+  margin-bottom: 2.5rem;
+}
+
+.detail-capabilities h2,
+.detail-sources h2,
+.detail-body h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  margin-top: 2.5rem;
+}
+
+.detail-capabilities ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.detail-capabilities li {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 4px;
+}
+
+.detail-source-links {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.detail-source-links a {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ffffff;
+  border-radius: 45px;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+.detail-source-links a:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+.detail-body {
+  margin-top: 2.5rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 2rem;
+}
+
+.detail-body h2 {
+  font-family: 'Switzer', sans-serif;
+}
+
+.detail-body h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.detail-body p {
+  margin-bottom: 1rem;
+  opacity: 0.85;
+  line-height: 1.65;
+}
+
+.detail-body ul {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.detail-body li {
+  margin-bottom: 0.35rem;
+  opacity: 0.85;
+  line-height: 1.55;
+}
+
+.detail-body pre {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+}
+
+.detail-body code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.85rem;
+}
+
+.detail-body blockquote {
+  border-left: 2px solid rgba(255,255,255,0.2);
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+@media (max-width: 700px) {
+  .detail-page {
+    padding: 100px 20px 60px;
+  }
+  .detail-source-links {
+    flex-wrap: wrap;
+  }
+}
+</style>
+</head>
+<body>
+<div class="detail-page" data-pagefind-body>
+  <a href="../skills.html" class="detail-back">&larr; Back to skills</a>
+  <h1 class="detail-name">copywriting-frameworks</h1>
+  <div class="detail-category">Content</div>
+  <p class="detail-desc">Framework-driven copywriting for ads, landing pages, emails, sales pages, and CTAs. Includes AIDA, PAS, BAB, 4Ps, StoryBrand, QUEST, FAB, and more. Use when writing conversion-focused copy, ad creative, headlines, email sequences, sales pages, or when the user mentions copywriting frameworks, persuasive writing, or direct response copy.</p>
+  <div class="detail-install">
+    <code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/copywriting-frameworks ~/.claude/skills/</code>
+    <button class="copy-btn" data-copy="git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/copywriting-frameworks ~/.claude/skills/" title="Copy install command" onclick="copyInstall(this)">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+    </button>
+  </div>
+  <div class="detail-tested">Tested 2026-03-18 &middot; Claude Code v2.1</div>
+  
+  <div class="detail-sources">
+<h2>Source Files</h2>
+<div class="detail-source-links">
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/copywriting-frameworks/SKILL.md" target="_blank" rel="noopener">SKILL.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/copywriting-frameworks/REFERENCE.md" target="_blank" rel="noopener">REFERENCE.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/copywriting-frameworks/EXAMPLES.md" target="_blank" rel="noopener">EXAMPLES.md</a>
+</div>
+</div>
+  <div class="detail-body"><p>Framework-driven copy for ads, landing pages, emails, and sales pages.</p>
+<h2>Install</h2>
+<pre><code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/copywriting-frameworks ~/.claude/skills/</code></pre>
+<h2>Framework Selection Guide</h2>
+<p>| Situation | Best Framework | Why |</p>
+<p>|-----------|---------------|-----|</p>
+<p>| Short ad copy (social, search) | <strong>PAS</strong> or <strong>AIDA</strong> | Compact, hook-driven |</p>
+<p>| Landing page hero | <strong>4Ps</strong> or <strong>BAB</strong> | Benefit-focused, drives action |</p>
+<p>| Email sequence | <strong>QUEST</strong> or <strong>PAS</strong> | Builds momentum across messages |</p>
+<p>| Sales page (long-form) | <strong>StoryBrand</strong> or <strong>AIDA</strong> | Narrative structure for sustained attention |</p>
+<p>| Product description | <strong>FAB</strong> | Feature-to-benefit translation |</p>
+<p>| Cold outreach | <strong>BAB</strong> or <strong>PAS</strong> | Quick empathy, clear value |</p>
+<p>| CTA buttons and microcopy | <strong>Action-Outcome</strong> | Specific, benefit-driven action |</p>
+<h2>Core Frameworks</h2>
+<h3>AIDA — Attention, Interest, Desire, Action</h3>
+<pre><code>A — ATTENTION: Hook with a bold claim, question, or surprising stat
+I — INTEREST: Build curiosity with specifics and proof
+D — DESIRE: Make them want the outcome (paint the after-state)
+A — ACTION: Clear, specific CTA</code></pre>
+<p><strong>Best for:</strong> Sales pages, long-form ads, email sequences, landing pages</p>
+<p><strong>Example (SaaS landing page):</strong></p>
+<pre><code>[A] Your email campaigns are leaving $80K on the table every year.
+[I] We analyzed 500 DTC brands and found that 73% are missing at least 3 critical
+    automated flows — each worth $2K-5K/month in recovered revenue.
+[D] Imagine recapturing that revenue automatically, while you sleep. No extra
+    headcount, no complex setup. Just the flows your customers expect, running
+    24/7.
+[A] Start your free 14-day trial — see your first recovered revenue in 48 hours.</code></pre>
+<h3>PAS — Problem, Agitate, Solution</h3>
+<pre><code>P — PROBLEM: Name the pain your audience feels
+A — AGITATE: Make the pain vivid and urgent (what happens if they do nothing?)
+S — SOLUTION: Present your offer as the relief</code></pre>
+<p><strong>Best for:</strong> Short ads, social posts, cold emails, landing page headlines</p>
+<p><strong>Example (Google Ad):</strong></p>
+<pre><code>[P] Wasting ad spend on unqualified clicks?
+[A] Every month, the average account wastes 26% of budget on irrelevant search
+    terms — that is $2,600 per $10K spent, gone.
+[S] Our Wasted Spend Audit finds and eliminates waste in 48 hours. Free for
+    first-time clients.</code></pre>
+<h3>BAB — Before, After, Bridge</h3>
+<pre><code>B — BEFORE: Describe their current painful state
+A — AFTER: Paint the desirable future state
+B — BRIDGE: Show how your product/service bridges the gap</code></pre>
+<p><strong>Best for:</strong> Email sequences, testimonial-driven copy, case studies, cold outreach</p>
+<p><strong>Example (cold email):</strong></p>
+<pre><code>[B] Right now, your team spends 10+ hours/week manually building reports
+    from 4 different analytics platforms.
+[A] What if those reports generated themselves every Monday morning —
+    accurate, formatted, and ready for your exec meeting?
+[B] That is exactly what [Product] does. Connect your data sources once,
+    and never build another manual report.</code></pre>
+<h3>4Ps — Promise, Picture, Proof, Push</h3>
+<pre><code>P — PROMISE: Make a bold, specific promise
+P — PICTURE: Help them visualize the result
+P — PROOF: Back it up with evidence
+P — PUSH: Drive to action with urgency</code></pre>
+<p><strong>Best for:</strong> Landing pages, webinar promotion, launch copy</p>
+<h3>QUEST — Qualify, Understand, Educate, Stimulate, Transition</h3>
+<pre><code>Q — QUALIFY: Filter for the right audience (&quot;If you are a...&quot;)
+U — UNDERSTAND: Show you get their situation
+E — EDUCATE: Teach something valuable
+S — STIMULATE: Create desire through the education
+T — TRANSITION: Bridge to your offer naturally</code></pre>
+<p><strong>Best for:</strong> Email sequences, content marketing, webinar scripts</p>
+<h3>FAB — Features, Advantages, Benefits</h3>
+<pre><code>F — FEATURE: What the product has/does
+A — ADVANTAGE: Why that feature matters (vs alternatives)
+B — BENEFIT: What it means for the customer (outcome/feeling)</code></pre>
+<p><strong>Best for:</strong> Product descriptions, feature pages, comparison copy</p>
+<p><strong>Example:</strong></p>
+<pre><code>[F] Automated email flows triggered by customer behavior
+[A] Unlike batch campaigns, these reach customers at the exact right moment
+[B] You recover abandoned carts and win back churned customers without lifting
+    a finger — adding $5-15K/month in passive revenue</code></pre>
+<h3>StoryBrand (Donald Miller)</h3>
+<pre><code>1. CHARACTER: The customer is the hero (not your brand)
+2. PROBLEM: External (what they face), internal (how it feels), philosophical (why it is wrong)
+3. GUIDE: Your brand as the wise guide (empathy + authority)
+4. PLAN: Simple 3-step plan to follow
+5. CALL TO ACTION: Direct (&quot;Buy Now&quot;) and transitional (&quot;Download Guide&quot;)
+6. SUCCESS: What winning looks like
+7. FAILURE: What happens if they do not act</code></pre>
+<p><strong>Best for:</strong> Brand messaging, website copy, sales pages, brand narratives</p>
+<h2>Headline Formulas</h2>
+<p>| Formula | Template | Example |</p>
+<p>|---------|----------|---------|</p>
+<p>| How-to | How to [Achieve X] Without [Pain Y] | How to 3x Email Revenue Without Hiring |</p>
+<p>| Number | [N] Ways to [Achieve X] in [Timeframe] | 7 Ways to Cut Ad Waste in 30 Days |</p>
+<p>| Question | Are You Making These [N] [Mistake] Mistakes? | Are You Making These 5 Checkout Mistakes? |</p>
+<p>| Negative | Stop [Bad Thing] — Here Is What to Do Instead | Stop Sending Batch Emails — Here Is What to Do Instead |</p>
+<p>| Social proof | How [Company] [Achieved Result] | How Glossier Grew 600% With Email Alone |</p>
+<p>| Curiosity gap | The [Adjective] [Thing] Most [People] Overlook | The Simple Metric Most Marketers Overlook |</p>
+<p>| Direct benefit | Get [Benefit] in [Timeframe] | Get Your First 1,000 Subscribers in 30 Days |</p>
+<p>| Comparison | [X] vs [Y]: Which [Outcome]? | Klaviyo vs Mailchimp: Which Drives More Revenue? |</p>
+<h2>CTA Best Practices</h2>
+<h3>CTA Text Formulas</h3>
+<p>| Pattern | Example | When |</p>
+<p>|---------|---------|------|</p>
+<p>| Action + Benefit | Start Saving Today | Primary conversion |</p>
+<p>| Action + Timeframe | Get Results in 48 Hours | Urgency-driven |</p>
+<p>| Action + Risk Reversal | Try Free for 14 Days | Reducing anxiety |</p>
+<p>| First Person | Start My Free Trial | Ownership language |</p>
+<p>| Specificity | See My Wasted Spend Report | Personalized |</p>
+<h3>CTA Anti-Patterns (Never Use)</h3>
+<ul>
+<li>&quot;Submit&quot; — most hated CTA word</li>
+<li>&quot;Click Here&quot; — vague, inaccessible</li>
+<li>&quot;Learn More&quot; as primary CTA — too passive (OK as secondary)</li>
+<li>&quot;Sign Up&quot; without benefit context</li>
+<li>&quot;Buy Now&quot; without trust signals nearby</li>
+</ul>
+<h2>Integration with Other Skills</h2>
+<ul>
+<li><strong>cro-auditor</strong> — Apply frameworks to pages flagged by CRO audit</li>
+<li><strong>seo-content-writer</strong> — SEO-optimized copy using these frameworks</li>
+<li><strong>content-creator</strong> — Brand voice consistency when writing framework-driven copy</li>
+<li><strong>email-composer</strong> — Email-specific applications of PAS, BAB, QUEST</li>
+</ul></div>
+</div>
+<script>
+function copyInstall(btn) {
+  var text = btn.getAttribute('data-copy');
+  navigator.clipboard.writeText(text).then(function() {
+    btn.classList.add('copied');
+    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+    setTimeout(function() {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>

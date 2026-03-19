@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>landing-page-optimizer — claude-marketing</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-00XHYRHCX4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-00XHYRHCX4');
+</script>
+<meta name="description" content="Landing page audit and optimization for conversion. Covers above-the-fold design, value propositions, CTAs, social proof placement, form design, page speed, and">
+<meta property="og:title" content="landing-page-optimizer — claude-marketing">
+<meta property="og:description" content="Landing page audit and optimization for conversion. Covers above-the-fold design, value propositions, CTAs, social proof placement, form design, page speed, and mobile optimization. Use when the user ">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="landing-page-optimizer — claude-marketing">
+<meta name="twitter:description" content="Landing page audit and optimization for conversion. Covers above-the-fold design, value propositions, CTAs, social proof placement, form design, page speed, and mobile optimization. Use when the user ">
+<link rel="canonical" href="https://thatrebeccarae.github.io/claude-marketing/skill/landing-page-optimizer.html">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600,700&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Ultralight.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cartograph CF';
+  src: url('../fonts/CartographCF-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --accent: #5B5F8D;
+  --black: #000000;
+  --white: #ffffff;
+  --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+html {
+  background: #000000;
+  color: #ffffff;
+}
+
+body {
+  font-family: 'Switzer', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(15px, 1.1vw, 17px);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.detail-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 120px clamp(20px, 5vw, 40px) 80px;
+}
+
+.detail-back {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+.detail-back:hover { opacity: 1; }
+
+.detail-name {
+  font-family: 'PP Editorial New', 'Georgia', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 200;
+  line-height: 1.15;
+  letter-spacing: -0.014em;
+  margin-bottom: 0.5rem;
+}
+
+.detail-category {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  letter-spacing: 0.04em;
+  margin-bottom: 2rem;
+}
+
+.detail-desc {
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.65;
+  margin-bottom: 2.5rem;
+  opacity: 0.85;
+}
+
+.detail-install {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.detail-install code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  opacity: 0.6;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.detail-install .copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  color: #ffffff;
+  flex-shrink: 0;
+}
+.detail-install .copy-btn:hover { opacity: 0.8; }
+.detail-install .copy-btn.copied { opacity: 1; color: #4ade80; }
+
+.detail-tested {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  opacity: 0.4;
+  margin-bottom: 2.5rem;
+}
+
+.detail-capabilities h2,
+.detail-sources h2,
+.detail-body h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  margin-top: 2.5rem;
+}
+
+.detail-capabilities ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.detail-capabilities li {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 4px;
+}
+
+.detail-source-links {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.detail-source-links a {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ffffff;
+  border-radius: 45px;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+.detail-source-links a:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+.detail-body {
+  margin-top: 2.5rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 2rem;
+}
+
+.detail-body h2 {
+  font-family: 'Switzer', sans-serif;
+}
+
+.detail-body h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.detail-body p {
+  margin-bottom: 1rem;
+  opacity: 0.85;
+  line-height: 1.65;
+}
+
+.detail-body ul {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.detail-body li {
+  margin-bottom: 0.35rem;
+  opacity: 0.85;
+  line-height: 1.55;
+}
+
+.detail-body pre {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+}
+
+.detail-body code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.85rem;
+}
+
+.detail-body blockquote {
+  border-left: 2px solid rgba(255,255,255,0.2);
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+@media (max-width: 700px) {
+  .detail-page {
+    padding: 100px 20px 60px;
+  }
+  .detail-source-links {
+    flex-wrap: wrap;
+  }
+}
+</style>
+</head>
+<body>
+<div class="detail-page" data-pagefind-body>
+  <a href="../skills.html" class="detail-back">&larr; Back to skills</a>
+  <h1 class="detail-name">landing-page-optimizer</h1>
+  <div class="detail-category">Growth &amp; Conversion</div>
+  <p class="detail-desc">Landing page audit and optimization for conversion. Covers above-the-fold design, value propositions, CTAs, social proof placement, form design, page speed, and mobile optimization. Use when the user asks about landing page optimization, conversion rate improvement, page audits, or CTA optimization.</p>
+  <div class="detail-install">
+    <code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/landing-page-optimizer ~/.claude/skills/</code>
+    <button class="copy-btn" data-copy="git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/landing-page-optimizer ~/.claude/skills/" title="Copy install command" onclick="copyInstall(this)">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+    </button>
+  </div>
+  <div class="detail-tested">Tested 2026-03-18 &middot; Claude Code v2.1</div>
+  
+  <div class="detail-sources">
+<h2>Source Files</h2>
+<div class="detail-source-links">
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/landing-page-optimizer/SKILL.md" target="_blank" rel="noopener">SKILL.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/landing-page-optimizer/REFERENCE.md" target="_blank" rel="noopener">REFERENCE.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/landing-page-optimizer/EXAMPLES.md" target="_blank" rel="noopener">EXAMPLES.md</a>
+</div>
+</div>
+  <div class="detail-body"><p>Audit and optimize landing pages for maximum conversion.</p>
+<h2>Install</h2>
+<pre><code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/landing-page-optimizer ~/.claude/skills/</code></pre>
+<h2>Audit Framework</h2>
+<h3>Above the Fold (First 5 Seconds)</h3>
+<p>The visitor must answer 3 questions instantly:</p>
+<p>1. <strong>What is this?</strong> (Clear headline)</p>
+<p>2. <strong>Why should I care?</strong> (Benefit-focused subheadline)</p>
+<p>3. <strong>What do I do next?</strong> (Visible CTA)</p>
+<h3>Hero Layout Patterns</h3>
+<p>| Pattern | Best For | Structure |</p>
+<p>|---------|----------|-----------|</p>
+<p>| <strong>Left copy / right visual</strong> | SaaS, B2B | Headline + CTA left, product screenshot right |</p>
+<p>| <strong>Centered hero</strong> | Simple offers | Centered headline, subheadline, CTA |</p>
+<p>| <strong>Video hero</strong> | Complex products | Autoplay background or embedded explainer |</p>
+<p>| <strong>Social proof hero</strong> | High-trust needed | Headline with customer logos or metrics |</p>
+<p>| <strong>Split test</strong> | Dual audiences | Two distinct paths with separate CTAs |</p>
+<h3>Value Proposition Hierarchy</h3>
+<pre><code>H1: Primary benefit (what outcome they get)
+Subheadline: How you deliver it (mechanism or differentiator)
+Supporting points: 3 proof points or features (bullets)
+CTA: Specific action + anxiety reducer</code></pre>
+<h3>CTA Optimization</h3>
+<p><strong>Text:</strong> Action verb + specific outcome (&quot;Start Free Trial&quot; not &quot;Submit&quot;)</p>
+<p><strong>Design:</strong> High contrast to background, generous padding, whitespace around it</p>
+<p><strong>Placement:</strong> Above fold, after each content section, sticky on scroll</p>
+<p><strong>Microcopy:</strong> Reduce anxiety below CTA (&quot;No credit card required&quot;, &quot;Cancel anytime&quot;)</p>
+<h3>Social Proof Patterns</h3>
+<p>| Type | Placement | Impact |</p>
+<p>|------|-----------|--------|</p>
+<p>| Customer logos | Below hero | Trust (B2B) |</p>
+<p>| Metric (&quot;50,000+ users&quot;) | Near headline | Scale proof |</p>
+<p>| Star rating | Near CTA | Purchase confidence |</p>
+<p>| Testimonial quote | Mid-page | Emotional proof |</p>
+<p>| Case study result | Deep in page | Detailed proof |</p>
+<p>| Trust badges | Near form/checkout | Security |</p>
+<h3>Form Optimization</h3>
+<ul>
+<li>Every field removed increases completion 5-10%</li>
+<li>Labels above fields (never placeholder-only)</li>
+<li>Inline validation (real-time, not on submit)</li>
+<li>Smart defaults and autofill (autocomplete attributes)</li>
+<li>Multi-step forms outperform single long forms</li>
+<li>Progress indicator for multi-step</li>
+</ul>
+<h3>Mobile Optimization</h3>
+<ul>
+<li>Touch targets minimum 48x48px</li>
+<li>Single column layout</li>
+<li>Thumb-friendly CTA placement (bottom half of screen)</li>
+<li>No horizontal scrolling</li>
+<li>Simplified navigation (hamburger or none)</li>
+<li>Fast load (LCP &lt;2.5s on 4G)</li>
+</ul>
+<h2>Conversion Benchmarks</h2>
+<p>| Page Type | Good | Average | Poor |</p>
+<p>|-----------|------|---------|------|</p>
+<p>| SaaS trial signup | &gt;5% | 2-5% | &lt;2% |</p>
+<p>| E-commerce product | &gt;3% | 1.5-3% | &lt;1.5% |</p>
+<p>| Lead gen (B2B) | &gt;10% | 5-10% | &lt;5% |</p>
+<p>| Newsletter signup | &gt;5% | 2-5% | &lt;2% |</p>
+<p>| Webinar registration | &gt;30% | 15-30% | &lt;15% |</p>
+<h2>Anti-Patterns</h2>
+<p>1. <strong>Multiple competing CTAs</strong> — one primary action per page</p>
+<p>2. <strong>Feature-focused headline</strong> — lead with benefit, not feature</p>
+<p>3. <strong>Stock photos</strong> — real product screenshots or real people</p>
+<p>4. <strong>Navigation on landing pages</strong> — remove nav for paid traffic pages</p>
+<p>5. <strong>Below-fold CTA only</strong> — always have CTA above the fold</p>
+<p>6. <strong>No social proof</strong> — every landing page needs trust signals</p>
+<p>7. <strong>Slow load time</strong> — every 100ms delay costs 1% conversion</p>
+<p>8. <strong>Desktop-only design</strong> — 60%+ traffic is mobile</p>
+<h2>Integration with Other Skills</h2>
+<ul>
+<li><strong>cro-auditor</strong> — Broader CRO audit framework; this skill deep-dives on individual pages</li>
+<li><strong>ab-testing-framework</strong> — Test the changes this skill recommends</li>
+<li><strong>copywriting-frameworks</strong> — Apply PAS/AIDA to landing page copy</li>
+<li><strong>frontend-design</strong> — Implement the optimized page design</li>
+<li><strong>technical-seo-audit</strong> — Page speed and technical optimization</li>
+</ul></div>
+</div>
+<script>
+function copyInstall(btn) {
+  var text = btn.getAttribute('data-copy');
+  navigator.clipboard.writeText(text).then(function() {
+    btn.classList.add('copied');
+    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+    setTimeout(function() {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>

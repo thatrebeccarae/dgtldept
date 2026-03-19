@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>gtm — claude-marketing</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-00XHYRHCX4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-00XHYRHCX4');
+</script>
+<meta name="description" content="Google Tag Manager expertise. Audit GTM containers, design tag and trigger architecture, debug firing issues, implement consent mode v2, and advise on server-si">
+<meta property="og:title" content="gtm — claude-marketing">
+<meta property="og:description" content="Google Tag Manager expertise. Audit GTM containers, design tag and trigger architecture, debug firing issues, implement consent mode v2, and advise on server-side tagging. Use when the user asks about">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="gtm — claude-marketing">
+<meta name="twitter:description" content="Google Tag Manager expertise. Audit GTM containers, design tag and trigger architecture, debug firing issues, implement consent mode v2, and advise on server-side tagging. Use when the user asks about">
+<link rel="canonical" href="https://thatrebeccarae.github.io/claude-marketing/skill/google-tag-manager.html">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600,700&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Ultralight.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cartograph CF';
+  src: url('../fonts/CartographCF-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --accent: #5B5F8D;
+  --black: #000000;
+  --white: #ffffff;
+  --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+html {
+  background: #000000;
+  color: #ffffff;
+}
+
+body {
+  font-family: 'Switzer', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(15px, 1.1vw, 17px);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.detail-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 120px clamp(20px, 5vw, 40px) 80px;
+}
+
+.detail-back {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+.detail-back:hover { opacity: 1; }
+
+.detail-name {
+  font-family: 'PP Editorial New', 'Georgia', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 200;
+  line-height: 1.15;
+  letter-spacing: -0.014em;
+  margin-bottom: 0.5rem;
+}
+
+.detail-category {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  letter-spacing: 0.04em;
+  margin-bottom: 2rem;
+}
+
+.detail-desc {
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.65;
+  margin-bottom: 2.5rem;
+  opacity: 0.85;
+}
+
+.detail-install {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.detail-install code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  opacity: 0.6;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.detail-install .copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  color: #ffffff;
+  flex-shrink: 0;
+}
+.detail-install .copy-btn:hover { opacity: 0.8; }
+.detail-install .copy-btn.copied { opacity: 1; color: #4ade80; }
+
+.detail-tested {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  opacity: 0.4;
+  margin-bottom: 2.5rem;
+}
+
+.detail-capabilities h2,
+.detail-sources h2,
+.detail-body h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  margin-top: 2.5rem;
+}
+
+.detail-capabilities ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.detail-capabilities li {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 4px;
+}
+
+.detail-source-links {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.detail-source-links a {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ffffff;
+  border-radius: 45px;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+.detail-source-links a:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+.detail-body {
+  margin-top: 2.5rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 2rem;
+}
+
+.detail-body h2 {
+  font-family: 'Switzer', sans-serif;
+}
+
+.detail-body h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.detail-body p {
+  margin-bottom: 1rem;
+  opacity: 0.85;
+  line-height: 1.65;
+}
+
+.detail-body ul {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.detail-body li {
+  margin-bottom: 0.35rem;
+  opacity: 0.85;
+  line-height: 1.55;
+}
+
+.detail-body pre {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+}
+
+.detail-body code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.85rem;
+}
+
+.detail-body blockquote {
+  border-left: 2px solid rgba(255,255,255,0.2);
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+@media (max-width: 700px) {
+  .detail-page {
+    padding: 100px 20px 60px;
+  }
+  .detail-source-links {
+    flex-wrap: wrap;
+  }
+}
+</style>
+</head>
+<body>
+<div class="detail-page" data-pagefind-body>
+  <a href="../skills.html" class="detail-back">&larr; Back to skills</a>
+  <h1 class="detail-name">gtm</h1>
+  <div class="detail-category">Analytics</div>
+  <p class="detail-desc">Google Tag Manager expertise. Audit GTM containers, design tag and trigger architecture, debug firing issues, implement consent mode v2, and advise on server-side tagging. Use when the user asks about GTM, tag management, container audits, consent mode, server-side tagging, or tracking implementation.</p>
+  <div class="detail-install">
+    <code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/google-tag-manager ~/.claude/skills/</code>
+    <button class="copy-btn" data-copy="git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/google-tag-manager ~/.claude/skills/" title="Copy install command" onclick="copyInstall(this)">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+    </button>
+  </div>
+  <div class="detail-tested">Tested 2026-03-18 &middot; Claude Code v2.1</div>
+  <div class="detail-capabilities"><h2>Capabilities</h2><ul><li>Container Auditing and Optimization</li><li>Tag Architecture</li><li>Trigger Design</li><li>Variable Strategy</li><li>Consent Mode v2</li><li>Server-Side GTM</li><li>Debugging</li></ul></div>
+  <div class="detail-sources">
+<h2>Source Files</h2>
+<div class="detail-source-links">
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/google-tag-manager/SKILL.md" target="_blank" rel="noopener">SKILL.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/google-tag-manager/REFERENCE.md" target="_blank" rel="noopener">REFERENCE.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/google-tag-manager/EXAMPLES.md" target="_blank" rel="noopener">EXAMPLES.md</a>
+</div>
+</div>
+  <div class="detail-body"><p>Expert-level guidance for Google Tag Manager — auditing containers, designing tag and trigger architecture, debugging firing issues, implementing consent mode v2, and advising on server-side tagging.</p>
+<h2>Install</h2>
+<pre><code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/gtm ~/.claude/skills/</code></pre>
+<h2>Core Capabilities</h2>
+<h3>Container Auditing and Optimization</h3>
+<p>Full container audit covering the six core areas: overview stats, tag inventory, trigger review, variable audit, folder organization, and naming convention assessment. Identifies unused tags, duplicate GA4 config tags, over-broad triggers on conversion tags, undefined variable paths, and consent mode gaps. Produces prioritized recommendations ranked by impact and effort.</p>
+<h3>Tag Architecture</h3>
+<p>Expert guidance on all common tag types:</p>
+<ul>
+<li><strong>GA4 Configuration (`gaawc`)</strong> — one per domain, holds measurement ID (always via constant variable), enhanced conversions settings, and shared config. All GA4 event tags must reference this as their Configuration Tag.</li>
+<li><strong>GA4 Event (`gaawe`)</strong> — fires individual events with parameters sourced from data layer variables. References the `gaawc` config tag.</li>
+<li><strong>Google Ads Conversion Tracking</strong> — conversion ID + label, value and currency from data layer, deduplication tag ID for enhanced conversions.</li>
+<li><strong>Google Ads Remarketing</strong> — conversion ID, custom parameters for audience building.</li>
+<li><strong>Meta Pixel</strong> — base code + standard events (PageView, ViewContent, AddToCart, InitiateCheckout, Purchase). Use community template from Template Gallery rather than custom HTML.</li>
+<li><strong>Custom HTML</strong> — unsandboxed JavaScript, creates CSP risk. Only use when no Template Gallery alternative exists.</li>
+<li><strong>Community Templates</strong> — vetted third-party templates for Cookiebot, OneTrust, HotJar, Meta Pixel, LinkedIn Insight Tag, and more. Always prefer over Custom HTML.</li>
+</ul>
+<h3>Trigger Design</h3>
+<p>Matching triggers to tags with correct scoping is the single biggest factor in data quality. See REFERENCE.md for the full trigger type taxonomy. Key principles:</p>
+<ul>
+<li>Page Load triggers (Page View, DOM Ready, Window Loaded) for analytics tags that need the DOM</li>
+<li>Custom Event triggers for data layer events — exact match on event name</li>
+<li>Element Visibility for scroll depth and above-the-fold measurement</li>
+<li>Consent Initialization trigger for consent defaults — must fire before all measurement tags</li>
+<li>Never use All Pages trigger for conversion or remarketing tags</li>
+</ul>
+<h3>Variable Strategy</h3>
+<p>Data Layer Variables (v2) are the correct pattern for capturing tracking values. Key strategy:</p>
+<ul>
+<li>Use constant variables for all measurement IDs, API keys, and container IDs — one update propagates everywhere</li>
+<li>Data Layer Variables with dot-notation paths for nested ecommerce objects (`ecommerce.value`, `ecommerce.transaction_id`)</li>
+<li>Lookup Table variables for mapping internal category names to tracking values</li>
+<li>Custom JavaScript variables for derived values — note sandbox limitations (no DOM, no fetch, no async)</li>
+<li>Event Settings Variable to share a reusable set of GA4 event parameters across multiple event tags</li>
+</ul>
+<h3>Consent Mode v2</h3>
+<p>Four consent parameters control how Google tags behave when users deny consent:</p>
+<ul>
+<li>`analytics_storage` — GA4, Google Analytics</li>
+<li>`ad_storage` — Google Ads cookie storage</li>
+<li>`ad_user_data` — sending user data to Google Ads for matching</li>
+<li>`ad_personalization` — remarketing and personalization features</li>
+</ul>
+<p><strong>Advanced mode</strong> (recommended for DTC): Tags fire cookieless on deny, enabling Google's conversion modeling. Requires `wait_for_update` so the CMP has time to resolve user choice before tags fire.</p>
+<p>Implementation sequence is order-sensitive — default consent must fire before any measurement tags load. See REFERENCE.md Consent Mode v2 section for full implementation details.</p>
+<h3>Server-Side GTM</h3>
+<p>Server-side GTM moves tag processing from the browser to a server container (GCP or alternative), improving data quality, blocking ad blocker impact, and enabling server enrichment. Key decision factors: ad blocker loss rate, privacy requirements, Meta CAPI needs, budget for hosting (~$30-50/mo on GCP), and technical capacity for setup.</p>
+<p>The server container has no automatic access to browser consent state — consent must be explicitly passed from the browser in the request to the sGTM endpoint.</p>
+<h3>Debugging</h3>
+<ul>
+<li><strong>Preview mode</strong> — activates the GTM debugger in a paired browser tab. Left panel shows event timeline; right panel shows tag firing status, variable values, and data layer state at each event.</li>
+<li><strong>Tag Assistant</strong> — integrated with GTM Preview. Consent tab shows consent parameter state at each event.</li>
+<li><strong>Browser console</strong> — `window.dataLayer` inspection, filter by event name</li>
+<li><strong>Network tab</strong> — GA4 collect requests, verify parameters, check `gcs` parameter for consent state</li>
+</ul>
+<h2>Workflow: Full Container Audit</h2>
+<p>When asked to audit a GTM container:</p>
+<p>1. <strong>Conversion Tracking Verification</strong> — Confirm GA4 config tag exists, measurement ID stored in a constant variable (not hardcoded), enhanced conversions enabled, Google Ads conversion tags present and correctly configured.</p>
+<p>2. <strong>Tag Inventory</strong> — List all tags: name, type, status (paused/enabled), firing trigger, tag firing options (unlimited/once per page/once per event). Flag unused, paused, or duplicate tags.</p>
+<p>3. <strong>Trigger Review</strong> — List all triggers with conditions. Flag any conversion or remarketing tag attached to an All Pages trigger. Check trigger conditions for URL specificity on conversion triggers.</p>
+<p>4. <strong>Variable Audit</strong> — Confirm recommended built-in variables are enabled (Page URL, Page Path, Click Classes, Click ID, Form ID). Check all user-defined variables — are any returning undefined? Verify data layer variable paths match actual dataLayer push structure.</p>
+<p>5. <strong>Organization Check</strong> — Is there a folder structure? Are workspaces named descriptively or all in &quot;Default Workspace&quot;? Review publish history — how many versions, how often, are descriptions informative?</p>
+<p>6. <strong>Naming Convention Assessment</strong> — Do tag/trigger/variable names follow a consistent framework? Can a new team member understand the container? Flag inconsistency as a maintenance risk.</p>
+<p>7. <strong>Consent Mode Check</strong> — Does a consent default tag exist firing on Consent Initialization? Is it configured with all four parameters? Does a CMP template exist? Is TCF v2.3 compatible? Verify in Preview mode Consent tab.</p>
+<p>8. <strong>Prioritized Recommendations</strong> — Compile all findings. Rank by impact (revenue/data quality/compliance risk) and effort (Low/Medium/High). Lead with quick wins.</p>
+<h2>Hard Rules</h2>
+<p>Non-negotiable constraints in every recommendation:</p>
+<p>1. <strong>Never recommend DOM scraping when data layer is available.</strong> CSS selector or JS variable sniffing is fragile. Data layer is the contract between dev and analytics.</p>
+<p>2. <strong>Never recommend All Pages trigger for conversion tags.</strong> Conversion and remarketing tags on All Pages inflate costs and corrupt attribution.</p>
+<p>3. <strong>Never recommend Custom HTML when a community template exists.</strong> Community templates are sandboxed and vetted. Custom HTML runs unsandboxed and creates CSP/security risk.</p>
+<p>4. <strong>Always verify consent mode default fires before measurement tags load.</strong> Wrong initialization order means consent is not applied — a compliance failure.</p>
+<p>5. <strong>Always recommend constant variables for measurement IDs.</strong> Never hardcode a measurement ID, conversion ID, or API key directly in a tag. One update should propagate everywhere.</p>
+<p>6. <strong>Always flag deprecated Universal Analytics tags for removal.</strong> UA was fully sunsetted July 2024. Dead tags in a container are clutter and a warning sign about overall maintenance.</p>
+<p>7. <strong>Always clear previous ecommerce data before a new ecommerce push.</strong> `dataLayer.push({ ecommerce: null })` before each push prevents data from a prior event contaminating the next.</p>
+<p>8. <strong>Never skip workspace isolation.</strong> One change set per workspace. Never work in Default Workspace. Named workspaces with descriptive names are the expert standard.</p>
+<h2>Related Tools</h2>
+<ul>
+<li><strong>`google-analytics` skill</strong> — For GA4 data analysis after GTM implementation. GTM configures the tags; the google-analytics skill covers metrics, dimensions, reports, and attribution analysis on the data those tags collect.</li>
+<li><strong>`gtm-implementer` agent</strong> — For writing GTM changes via the GTM API. Handles workspace preflight, rate-limited variable/trigger/tag creation, and payload construction. The gtm skill is the analysis layer; the gtm-implementer agent is the execution layer. When a user asks to *implement* GTM changes (not just audit or advise), point them to the agent.</li>
+</ul>
+<h2>How to Use This Skill</h2>
+<p>Ask questions like:</p>
+<ul>
+<li>&quot;Audit our GTM container — we think some tags are not firing correctly&quot;</li>
+<li>&quot;Set up consent mode v2 in GTM with Cookiebot. We sell to EU customers.&quot;</li>
+<li>&quot;Our GA4 purchase event is firing but transaction value shows as undefined in DebugView&quot;</li>
+<li>&quot;Should we go server-side with GTM? We are losing about 15% of data to ad blockers&quot;</li>
+<li>&quot;Review our naming conventions and tell me what needs to change&quot;</li>
+<li>&quot;Our conversion tags are firing on every page — help me scope them correctly&quot;</li>
+<li>&quot;What triggers should we use for a Shopify store with GA4, Google Ads, and Meta Pixel?&quot;</li>
+<li>&quot;Debug why our Add to Cart event stopped firing&quot;</li>
+</ul>
+<p>For complete tag type reference, trigger taxonomy, variable types, consent mode v2 parameters, sGTM architecture details, naming conventions, and anti-patterns, see [REFERENCE.md](REFERENCE.md).</p>
+<p>For worked examples of container audits, consent mode setup, tag firing debug, and sGTM advisory, see [EXAMPLES.md](EXAMPLES.md).</p></div>
+</div>
+<script>
+function copyInstall(btn) {
+  var text = btn.getAttribute('data-copy');
+  navigator.clipboard.writeText(text).then(function() {
+    btn.classList.add('copied');
+    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+    setTimeout(function() {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>

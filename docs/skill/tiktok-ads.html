@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>tiktok-ads — claude-marketing</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-00XHYRHCX4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-00XHYRHCX4');
+</script>
+<meta name="description" content="TikTok Ads platform expertise. Audit campaigns, creative strategy, audience targeting, Spark Ads, TikTok Shop integration, pixel/Events API setup, and performan">
+<meta property="og:title" content="tiktok-ads — claude-marketing">
+<meta property="og:description" content="TikTok Ads platform expertise. Audit campaigns, creative strategy, audience targeting, Spark Ads, TikTok Shop integration, pixel/Events API setup, and performance optimization. Use when the user asks ">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="tiktok-ads — claude-marketing">
+<meta name="twitter:description" content="TikTok Ads platform expertise. Audit campaigns, creative strategy, audience targeting, Spark Ads, TikTok Shop integration, pixel/Events API setup, and performance optimization. Use when the user asks ">
+<link rel="canonical" href="https://thatrebeccarae.github.io/claude-marketing/skill/tiktok-ads.html">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600,700&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Ultralight.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cartograph CF';
+  src: url('../fonts/CartographCF-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --accent: #5B5F8D;
+  --black: #000000;
+  --white: #ffffff;
+  --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+html {
+  background: #000000;
+  color: #ffffff;
+}
+
+body {
+  font-family: 'Switzer', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(15px, 1.1vw, 17px);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.detail-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 120px clamp(20px, 5vw, 40px) 80px;
+}
+
+.detail-back {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+.detail-back:hover { opacity: 1; }
+
+.detail-name {
+  font-family: 'PP Editorial New', 'Georgia', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 200;
+  line-height: 1.15;
+  letter-spacing: -0.014em;
+  margin-bottom: 0.5rem;
+}
+
+.detail-category {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  letter-spacing: 0.04em;
+  margin-bottom: 2rem;
+}
+
+.detail-desc {
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.65;
+  margin-bottom: 2.5rem;
+  opacity: 0.85;
+}
+
+.detail-install {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.detail-install code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  opacity: 0.6;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.detail-install .copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  color: #ffffff;
+  flex-shrink: 0;
+}
+.detail-install .copy-btn:hover { opacity: 0.8; }
+.detail-install .copy-btn.copied { opacity: 1; color: #4ade80; }
+
+.detail-tested {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  opacity: 0.4;
+  margin-bottom: 2.5rem;
+}
+
+.detail-capabilities h2,
+.detail-sources h2,
+.detail-body h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  margin-top: 2.5rem;
+}
+
+.detail-capabilities ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.detail-capabilities li {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 4px;
+}
+
+.detail-source-links {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.detail-source-links a {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ffffff;
+  border-radius: 45px;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+.detail-source-links a:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+.detail-body {
+  margin-top: 2.5rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 2rem;
+}
+
+.detail-body h2 {
+  font-family: 'Switzer', sans-serif;
+}
+
+.detail-body h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.detail-body p {
+  margin-bottom: 1rem;
+  opacity: 0.85;
+  line-height: 1.65;
+}
+
+.detail-body ul {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.detail-body li {
+  margin-bottom: 0.35rem;
+  opacity: 0.85;
+  line-height: 1.55;
+}
+
+.detail-body pre {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+}
+
+.detail-body code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.85rem;
+}
+
+.detail-body blockquote {
+  border-left: 2px solid rgba(255,255,255,0.2);
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+@media (max-width: 700px) {
+  .detail-page {
+    padding: 100px 20px 60px;
+  }
+  .detail-source-links {
+    flex-wrap: wrap;
+  }
+}
+</style>
+</head>
+<body>
+<div class="detail-page" data-pagefind-body>
+  <a href="../skills.html" class="detail-back">&larr; Back to skills</a>
+  <h1 class="detail-name">tiktok-ads</h1>
+  <div class="detail-category">Paid Media</div>
+  <p class="detail-desc">TikTok Ads platform expertise. Audit campaigns, creative strategy, audience targeting, Spark Ads, TikTok Shop integration, pixel/Events API setup, and performance optimization. Use when the user asks about TikTok advertising, short-form video ads, TikTok Shop, Spark Ads, or social commerce advertising.</p>
+  <div class="detail-install">
+    <code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/tiktok-ads ~/.claude/skills/</code>
+    <button class="copy-btn" data-copy="git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/tiktok-ads ~/.claude/skills/" title="Copy install command" onclick="copyInstall(this)">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+    </button>
+  </div>
+  <div class="detail-tested">Tested 2026-03-18 &middot; Claude Code v2.1</div>
+  
+  <div class="detail-sources">
+<h2>Source Files</h2>
+<div class="detail-source-links">
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/tiktok-ads/SKILL.md" target="_blank" rel="noopener">SKILL.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/tiktok-ads/REFERENCE.md" target="_blank" rel="noopener">REFERENCE.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/tiktok-ads/EXAMPLES.md" target="_blank" rel="noopener">EXAMPLES.md</a>
+</div>
+</div>
+  <div class="detail-body"><p>TikTok advertising — campaigns, creative, targeting, Spark Ads, Shop integration, and measurement.</p>
+<h2>Install</h2>
+<pre><code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/tiktok-ads ~/.claude/skills/</code></pre>
+<h2>Campaign Objectives</h2>
+<p>| Objective | Optimization Goal | Best For |</p>
+<p>|-----------|------------------|----------|</p>
+<p>| Reach | Maximum impressions | Brand awareness, launches |</p>
+<p>| Traffic | Link clicks | Blog, landing page visits |</p>
+<p>| Video Views | 6s or 2s views | Content promotion, retargeting pools |</p>
+<p>| Community Interaction | Followers, profile visits | Account growth |</p>
+<p>| Lead Generation | In-app form submissions | B2C lead capture |</p>
+<p>| App Promotion | Installs, in-app events | Mobile app growth |</p>
+<p>| Website Conversions | Purchase, signup, add-to-cart | E-commerce, SaaS |</p>
+<p>| Product Sales (Shop) | TikTok Shop purchases | Social commerce |</p>
+<h2>Ad Formats</h2>
+<p>| Format | Specs | Best For |</p>
+<p>|--------|-------|----------|</p>
+<p>| In-Feed Ads | 9:16 vertical, 5-60s, sound on | Standard performance ads |</p>
+<p>| Spark Ads | Boost organic posts (yours or creators) | Authenticity, social proof |</p>
+<p>| TopView | Full-screen on app open, up to 60s | Maximum reach, launches |</p>
+<p>| Branded Hashtag Challenge | Custom hashtag + landing page | UGC, viral campaigns |</p>
+<p>| Branded Effects | Custom AR filters/stickers | Interactive engagement |</p>
+<p>| Collection Ads | Product cards below video | E-commerce browsing |</p>
+<p>| Dynamic Showcase Ads (DSA) | Auto-generated from catalog | Retargeting, catalog scale |</p>
+<p>| TikTok Shop Ads | Video Shopping Ads, Live Shopping | Direct social commerce |</p>
+<h2>Creative Best Practices</h2>
+<h3>The TikTok Creative Formula</h3>
+<pre><code>Hook (0-3s) → Value/Story (3-15s) → CTA (last 3s)</code></pre>
+<p>1. <strong>Hook in first 3 seconds</strong> — the scroll-stopping moment. Use text overlay, unexpected visual, or direct address (&quot;Stop scrolling if you...&quot;)</p>
+<p>2. <strong>Native aesthetic</strong> — look like a TikTok, not an ad. Phone-shot, real people, trending sounds</p>
+<p>3. <strong>Sound on</strong> — 93% of TikTok is consumed with sound. Music and voiceover are critical</p>
+<p>4. <strong>Vertical video</strong> — 9:16 only. Never letterboxed horizontal</p>
+<p>5. <strong>Text overlays</strong> — 73% of top-performing ads use on-screen text</p>
+<p>6. <strong>Fast pacing</strong> — Cut every 2-3 seconds. Static shots die</p>
+<p>7. <strong>Creator-led &gt; brand-polished</strong> — UGC-style consistently outperforms studio creative</p>
+<h3>Creative Fatigue</h3>
+<ul>
+<li>Refresh every 7-14 days (TikTok audiences fatigue 2-3x faster than Meta)</li>
+<li>Maintain 3-5 active creatives per ad group</li>
+<li>Test new hooks on proven body/CTA structures</li>
+<li>Monitor frequency: &gt;3 weekly = fatigue risk</li>
+</ul>
+<h2>Targeting</h2>
+<h3>Interest &amp; Behavior</h3>
+<ul>
+<li>Interest categories (broader, for prospecting)</li>
+<li>Video interaction (liked, commented, shared similar content)</li>
+<li>Creator interaction (followed similar creators)</li>
+<li>Hashtag interaction (engaged with relevant hashtags)</li>
+</ul>
+<h3>Custom Audiences</h3>
+<ul>
+<li>Website traffic (Pixel)</li>
+<li>App activity</li>
+<li>Customer file (email/phone upload)</li>
+<li>Engagement (video views, ad interaction, profile visits)</li>
+<li>TikTok Shop (shoppers, cart abandoners)</li>
+</ul>
+<h3>Lookalike Audiences</h3>
+<ul>
+<li>Based on any custom audience source</li>
+<li>Broad/Narrow/Balanced options</li>
+<li>Minimum source: 1,000 users</li>
+</ul>
+<h3>Smart Targeting</h3>
+<ul>
+<li>Automatic audience expansion when optimization allows</li>
+<li>Works well for conversion campaigns with sufficient data</li>
+<li>Requires 50+ conversions per week for optimal learning</li>
+</ul>
+<h2>Benchmarks</h2>
+<p>| Metric | Good | Average | Poor |</p>
+<p>|--------|------|---------|------|</p>
+<p>| CTR (In-Feed) | &gt;1.5% | 0.8-1.5% | &lt;0.8% |</p>
+<p>| CPC | &lt;$0.80 | $0.80-1.50 | &gt;$1.50 |</p>
+<p>| CPM | &lt;$8 | $8-15 | &gt;$15 |</p>
+<p>| Video view rate (6s) | &gt;15% | 8-15% | &lt;8% |</p>
+<p>| CVR (e-commerce) | &gt;2% | 1-2% | &lt;1% |</p>
+<p>| ROAS (e-commerce) | &gt;3x | 1.5-3x | &lt;1.5x |</p>
+<p>| Cost per lead | &lt;$15 | $15-40 | &gt;$40 |</p>
+<h2>Pixel &amp; Events API</h2>
+<h3>TikTok Pixel Setup</h3>
+<ul>
+<li>Base pixel on all pages</li>
+<li>Standard events: ViewContent, AddToCart, InitiateCheckout, CompletePayment</li>
+<li>Custom events for specific actions (signup, demo request)</li>
+<li>Enhanced matching (email, phone) for better attribution</li>
+</ul>
+<h3>Events API (Server-Side)</h3>
+<ul>
+<li>Complements pixel for iOS 14.5+ signal loss</li>
+<li>Deduplicate with pixel via event_id parameter</li>
+<li>Recommended for all advertisers running conversion campaigns</li>
+</ul>
+<h2>Audit Checklist</h2>
+<ul>
+<li>[ ] Campaign structure: no more than 3-5 ad groups per campaign</li>
+<li>[ ] Each ad group has 3-5 active creatives</li>
+<li>[ ] Pixel firing correctly on all conversion events</li>
+<li>[ ] Events API configured alongside pixel</li>
+<li>[ ] Budget allows 50+ conversions per week per ad group (for learning phase)</li>
+<li>[ ] Creative refreshed within last 14 days</li>
+<li>[ ] No audience overlap between ad groups</li>
+<li>[ ] Exclusions applied (purchasers, existing customers)</li>
+<li>[ ] Attribution window set appropriately (7-day click, 1-day view standard)</li>
+<li>[ ] Catalog connected (if e-commerce)</li>
+</ul>
+<h2>Integration with Other Skills</h2>
+<ul>
+<li><strong>facebook-ads</strong> — Cross-platform creative and audience strategy</li>
+<li><strong>google-ads</strong> — Full-funnel paid media coverage</li>
+<li><strong>account-structure-review</strong> — Multi-platform structural audit</li>
+<li><strong>wasted-spend-finder</strong> — Identify wasted TikTok spend</li>
+<li><strong>copywriting-frameworks</strong> — Script ad hooks and CTAs</li>
+</ul></div>
+</div>
+<script>
+function copyInstall(btn) {
+  var text = btn.getAttribute('data-copy');
+  navigator.clipboard.writeText(text).then(function() {
+    btn.classList.add('copied');
+    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+    setTimeout(function() {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>

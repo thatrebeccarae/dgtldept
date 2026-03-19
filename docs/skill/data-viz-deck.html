@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>data-viz-deck — claude-marketing</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-00XHYRHCX4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-00XHYRHCX4');
+</script>
+<meta name="description" content="Transform audit data, performance reports, and structured analyses into polished visual deliverables. Generates presentation decks (PPTX), interactive HTML dash">
+<meta property="og:title" content="data-viz-deck — claude-marketing">
+<meta property="og:description" content="Transform audit data, performance reports, and structured analyses into polished visual deliverables. Generates presentation decks (PPTX), interactive HTML dashboards, or styled markdown reports with ">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="data-viz-deck — claude-marketing">
+<meta name="twitter:description" content="Transform audit data, performance reports, and structured analyses into polished visual deliverables. Generates presentation decks (PPTX), interactive HTML dashboards, or styled markdown reports with ">
+<link rel="canonical" href="https://thatrebeccarae.github.io/claude-marketing/skill/data-viz-deck.html">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600,700&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Ultralight.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cartograph CF';
+  src: url('../fonts/CartographCF-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --accent: #5B5F8D;
+  --black: #000000;
+  --white: #ffffff;
+  --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+html {
+  background: #000000;
+  color: #ffffff;
+}
+
+body {
+  font-family: 'Switzer', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(15px, 1.1vw, 17px);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.detail-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 120px clamp(20px, 5vw, 40px) 80px;
+}
+
+.detail-back {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+.detail-back:hover { opacity: 1; }
+
+.detail-name {
+  font-family: 'PP Editorial New', 'Georgia', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 200;
+  line-height: 1.15;
+  letter-spacing: -0.014em;
+  margin-bottom: 0.5rem;
+}
+
+.detail-category {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  letter-spacing: 0.04em;
+  margin-bottom: 2rem;
+}
+
+.detail-desc {
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.65;
+  margin-bottom: 2.5rem;
+  opacity: 0.85;
+}
+
+.detail-install {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.detail-install code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  opacity: 0.6;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.detail-install .copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  color: #ffffff;
+  flex-shrink: 0;
+}
+.detail-install .copy-btn:hover { opacity: 0.8; }
+.detail-install .copy-btn.copied { opacity: 1; color: #4ade80; }
+
+.detail-tested {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  opacity: 0.4;
+  margin-bottom: 2.5rem;
+}
+
+.detail-capabilities h2,
+.detail-sources h2,
+.detail-body h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  margin-top: 2.5rem;
+}
+
+.detail-capabilities ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.detail-capabilities li {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 4px;
+}
+
+.detail-source-links {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.detail-source-links a {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ffffff;
+  border-radius: 45px;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+.detail-source-links a:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+.detail-body {
+  margin-top: 2.5rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 2rem;
+}
+
+.detail-body h2 {
+  font-family: 'Switzer', sans-serif;
+}
+
+.detail-body h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.detail-body p {
+  margin-bottom: 1rem;
+  opacity: 0.85;
+  line-height: 1.65;
+}
+
+.detail-body ul {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.detail-body li {
+  margin-bottom: 0.35rem;
+  opacity: 0.85;
+  line-height: 1.55;
+}
+
+.detail-body pre {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+}
+
+.detail-body code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.85rem;
+}
+
+.detail-body blockquote {
+  border-left: 2px solid rgba(255,255,255,0.2);
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+@media (max-width: 700px) {
+  .detail-page {
+    padding: 100px 20px 60px;
+  }
+  .detail-source-links {
+    flex-wrap: wrap;
+  }
+}
+</style>
+</head>
+<body>
+<div class="detail-page" data-pagefind-body>
+  <a href="../skills.html" class="detail-back">&larr; Back to skills</a>
+  <h1 class="detail-name">data-viz-deck</h1>
+  <div class="detail-category">Reporting &amp; Deliverables</div>
+  <p class="detail-desc">Transform audit data, performance reports, and structured analyses into polished visual deliverables. Generates presentation decks (PPTX), interactive HTML dashboards, or styled markdown reports with charts. Includes a customizable design system with forest green accent and warm cream backgrounds. Use when the user has analysis data and needs a visual deliverable.</p>
+  <div class="detail-install">
+    <code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/data-viz-deck ~/.claude/skills/</code>
+    <button class="copy-btn" data-copy="git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/data-viz-deck ~/.claude/skills/" title="Copy install command" onclick="copyInstall(this)">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+    </button>
+  </div>
+  <div class="detail-tested">Tested 2026-03-18 &middot; Claude Code v2.1</div>
+  
+  <div class="detail-sources">
+<h2>Source Files</h2>
+<div class="detail-source-links">
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/data-viz-deck/SKILL.md" target="_blank" rel="noopener">SKILL.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/data-viz-deck/REFERENCE.md" target="_blank" rel="noopener">REFERENCE.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/data-viz-deck/EXAMPLES.md" target="_blank" rel="noopener">EXAMPLES.md</a>
+</div>
+</div>
+  <div class="detail-body"><p>Transform structured data and analysis into polished visual deliverables: presentation decks, interactive dashboards, and visual reports.</p>
+<h2>Install</h2>
+<pre><code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/data-viz-deck ~/.claude/skills/</code></pre>
+<h2>When to Use This Skill</h2>
+<ul>
+<li>User has completed an audit or analysis and wants a visual deliverable</li>
+<li>User says &quot;make a deck,&quot; &quot;create a presentation,&quot; &quot;build a dashboard,&quot; &quot;visualize this&quot;</li>
+<li>User wants to turn a markdown report into client-ready slides</li>
+<li>User needs charts, tables, or visual summaries from performance data</li>
+</ul>
+<h2>Output Formats</h2>
+<h3>1. PPTX Deck (Primary)</h3>
+<p>Native PowerPoint with editable charts, styled tables, and professional layouts. Best for client handoffs and presentations.</p>
+<p><strong>Requires:</strong> python-pptx (installed), pandas (installed)</p>
+<h3>2. Interactive HTML Dashboard</h3>
+<p>Single-file HTML with plotly.js charts (loaded via CDN), filterable tables, and responsive layout. Best for sharing interactive reports.</p>
+<p><strong>Requires:</strong> jinja2 (installed), pandas (installed). Plotly.js loaded via CDN at runtime.</p>
+<h3>3. Visual Markdown Report</h3>
+<p>Enhanced markdown with embedded chart images (requires matplotlib: `pip install matplotlib`). Best for vault reports and documentation.</p>
+<h2>Workflow</h2>
+<h3>Step 1: Identify the Data Source</h3>
+<p>Read the source file (audit markdown, CSV, JSON, or database query results). Parse the key metrics, tables, and findings into a pandas DataFrame or structured dict.</p>
+<h3>Step 2: Select Chart Types</h3>
+<p>| Data Pattern | Chart Type | When to Use |</p>
+<p>|-------------|------------|-------------|</p>
+<p>| Categories with values | <strong>Bar chart</strong> (horizontal) | Revenue by category |</p>
+<p>| Categories + benchmark | <strong>Bar chart with reference line</strong> | Performance vs benchmark |</p>
+<p>| Parts of a whole | <strong>Doughnut/Pie chart</strong> | Revenue concentration, channel mix |</p>
+<p>| Values over time | <strong>Line chart</strong> | Trend data, period-over-period |</p>
+<p>| Two variables | <strong>Scatter plot</strong> | Correlation analysis |</p>
+<p>| Performance scoring | <strong>Heatmap table</strong> | Color-coded metrics (green/amber/red) |</p>
+<p>| Before/after or gaps | <strong>Waterfall chart</strong> | Revenue opportunity sizing |</p>
+<p>| Ranked items | <strong>Horizontal bar</strong> | Top 10 sorted |</p>
+<p>| Funnels | <strong>Funnel chart</strong> | Delivered &gt; opened &gt; clicked &gt; converted |</p>
+<p>| Status overview | <strong>Scorecard/KPI tiles</strong> | Executive summary metrics |</p>
+<h3>Step 3: Apply the Design System</h3>
+<p>All deliverables use a configurable design system. Override the color tokens and font choices to match your brand.</p>
+<p>#### Color Palette</p>
+<pre><code>COLORS = {
+    # Brand accent -- change to your brand color
+    &quot;accent&quot;:      &quot;#3D7A5C&quot;,  # Forest green
+    &quot;accent_light&quot;:&quot;#6AB88A&quot;,  # Light green
+
+    # Chart series (ordered for visual distinction)
+    &quot;series&quot;: [&quot;#3D7A5C&quot;, &quot;#6AB88A&quot;, &quot;#8B7EC8&quot;, &quot;#D4845A&quot;, &quot;#C9A84C&quot;, &quot;#C75B6F&quot;, &quot;#93C9A8&quot;, &quot;#8B949E&quot;],
+
+    # Semantic
+    &quot;good&quot;:        &quot;#2E8B57&quot;,  # Green -- above benchmark
+    &quot;warning&quot;:     &quot;#D97706&quot;,  # Amber -- watch
+    &quot;critical&quot;:    &quot;#C0392B&quot;,  # Red -- action needed
+    &quot;neutral&quot;:     &quot;#8B949E&quot;,  # Slate -- no judgment
+
+    # Dark mode (title slides, section dividers)
+    &quot;bg_deep&quot;:     &quot;#141414&quot;,
+    &quot;bg_surface&quot;:  &quot;#1E1E1E&quot;,
+    &quot;text_bright&quot;: &quot;#F0F3F6&quot;,
+    &quot;text_secondary_dark&quot;: &quot;#9CA3AF&quot;,
+
+    # Light mode (content slides -- the default)
+    &quot;bg_light&quot;:    &quot;#FAF7F2&quot;,  # Warm cream, NOT white
+    &quot;bg_surface_light&quot;: &quot;#F2EDE6&quot;,
+    &quot;text_primary&quot;:&quot;#0F0E0E&quot;,
+    &quot;text_secondary&quot;: &quot;#57606A&quot;,
+    &quot;text_muted&quot;:  &quot;#8B949E&quot;,
+}</code></pre>
+<p><strong>Color rules:</strong></p>
+<ul>
+<li>Light mode (`#FAF7F2` warm cream) is default for all content slides. NOT white.</li>
+<li>Dark mode (`#141414`) only for: title slides, section dividers, closing slides.</li>
+<li>Accent color used sparingly: top-performing bars, key metrics, accent callouts.</li>
+<li>Semantic colors (green/amber/red) only for status indicators, never decoration.</li>
+</ul>
+<p>#### Typography (PPTX)</p>
+<pre><code>FONTS = {
+    &quot;title&quot;:    &quot;Switzer&quot;,        # Slide titles -- Light (300), 28-36pt, NOT bold
+    &quot;subtitle&quot;: &quot;Switzer&quot;,        # Subtitles -- Regular (400), 18-22pt
+    &quot;body&quot;:     &quot;Switzer&quot;,        # Body text -- Regular (400), 12-14pt
+    &quot;data&quot;:     &quot;Cartograph CF&quot;,  # Numbers, tables -- Regular/Bold, 11-12pt
+    &quot;kpi&quot;:      &quot;Cartograph CF&quot;,  # KPI big numbers -- Bold (700), 44-60pt
+    &quot;label&quot;:    &quot;Cartograph CF&quot;,  # ALL CAPS labels -- Regular, 9-10pt, +tracking
+}
+# Fallbacks: Switzer -&gt; Inter -&gt; system-ui | Cartograph CF -&gt; Consolas -&gt; monospace</code></pre>
+<p><strong>Critical typography rules:</strong></p>
+<p>1. <strong>Headlines use Light weight, NOT Bold.</strong> Light at large sizes = confident, premium.</p>
+<p>2. <strong>Monospace font for ALL numeric/data content.</strong> KPIs, table numbers, labels, footers.</p>
+<p>3. <strong>Negative tracking on headlines.</strong> -0.03em to -0.04em.</p>
+<p>4. <strong>Positive tracking on ALL CAPS labels.</strong> +0.08em to +0.1em.</p>
+<p>#### Slide Layouts</p>
+<p>Every deck follows this structure:</p>
+<pre><code>1. Title Slide         -- Report name, date (dark mode)
+2. Executive Summary   -- 3-5 KPI tiles + key findings bullets
+3. Scorecard           -- Color-coded performance overview table
+4. Deep Dive slides    -- One per major finding (chart + insight + recommendation)
+5. Opportunity Sizing  -- Waterfall or bar chart of revenue opportunities
+6. Recommendations     -- Prioritized table (Quick Wins / Strategic / Maintenance)
+7. Appendix            -- Full data tables</code></pre>
+<p>#### Slide Dimensions (python-pptx)</p>
+<pre><code>Width:  13.333&quot;
+Height: 7.5&quot;
+Aspect: 16:9</code></pre>
+<h3>Step 4: Generate the Deliverable</h3>
+<p>Follow the code patterns in REFERENCE.md for the chosen output format.</p>
+<h2>Key Principles</h2>
+<p>1. <strong>One insight per slide.</strong> Never cram multiple findings onto one slide. Each deep-dive slide has: chart (left 60%), insight + recommendation (right 40%).</p>
+<p>2. <strong>Lead with the number.</strong> Every slide title should contain the key metric: &quot;Post-Purchase RPR at $0.07 -- 14x Below Benchmark&quot; not &quot;Post-Purchase Flow Analysis.&quot;</p>
+<p>3. <strong>Benchmark everything.</strong> Never show a metric without context. Show the benchmark, the gap, and what closing the gap is worth.</p>
+<p>4. <strong>Color = meaning.</strong> Green means good/above benchmark. Amber means watch. Red means action needed. Never use color decoratively in data slides.</p>
+<p>5. <strong>Simplify chart data.</strong> Max 6-8 items per chart. Aggregate the tail into &quot;Other.&quot;</p>
+<p>6. <strong>Executive summary is the deck.</strong> If someone only reads slide 2, they should understand the full story.</p>
+<p>7. <strong>Never estimate when actuals exist.</strong> If the data has exact values, compute precise totals.</p>
+<p>8. <strong>No white backgrounds.</strong> Always warm cream `#FAF7F2` for light content.</p>
+<p>9. <strong>No bold headlines.</strong> Light weight for all hero/section titles.</p>
+<p>For complete code templates and reference, see [REFERENCE.md](REFERENCE.md).</p></div>
+</div>
+<script>
+function copyInstall(btn) {
+  var text = btn.getAttribute('data-copy');
+  navigator.clipboard.writeText(text).then(function() {
+    btn.classList.add('copied');
+    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+    setTimeout(function() {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>

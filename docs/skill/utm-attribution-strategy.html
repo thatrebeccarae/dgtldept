@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>utm-attribution-strategy — claude-marketing</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-00XHYRHCX4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-00XHYRHCX4');
+</script>
+<meta name="description" content="UTM parameter strategy, campaign tracking, and marketing attribution modeling. Build consistent UTM taxonomies, configure attribution models, measure cross-chan">
+<meta property="og:title" content="utm-attribution-strategy — claude-marketing">
+<meta property="og:description" content="UTM parameter strategy, campaign tracking, and marketing attribution modeling. Build consistent UTM taxonomies, configure attribution models, measure cross-channel performance, and connect marketing s">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="utm-attribution-strategy — claude-marketing">
+<meta name="twitter:description" content="UTM parameter strategy, campaign tracking, and marketing attribution modeling. Build consistent UTM taxonomies, configure attribution models, measure cross-channel performance, and connect marketing s">
+<link rel="canonical" href="https://thatrebeccarae.github.io/claude-marketing/skill/utm-attribution-strategy.html">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600,700&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Ultralight.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../fonts/PPEditorialNew-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cartograph CF';
+  src: url('../fonts/CartographCF-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --accent: #5B5F8D;
+  --black: #000000;
+  --white: #ffffff;
+  --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+html {
+  background: #000000;
+  color: #ffffff;
+}
+
+body {
+  font-family: 'Switzer', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(15px, 1.1vw, 17px);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.detail-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 120px clamp(20px, 5vw, 40px) 80px;
+}
+
+.detail-back {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+.detail-back:hover { opacity: 1; }
+
+.detail-name {
+  font-family: 'PP Editorial New', 'Georgia', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 200;
+  line-height: 1.15;
+  letter-spacing: -0.014em;
+  margin-bottom: 0.5rem;
+}
+
+.detail-category {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  letter-spacing: 0.04em;
+  margin-bottom: 2rem;
+}
+
+.detail-desc {
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.65;
+  margin-bottom: 2.5rem;
+  opacity: 0.85;
+}
+
+.detail-install {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.detail-install code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  opacity: 0.6;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.detail-install .copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  opacity: 0.5;
+  transition: opacity 0.2s var(--ease);
+  color: #ffffff;
+  flex-shrink: 0;
+}
+.detail-install .copy-btn:hover { opacity: 0.8; }
+.detail-install .copy-btn.copied { opacity: 1; color: #4ade80; }
+
+.detail-tested {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  opacity: 0.4;
+  margin-bottom: 2.5rem;
+}
+
+.detail-capabilities h2,
+.detail-sources h2,
+.detail-body h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  margin-top: 2.5rem;
+}
+
+.detail-capabilities ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.detail-capabilities li {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 4px;
+}
+
+.detail-source-links {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.detail-source-links a {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ffffff;
+  border-radius: 45px;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+.detail-source-links a:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+.detail-body {
+  margin-top: 2.5rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 2rem;
+}
+
+.detail-body h2 {
+  font-family: 'Switzer', sans-serif;
+}
+
+.detail-body h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.detail-body p {
+  margin-bottom: 1rem;
+  opacity: 0.85;
+  line-height: 1.65;
+}
+
+.detail-body ul {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.detail-body li {
+  margin-bottom: 0.35rem;
+  opacity: 0.85;
+  line-height: 1.55;
+}
+
+.detail-body pre {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+}
+
+.detail-body code {
+  font-family: 'Cartograph CF', monospace;
+  font-size: 0.85rem;
+}
+
+.detail-body blockquote {
+  border-left: 2px solid rgba(255,255,255,0.2);
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+@media (max-width: 700px) {
+  .detail-page {
+    padding: 100px 20px 60px;
+  }
+  .detail-source-links {
+    flex-wrap: wrap;
+  }
+}
+</style>
+</head>
+<body>
+<div class="detail-page" data-pagefind-body>
+  <a href="../skills.html" class="detail-back">&larr; Back to skills</a>
+  <h1 class="detail-name">utm-attribution-strategy</h1>
+  <div class="detail-category">Analytics</div>
+  <p class="detail-desc">UTM parameter strategy, campaign tracking, and marketing attribution modeling. Build consistent UTM taxonomies, configure attribution models, measure cross-channel performance, and connect marketing spend to revenue. Use when the user asks about UTM parameters, campaign tracking, attribution models, marketing measurement, or cross-channel analytics.</p>
+  <div class="detail-install">
+    <code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/utm-attribution-strategy ~/.claude/skills/</code>
+    <button class="copy-btn" data-copy="git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/utm-attribution-strategy ~/.claude/skills/" title="Copy install command" onclick="copyInstall(this)">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+    </button>
+  </div>
+  <div class="detail-tested">Tested 2026-03-18 &middot; Claude Code v2.1</div>
+  
+  <div class="detail-sources">
+<h2>Source Files</h2>
+<div class="detail-source-links">
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/utm-attribution-strategy/SKILL.md" target="_blank" rel="noopener">SKILL.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/utm-attribution-strategy/REFERENCE.md" target="_blank" rel="noopener">REFERENCE.md</a>
+<a href="https://github.com/thatrebeccarae/claude-marketing/tree/main/skills/utm-attribution-strategy/EXAMPLES.md" target="_blank" rel="noopener">EXAMPLES.md</a>
+</div>
+</div>
+  <div class="detail-body"><p>Campaign tracking with UTM parameters and marketing attribution modeling.</p>
+<h2>Install</h2>
+<pre><code>git clone https://github.com/thatrebeccarae/claude-marketing.git &amp;&amp; cp -r claude-marketing/skills/utm-attribution-strategy ~/.claude/skills/</code></pre>
+<h2>UTM Parameter Reference</h2>
+<h3>The 5 Standard UTM Parameters</h3>
+<p>| Parameter | Purpose | Required | Example |</p>
+<p>|-----------|---------|----------|---------|</p>
+<p>| `utm_source` | Where traffic comes from | Yes | google, linkedin, newsletter |</p>
+<p>| `utm_medium` | Marketing medium/channel | Yes | cpc, email, social, referral |</p>
+<p>| `utm_campaign` | Campaign name | Yes | spring-sale, product-launch-q1 |</p>
+<p>| `utm_term` | Paid keyword (search ads) | No | email+marketing+software |</p>
+<p>| `utm_content` | Differentiate ad variants | No | cta-button, sidebar-banner, video-ad |</p>
+<h3>UTM Naming Convention</h3>
+<p><strong>Rules:</strong></p>
+<ul>
+<li>All lowercase (Google Analytics is case-sensitive)</li>
+<li>Use hyphens (`-`) as word separators, never spaces or underscores</li>
+<li>Be descriptive but concise</li>
+<li>Use consistent vocabulary across all teams</li>
+<li>Document your taxonomy and enforce it</li>
+</ul>
+<h3>Recommended Taxonomy</h3>
+<p>#### utm_source</p>
+<p>| Value | When to Use |</p>
+<p>|-------|------------|</p>
+<p>| `google` | Google Ads, Google organic |</p>
+<p>| `facebook` | Meta/Facebook ads and organic |</p>
+<p>| `instagram` | Instagram ads and organic |</p>
+<p>| `linkedin` | LinkedIn ads and organic |</p>
+<p>| `tiktok` | TikTok ads |</p>
+<p>| `twitter` | Twitter/X |</p>
+<p>| `youtube` | YouTube ads and organic |</p>
+<p>| `bing` | Microsoft/Bing ads |</p>
+<p>| `newsletter` | Your email newsletter |</p>
+<p>| `email` | Transactional or one-off emails |</p>
+<p>| `partner-[name]` | Partner/affiliate traffic |</p>
+<p>| `podcast-[name]` | Podcast mentions |</p>
+<p>#### utm_medium</p>
+<p>| Value | When to Use |</p>
+<p>|-------|------------|</p>
+<p>| `cpc` | Paid search (cost per click) |</p>
+<p>| `paid-social` | Paid social media |</p>
+<p>| `social` | Organic social media |</p>
+<p>| `email` | Email marketing |</p>
+<p>| `referral` | Partner/affiliate referrals |</p>
+<p>| `display` | Display/banner ads |</p>
+<p>| `video` | Video ads (pre-roll, in-stream) |</p>
+<p>| `retargeting` | Retargeting/remarketing |</p>
+<p>| `influencer` | Influencer partnerships |</p>
+<p>| `organic` | Organic search (usually auto-tagged) |</p>
+<p>| `direct` | Direct traffic (usually auto-tagged) |</p>
+<p>#### utm_campaign</p>
+<p><strong>Pattern:</strong> `[initiative]-[audience]-[date]`</p>
+<p>Examples:</p>
+<ul>
+<li>`spring-sale-2026`</li>
+<li>`product-launch-enterprise-q1`</li>
+<li>`webinar-seo-masterclass-mar2026`</li>
+<li>`blog-weekly-digest-w12`</li>
+<li>`retarget-cart-abandoners-mar`</li>
+</ul>
+<p>#### utm_content</p>
+<p><strong>Pattern:</strong> `[format]-[variant]-[placement]`</p>
+<p>Examples:</p>
+<ul>
+<li>`video-testimonial-feed`</li>
+<li>`carousel-product-stories`</li>
+<li>`cta-start-trial-hero`</li>
+<li>`banner-logo-sidebar`</li>
+<li>`text-ad-headline-v2`</li>
+</ul>
+<h2>UTM Builder</h2>
+<h3>URL Structure</h3>
+<pre><code>https://example.com/landing-page?utm_source=linkedin&amp;utm_medium=paid-social&amp;utm_campaign=product-launch-q1&amp;utm_content=video-demo-feed</code></pre>
+<h3>Common UTM Templates</h3>
+<p>| Channel | Full UTM String |</p>
+<p>|---------|----------------|</p>
+<p>| Google Search Ad | `?utm_source=google&amp;utm_medium=cpc&amp;utm_campaign=[campaign]&amp;utm_term=[keyword]&amp;utm_content=[ad-group]` |</p>
+<p>| Facebook Ad | `?utm_source=facebook&amp;utm_medium=paid-social&amp;utm_campaign=[campaign]&amp;utm_content=[ad-name]` |</p>
+<p>| LinkedIn Ad | `?utm_source=linkedin&amp;utm_medium=paid-social&amp;utm_campaign=[campaign]&amp;utm_content=[creative-type]` |</p>
+<p>| Email Newsletter | `?utm_source=newsletter&amp;utm_medium=email&amp;utm_campaign=[newsletter-name]-[date]&amp;utm_content=[link-position]` |</p>
+<p>| Organic LinkedIn Post | `?utm_source=linkedin&amp;utm_medium=social&amp;utm_campaign=[post-topic]` |</p>
+<p>| Partner Referral | `?utm_source=partner-[name]&amp;utm_medium=referral&amp;utm_campaign=[initiative]` |</p>
+<h2>Attribution Models</h2>
+<h3>Model Comparison</h3>
+<p>| Model | How It Works | Best For | Limitation |</p>
+<p>|-------|-------------|----------|-----------|</p>
+<p>| <strong>Last Click</strong> | 100% credit to last touchpoint | Short sales cycles, direct response | Ignores awareness/consideration |</p>
+<p>| <strong>First Click</strong> | 100% credit to first touchpoint | Brand awareness measurement | Ignores conversion-driving touches |</p>
+<p>| <strong>Linear</strong> | Equal credit to all touchpoints | Simple multi-touch view | Over-credits low-impact touches |</p>
+<p>| <strong>Time Decay</strong> | More credit to recent touches | Long sales cycles with clear momentum | Under-values early awareness |</p>
+<p>| <strong>Position-Based</strong> | 40% first, 40% last, 20% middle | Balanced view of full funnel | Arbitrary weight distribution |</p>
+<p>| <strong>Data-Driven</strong> | ML-based credit allocation | Large datasets (1000+ conversions) | Black box, requires volume |</p>
+<h3>GA4 Attribution</h3>
+<p>GA4 uses data-driven attribution by default. Key settings:</p>
+<ul>
+<li><strong>Reporting attribution model</strong>: Set in Admin &gt; Attribution Settings</li>
+<li><strong>Lookback window</strong>: 30 days (click) / 7 days (view) default</li>
+<li><strong>Conversion paths</strong>: Analyze in Advertising &gt; Attribution &gt; Conversion Paths</li>
+</ul>
+<h3>Choosing a Model</h3>
+<pre><code>Sales cycle &lt; 7 days → Last Click or Data-Driven
+Sales cycle 7-30 days → Position-Based or Data-Driven
+Sales cycle &gt; 30 days → Time Decay or Data-Driven
+Brand awareness focus → First Click
+Performance marketing focus → Last Click
+Balanced view needed → Position-Based
+1000+ monthly conversions → Data-Driven (always)</code></pre>
+<h2>UTM Audit Checklist</h2>
+<ul>
+<li>[ ] All paid campaigns have UTM parameters</li>
+<li>[ ] Naming convention documented and shared with team</li>
+<li>[ ] No mixed case (utm_source=Google vs google)</li>
+<li>[ ] No spaces in parameter values (use hyphens)</li>
+<li>[ ] utm_medium values align with GA4 default channel groupings</li>
+<li>[ ] Internal links do NOT have UTM parameters (breaks attribution)</li>
+<li>[ ] UTM parameters are on the landing page URL, not post-redirect</li>
+<li>[ ] No PII in UTM parameters (names, emails, account IDs)</li>
+<li>[ ] Short URLs / link shorteners preserve UTM parameters</li>
+<li>[ ] Redirects preserve UTM parameters (302s can strip them)</li>
+</ul>
+<h2>Common Mistakes</h2>
+<p>1. <strong>UTMs on internal links</strong> — breaks session attribution, inflates source counts</p>
+<p>2. <strong>Inconsistent naming</strong> — `Facebook` vs `facebook` vs `fb` creates 3 separate sources</p>
+<p>3. <strong>Missing utm_medium</strong> — traffic falls into &quot;(other)&quot; channel grouping</p>
+<p>4. <strong>Non-standard utm_medium values</strong> — use GA4 recognized values for proper channel grouping</p>
+<p>5. <strong>UTMs on organic search results</strong> — Google auto-tags organic; adding UTMs creates duplicate sources</p>
+<p>6. <strong>PII in UTM parameters</strong> — email addresses or user IDs in URLs violate privacy policies</p>
+<p>7. <strong>Forgetting post-click tracking</strong> — UTMs track the click, not what happens after</p>
+<h2>Integration with Other Skills</h2>
+<ul>
+<li><strong>google-analytics</strong> — UTM data flows into GA4 for analysis</li>
+<li><strong>google-ads</strong> — Google auto-tags with gclid; UTMs are supplementary</li>
+<li><strong>facebook-ads</strong> — Meta auto-tags with fbclid; UTMs needed for GA4 attribution</li>
+<li><strong>linkedin-ads</strong> — LinkedIn requires manual UTM configuration</li>
+<li><strong>tiktok-ads</strong> — TikTok requires manual UTM configuration</li>
+</ul></div>
+</div>
+<script>
+function copyInstall(btn) {
+  var text = btn.getAttribute('data-copy');
+  navigator.clipboard.writeText(text).then(function() {
+    btn.classList.add('copied');
+    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+    setTimeout(function() {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>
