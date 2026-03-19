@@ -2,7 +2,7 @@
 
 # claude-marketing
 
-**25 open source Claude Code skills, specialized agents, and autonomous workflows for marketing teams.** Paid media, e-commerce, content, strategy, creative, reporting, and development — specialist depth without specialist headcount.
+**50+ open source Claude Code skills, specialized agents, and autonomous workflows for marketing teams.** Paid media, e-commerce, content, strategy, creative, reporting, and development — specialist depth without specialist headcount.
 
 <br>
 <br>
@@ -29,10 +29,6 @@ git clone https://github.com/thatrebeccarae/claude-marketing.git
 <br>
 <br>
 
-<a href="https://thatrebeccarae.github.io/claude-marketing/skill-packs/demo/">
-  <img src="assets/terminal.png" alt="claude-marketing terminal preview" width="760">
-</a>
-
 <!--
 ### What people are saying
 
@@ -46,59 +42,42 @@ git clone https://github.com/thatrebeccarae/claude-marketing.git
 <br>
 <br>
 
-[Why This Exists](#why-this-exists) · [Who This Is For](#who-this-is-for) · [Why Depth Over Breadth](#why-depth-over-breadth) · [What's Inside](#whats-inside) · [Skills](#skills) · [Skill Packs](#skill-packs) · [Agents](#agents) · [Workflows](#workflows) · [Getting Started](#getting-started) · [Multi-Tool Support](#multi-tool-support) · [How Skills Work](#how-skills-work) · [Composing Skills](#composing-skills) · [Example Prompts](#example-prompts) · [Configuration](#configuration) · [Security](#security) · [Troubleshooting](#troubleshooting) · [Documentation](#documentation) · [Contributing](#contributing) · [License](#license)
+[Quick Start](#quick-start) · [Skills](#skills) · [Skill Packs](#skill-packs) · [Agents](#agents) · [Workflows](#workflows) · [Multi-Tool Support](#multi-tool-support) · [How Skills Work](#how-skills-work) · [Composing Skills](#composing-skills) · [Example Prompts](#example-prompts) · [Configuration](#configuration) · [Contributing](#contributing) · [License](#license)
+
 
 </div>
 
 ---
 
-## Why This Exists
+50+ open-source skills that give [Claude Code](https://docs.anthropic.com/en/docs/claude-code) real marketing expertise — diagnostic frameworks, industry benchmarks, audit checklists, and platform-specific reference data across paid media, SEO, e-commerce, content, CRO, analytics, and strategy. Also works with Cursor, Aider, Windsurf, GitHub Copilot, and Gemini CLI.
 
-[Claude Code](https://docs.anthropic.com/en/docs/claude-code) is Anthropic's AI coding agent — it runs in your terminal and can read files, run commands, and work with APIs. These skills give it marketing expertise it doesn't have out of the box.
+Each skill ships three layers: **SKILL.md** (frameworks and decision trees), **REFERENCE.md** (benchmarks, API schemas, rate limits), and **EXAMPLES.md** (worked prompts with expected output). Not prompt templates — implementation-grade tools tested in real engagements.
 
-Most "AI marketing" tools launching lately are wrappers with an up-charge — skills that don't work, agents that are anything but "autonomous," or repackaged capabilities your platforms already ship natively, sold back to you with a dashboard and a subscription fee.
+## Quick Start
 
-**claude-marketing is a complete digital marketing skill set with built-in domain expertise.** No wrappers, no subscriptions, no dashboards selling you capabilities you already own. The focused knowledge, benchmarks, and diagnostic frameworks that make Claude Code useful for lean marketing teams — open source, free, and built from years inside Klaviyo, Shopify, GA4, GTM, analytics stacks, and orchestration layers.
+```bash
+# Clone the repo
+git clone https://github.com/thatrebeccarae/claude-marketing.git
 
-- **Skill packs** give Claude Code the same platform expertise a senior marketing consultant brings to an audit
-- **Agent workflows** are autonomous pipelines that monitor GA4 properties, detect anomalies, and implement fixes via GTM — without anyone lifting a finger
+# Copy any skill
+cp -r claude-marketing/skills/google-ads ~/.claude/skills/
 
-This is the department that $70K+/year solutions try to sell you. Now anyone can `git clone` it.
+# Or install a full pack
+python claude-marketing/skill-packs/scripts/setup-paid-media.py
 
-Active project, open-sourced as-is. Fork it and make it yours — updates and new releases published regularly. Install what you need and ask questions in plain English.
+# Then ask Claude Code anything
+# "Run a scored audit of my Google Ads account"
+# "Audit my Klaviyo flows and tell me what's missing"
+# "Optimize this page for AI search citations"
+```
 
-
-## Who This Is For
-
-- **Solo marketers and small teams** who need specialist depth without specialist headcount
-- **DTC and e-commerce operators** running Klaviyo, Shopify, GA4, or Looker Studio
-- **Growth teams** that need cross-platform analysis, not platform-by-platform reports
-- **Content marketers** who want research-backed, SEO-optimized content at scale
-- **Agencies and consultants** looking to scale their diagnostic and deliverable process
-- **Founders** who are tired of paying for audits they could run themselves
-- **Developers** working on marketing projects who want safe deployment practices
-
-Implementation-ready answers — not tutorials, not blog-post-level overviews.
-
-## Why Depth Over Breadth
-
-There are repos with 100+ AI agent personas — a paragraph of instructions and a personality for every conceivable role. Those are prompt templates, not tools. They tell Claude *what to be*, not *what to know*.
-
-claude-marketing takes the opposite approach. Every skill ships with three layers:
-
-- **SKILL.md** — diagnostic frameworks, decision trees, and workflow patterns tested in real engagements
-- **REFERENCE.md** — platform-specific benchmarks, API schemas, rate limits, and field mappings that Claude doesn't have in its training data
-- **EXAMPLES.md** — worked examples with realistic prompts and expected output formats
-
-A 500-line Klaviyo skill with deliverability thresholds, RFM segment definitions, and flow audit checklists will outperform a 200-word "Klaviyo Specialist" persona every time. The persona knows *about* Klaviyo. The skill knows *how to audit one*.
-
-Depth compounds when skills compose — an ICP grounded in research data produces a better Klaviyo audit, which produces a sharper GA4 cross-reference, which produces a deck that actually tells a story. See [Composing Skills](examples/) for how this works in practice.
+Each skill works independently — install only what you need.
 
 ## What's Inside
 
 | Category | What It Is | Count |
 |----------|-----------|-------|
-| **[Skills](skills/)** | Claude Code skills — install individually or as packs | 27 skills |
+| **[Skills](skills/)** | Claude Code skills — install individually or as packs | 50+ skills |
 | **[Skill Packs](skill-packs/)** | Grouped collections with setup guides and install wizards | 6 packs |
 | **[Examples](examples/)** | Cross-skill workflow walkthroughs showing how skills compose | 3 workflows |
 | **[Agents](agents/)** | Standalone agents — portable analysis logic, usable with or without n8n | 3 agents |
@@ -106,11 +85,11 @@ Depth compounds when skills compose — an ICP grounded in research data produce
 
 ## Skills
 
-All 27 skills live in [`skills/`](skills/) — install individually or use a [skill pack](skill-packs/) to set up a related group.
+All 50+ skills live in [`skills/`](skills/) — install individually or use a [skill pack](skill-packs/) to set up a related group.
 
 > **All skills tested March 2026 with Claude Code v2.1.** Each skill's SKILL.md includes a `tested` date and `tested_with` version in its frontmatter metadata.
 
-> [**View Live Demo**](https://thatrebeccarae.github.io/claude-marketing/skill-packs/demo/) — See skills in action with example terminal output.
+> [**View Demo**](https://thatrebeccarae.github.io/claude-marketing/skill-packs/demo/) — See skills in action with example terminal output.
 
 ### DTC & E-commerce
 
@@ -134,6 +113,8 @@ All 27 skills live in [`skills/`](skills/) — install individually or use a [sk
 | **[Competitor Ads Analyst](skills/competitor-ads-analyst/)** | Competitor ad creative analysis from public ad libraries — messaging patterns, creative formats, positioning gaps |
 | **[Wasted Spend Finder](skills/wasted-spend-finder/)** | Systematic Google Ads and Meta waste analysis — produces uploadable exclusion lists with thematic categorization |
 | **[Cross-Platform Audit](skills/cross-platform-audit/)** | Unified multi-platform scored audit — parallel execution across Google, Meta, and Microsoft with budget-weighted aggregate health score (A-F), cross-platform analysis, and optional deck generation |
+| **[LinkedIn Ads](skills/linkedin-ads/)** | B2B advertising — campaign setup, professional targeting, Lead Gen Forms, ABM campaigns, Matched Audiences |
+| **[TikTok Ads](skills/tiktok-ads/)** | Short-form video ads — Spark Ads, TikTok Shop, creative strategy, pixel/Events API, audience targeting |
 
 ### Content
 
@@ -142,6 +123,8 @@ All 27 skills live in [`skills/`](skills/) — install individually or use a [sk
 | **[SEO Content Writer](skills/seo-content-writer/)** | SEO-optimized content with brand voice analysis — blog posts, social media, email campaigns, landing pages |
 | **[Content Workflow](skills/content-workflow/)** | End-to-end content pipeline: research → draft → editorial review → social distribution |
 | **[Email Composer](skills/email-composer/)** | Client outreach, deliverable handoffs, scope discussions, and follow-up cadence — with tone calibration per context |
+| **[Content Pipeline](skills/content-pipeline/)** | Multi-agent orchestration — chains research, editorial review, and social distribution agents in sequence |
+| **[Content Creator](skills/content-creator/)** | Brand voice analysis, SEO optimization scripts, content calendar planning, multi-platform strategy |
 
 ### Strategy & Research
 
@@ -166,6 +149,8 @@ All 27 skills live in [`skills/`](skills/) — install individually or use a [sk
 |-------|-------------------|
 | **[Pro Deck Builder](skills/pro-deck-builder/)** | Polished HTML slide decks and PDF-ready reports — dark covers, warm light content, component library |
 | **[HTML Report Builder](skills/html-report-builder/)** | Multi-page HTML reports for consulting deliverables — KPI cards, data tables, callout boxes, recommendation cards |
+| **[Pro Report Builder](skills/pro-report-builder/)** | HTML consulting reports — dark cover, warm cream pages, KPI cards, data tables, recommendation cards, PDF export |
+| **[Data Viz Deck](skills/data-viz-deck/)** | PPTX decks, interactive HTML dashboards, and chart generation from audit data |
 
 ### Developer Tools
 
@@ -173,6 +158,46 @@ All 27 skills live in [`skills/`](skills/) — install individually or use a [sk
 |-------|-------------------|
 | **[Safe Push](skills/safe-push/)** | Pre-push hygiene — PII/secrets scanning, commit message audit, rate-limited pushing, allowlist support |
 | **[GitHub README](skills/github-readme/)** | Generate, audit, or update READMEs — detects repo type, selects badges, enforces structure standards |
+| **[DOCX](skills/docx/)** | Word document creation, editing, tracked changes, redlining, and analysis |
+| **[MCP Builder](skills/mcp-builder/)** | MCP server development guide — Python (FastMCP) and TypeScript, with evaluation framework |
+| **[Skill Creator](skills/skill-creator/)** | Guide for creating Claude Code skills — anatomy, progressive disclosure, packaging |
+| **[React Best Practices](skills/react-best-practices/)** | 40+ React/Next.js performance optimization rules — waterfalls, bundles, rendering |
+
+### SEO & AI Search
+
+| Skill | What Claude Can Do |
+|-------|-------------------|
+| **[AEO/GEO Optimizer](skills/aeo-geo-optimizer/)** | AI search optimization — appear in ChatGPT, Perplexity, Google AI Overviews. Content scoring, citation patterns, AI crawler management |
+| **[Technical SEO Audit](skills/technical-seo-audit/)** | Deep crawl analysis, Core Web Vitals, indexation health, site architecture, canonical tags, structured data validation |
+| **[Schema Markup Generator](skills/schema-markup-generator/)** | JSON-LD structured data — Article, FAQ, HowTo, Product, Review, LocalBusiness, BreadcrumbList |
+| **[Programmatic SEO](skills/programmatic-seo/)** | Template-based page generation at scale — integration pages, location pages, comparison pages, internal linking |
+| **[GTM](skills/gtm/)** | Google Tag Manager — container audits, consent mode v2, server-side tagging, debugging, tag architecture |
+
+### Growth & Conversion
+
+| Skill | What Claude Can Do |
+|-------|-------------------|
+| **[CRO Auditor](skills/cro-auditor/)** | Conversion rate optimization — LIFT model heuristic evaluation, ICE/PIE prioritization, A/B test hypothesis generation |
+| **[Landing Page Optimizer](skills/landing-page-optimizer/)** | Page audit and optimization — above-the-fold, value props, CTAs, social proof, forms, mobile |
+| **[A/B Testing Framework](skills/ab-testing-framework/)** | Experiment design, sample size calculation, statistical significance, Bayesian vs frequentist analysis |
+| **[Cold Email & Outreach](skills/cold-email-outreach/)** | Outreach sequences, deliverability optimization, personalization tiers, CAN-SPAM/GDPR compliance |
+| **[Retention & Churn Prevention](skills/retention-churn-prevention/)** | Churn analysis, customer health scoring, cohort analysis, win-back campaigns, CLV calculation |
+
+### Analytics & Measurement
+
+| Skill | What Claude Can Do |
+|-------|-------------------|
+| **[UTM & Attribution Strategy](skills/utm-attribution-strategy/)** | UTM taxonomy design, attribution model selection, cross-channel measurement, GA4 attribution configuration |
+
+### Strategy & Brand
+
+| Skill | What Claude Can Do |
+|-------|-------------------|
+| **[Pricing Strategy](skills/pricing-strategy/)** | Pricing models, value metric selection, competitive analysis, pricing page optimization, tier design |
+| **[Customer Journey Mapping](skills/customer-journey-mapping/)** | Journey stage mapping, touchpoint inventory, drop-off analysis, persona-based journey variants |
+| **[Brand Voice & Guidelines](skills/brand-voice-guidelines/)** | Voice development, personality archetypes, tone matrices, messaging frameworks, style guides |
+| **[Social Media Strategy](skills/social-media-strategy/)** | Platform-specific organic strategy, content pillar framework, engagement tactics, content calendars |
+| **[Copywriting Frameworks](skills/copywriting-frameworks/)** | AIDA, PAS, BAB, 4Ps, StoryBrand, QUEST, FAB — framework-driven copy for ads, pages, emails |
 
 ## Skill Packs
 
@@ -184,33 +209,6 @@ Grouped collections with setup wizards for installing related skills together:
 - **[Strategy & Research Pack](skill-packs/strategy-pack.md)** — 3 skills for research and strategy (Market Research, ICP Research, Research Digest)
 - **[Creative & Design Pack](skill-packs/creative-pack.md)** — 3 skills for creative production (Frontend Design, Tech Diagram, Remotion Video)
 - **[Developer Tools Pack](skill-packs/dev-tools-pack.md)** — 2 skills for safe deployment and documentation (Safe Push, GitHub README)
-
-## Getting Started
-
-### Copy Individual Skills
-
-```bash
-git clone https://github.com/thatrebeccarae/claude-marketing.git
-cd claude-marketing
-cp -r skills/google-ads ~/.claude/skills/
-```
-
-Each skill works independently — install only the ones you need.
-
-### Setup Wizard (for a full pack)
-
-```bash
-# DTC e-commerce pack
-python skill-packs/scripts/setup-dtc.py
-
-# Paid media pack
-python skill-packs/scripts/setup-paid-media.py
-```
-
-The wizard checks prerequisites, walks you through API key setup, installs dependencies, and tests connections.
-
-> [!TIP]
-> See [DTC Getting Started](skill-packs/dtc-getting-started.md) or [Paid Media Getting Started](skill-packs/paid-media-getting-started.md) for detailed setup per platform.
 
 ## Multi-Tool Support
 
@@ -529,6 +527,6 @@ MIT — see [LICENSE](LICENSE) for details.
 
 ---
 
-**Your marketing department lives here now.**<br>Install the skills, deploy the workflows, and get to work.
+**The expertise layer your AI agent is missing.**<br>git clone it. Install what you need. Ask in plain English.
 
 </div>
