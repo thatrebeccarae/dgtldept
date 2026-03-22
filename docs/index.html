@@ -139,11 +139,23 @@
   --accent: #5B5F8D;
   --black: #000000;
   --white: #ffffff;
-  --terminal-bg: #0d0f14;
-  --terminal-green: #4ade80;
-  --terminal-red: #ef4444;
-  --terminal-amber: #f59e0b;
-  --terminal-text: #e4e4e7;
+  --terminal-bg: #000000;
+  --terminal-green: #57dd3f;
+  --terminal-red: #d9605b;
+  --terminal-amber: #f7f65f;
+  --terminal-text: #ffffff;
+  --terminal-cyan: #46a9ad;
+  --terminal-magenta: #ff00fa;
+  --terminal-blue: #4e5fbc;
+  --terminal-purple: #ed55e9;
+  --terminal-bright-black: #4a5060;
+  --terminal-bright-green: #95ee85;
+  --terminal-bright-red: #de7873;
+  --terminal-bright-yellow: #fcfb8e;
+  --terminal-bright-cyan: #6aede9;
+  --terminal-bright-blue: #2d43b9;
+  --terminal-bold: #53b7c1;
+  --terminal-link: #606cb8;
   --border-width: 2px;
   --section-pad-y: clamp(80px, 12vw, 200px);
   --section-pad-x: clamp(40px, 5vw, 80px);
@@ -390,12 +402,7 @@ a {
 }
 
 .hero-terminal .terminal {
-  transform:
-    rotateX(0deg)
-    rotateY(-19.5deg)
-    rotateZ(0deg)
-    scale(1.25);
-  transform-style: preserve-3d;
+  transform: none;
 }
 
 .hero .display {
@@ -410,8 +417,8 @@ a {
 /* ─── TERMINAL ─── */
 .terminal {
   background: var(--terminal-bg);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 12px;
+  border: 1px solid #ffffff;
+  border-radius: 16px;
   overflow: hidden;
   font-family: 'Cartograph CF', 'SF Mono', monospace;
   font-size: clamp(0.7rem, 1vw, 1rem);
@@ -419,7 +426,7 @@ a {
   width: clamp(280px, 50vw, 900px);
   aspect-ratio: 1031 / 706;
   margin: 0 auto;
-  box-shadow: 0 0 40px rgba(91, 95, 141, 0.08);
+  box-shadow: none;
 }
 
 .terminal-header {
@@ -427,8 +434,8 @@ a {
   align-items: center;
   gap: 8px;
   padding: 14px 18px;
-  background: rgba(255,255,255,0.04);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  background: transparent;
+  border-bottom: none;
 }
 
 .terminal-dot {
@@ -464,14 +471,14 @@ a {
 }
 
 .terminal-body .prompt {
-  color: var(--accent);
+  color: var(--terminal-cyan);
 }
 
 .terminal-body .cursor {
   display: inline-block;
   width: 8px;
   height: 1.1em;
-  background: var(--accent);
+  background: var(--terminal-magenta);
   vertical-align: text-bottom;
   animation: blink 1s step-end infinite;
 }
@@ -491,8 +498,10 @@ a {
 .terminal-body .green { color: var(--terminal-green); }
 .terminal-body .red { color: var(--terminal-red); }
 .terminal-body .amber { color: var(--terminal-amber); }
-.terminal-body .accent { color: var(--accent); }
+.terminal-body .accent { color: var(--terminal-cyan); }
 .terminal-body .bold { font-weight: 700; }
+.terminal-body .cyan { color: var(--terminal-cyan); }
+.terminal-body .magenta { color: var(--terminal-magenta); }
 .terminal-body .dim { opacity: 0.5; }
 
 /* ─── STATIC TERMINAL ─── */
