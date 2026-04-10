@@ -1,5 +1,10 @@
 <div align="center">
 
+<img src="assets/claude-marketing-hero.png" alt="claude-marketing — The marketing experience layer for Claude Code" width="100%">
+
+<br>
+<br>
+
 # claude-marketing
 
 **56 open-source Claude Code skills, specialized agents, and autonomous workflows for marketing teams.** Paid media, e-commerce, content, strategy, creative, reporting, and development — specialist depth without specialist headcount.
