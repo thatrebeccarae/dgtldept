@@ -1195,28 +1195,30 @@ a {
       return;
     }
 
-    grid.innerHTML = filtered.map((skill, i) => {
-      const slug = skill.slug || skill.name;
-      const href = './skill/' + slug + '.html';
-      const tested = skill.tested ? 'Tested ' + skill.tested + (skill.tested_with ? ' · ' + skill.tested_with : '') : '';
-      const install = skill.install_command || skill.install || ('cp -r claude-marketing/skills/' + slug + ' ~/.claude/skills/');
-      return '<a class="skill-card" href="' + href + '">'
-        + '<div class="skill-card-name">' + esc(skill.name) + '</div>'
-        + '<div class="skill-card-category">' + esc(skill.category_label || skill.category || '') + '</div>'
-        + '<div class="skill-card-desc">' + esc(skill.description || '') + '</div>'
-        + '<div class="skill-card-meta">'
-        + (tested ? '<span class="skill-card-tested">' + esc(tested) + '</span>' : '')
-        + '<div class="skill-card-install-row">'
-        + '<span class="skill-card-install">' + esc(install) + '</span>'
-        + '<button class="copy-btn" data-copy="' + esc(install).replace(/"/g, '&quot;') + '" title="Copy install command" onclick="event.preventDefault();event.stopPropagation();copyInstall(this)">'
-        + '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>'
-        + '</button>'
-        + '</div>'
-        + '</div>'
-        + '</a>';
-    }).join('');
+    grid.innerHTML = filtered.map(renderSkillCard).join('');
 
     grid.innerHTML += '<div style="grid-column: 1 / -1; font-family: Cartograph CF, monospace; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; opacity: 1; padding-top: 1rem;">+ more added every week</div>';
+  }
+
+  function renderSkillCard(skill) {
+    const slug = skill.slug || skill.name;
+    const href = './skill/' + slug + '.html';
+    const tested = skill.tested ? 'Tested ' + skill.tested + (skill.tested_with ? ' · ' + skill.tested_with : '') : '';
+    const install = skill.install_command || skill.install || ('cp -r claude-marketing/skills/' + slug + ' ~/.claude/skills/');
+    return '<a class="skill-card" href="' + href + '">'
+      + '<div class="skill-card-name">' + esc(skill.name) + '</div>'
+      + '<div class="skill-card-category">' + esc(skill.category_label || skill.category || '') + '</div>'
+      + '<div class="skill-card-desc">' + esc(skill.description || '') + '</div>'
+      + '<div class="skill-card-meta">'
+      + (tested ? '<span class="skill-card-tested">' + esc(tested) + '</span>' : '')
+      + '<div class="skill-card-install-row">'
+      + '<span class="skill-card-install">' + esc(install) + '</span>'
+      + '<button class="copy-btn" data-copy="' + esc(install).replace(/"/g, '&quot;') + '" title="Copy install command" onclick="event.preventDefault();event.stopPropagation();copyInstall(this)">'
+      + '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>'
+      + '</button>'
+      + '</div>'
+      + '</div>'
+      + '</a>';
   }
 
   function esc(str) {
@@ -1224,6 +1226,14 @@ a {
     d.textContent = str;
     return d.innerHTML;
   }
+
+  // Expose for search handler (defined in a sibling IIFE below)
+  window.__skillsCatalog = {
+    getAll: function() { return allSkills; },
+    findBySlug: function(slug) { return allSkills.find(function(s) { return (s.slug || s.name) === slug; }); },
+    renderCard: renderSkillCard,
+    rerender: function() { render(); }
+  };
 })();
 
 function copyInstall(btn) {
@@ -1245,6 +1255,7 @@ function copyInstall(btn) {
   var searchList = document.getElementById('search-results-list');
   var filterBar = document.getElementById('filter-bar');
   var catalogGrid = document.getElementById('catalog-grid');
+  var countEl = document.getElementById('skill-count');
   var pagefind = null;
   var debounceTimer = null;
 
@@ -1259,6 +1270,18 @@ function copyInstall(btn) {
     }
   }
 
+  function slugFromUrl(url) {
+    // Pagefind returns urls like "/claude-marketing/skill/google-ads.html" or "./skill/google-ads.html"
+    var m = (url || '').match(/\/skill\/([^\/]+?)\.html?$/i);
+    return m ? m[1] : null;
+  }
+
+  function escText(str) {
+    var d = document.createElement('div');
+    d.textContent = str == null ? '' : String(str);
+    return d.innerHTML;
+  }
+
   searchInput.addEventListener('input', function() {
     clearTimeout(debounceTimer);
     var query = searchInput.value.trim();
@@ -1267,6 +1290,10 @@ function copyInstall(btn) {
       searchResults.classList.remove('active');
       filterBar.style.display = '';
       catalogGrid.style.display = '';
+      // Restore catalog count + grid via the catalog's render function
+      if (window.__skillsCatalog && window.__skillsCatalog.rerender) {
+        window.__skillsCatalog.rerender();
+      }
       return;
     }
 
@@ -1281,18 +1308,33 @@ function copyInstall(btn) {
       catalogGrid.style.display = 'none';
       searchResults.classList.add('active');
 
-      if (!results.length) {
-        searchList.innerHTML = '<div class="search-no-results">No results for "' + query + '"</div>';
+      // Map Pagefind hits to catalog skills (clean description, install command, etc.)
+      // Skip non-skill pages (e.g. index.html) and dedupe by slug.
+      var catalog = window.__skillsCatalog;
+      var seen = {};
+      var matched = [];
+      if (catalog) {
+        results.forEach(function(r) {
+          var slug = slugFromUrl(r.url);
+          if (!slug || seen[slug]) return;
+          var skill = catalog.findBySlug(slug);
+          if (skill) {
+            seen[slug] = true;
+            matched.push(skill);
+          }
+        });
+      }
+
+      if (!matched.length) {
+        if (countEl) countEl.textContent = '0 results for "' + query + '"';
+        searchList.innerHTML = '<div class="search-no-results">No results for "' + escText(query) + '"</div>';
         return;
       }
 
-      searchList.innerHTML = results.map(function(r) {
-        var url = r.url || '';
-        return '<a class="search-result-item skill-card" href="' + url + '">'
-          + '<div class="search-result-title">' + (r.meta?.title || url.split('/').pop().replace('.html','')) + '</div>'
-          + '<div class="search-result-excerpt">' + (r.excerpt || '') + '</div>'
-          + '</a>';
-      }).join('');
+      if (countEl) {
+        countEl.textContent = matched.length + ' result' + (matched.length !== 1 ? 's' : '') + ' for "' + query + '"';
+      }
+      searchList.innerHTML = matched.map(catalog.renderCard).join('');
     }, 200);
   });
 
