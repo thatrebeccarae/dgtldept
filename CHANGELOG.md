@@ -4,6 +4,25 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.7.0] - 2026-04-21
+
+### Changed
+
+- **Renamed `gtm` skill to `google-tag-manager`** — the `name:` frontmatter field now matches the folder name (`skills/google-tag-manager/`), restoring consistency with every other skill in the catalog. Install commands, catalog entries, and generated integrations/ files updated.
+
+### Documentation
+
+- **CHANGELOG backfill** — previously undocumented skills from 2026-03-18 and 2026-03-19 added to their corresponding version entries. The `skills/` directory now matches what the CHANGELOG claims is shipped.
+
+## [1.6.0] - 2026-03-19
+
+### Added
+
+- **Quickstart site** — hosted walkthrough at [/quickstart.html](https://thatrebeccarae.github.io/claude-marketing/quickstart.html) covering install, top picks, the full catalog, compatibility matrix, and common fixes. Catalog-driven search indexes every skill's description and capabilities.
+- **DevOps pack** (6 skills): `repo-health`, `repo-scaffold`, `sync-repos`, `release-notes`, `social-preview`, `dep-audit`
+- **google-tag-manager** — standalone GTM expertise skill (container auditing, tag architecture, consent mode v2, server-side tagging). Replaces the inline GTM guidance previously split across google-analytics and the GTM Implementer agent.
+- **llms-txt** — `/llms.txt` manifest generator for AI answer-engine discoverability. Complements the AEO stack.
+
 ## [1.5.0] - 2026-03-18
 
 ### Added
@@ -13,6 +32,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 - **install.sh** — Interactive installer with auto-detection for installed tools; installs to correct location per tool
 - **integrations/** — Pre-built converted output for all 5 tools, committed and ready to copy into any project
 - **CI validation** — Workflow checks integrations/ for drift from source skills and validates format compliance on every push
+- **21 new skills shipped alongside multi-tool support** across content, SEO/AEO, growth, email, paid media, reporting, and strategy:
+  - **Content** (4): `brand-voice-guidelines`, `content-creator`, `content-pipeline`, `copywriting-frameworks`
+  - **SEO & AEO** (5): `aeo-geo-optimizer`, `schema-markup-generator`, `technical-seo-audit`, `programmatic-seo`, `utm-attribution-strategy`
+  - **Growth & Conversion** (4): `ab-testing-framework`, `cro-auditor`, `landing-page-optimizer`, `pricing-strategy`
+  - **Email & Lifecycle** (3): `cold-email-outreach`, `customer-journey-mapping`, `retention-churn-prevention`
+  - **Paid Media** (2): `linkedin-ads`, `tiktok-ads`
+  - **Strategy & Research** (1): `social-media-strategy`
+  - **Reporting & Deliverables** (2): `data-viz-deck`, `pro-report-builder`
 
 ## [1.4.0] - 2026-03-16
 
