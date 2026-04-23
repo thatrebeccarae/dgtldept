@@ -781,8 +781,8 @@ sk-ant-[A-Za-z0-9-]{40,}
 ### Internal Hostnames
 
 ```regex
-# Specific known hostnames (case-insensitive)
-(?i)\b(REDACTED|REDACTED)\b
+# Specific known hostnames (case-insensitive) — replace with your own
+(?i)\b(internal-host-a|internal-host-b)\b
 
 # Generic internal hostname patterns
 \b[a-z]+-?(dev|staging|internal|local)\.[a-z]+\.(local|internal|lan)\b
@@ -810,7 +810,8 @@ C:\\Users\\[a-zA-Z][a-zA-Z0-9._-]+\\
 ### Client Names and Internal References
 
 ```regex
-(?i)\b(REDACTED|REDACTED|REDACTED)\b
+# Replace with your client names and internal codenames
+(?i)\b(client-name-a|client-name-b|project-codename)\b
 ```
 
 ### Device Identifiers
