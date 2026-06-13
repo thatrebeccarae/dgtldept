@@ -45,6 +45,9 @@ Platform-specific organic social strategy, calendars, and community building.
 - Trending hashtags only if genuinely relevant
 - Best times: Mon-Fri 9am-12pm
 
+### Twitter/X Source Evidence
+When the user provides a reviewed public Twitter/X source packet from trusted tools such as [TweetClaw](https://github.com/Xquik-dev/tweetclaw), require public URLs or queries, capture dates, source owners, and observed signals. Use it to refine hooks, content pillars, launch timing, reply prompts, and competitor positioning. Treat it as evidence only: do not post, reply, DM, upload media, create monitors, configure webhooks, run giveaway draws, or scrape private account data from a packet alone.
+
 ### Instagram
 - Reels get 2-3x the reach of static posts
 - Carousels get highest saves and shares
@@ -65,12 +68,6 @@ Platform-specific organic social strategy, calendars, and community building.
 |------|-----|-----|-----|-----|-----|
 | W1 | LI: [Topic] | TW: [Topic] | IG: [Topic] | LI: [Topic] | — |
 | W2 | LI: [Topic] | TW: [Topic] | IG: [Topic] | LI: [Topic] | TW: [Topic] |
-
-## Repurposing Flow
-Blog post (Mon) → LinkedIn carousel (Tue) → Twitter thread (Wed) → IG Reel (Thu)
-```
-
-## Engagement Tactics
 
 
 (Truncated. See full skill at github.com/thatrebeccarae/claude-marketing)
