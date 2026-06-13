@@ -422,7 +422,7 @@ The [official Klaviyo MCP server](https://developers.klaviyo.com/en/docs/klaviyo
 
 **Option A — Claude Chat or Cowork (Connector Directory, ~2 min)**
 
-Klaviyo is in Claude's Connector Directory as of the expanded Klaviyo + Anthropic integration ([announced 2026-05-07](https://www.klaviyo.com/newsroom/klaviyo-anthropic-expanded-integration)). Setup is:
+Klaviyo is in Claude's Connector Directory as of the expanded Klaviyo + Anthropic integration ([announced 2026-05-07](https://www.klaviyo.com/blog/agentic-marketing-workflows-with-klaviyo-anthropic-claude)). Setup is:
 
 1. Open Claude → **Settings → Connectors → Browse Connectors**
 2. Search for **Klaviyo**
